@@ -1,0 +1,137 @@
+@import "ui-variables";
+
+atom-panel-container {
+	::-webkit-scrollbar {
+		display: none;
+	}
+}
+
+atom-text-editor {
+	font-family: "SourceCodePro-Light", "SFMono-Light", "SF Mono Light";
+	.vertical-scrollbar {
+		opacity: 0;
+		transition: opacity .2s .1s;
+	}
+	&:hover .vertical-scrollbar {
+		opacity: 1;
+	}
+}
+
+atom-text-editor.editor {
+	// Un-italicizes comments
+	.comment {
+		font-style: normal;
+	}
+
+	// Makes the bracket matcher highlight more noticeable
+	.bracket-matcher .region {
+		border-bottom: 3px solid yellow;
+	}
+
+	// Highlights trailing whitespace except on the cursor line
+	div.line:not(.cursor-line) {
+		.trailing-whitespace {
+			background-color: @background-color-error;
+			color: contrast(@background-color-error);
+		}
+	}
+}
+
+// ----------------------------------------------------------------------------
+// git
+// ----------------------------------------------------------------------------
+atom-text-editor.editor {
+	.gutter .line-number {
+		&.git-line-added {
+			border-left-width: 4px;
+			padding-left: calc(0.5em - 4px);
+		}
+
+		&.git-line-modified {
+			border-left-width: 4px;
+			padding-left: calc(0.5em - 4px);
+		}
+
+		&.git-line-removed {
+			border-left-width: 4px;
+			padding-left: calc(0.5em - 4px);
+		}
+	}
+	.git-commit {
+		.line-too-long.deprecated {
+			color: orange;
+			text-decoration: none;
+		}
+
+		.line-too-long.illegal {
+			color: #fff;
+			background: #DA2C43;
+			opacity: 0.9;
+		}
+	}
+}
+
+// ----------------------------------------------------------------------------
+// Tasks
+// ----------------------------------------------------------------------------
+atom-text-editor[data-grammar="source todo"] {
+	padding-top: 40px;
+	padding-left: 40px;
+	padding-right: 40px;
+
+	&.editor {
+		.gutter {
+			display: none;
+		}
+	}
+}
+
+// ----------------------------------------------------------------------------
+// markdown
+// ----------------------------------------------------------------------------
+atom-text-editor[data-grammar="source gfm"] {
+	max-width: 100%;
+	margin: 0 auto;
+	padding-left: 40px;
+	padding-right: 40px;
+
+	&.editor {
+		.syntax--markup.syntax--code {
+			opacity: 0.6
+		}
+
+		.syntax--markup.syntax--raw {
+			font-style: normal;
+		}
+
+		.gutter {
+			display: none;
+		}
+
+		.front-matter {
+			opacity: 0.1
+		}
+	}
+}
+
+// ----------------------------------------------------------------------------
+// Fix border top for one-ui-dark
+// ----------------------------------------------------------------------------
+atom-workspace.theme-one-dark-ui atom-pane-container  {
+	atom-pane[data-one-tab="true"] {
+		.item-views {
+			border-top: 1px solid @pane-item-border-color;
+		}
+	}
+}
+
+// ----------------------------------------------------------------------------
+// Colors for splitt-diff
+// ----------------------------------------------------------------------------
+.split-diff-added {
+	background-color: fade(green, 5%) !important;
+}
+
+.split-diff-removed {
+	background-color: fade(red, 5%) !important;
+}
