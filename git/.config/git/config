@@ -1,0 +1,73 @@
+[push]
+	default = simple
+
+[color]
+	branch = auto
+	diff = auto
+	grep = auto
+	interactive = auto
+	showBranch = auto
+	status = auto
+	ui = auto
+
+[alias]
+	ai = add --interactive
+	alias = "!git config -l | grep alias | cut -c 7-"
+	b = branch
+	ci = commit
+	cm = commit -m
+	cma = commit -a -m
+	co = checkout
+	commend = commit --amend --no-edit
+	conflicts = diff --name-only --diff-filter=U
+	cp = cherry-pick
+	cr = git remote prune origin
+	db = "!f() { git diff $(git merge-base --fork-point master); }; f"
+	dbb = "!f() { git diff $(git merge-base --fork-point $1 $2)..$2; }; f"
+	dc = diff --cached
+	df = diff --word-diff
+	dp = diff --patch-with-stat
+	dt = difftool
+	fixup = commit --fixup
+	go = checkout -B
+	gr = grep -Ii
+	h = !git head
+	head = !git l -1
+	it = "!f() { git init && git commit -m root --allow-empty; }; f"
+	l = log --pretty=format:"%C(yellow)%h\\ %C(green)%ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short --graph
+	lt = describe --tags --abbrev=0
+	mof = merge --no-ff
+	ours = "!f() { git co --ours $@ && git add $@; }; f"
+	p = pull --rebase=preserve
+	puf = push --force-with-lease
+	pud = push origin --delete
+	rem="!git config -l | grep remote.*url | tail -n +2"
+	rp = rebase --preserve-merges
+	raib = "!f() { git rebase -i $(git merge-base --fork-point master); }; f"
+	sa = stash apply
+	sba = "!f() { git subtree add --prefix $2 $1 master --squash; }; f"
+	sl = stash list
+	ss = stash save
+	st = status -s --branch
+	theirs = "!f() { git co --theirs $@ && git add $@; }; f"
+	today = log --stat --since='1 Day Ago' --graph --pretty=oneline --abbrev-commit --date=relative
+	unassume = update-index --no-assume-unchanged
+	unassumeall = "!git assumed | xargs git update-index --no-assume-unchanged"
+	undopush = push -f origin HEAD^:master
+
+[core]
+	editor = "'vim' +startinsert"
+	whitespace = blank-at-eol,space-before-tab,blank-at-eof,cr-at-eol
+
+[commit]
+	template = ~/.config/git/commit-message
+
+[difftool]
+	useBuiltin = true
+	prompt = false
+
+[mergetool]
+	keepBackup = false
+
+[include]
+	path = ~/.config/git/config.local

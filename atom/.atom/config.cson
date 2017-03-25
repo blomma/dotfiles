@@ -1,0 +1,45 @@
+"*":
+  core:
+    allowPendingPaneItems: false
+    audioBeep: false
+    autoHideMenuBar: true
+    customFileTypes:
+      "source.shell": [
+        "ini"
+      ]
+    disabledPackages: [
+      "markdown-writer"
+      "wrap-guide"
+    ]
+    followSymlinks: true
+    openEmptyEditorOnStart: false
+    projectHome: "/Users/blomma/Dropbox/Projects/private"
+    telemetryConsent: "limited"
+    themes: [
+      "nord-atom-ui"
+      "nord-atom-syntax"
+    ]
+  editor:
+    fontSize: 18
+    softWrapAtPreferredLineLength: true
+    softWrapHangingIndent: 10
+    tabLength: 4
+    tabType: "hard"
+  "exception-reporting":
+    userId: "b78a39d0-ae79-fc18-2b76-f25ff0bca832"
+  "file-icons":
+    tabPaneIcon: false
+  "indentation-indicator":
+    spaceAfterColon: true
+  "remote-atom":
+    keep_alive: true
+    launch_at_startup: true
+  tabs:
+    alwaysShowTabBar: false
+    enableVcsColoring: true
+  "tree-view":
+    autoReveal: true
+  welcome:
+    showOnStartup: false
+  whitespace:
+    ensureSingleTrailingNewline: false
