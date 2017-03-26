@@ -1,4 +1,5 @@
 *
 !config
+!config.private
 !ignore
 !commit-message
