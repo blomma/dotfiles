@@ -68,7 +68,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'lion19/ctrlp-modified.vim'
 Plug 'ekalinin/Dockerfile.vim'
 
-Plug 'fatih/vim-go', { 'for': 'go', 'do': ':GoInstallBinaries' }
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 
 call plug#end()
 
