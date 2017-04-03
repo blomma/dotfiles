@@ -52,7 +52,6 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'tpope/vim-vinegar'
 Plug 'Lokaltog/vim-easymotion'
-Plug 'rizzatti/dash.vim'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'ervandew/supertab'
 Plug 'ekoeppen/taskpaper.vim'
@@ -226,6 +225,7 @@ let g:go_highlight_operators = 0
 let g:go_highlight_extra_types = 1
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_generate_tags = 1
+let g:go_auto_sameids = 1
 
 au FileType go nmap <leader>gd <Plug>(go-doc)
 au FileType go nmap <leader>gv <Plug>(go-doc-vertical)
@@ -379,15 +379,6 @@ let g:limelight_conceal_ctermfg = 240
 
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
-
-" -------------------------------------------------------------------
-" Dash
-" -------------------------------------------------------------------
-nmap <silent> <leader>d <Plug>DashSearch
-
-let g:dash_map = {
-			\ 'swift' : ['ios']
-			\}
 
 " -------------------------------------------------------------------
 " Easymotion
