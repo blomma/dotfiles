@@ -20,7 +20,7 @@
       "nord-atom-syntax"
     ]
   editor:
-    fontSize: 18
+    fontSize: 20
     softWrapAtPreferredLineLength: true
     softWrapHangingIndent: 10
     tabLength: 4
