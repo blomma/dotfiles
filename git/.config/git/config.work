@@ -1,6 +1,3 @@
-[include]
-	path = .git/gitconfig
-
 [merge]
 	tool = p4mergetool
 
