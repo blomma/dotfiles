@@ -1,0 +1,19 @@
+[include]
+	path = .git/gitconfig
+
+[merge]
+	tool = p4mergetool
+
+[mergetool "p4mergetool"]
+	trustExitCode = false
+	cmd="p4merge.exe" "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
+
+[diff]
+	tool = p4mergetool
+
+[difftool "p4mergetool"]
+	cmd="p4merge.exe" "$LOCAL" "$REMOTE"
+
+[user]
+	name = Mikael Hultgren
+	email = mikael.hultgren@consortiofashion.com
