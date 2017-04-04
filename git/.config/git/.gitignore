@@ -2,5 +2,6 @@
 !config
 !config.private
 !config.work
+!config.pi
 !ignore
 !commit-message

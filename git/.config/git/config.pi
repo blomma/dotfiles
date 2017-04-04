@@ -1,0 +1,6 @@
+[user]
+	name = Mikael Hultgren
+	email = blomma@gmail.com
+
+[credential]
+	helper = cache
