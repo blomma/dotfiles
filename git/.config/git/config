@@ -14,6 +14,7 @@
 	ai = add --interactive
 	alias = "!git config -l | grep alias | cut -c 7-"
 	b = branch
+	c = clean -dfx -e app.local.config -e app.local.config.old -e Web.Local.config
 	ci = commit
 	cm = commit -m
 	cma = commit -a -m
@@ -45,7 +46,6 @@
 	rp = rebase --preserve-merges
 	raib = "!f() { git rebase -i $(git merge-base --fork-point master); }; f"
 	sa = stash apply
-	sba = "!f() { git subtree add --prefix $2 $1 master --squash; }; f"
 	sl = stash list
 	ss = stash save
 	st = status -s --branch
