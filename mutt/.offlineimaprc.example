@@ -1,0 +1,23 @@
+# Sample minimal config file.  Copy this to ~/.offlineimaprc and edit to
+# get started fast.
+
+[general]
+accounts = personal
+pythonfile = ~/.offlineimap.py
+
+[Account personal]
+localrepository = Local
+remoterepository = Remote
+postsynchook = ~/.offlineimap.postsynchook
+
+[Repository Local]
+type = Maildir
+localfolders = ~/.mail
+
+[Repository Remote]
+type = IMAP
+ssl = yes
+cert_fingerprint = bddc89dae48629898af13421d7844f806ca33943
+remotehost = mail.messagingengine.com
+remoteuser = user@example.com
+remotepasseval = imappasswd()
