@@ -1,0 +1,95 @@
+# Mailbox
+set folder=~/.mail
+set spoolfile=+Inbox
+set postponed=+Inbox.Drafts
+set record=+Inbox.Sent
+set mbox_type=Maildir
+set header_cache=~/.mail_header_cache
+
+folder-hook . 'set read_inc=1000'
+
+# This variable specifies notmuch query type, supported types: 'threads' and
+# 'messages'.
+set nm_query_type = threads
+
+# When set, mutt will use the first virtual mailbox (see virtual-mailboxes)
+# as a spoolfile.
+set virtual_spoolfile = yes
+
+# virtual-mailboxes description notmuch-URI { description notmuch-URI ...}
+virtual-mailboxes \
+	"Inbox" "notmuch://?query=tag:inbox"\
+	"Spam" "notmuch://?query=tag:spam"
+
+set vfolder_format = "%6n(%6N) %f"
+
+macro index,pager c "<change-vfolder>?" "Change to vfolder overview"
+macro index,pager C "<vfolder-from-query>" "Search mailbox"
+
+set editor="vim +startinsert -c 'set tw=70 et fo=aw' +/^$"
+set from                = "Mikael Hultgren <blomma@artsoftheinsane.com>"
+set edit_headers        = yes
+set text_flowed
+
+# Sending
+set sendmail = "/usr/local/bin/msmtp
+set sendmail_wait = 0
+set use_from=yes
+set realname="Mikael Hultgren"
+set from=blomma@artsoftheinsane.com
+set envelope_from=yes
+
+set help=no
+set wait_key            = no                                           # Don't ask me to press a key to continue after I did a shell escape and came back
+set timeout             = 60                                           # idle time before scanning
+set mail_check          = 60                                           # minimum time between scans
+set delete                                                             # don't ask, just do
+unset confirmappend                                                    # When saving a message, append the message to an existing mailbox without asking (Why should it ask, anyway? Mailboxes generally have multiple messages...)
+unset mark_old                                                         # read/new is good enough for me
+set pipe_decode                                                        # strip headers and eval mimes when piping
+set thorough_search                                                    # strip headers and eval mimes before searching
+
+ignore *                                                               # ignore all headers
+unignore from: to: cc: date: subject:                                  # show only these
+unhdr_order *                                                          # some distros order things by default
+hdr_order from: to: cc: date: subject:                                 # and in this order
+
+set date_format         = "%d-%m-%y"                                   # a simple date format
+set index_format        = "[%Z]  %D  %-20.20F  %s"                     # format of the index view, show all flags, date, the sender and finally the subject
+set sort                = threads                                      # like gmail
+set sort_aux            = reverse-last-date-received                   # like gmail
+set uncollapse_jump                                                    # don't collapse on an unread message
+set sort_re                                                            # thread based on regex
+set reply_regexp        = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
+set fast_reply                                                         # do not ask for to, subject, etc when replying
+set include                                                            # always include message when replying
+set forward_format      = "Fwd: %s"                                    # when forwarding email, simply add a Fwd to the subject
+set smart_wrap                                                         # dont wrap mid word
+
+auto_view text/html                                                    # autoview html
+alternative_order text/plain text/enriched text/html                   # save html for last
+
+set status_chars        = " *%A"
+set status_format       = "───[ Folder: %f ]───[%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]───%>─%?p?( %p postponed )?───"
+
+set pager_index_lines   = 10                                           # number of index lines to show
+set pager_context       = 5                                            # When going to the next page, keep the bottom two lines of this page on top so that I have some context
+set pager_stop          = yes                                          # If I'm at the end of a message and I try to go to the next page, don't move me to the next message
+set menu_scroll                                                        # scroll in menus
+set tilde                                                              # show tildes like in vim
+unset markers                                                          # In the pager, don't display + at the beginning of wrapped lines; it's distracting
+
+bind pager <up> previous-line                                          # scroll inside the message rather than the index
+bind pager <down> next-line                                            # scroll inside the message rather than the index
+
+# Contact aliases, could also use `goobook`.
+set alias_file		= ~/.mutt/aliases
+set sort_alias		= alias
+set reverse_alias	= yes
+set reverse_name	= yes
+source $alias_file
+
+# colors!
+source ~/.mutt/jellybeans.muttrc
+
+push <show-version>

@@ -1,0 +1,23 @@
+# Sample minimal config file.  Copy this to ~/.offlineimaprc and edit to
+# get started fast.
+
+[general]
+accounts = blomma
+pythonfile = ~/.offlineimap.py
+
+[Account blomma]
+localrepository = Local
+remoterepository = Remote
+postsynchook = ~/.offlineimap.postsynchook
+
+[Repository Local]
+type = Maildir
+localfolders = ~/.mail
+
+[Repository Remote]
+type = IMAP
+ssl = yes
+cert_fingerprint = bddc89dae48629898af13421d7844f806ca33943
+remotehost = mail.messagingengine.com
+remoteuser = blomma@artsoftheinsane.com
+remotepasseval = imappasswd()
