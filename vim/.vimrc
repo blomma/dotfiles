@@ -79,6 +79,13 @@ call plug#end()
 syntax on
 syntax enable
 set noshowmode	" Let airline handle the mode display
+set ttyfast
+
+if &term =~ '256color'
+	" Disable Background Color Erase (BCE) so that color schemes
+	" work properly when Vim is used inside tmux and GNU screen.
+	set t_ut=
+endif
 
 " -------------------------------------------------------------------
 " Basic Setup
@@ -104,8 +111,6 @@ if has("win32") || has("win16") || has("win32unix")
 else
 	set fileformats+=mac
 endif
-
-set ttyfast
 
 " dont save .netrwhist history
 let g:netrw_dirhistmax=0
