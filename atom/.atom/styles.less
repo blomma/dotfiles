@@ -1,13 +1,10 @@
 @import "ui-variables";
 
-atom-panel-container {
-	::-webkit-scrollbar {
-		display: none;
-	}
-}
-
 atom-text-editor {
 	font-family: "SourceCodePro-Light", "Source Code Pro Light", "SFMono-Light", "SF Mono Light";
+	.horizontal-scrollbar {
+		display: none;
+	}
 	.vertical-scrollbar {
 		opacity: 0;
 		transition: opacity .2s .1s;
