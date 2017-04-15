@@ -10,6 +10,7 @@ call plug#begin('~/.vim/plugged')
 
 " Themes
 Plug 'nanotech/jellybeans.vim'
+Plug 'blomma/Zenburn'
 
 " MS
 Plug 'kmnk/vim-csharp'
@@ -68,6 +69,7 @@ Plug 'lion19/ctrlp-modified.vim'
 Plug 'ekalinin/Dockerfile.vim'
 
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+Plug 'godoctor/godoctor.vim'
 
 call plug#end()
 
@@ -407,7 +409,7 @@ let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
 let g:jellybeans_overrides = {
 	\    'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
 	\}
-colorscheme jellybeans
+colorscheme zenburn
 
 " -------------------------------------------------------------------
 " Markdown
