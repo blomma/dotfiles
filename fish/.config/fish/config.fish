@@ -1,4 +1,4 @@
-set fish_greeting
+set fish_greeting "くコ:彡 welcome to fish"
 
 source ~/.config/fish/aliases.fish
 source ~/.config/fish/color.fish
