@@ -1,4 +1,11 @@
 "*":
+  "atom-material-ui":
+    colors: {}
+    fonts:
+      fontSize: 18
+    tabs: {}
+    treeView:
+      compactList: true
   core:
     allowPendingPaneItems: false
     audioBeep: false
@@ -16,9 +23,10 @@
     projectHome: "/Users/blomma/Dropbox/Projects/private"
     telemetryConsent: "limited"
     themes: [
-      "nord-atom-ui"
-      "nord-atom-syntax"
+      "atom-material-ui"
+      "zenburn"
     ]
+    titleBar: "custom"
   editor:
     fontSize: 20
     softWrapAtPreferredLineLength: true
