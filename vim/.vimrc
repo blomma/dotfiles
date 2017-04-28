@@ -64,12 +64,18 @@ Plug 'reedes/vim-litecorrect'
 Plug 'kana/vim-textobj-user'
 Plug 'reedes/vim-textobj-quote'
 Plug 'mhinz/vim-grepper'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'lion19/ctrlp-modified.vim'
 Plug 'ekalinin/Dockerfile.vim'
 
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 Plug 'godoctor/godoctor.vim'
+
+if has("win32") || has("win16") || has("win32unix")
+	Plug 'ctrlpvim/ctrlp.vim'
+	Plug 'lion19/ctrlp-modified.vim'
+else
+	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+	Plug 'junegunn/fzf.vim'
+endif
 
 call plug#end()
 
@@ -107,7 +113,9 @@ set nrformats-=octal
 set autowrite
 
 if has("win32") || has("win16") || has("win32unix")
-	set fileformats=dos
+	set fileformats=unix,dos
+	set fileformat=unix
+	" autocmd Filetype gitcommit setlocal fileformat=dos
 else
 	set fileformats+=mac
 endif
