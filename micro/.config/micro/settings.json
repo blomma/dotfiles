@@ -6,6 +6,7 @@
     "colorscheme": "zenburn",
     "cursorline": true,
     "eofnewline": false,
+    "fishfmt": true,
     "gofmt": true,
     "goimports": false,
     "ignorecase": false,
