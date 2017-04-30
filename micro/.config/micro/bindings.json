@@ -2,10 +2,6 @@
 	"CtrlShiftZ": "Redo",
 	"CtrlSpace": "fzf.fzf",
 	"CtrlUnderscore": "comment.comment",
-	"CtrlW": "Quit",
-	"CtrlQ": "QuitAll",
-
     "CtrlD": "CutLine",
-
     "CtrlK": "SelectToEndOfLine,Delete",
 }
