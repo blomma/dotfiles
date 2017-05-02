@@ -17,7 +17,6 @@ Plug 'kmnk/vim-csharp'
 
 " Javascript
 Plug 'pangloss/vim-javascript'
-Plug 'vim-coffee-script'
 
 " Fish
 Plug 'dag/vim-fish'
