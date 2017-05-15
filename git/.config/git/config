@@ -15,16 +15,15 @@
 	alias = "!git config -l | grep alias | cut -c 7-"
 	b = branch
 	c = clean -dfx -e app.local.config -e app.local.config.old -e Web.Local.config
-	ci = commit
-	cm = commit -m
-	cma = commit -a -m
 	co = checkout
 	commend = commit --amend --no-edit
 	conflicts = diff --name-only --diff-filter=U
 	cp = cherry-pick
 	cr = git remote prune origin
 	db = "!f() { git diff $(git merge-base --fork-point master); }; f"
+	dtb = "!f() { git difftool $(git merge-base --fork-point master); }; f"
 	dbb = "!f() { git diff $(git merge-base --fork-point $1 $2)..$2; }; f"
+	dtbb = "!f() { git difftool $(git merge-base --fork-point $1 $2)..$2; }; f"
 	dc = diff --cached
 	df = diff --word-diff
 	dp = diff --patch-with-stat
