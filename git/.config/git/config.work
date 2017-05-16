@@ -1,12 +1,12 @@
 [merge]
-	tool = p4mergetool
+	tool = meld
 
 [mergetool "p4mergetool"]
 	trustExitCode = false
 	cmd="p4merge.exe" "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
 
 [diff]
-	tool = p4mergetool
+	tool = meld
 
 [difftool "p4mergetool"]
 	cmd="p4merge.exe" "$LOCAL" "$REMOTE"
@@ -14,3 +14,6 @@
 [user]
 	name = Mikael Hultgren
 	email = mikael.hultgren@consortiofashion.com
+
+[alias]
+	dtd = difftool -d
