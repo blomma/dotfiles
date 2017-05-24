@@ -21,6 +21,7 @@
     followSymlinks: true
     openEmptyEditorOnStart: false
     projectHome: "/Users/blomma/Dropbox/Projects/private"
+    restorePreviousWindowsOnStart: "always"
     telemetryConsent: "limited"
     themes: [
       "atom-material-ui"
