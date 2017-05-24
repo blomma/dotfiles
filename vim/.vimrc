@@ -110,6 +110,7 @@ set shortmess=filnxtToOI		" see :help shortmess
 set backspace=indent,eol,start	  " backspace through everything in insert mode
 set nrformats-=octal
 set autowrite
+set diffopt+=iwhite
 
 if has("win32") || has("win16") || has("win32unix")
 	set fileformats=unix,dos
