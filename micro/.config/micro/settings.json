@@ -7,6 +7,7 @@
     "cursorline": true,
     "eofnewline": false,
     "fishfmt": true,
+    "ftoptions": true,
     "gofmt": true,
     "goimports": false,
     "ignorecase": false,
@@ -29,7 +30,9 @@
     "splitRight": true,
     "statusline": true,
     "syntax": true,
+    "tabmovement": false,
     "tabsize": 4,
     "tabstospaces": false,
+    "termtitle": false,
     "useprimary": true
 }
