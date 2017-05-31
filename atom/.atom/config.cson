@@ -21,7 +21,6 @@
     followSymlinks: true
     openEmptyEditorOnStart: false
     projectHome: "/home/user/Dropbox/Projects/private"
-    restorePreviousWindowsOnStart: "always"
     telemetryConsent: "limited"
     themes: [
       "atom-material-ui"
