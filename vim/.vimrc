@@ -67,6 +67,7 @@ Plug 'ekalinin/Dockerfile.vim'
 
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 Plug 'godoctor/godoctor.vim'
+Plug 'hrother/offlineimaprc.vim'
 
 if has("win32") || has("win16") || has("win32unix")
 	Plug 'ctrlpvim/ctrlp.vim'
