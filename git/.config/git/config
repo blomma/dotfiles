@@ -22,6 +22,7 @@
 	cr = git remote prune origin
 	db = "!f() { git diff $(git merge-base --fork-point master); }; f"
 	dtb = "!f() { git difftool $(git merge-base --fork-point master); }; f"
+	dtbd = "!f() { git difftool -d $(git merge-base --fork-point master); }; f"
 	dbb = "!f() { git diff $(git merge-base --fork-point $1 $2)..$2; }; f"
 	dtbb = "!f() { git difftool $(git merge-base --fork-point $1 $2)..$2; }; f"
 	dc = diff --cached
