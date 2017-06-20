@@ -87,13 +87,23 @@ atom-text-editor[data-grammar="source todo"] {
 // ----------------------------------------------------------------------------
 // markdown
 // ----------------------------------------------------------------------------
-atom-text-editor[data-grammar="source gfm"] {
+atom-text-editor[data-grammar="source gfm"], atom-text-editor[data-grammar="text md"] {
 	max-width: 100%;
 	margin: 0 auto;
 	padding-left: 40px;
 	padding-right: 40px;
 
 	&.editor {
+		.syntax--heading-1.syntax--md {
+			opacity: 0.6
+		}
+		.syntax--heading-2.syntax--md {
+			opacity: 0.6
+		}
+
+		.syntax--punctuation.syntax--md {
+			opacity: 0.3
+		}
 		.syntax--markup.syntax--code {
 			opacity: 0.6
 		}
