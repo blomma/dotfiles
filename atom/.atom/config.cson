@@ -15,8 +15,8 @@
         "ini"
       ]
     disabledPackages: [
-      "markdown-writer"
       "wrap-guide"
+      "language-gfm"
     ]
     followSymlinks: true
     openEmptyEditorOnStart: false
@@ -28,6 +28,7 @@
     ]
     titleBar: "custom"
   editor:
+    fontSize: 18
     softWrapAtPreferredLineLength: true
     softWrapHangingIndent: 10
     tabLength: 4
