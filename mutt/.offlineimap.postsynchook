@@ -1,4 +1,4 @@
 #!/bin/sh
 notmuch new
 
-notmuch tag -inbox +spam -- subject:"SPAM"
+notmuch tag -inbox +spam -- tag:inbox and subject:"SPAM"
