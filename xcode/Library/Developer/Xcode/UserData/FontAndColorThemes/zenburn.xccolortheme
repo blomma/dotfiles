@@ -5,23 +5,23 @@
 	<key>DVTConsoleDebuggerInputTextColor</key>
 	<string>0.868401 0.868508 0.868328 1</string>
 	<key>DVTConsoleDebuggerInputTextFont</key>
-	<string>Monaco - 14.0</string>
+	<string>SourceCodePro-Light - 14.0</string>
 	<key>DVTConsoleDebuggerOutputTextColor</key>
 	<string>0.868401 0.868508 0.868328 1</string>
 	<key>DVTConsoleDebuggerOutputTextFont</key>
-	<string>Monaco - 14.0</string>
+	<string>SourceCodePro-Light - 14.0</string>
 	<key>DVTConsoleDebuggerPromptTextColor</key>
 	<string>1 0.982459 0.616637 1</string>
 	<key>DVTConsoleDebuggerPromptTextFont</key>
-	<string>Monaco - 14.0</string>
+	<string>SourceCodePro-Light - 14.0</string>
 	<key>DVTConsoleExectuableInputTextColor</key>
 	<string>0.868401 0.868508 0.868328 1</string>
 	<key>DVTConsoleExectuableInputTextFont</key>
-	<string>Monaco - 14.0</string>
+	<string>SourceCodePro-Light - 14.0</string>
 	<key>DVTConsoleExectuableOutputTextColor</key>
 	<string>0.868401 0.868508 0.868328 1</string>
 	<key>DVTConsoleExectuableOutputTextFont</key>
-	<string>Monaco - 14.0</string>
+	<string>SourceCodePro-Light - 14.0</string>
 	<key>DVTConsoleTextBackgroundColor</key>
 	<string>0.22204 0.222068 0.222022 1</string>
 	<key>DVTConsoleTextInsertionPointColor</key>
@@ -30,6 +30,8 @@
 	<string>0.733154 0.772336 0.830945 1</string>
 	<key>DVTDebuggerInstructionPointerColor</key>
 	<string>0.705792 0.8 0.544 1</string>
+	<key>DVTLineSpacing</key>
+	<real>1.1000000238418579</real>
 	<key>DVTMarkupTextBackgroundColor</key>
 	<string>0.284277 0.284303 0.28426 1</string>
 	<key>DVTMarkupTextBorderColor</key>
