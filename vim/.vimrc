@@ -231,22 +231,46 @@ nnoremap <leader>a :cclose<CR>
 " -------------------------------------------------------------------
 " Go
 " -------------------------------------------------------------------
+au FileType go set noexpandtab
+
 let g:go_list_type = "quickfix"
 let g:go_fmt_command = "goimports"
-let g:go_highlight_types = 0
+
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_extra_types = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_operators = 0
-let g:go_highlight_extra_types = 1
-let g:go_highlight_build_constraints = 1
 let g:go_highlight_generate_tags = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_types = 1
+
 let g:go_auto_sameids = 1
+
+let g:go_auto_type_info = 1
 
 au FileType go nmap <leader>gd <Plug>(go-doc)
 au FileType go nmap <leader>gv <Plug>(go-doc-vertical)
 au FileType go nmap <leader>gb <Plug>(go-doc-browser)
 au FileType go nmap <leader>e <Plug>(go-rename)
+au FileType go nmap <leader>gt :GoDeclsDir<cr>
+au FileType go nmap <F12> <Plug>(go-def)
+
+au FileType go nmap <F8> <Plug>(go-metalinter)
+let g:go_metalinter_deadline = "5s"
+let g:go_metalinter_enabled = [
+	\ 'deadcode',
+	\ 'errcheck',
+	\ 'gas',
+	\ 'goconst',
+	\ 'gocyclo',
+	\ 'golint',
+	\ 'gosimple',
+	\ 'ineffassign',
+	\ 'vet',
+	\ 'vetshadow'
+\]
 
 " -------------------------------------------------------------------
 " Better whitespace
