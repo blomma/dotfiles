@@ -132,51 +132,51 @@
 	<key>DVTSourceTextSyntaxFonts</key>
 	<dict>
 		<key>xcode.syntax.attribute</key>
-		<string>SourceCodePro-Regular - 18.0</string>
+		<string>SourceCodePro-Light - 18.0</string>
 		<key>xcode.syntax.character</key>
-		<string>SourceCodePro-Regular - 18.0</string>
+		<string>SourceCodePro-Light - 18.0</string>
 		<key>xcode.syntax.comment</key>
-		<string>SourceCodePro-Regular - 18.0</string>
+		<string>SourceCodePro-Light - 18.0</string>
 		<key>xcode.syntax.comment.doc</key>
-		<string>SourceCodePro-Regular - 18.0</string>
+		<string>SourceCodePro-Light - 18.0</string>
 		<key>xcode.syntax.comment.doc.keyword</key>
-		<string>SourceCodePro-Regular - 18.0</string>
+		<string>SourceCodePro-Light - 18.0</string>
 		<key>xcode.syntax.identifier.class</key>
-		<string>SourceCodePro-Regular - 18.0</string>
+		<string>SourceCodePro-Light - 18.0</string>
 		<key>xcode.syntax.identifier.class.system</key>
-		<string>SourceCodePro-Regular - 18.0</string>
+		<string>SourceCodePro-Light - 18.0</string>
 		<key>xcode.syntax.identifier.constant</key>
-		<string>SourceCodePro-Regular - 18.0</string>
+		<string>SourceCodePro-Light - 18.0</string>
 		<key>xcode.syntax.identifier.constant.system</key>
-		<string>SourceCodePro-Regular - 18.0</string>
+		<string>SourceCodePro-Light - 18.0</string>
 		<key>xcode.syntax.identifier.function</key>
-		<string>SourceCodePro-Regular - 18.0</string>
+		<string>SourceCodePro-Light - 18.0</string>
 		<key>xcode.syntax.identifier.function.system</key>
-		<string>SourceCodePro-Regular - 18.0</string>
+		<string>SourceCodePro-Light - 18.0</string>
 		<key>xcode.syntax.identifier.macro</key>
-		<string>SourceCodePro-Regular - 18.0</string>
+		<string>SourceCodePro-Light - 18.0</string>
 		<key>xcode.syntax.identifier.macro.system</key>
-		<string>SourceCodePro-Regular - 18.0</string>
+		<string>SourceCodePro-Light - 18.0</string>
 		<key>xcode.syntax.identifier.type</key>
-		<string>SourceCodePro-Regular - 18.0</string>
+		<string>SourceCodePro-Light - 18.0</string>
 		<key>xcode.syntax.identifier.type.system</key>
-		<string>SourceCodePro-Regular - 18.0</string>
+		<string>SourceCodePro-Light - 18.0</string>
 		<key>xcode.syntax.identifier.variable</key>
-		<string>SourceCodePro-Regular - 18.0</string>
+		<string>SourceCodePro-Light - 18.0</string>
 		<key>xcode.syntax.identifier.variable.system</key>
-		<string>SourceCodePro-Regular - 18.0</string>
+		<string>SourceCodePro-Light - 18.0</string>
 		<key>xcode.syntax.keyword</key>
-		<string>SourceCodePro-Regular - 18.0</string>
+		<string>SourceCodePro-Light - 18.0</string>
 		<key>xcode.syntax.number</key>
-		<string>SourceCodePro-Regular - 18.0</string>
+		<string>SourceCodePro-Light - 18.0</string>
 		<key>xcode.syntax.plain</key>
-		<string>SourceCodePro-Regular - 18.0</string>
+		<string>SourceCodePro-Light - 20.0</string>
 		<key>xcode.syntax.preprocessor</key>
-		<string>SourceCodePro-Regular - 18.0</string>
+		<string>SourceCodePro-Light - 18.0</string>
 		<key>xcode.syntax.string</key>
-		<string>SourceCodePro-Regular - 18.0</string>
+		<string>SourceCodePro-Light - 18.0</string>
 		<key>xcode.syntax.url</key>
-		<string>SourceCodePro-Regular - 18.0</string>
+		<string>SourceCodePro-Light - 18.0</string>
 	</dict>
 </dict>
 </plist>
