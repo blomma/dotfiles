@@ -17,6 +17,9 @@
     disabledPackages: [
       "wrap-guide"
       "language-gfm"
+      "github"
+      "open-on-github"
+      "file-icons"
     ]
     followSymlinks: true
     openEmptyEditorOnStart: false
