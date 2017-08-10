@@ -116,7 +116,6 @@ set diffopt+=iwhite
 if has("win32") || has("win16") || has("win32unix")
 	set fileformats=unix,dos
 	set fileformat=unix
-	" autocmd Filetype gitcommit setlocal fileformat=dos
 else
 	set fileformats+=mac
 endif
