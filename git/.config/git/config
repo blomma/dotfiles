@@ -8,7 +8,7 @@
 	interactive = auto
 	showBranch = auto
 	status = auto
-	ui = auto
+	ui = true
 
 [alias]
 	ai = add --interactive
@@ -18,11 +18,9 @@
 	co = checkout
 	commend = commit --amend --no-edit
 	conflicts = diff --name-only --diff-filter=U
-	cp = cherry-pick
 	cr = git remote prune origin
 	db = "!f() { git diff $(git merge-base --fork-point master); }; f"
 	dtb = "!f() { git difftool $(git merge-base --fork-point master); }; f"
-	dtbd = "!f() { git difftool -d $(git merge-base --fork-point master); }; f"
 	dbb = "!f() { git diff $(git merge-base --fork-point $1 $2)..$2; }; f"
 	dtbb = "!f() { git difftool $(git merge-base --fork-point $1 $2)..$2; }; f"
 	dc = diff --cached
@@ -30,31 +28,18 @@
 	dp = diff --patch-with-stat
 	dt = difftool
 	fixup = commit --fixup
-	go = checkout -B
-	gr = grep -Ii
-	h = !git head
-	head = !git l -1
 	it = "!f() { git init && git commit -m root --allow-empty; }; f"
 	l = log --pretty=format:"%C(yellow)%h\\ %C(green)%ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short --graph
 	ll = log --graph --pretty=format:'commit: %C(bold red)%h%Creset %C(red)<%H>%Creset %C(bold magenta)%d %Creset%ndate: %C(bold yellow)%cd %Creset%C(yellow)%cr%Creset%nauthor: %C(bold blue)%an%Creset %C(blue)<%ae>%Creset%n%C(cyan)%s%n%Creset'
-	lt = describe --tags --abbrev=0
 	mof = merge --no-ff
-	ours = "!f() { git co --ours $@ && git add $@; }; f"
 	p = pull --rebase=preserve
 	puf = push --force-with-lease
 	pud = push origin --delete
 	rem="!git config -l | grep remote.*url | tail -n +2"
 	rp = rebase --preserve-merges
 	raib = "!f() { git rebase -i $(git merge-base --fork-point master); }; f"
-	sa = stash apply
-	sl = stash list
-	ss = stash save
 	st = status -s --branch
-	theirs = "!f() { git co --theirs $@ && git add $@; }; f"
-	today = log --stat --since='1 Day Ago' --graph --pretty=oneline --abbrev-commit --date=relative
-	unassume = update-index --no-assume-unchanged
-	unassumeall = "!git assumed | xargs git update-index --no-assume-unchanged"
-	undopush = push -f origin HEAD^:master
+	dsf = "!f() { [ -z \"$GIT_PREFIX\" ] || cd \"$GIT_PREFIX\" && git diff --color \"$@\" | diff-so-fancy  | less --tabs=4 -RFX; }; f"
 
 [core]
 	editor = "'vim' +startinsert"
@@ -70,5 +55,20 @@
 [mergetool]
 	keepBackup = false
 
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+
+[color "diff"]
+	meta = 227
+	frag = magenta bold
+	commit = 227 bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
+
 [include]
 	path = ~/.config/git/config.local
+
