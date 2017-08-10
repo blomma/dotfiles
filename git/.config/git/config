@@ -36,6 +36,7 @@
 	head = !git l -1
 	it = "!f() { git init && git commit -m root --allow-empty; }; f"
 	l = log --pretty=format:"%C(yellow)%h\\ %C(green)%ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short --graph
+	ll = log --graph --pretty=format:'commit: %C(bold red)%h%Creset %C(red)<%H>%Creset %C(bold magenta)%d %Creset%ndate: %C(bold yellow)%cd %Creset%C(yellow)%cr%Creset%nauthor: %C(bold blue)%an%Creset %C(blue)<%ae>%Creset%n%C(cyan)%s%n%Creset'
 	lt = describe --tags --abbrev=0
 	mof = merge --no-ff
 	ours = "!f() { git co --ours $@ && git add $@; }; f"
