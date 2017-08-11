@@ -27,7 +27,7 @@
     telemetryConsent: "limited"
     themes: [
       "atom-material-ui"
-      "zenburn"
+      "pure-syntax"
     ]
     titleBar: "custom"
   editor:
@@ -48,8 +48,6 @@
   tabs:
     alwaysShowTabBar: false
     enableVcsColoring: true
-  "tree-view":
-    autoReveal: true
   welcome:
     showOnStartup: false
   whitespace:
