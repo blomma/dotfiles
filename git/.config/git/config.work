@@ -6,14 +6,11 @@
 	cmd="p4merge.exe" "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
 
 [diff]
-	tool = meld
+	tool = p4difftool
 
-[difftool "p4mergetool"]
+[difftool "p4difftool"]
 	cmd="p4merge.exe" "$LOCAL" "$REMOTE"
 
 [user]
 	name = Mikael Hultgren
 	email = mikael.hultgren@consortiofashion.com
-
-[alias]
-	dtd = difftool -d
