@@ -54,7 +54,6 @@ Plug 'tpope/vim-vinegar'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'ervandew/supertab'
-Plug 'ekoeppen/taskpaper.vim'
 Plug 'jeetsukumaran/vim-buffergator'
 
 Plug 'reedes/vim-pencil'
@@ -68,6 +67,7 @@ Plug 'ekalinin/Dockerfile.vim'
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 Plug 'godoctor/godoctor.vim'
 Plug 'hrother/offlineimaprc.vim'
+Plug 'irrationalistic/vim-tasks'
 
 if has("win32") || has("win16") || has("win32unix")
 	Plug 'ctrlpvim/ctrlp.vim'
@@ -226,6 +226,13 @@ nmap <leader>w :w!<cr>
 map <C-n> :cnext<CR>
 map <C-m> :cprevious<CR>
 nnoremap <leader>a :cclose<CR>
+
+" -------------------------------------------------------------------
+" Tasks
+" -------------------------------------------------------------------
+let g:TasksMarkerBase = '-'
+let g:TasksMarkerDone = '+'
+let g:TasksMarkerCancelled = 'x'
 
 " -------------------------------------------------------------------
 " Go
