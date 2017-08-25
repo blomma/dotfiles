@@ -44,6 +44,7 @@
 [core]
 	editor = "'vim' +startinsert"
 	whitespace = blank-at-eol,space-before-tab,blank-at-eof,cr-at-eol
+	hooksPath = ~/.config/git/hooks
 
 [commit]
 	template = ~/.config/git/commit-message
