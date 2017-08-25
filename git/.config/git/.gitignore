@@ -1,4 +1,5 @@
-*
+/*
 !config
 !ignore
 !commit-message
+!hooks/

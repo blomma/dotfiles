@@ -1,0 +1,11 @@
+#!/bin/sh
+
+useremail=$(git config user.email)
+
+if [ "$useremail" != "blomma@gmail.com" ]
+then
+    cat <<\EOF
+Error: user.email not set to "blomma@gmail.com"
+EOF
+    exit 1
+fi
