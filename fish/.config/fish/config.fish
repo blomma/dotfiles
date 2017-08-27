@@ -16,5 +16,3 @@ test -e ~/.config/fish/config.d/$__hostname.fish; and source ~/.config/fish/conf
 ### PATH ###
 test -d $HOME/.go/bin; and set -gx PATH $HOME/.go/bin $PATH
 test -d $HOME/opt/bin; and set -gx PATH $HOME/opt/bin $PATH
-test -d $HOME/.rbenv/bin; and set -gx PATH $HOME/.rbenv/bin $PATH
-test -d $HOME/.pyenv/bin; and set -gx PATH $PYENV_ROOT/bin $PATH
