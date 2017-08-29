@@ -1,11 +1,12 @@
 #!/bin/sh
+AUTHORINFO=$(git var GIT_AUTHOR_IDENT) || exit 1
+NAME=$(printf '%s\n\n' "${AUTHORINFO}" | sed -n 's/^\(.*\) <.*$/\1/p')
+EMAIL=$(printf '%s\n\n' "${AUTHORINFO}" | sed -n 's/^.* <\(.*\)> .*$/\1/p')
 
-useremail=$(git config user.email)
-
-if [ "$useremail" != "blomma@gmail.com" ]
+if [ "${EMAIL}" != "blomma@gmail.com" ]
 then
-    cat <<\EOF
-Error: user.email not set to "blomma@gmail.com"
+	cat <<EOF >&2
+Error: user.email not set to "blomma@gmail.com" it was <${EMAIL}>
 EOF
-    exit 1
+	exit 2
 fi
