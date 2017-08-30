@@ -19,7 +19,6 @@
       "language-gfm"
       "github"
       "open-on-github"
-      "file-icons"
     ]
     followSymlinks: true
     openEmptyEditorOnStart: false
@@ -27,7 +26,7 @@
     telemetryConsent: "limited"
     themes: [
       "atom-material-ui"
-      "pure-syntax"
+      "zenburn"
     ]
     titleBar: "custom"
   editor:
