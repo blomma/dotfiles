@@ -1,7 +1,9 @@
 import subprocess
+import os.path
 
 def imappasswd():
-    args = ["/usr/bin/security", "find-internet-password", "-a", "blomma@artsoftheinsane.com", "-s", "mail.messagingengine.com", "-r", "imap", "-w"]
+    path = os.path.expanduser('~/.offlineimap.password')
+    args = ["openssl", "enc", "-d", "-aes-256-cbc", "-in", path]
     try:
         return subprocess.check_output(args).strip()
     except subprocess.CalledProcessError:
