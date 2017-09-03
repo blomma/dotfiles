@@ -4,7 +4,8 @@ set spoolfile=+Inbox
 set postponed=+Inbox.Drafts
 set record=+Inbox.Sent
 set mbox_type=Maildir
-set header_cache=~/.mail_header_cache
+set header_cache=/tmp/
+set message_cachedir=/tmp/
 
 folder-hook . 'set read_inc=1000'
 

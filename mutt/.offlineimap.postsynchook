@@ -2,3 +2,7 @@
 notmuch new
 
 notmuch tag -inbox +spam -- tag:inbox and subject:"SPAM"
+
+notmuch tag -inbox +outback -- tag:inbox and to:"contact@example.com"
+notmuch tag -inbox +outback -- tag:inbox and from:"contact@example.com"
+notmuch tag -inbox +outback -- tag:inbox and to:"*outback*"
