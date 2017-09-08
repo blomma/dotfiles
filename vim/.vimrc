@@ -42,8 +42,8 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'Raimondi/delimitMate'
 
 " Git
-Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-git'
+Plug 'lambdalisue/gina.vim'
 
 " Provides easy shortcuts for commenting out lines
 Plug 'tpope/vim-commentary'
