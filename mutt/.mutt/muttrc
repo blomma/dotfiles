@@ -26,7 +26,7 @@ macro index,pager a "<save-message>=INBOX.Archive<enter><modify-labels>+archive 
 macro index,pager c "<change-vfolder>?" "Change to vfolder overview"
 macro index,pager C "<vfolder-from-query>" "Search mailbox"
 
-set editor="vim +startinsert -c 'set tw=70 et fo=aw' +/^$"
+set editor="vim +startinsert +/^$"
 set from                = "Mikael Hultgren <blomma@artsoftheinsane.com>"
 set edit_headers        = yes
 set text_flowed
