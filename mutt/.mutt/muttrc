@@ -17,13 +17,12 @@ set nm_query_type = threads
 # as a spoolfile.
 set virtual_spoolfile = yes
 
-# virtual-mailboxes description notmuch-URI { description notmuch-URI ...}
-virtual-mailboxes \
-	"Inbox" "notmuch://?query=tag:inbox"\
-	"Spam" "notmuch://?query=tag:spam"
+virtual-mailboxes "Inbox" "notmuch://?query=tag:inbox"
+virtual-mailboxes "Archive" "notmuch://?query=tag:archive"
 
 set vfolder_format = "%6n(%6N) %f"
 
+macro index,pager a "<save-message>=INBOX.Archive<enter><modify-labels>+archive -unread -inbox<enter><sync-mailbox>" "Archive message"
 macro index,pager c "<change-vfolder>?" "Change to vfolder overview"
 macro index,pager C "<vfolder-from-query>" "Search mailbox"
 
