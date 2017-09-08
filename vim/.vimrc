@@ -317,6 +317,26 @@ xnoremap <silent> Q gq
 nnoremap <silent> <leader>Q vapJgqap
 
 " -------------------------------------------------------------------
+" Mail
+" -------------------------------------------------------------------
+augroup mail
+	autocmd!
+	autocmd FileType mail
+		\ setlocal fo+=w
+		\ tw=72
+		\ colorcolumn=+1
+		\ fo+=cql
+		\ expandtab
+		\ nosmartindent
+		\ noautoindent
+		\ linebreak
+		\ comments+=n:>
+		\ nobackup
+		\ noswapfile
+		\ nowritebackup
+augroup END
+
+" -------------------------------------------------------------------
 " Complete
 " -------------------------------------------------------------------
 set complete=.,w,b,u,t
