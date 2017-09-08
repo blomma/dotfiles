@@ -1,8 +1,9 @@
 #!/bin/sh
 notmuch new
 
-notmuch tag -inbox +spam -- tag:inbox and subject:"SPAM"
-
-notmuch tag -inbox +outback -- tag:inbox and to:"theoutback@samkieth.com"
-notmuch tag -inbox +outback -- tag:inbox and from:"theoutback@samkieth.com"
-notmuch tag -inbox +outback -- tag:inbox and to:"*outback*"
+notmuch tag +inbox -- "folder:INBOX and not tag:inbox"
+notmuch tag +archive -- "folder:INBOX.Archive and not tag:archive"
+notmuch tag +sent -- "folder:INBOX.Sent and not tag:sent"
+notmuch tag +spam -- "folder:INBOX.Spam and not tag:spam"
+notmuch tag +outback -- "folder:INBOX.Outback and not tag:outback"
+notmuch tag +trash -- "folder:INBOX.Trash and not tag:trash"

@@ -47,7 +47,7 @@ primary_email=blomma@artsoftheinsane.com
 #		in the mail store.
 #
 [new]
-tags=unread;inbox;
+tags=unread
 ignore=
 
 # Search configuration
@@ -60,7 +60,8 @@ ignore=
 #		query will override that exclusion.
 #
 [search]
-exclude_tags=deleted;spam;
+#exclude_tags=deleted;spam;
+exclude_tags=
 
 # Maildir compatibility configuration
 #
