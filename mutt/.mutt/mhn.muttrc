@@ -1,15 +1,10 @@
+# Reference https://www.neomutt.org/guide/advancedusage.html#patterns and https://www.neomutt.org/guide/configuration.html#color
 # Colours for items in the index
-color index brightblack black ~N
-# Hmm, don't like this.
-#color index brightgreen black "~N (~x byers.world)|(~x byers.x)|(~x langly.levallois123.axialys.net)|(~x the.earth.li)"
 color index brightyellow black ~F
 color index black green ~T
 color index brightred black ~D
-mono index bold ~N
-mono index bold ~F
-mono index bold ~T
-mono index bold ~D
-
+color index_date brightcyan black
+color index_subject brightblack black ~N
 # Highlights inside the body of a message.
 
 # URLs
@@ -20,7 +15,6 @@ mono body bold "mailto:[-a-z_0-9.]+@[-a-z_0-9.]+"
 
 # email addresses
 color body brightgreen black "[-a-z_0-9.%$]+@[-a-z_0-9.]+\\.[-a-z][-a-z]+"
-#mono body bold "[-a-z_0-9.%$]+@[-a-z_0-9.]+\\.[-a-z][-a-z]+"
 
 # header
 color header green black "^from:"
@@ -57,9 +51,8 @@ color quoted7 green black
 
 
 # Default color definitions
-#color hdrdefault white green
 color signature brightmagenta black
-color indicator brightblack black 
+color indicator brightblack brightgreen
 color attachment black green
 color error red black
 color message white black
@@ -69,10 +62,5 @@ color tree brightblue black
 color normal white black
 color tilde green black
 color bold brightyellow black
-#color underline magenta black
 color markers brightcyan black
-# Colour definitions when on a mono screen
-mono bold bold
-mono underline underline
-mono indicator reverse
 
