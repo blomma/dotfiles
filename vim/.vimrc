@@ -226,6 +226,7 @@ nmap <leader>w :w!<cr>
 map <C-n> :cnext<CR>
 map <C-m> :cprevious<CR>
 nnoremap <leader>a :cclose<CR>
+autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 
 " -------------------------------------------------------------------
 " Tasks
