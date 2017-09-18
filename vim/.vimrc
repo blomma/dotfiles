@@ -11,6 +11,7 @@ call plug#begin('~/.vim/plugged')
 " Themes
 Plug 'nanotech/jellybeans.vim'
 Plug 'blomma/Zenburn'
+Plug 'mhinz/vim-janah'
 
 " MS
 Plug 'kmnk/vim-csharp'
@@ -69,6 +70,7 @@ Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 Plug 'godoctor/godoctor.vim'
 Plug 'hrother/offlineimaprc.vim'
 Plug 'irrationalistic/vim-tasks'
+Plug 'mhinz/vim-startify'
 
 if has("win32") || has("win16") || has("win32unix")
 	Plug 'ctrlpvim/ctrlp.vim'
@@ -228,6 +230,12 @@ map <C-n> :cnext<CR>
 map <C-m> :cprevious<CR>
 nnoremap <leader>a :cclose<CR>
 autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
+
+" Restore cursor position when opening file
+autocmd BufReadPost *
+	\ if line("'\"") > 1 && line("'\"") <= line("$") |
+	\   execute "normal! g`\"" |
+	\ endif
 
 " -------------------------------------------------------------------
 " Tasks
@@ -475,7 +483,8 @@ let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
 let g:jellybeans_overrides = {
 	\    'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
 	\}
-colorscheme zenburn
+colorscheme janah
+let g:airline_theme='jellybeans'
 
 " -------------------------------------------------------------------
 " Markdown
