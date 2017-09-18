@@ -44,6 +44,7 @@ Plug 'Raimondi/delimitMate'
 " Git
 Plug 'tpope/vim-git'
 Plug 'blomma/agit.vim'
+Plug 'tpope/vim-fugitive'
 
 " Provides easy shortcuts for commenting out lines
 Plug 'tpope/vim-commentary'
