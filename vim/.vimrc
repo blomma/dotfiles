@@ -43,7 +43,7 @@ Plug 'Raimondi/delimitMate'
 
 " Git
 Plug 'tpope/vim-git'
-Plug 'lambdalisue/gina.vim'
+Plug 'blomma/agit.vim'
 
 " Provides easy shortcuts for commenting out lines
 Plug 'tpope/vim-commentary'
