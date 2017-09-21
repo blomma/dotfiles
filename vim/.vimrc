@@ -231,6 +231,12 @@ map <C-m> :cprevious<CR>
 nnoremap <leader>a :cclose<CR>
 autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 
+" Quickly open a buffer for scribble
+map <leader>t :tabnew<cr>
+
+" Toggle paste mode on and off
+map <leader>pp :setlocal paste!<cr>
+
 " Restore cursor position when opening file
 autocmd BufReadPost *
 	\ if line("'\"") > 1 && line("'\"") <= line("$") |
