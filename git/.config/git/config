@@ -65,6 +65,7 @@
 	whitespace = red reverse
 
 
+
 [filter "lfs"]
 	required = true
 	clean = git-lfs clean -- %f
