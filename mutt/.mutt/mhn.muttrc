@@ -5,6 +5,7 @@ color index black green ~T
 color index brightred black ~D
 color index_date brightcyan black
 color index_subject brightblack black ~N
+color index_author brightblue black "~C blomma@gmail.com"
 # Highlights inside the body of a message.
 
 # URLs
