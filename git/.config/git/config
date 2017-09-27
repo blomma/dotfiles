@@ -21,7 +21,7 @@
 	df = diff --word-diff
 	dp = diff --patch-with-stat
 	dsf = "!f() { [ -z \"$GIT_PREFIX\" ] || cd \"$GIT_PREFIX\" && git diff --color \"$@\" | diff-so-fancy  | less --tabs=4 -RFX; }; f"
-	dsfb = "!f() { git dsf $(git merge-base --fork-point master); }; f"
+	dsfb = "!f() { [ -z \"$GIT_PREFIX\" ] || cd \"$GIT_PREFIX\" && git diff --color \"$@\" $(git merge-base --fork-point master) | diff-so-fancy  | less --tabs=4 -RFX; }; f"
 	dt = difftool
 	it = "!f() { git init && git commit -m root --allow-empty; }; f"
 	l = log --pretty=format:"%C(yellow)%h\\ %C(green)%ad\\ %C(reset)%s%C(blue)\\ [%cn]" --decorate --date=short --graph
