@@ -33,8 +33,8 @@ alternative_order text/plain text/enriched text/html                   # save ht
 auto_view text/html                                                    # autoview html
 set date_format			= "%d-%m-%y"                                   # a simple date format
 set delete				# don't ask, just do
-set edit_headers		= yes
-set editor				= "vim +startinsert +/^$ ++1"
+set edit_headers		= no
+set editor				= "vim '+set filetype=Mail'"
 set fast_reply                                                         # do not ask for to, subject, etc when replying
 set forward_format		= "Fwd: %s"                                    # when forwarding email, simply add a Fwd to the subject
 set help				= no

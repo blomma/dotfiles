@@ -335,9 +335,18 @@ nnoremap <silent> <leader>Q vapJgqap
 " -------------------------------------------------------------------
 " Mail
 " -------------------------------------------------------------------
+function IsReply()
+	if line('$') > 1
+		:1
+		:put! =\"\n\n\"
+		:1
+	endif
+	:startinsert
+endfunction
+
 augroup mail
 	autocmd!
-	autocmd FileType mail
+	autocmd FileType Mail
 		\ setlocal fo+=w
 		\ tw=72
 		\ colorcolumn=+1
@@ -350,6 +359,7 @@ augroup mail
 		\ nobackup
 		\ noswapfile
 		\ nowritebackup
+	autocmd FileType Mail :call IsReply()
 augroup END
 
 " -------------------------------------------------------------------
