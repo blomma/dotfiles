@@ -326,6 +326,9 @@ augroup pencil
 	autocmd Filetype *commit*,*COMMIT*
 				\ call pencil#init({'wrap': 'hard', 'textwidth': 72, 'autoformat': 0})
 				\ | call litecorrect#init()
+	autocmd Filetype tasks
+				\ call pencil#init({'wrap': 'hard', 'textwidth': 72, 'autoformat': 0})
+				\ | call litecorrect#init()
 augroup END
 
 nnoremap <silent> Q gqap
