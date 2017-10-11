@@ -327,8 +327,7 @@ augroup pencil
 				\ call pencil#init({'wrap': 'hard', 'textwidth': 72, 'autoformat': 0})
 				\ | call litecorrect#init()
 	autocmd Filetype tasks
-				\ call pencil#init({'wrap': 'hard', 'textwidth': 72, 'autoformat': 0})
-				\ | call litecorrect#init()
+				\ call pencil#init({'wrap': 'soft', 'textwidth': 72, 'autoformat': 0})
 augroup END
 
 nnoremap <silent> Q gqap
@@ -386,8 +385,8 @@ set wrap linebreak nolist
 set breakindent
 set breakindentopt=shift:5
 
-autocmd InsertEnter * set nowrap
-autocmd InsertLeave * set wrap linebreak nolist
+" autocmd InsertEnter * set nowrap
+" autocmd InsertLeave * set wrap linebreak nolist
 
 " -------------------------------------------------------------------
 " Buffergator
