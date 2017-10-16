@@ -297,7 +297,7 @@ let g:go_metalinter_enabled = [
 " -------------------------------------------------------------------
 " Better whitespace
 " -------------------------------------------------------------------
-let g:better_whitespace_filetypes_blacklist = ['git', 'diff', 'gitcommit', 'mail']
+let g:better_whitespace_filetypes_blacklist = ['git', 'diff', 'gitcommit', 'Mail']
 
 " -------------------------------------------------------------------
 " Ctrlp
