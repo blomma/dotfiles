@@ -67,6 +67,7 @@ bind pager <up> previous-line                                          # scroll 
 macro index,pager a "<enter-command>unset resolve<enter><modify-labels>+archive -unread -inbox<enter><save-message>=INBOX.Archive<enter><sync-mailbox><enter><enter-command>set resolve<enter>" "Archive message"
 macro index,pager c "<change-vfolder>?" "Change to vfolder overview"
 macro index,pager C "<vfolder-from-query>" "Search mailbox"
+macro pager \Cb "|urlview<enter>" "call urlview to open links"                            #ctrl-b to open links in the browser
 
 # Sending ----------------------------------------------
 set envelope_from	= yes
