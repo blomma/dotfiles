@@ -23,8 +23,8 @@ set nm_query_type = threads
 # (see virtual-mailboxes) as a spoolfile.
 set virtual_spoolfile = yes
 
-virtual-mailboxes "Inbox" "notmuch://?query=tag:inbox"
-virtual-mailboxes "Archive" "notmuch://?query=tag:archive"
+virtual-mailboxes "Inbox" "notmuch://?query=folder:INBOX"
+virtual-mailboxes "Archive" "notmuch://?query=folder:INBOX.Archive"
 
 set vfolder_format = "%6n(%6N) %f"
 
@@ -64,10 +64,10 @@ unset markers                                                          # In the 
 # Macros and Keybindings ----------------------------------------------
 bind pager <down> next-line                                            # scroll inside the message rather than the index
 bind pager <up> previous-line                                          # scroll inside the message rather than the index
-macro index,pager a "<enter-command>unset resolve<enter><modify-labels>+archive -unread -inbox<enter><save-message>=INBOX.Archive<enter><sync-mailbox><enter><enter-command>set resolve<enter>" "Archive message"
+macro index,pager a "<enter-command>unset resolve<enter><save-message>=INBOX.Archive<enter><sync-mailbox><enter><enter-command>set resolve<enter>" "Archive message"
 macro index,pager c "<change-vfolder>?" "Change to vfolder overview"
 macro index,pager C "<vfolder-from-query>" "Search mailbox"
-macro pager \Cb "|urlview<enter>" "call urlview to open links"                            #ctrl-b to open links in the browser
+macro pager \Cb "|urlview<enter>" "call urlview to open links"
 
 # Sending ----------------------------------------------
 set envelope_from	= yes
