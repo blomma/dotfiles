@@ -7,7 +7,7 @@
     "editor.fontFamily":
       "Source Code Pro Light, Consolas, 'Courier New', monospace",
     "editor.fontLigatures": true,
-    "editor.insertSpaces": false,
+    "editor.insertSpaces": true,
     "editor.minimap.enabled": false,
     "editor.trimAutoWhitespace": true,
     "files.trimTrailingWhitespace": true,
