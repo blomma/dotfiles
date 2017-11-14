@@ -71,6 +71,7 @@ Plug 'godoctor/godoctor.vim'
 Plug 'hrother/offlineimaprc.vim'
 Plug 'irrationalistic/vim-tasks'
 Plug 'mhinz/vim-startify'
+Plug 'mileszs/ack.vim'
 
 if has("win32") || has("win16") || has("win32unix")
 	Plug 'ctrlpvim/ctrlp.vim'
@@ -242,6 +243,11 @@ autocmd BufReadPost *
 	\ if line("'\"") > 1 && line("'\"") <= line("$") |
 	\   execute "normal! g`\"" |
 	\ endif
+
+" -------------------------------------------------------------------
+" Tasks
+" -------------------------------------------------------------------
+let g:ackprg = 'ag --vimgrep'
 
 " -------------------------------------------------------------------
 " Tasks

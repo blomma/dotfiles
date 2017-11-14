@@ -65,8 +65,8 @@
 	whitespace = red reverse
 
 [user]
-	name = "Mikael Hultgren"
-	email = "blomma@gmail.com"
+	name = Mikael Hultgren
+	email = blomma@gmail.com
 
 [include]
 	path = ~/.config/git/config.local
