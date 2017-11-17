@@ -64,6 +64,7 @@ unset markers                                                          # In the 
 # Macros and Keybindings ----------------------------------------------
 bind pager <down> next-line                                            # scroll inside the message rather than the index
 bind pager <up> previous-line                                          # scroll inside the message rather than the index
+macro index,pager s "<enter-command>unset resolve<enter><save-message>=INBOX.LSpam<enter><sync-mailbox><enter><enter-command>set resolve<enter>" "Learn Spam"
 macro index,pager a "<enter-command>unset resolve<enter><save-message>=INBOX.Archive<enter><sync-mailbox><enter><enter-command>set resolve<enter>" "Archive message"
 macro index,pager c "<change-vfolder>?" "Change to vfolder overview"
 macro index,pager C "<vfolder-from-query>" "Search mailbox"
