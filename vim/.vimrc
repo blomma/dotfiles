@@ -1,3 +1,5 @@
+
+
 set nocompatible	  " Use vim, no vi defaults
 
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -73,13 +75,13 @@ Plug 'irrationalistic/vim-tasks'
 Plug 'mhinz/vim-startify'
 Plug 'mileszs/ack.vim'
 
-if has("win32") || has("win16") || has("win32unix")
-	Plug 'ctrlpvim/ctrlp.vim'
-	Plug 'lion19/ctrlp-modified.vim'
-else
+" if has("win32") || has("win16") || has("win32unix")
+" 	Plug 'ctrlpvim/ctrlp.vim'
+" 	Plug 'lion19/ctrlp-modified.vim'
+" else
 	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 	Plug 'junegunn/fzf.vim'
-endif
+" endif
 
 call plug#end()
 
@@ -245,7 +247,17 @@ autocmd BufReadPost *
 	\ endif
 
 " -------------------------------------------------------------------
-" Tasks
+" FZF
+" -------------------------------------------------------------------
+" let g:fzf_layout = {'left':'~30%'}
+let g:fzf_layout = { 'left': '~40%' }
+
+autocmd! FileType fzf
+autocmd  FileType fzf set laststatus=0 noshowmode noruler
+	\| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+
+" -------------------------------------------------------------------
+" Ack
 " -------------------------------------------------------------------
 let g:ackprg = 'ag --vimgrep'
 
