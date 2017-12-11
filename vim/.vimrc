@@ -247,6 +247,13 @@ autocmd BufReadPost *
 	\ endif
 
 " -------------------------------------------------------------------
+" Custom filetypes
+" -------------------------------------------------------------------
+augroup filetypedetect
+	au BufRead,BufNewFile config.local setfiletype gitconfig
+augroup END
+
+" -------------------------------------------------------------------
 " FZF
 " -------------------------------------------------------------------
 " let g:fzf_layout = {'left':'~30%'}
