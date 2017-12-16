@@ -11,13 +11,13 @@
     "editor.minimap.enabled": false,
     "editor.trimAutoWhitespace": true,
     "files.trimTrailingWhitespace": true,
-    "go.lintTool": "gometalinter",
     "window.zoomLevel": 1,
     "workbench.colorTheme": "Ayu Mirage",
     "go.enableCodeLens": {
       "references": true,
       "runtest": true
     },
+    "go.useLanguageServer": true,
     "workbench.iconTheme": "ayu",
     "workbench.colorCustomizations": {
          "tab.activeBackground": "#5284BE"
@@ -25,7 +25,8 @@
     "zenMode.hideTabs": true,
     "files.associations": {
        "*.knt": "html"
-	},
+    },
+    // "files.autoSave": "afterDelay",
 	"workbench.tips.enabled": false,
 	"terminal.integrated.fontSize": 16
    }
