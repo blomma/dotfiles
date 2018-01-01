@@ -84,7 +84,6 @@ macro index,pager C "<vfolder-from-query>" "Search mailbox"
 macro pager \Cb "|urlview<enter>" "call urlview to open links"
 
 # Sending ----------------------------------------------
-set envelope_from	= yes
 set from			= "Mikael Hultgren <blomma@artsoftheinsane.com>"
 set realname		= "Mikael Hultgren"
 set sendmail		= "/usr/local/bin/msmtp"
@@ -98,6 +97,6 @@ unhdr_order *                                                          # some di
 hdr_order from: to: cc: date: subject:                                 # and in this order
 
 # Colors ----------------------------------------------
-source ~/.mutt/mhn.muttrc
+source ~/.config/neomutt/mhn.muttrc
 
 push <show-version>
