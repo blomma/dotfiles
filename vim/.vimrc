@@ -1,5 +1,3 @@
-
-
 set nocompatible	  " Use vim, no vi defaults
 
 if empty(glob('~/.vim/autoload/plug.vim'))
