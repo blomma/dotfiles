@@ -31,6 +31,9 @@ Plug 'Keithbsmiley/swift.vim'
 " Markdown
 Plug 'plasticboy/vim-markdown'
 
+" Neomutt
+Plug 'neomutt/neomutt.vim'
+
 " Tmux
 Plug 'keith/tmux.vim'
 Plug 'christoomey/vim-tmux-navigator'
@@ -73,13 +76,8 @@ Plug 'irrationalistic/vim-tasks'
 Plug 'mhinz/vim-startify'
 Plug 'mileszs/ack.vim'
 
-" if has("win32") || has("win16") || has("win32unix")
-" 	Plug 'ctrlpvim/ctrlp.vim'
-" 	Plug 'lion19/ctrlp-modified.vim'
-" else
-	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-	Plug 'junegunn/fzf.vim'
-" endif
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
@@ -360,7 +358,7 @@ nnoremap <silent> <leader>Q vapJgqap
 " -------------------------------------------------------------------
 " Mail
 " -------------------------------------------------------------------
-function IsReply()
+function! IsReply()
 	if line('$') > 1
 		:1
 		:put! =\"\n\n\"
