@@ -26,8 +26,6 @@ set virtual_spoolfile = yes
 virtual-mailboxes "Inbox" "notmuch://?query=folder:INBOX"
 virtual-mailboxes "Archive" "notmuch://?query=folder:INBOX.Archive"
 
-set vfolder_format = "%6n(%6N) %f"
-
 # Basic Options --------------------------------------
 alternative_order text/plain text/enriched text/html                   # save html for last
 auto_view text/html                                                    # autoview html
