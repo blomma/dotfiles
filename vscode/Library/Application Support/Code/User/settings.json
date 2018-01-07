@@ -1,32 +1,35 @@
 {
     // Place your settings in this file to overwrite the default settings
-    "editor.fontSize": 16,
-    "editor.scrollBeyondLastLine": false,
-    "editor.wrappingIndent": "indent",
     "editor.detectIndentation": false,
-    "editor.fontFamily":
-      "SourceCodePro-Light, Consolas, 'Courier New', monospace",
+    "editor.fontFamily": "SourceCodePro-Light, Consolas, 'Courier New', monospace",
     "editor.fontLigatures": true,
+    "editor.fontSize": 18,
     "editor.insertSpaces": true,
     "editor.minimap.enabled": false,
+    "editor.scrollBeyondLastLine": false,
     "editor.trimAutoWhitespace": true,
+    "editor.wrappingIndent": "indent",
+    "editor.links": false,
     "files.trimTrailingWhitespace": true,
-    "window.zoomLevel": 1,
-    "workbench.colorTheme": "Ayu Mirage",
+    "window.zoomLevel": 0,
+    "window.title": "${activeEditorLong}${separator}${rootName}",
     "go.enableCodeLens": {
       "references": true,
-      "runtest": true
+      "runtest": false
     },
-    "go.useLanguageServer": true,
     "workbench.iconTheme": "ayu",
     "workbench.colorCustomizations": {
          "tab.activeBackground": "#5284BE"
     },
-    "zenMode.hideTabs": true,
-    "files.associations": {
-       "*.knt": "html"
-    },
-    // "files.autoSave": "afterDelay",
 	"workbench.tips.enabled": false,
-	"terminal.integrated.fontSize": 16
+    "workbench.colorTheme": "Ayu Mirage",
+    "workbench.startupEditor": "none",
+    "files.associations": {
+        "*.knt": "html",
+        "named.conf.options": "shellscript"
+    },
+    "terminal.integrated.fontSize": 16,
+    "remote.port": 52698,
+    "remote.onstartup": true,
+    "extensions.ignoreRecommendations": true
    }
