@@ -2,7 +2,7 @@
 set alias_file       = ~/.mutt/alias		# where to store aliases
 set folder           = ~/.mail				# mailbox location
 set header_cache     = /tmp/				# where to store headers
-set mailcap_path     = ~/.mutt/mailcap		# entries for filetypes
+set mailcap_path     = ~/.config/neomutt/mailcap		# entries for filetypes
 set message_cachedir = /tmp/				# where to store bodies
 set signature        = ~/.mutt/sig			# my signature file
 set tmpdir           = /tmp/				# where to keep temp files
