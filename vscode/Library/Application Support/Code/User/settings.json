@@ -11,12 +11,17 @@
     "editor.wrappingIndent": "indent",
     "editor.links": false,
     "files.trimTrailingWhitespace": true,
+    "files.associations": {
+        "*.knt": "html",
+        "named.conf.options": "shellscript"
+    },
     "window.zoomLevel": 0,
     "window.title": "${activeEditorLong}${separator}${rootName}",
     "go.enableCodeLens": {
       "references": true,
       "runtest": false
     },
+    "go.autocompleteUnimportedPackages": true,
     "workbench.iconTheme": "ayu",
     "workbench.colorCustomizations": {
          "tab.activeBackground": "#5284BE"
@@ -24,10 +29,6 @@
 	"workbench.tips.enabled": false,
     "workbench.colorTheme": "Ayu Mirage",
     "workbench.startupEditor": "none",
-    "files.associations": {
-        "*.knt": "html",
-        "named.conf.options": "shellscript"
-    },
     "terminal.integrated.fontSize": 16,
     "remote.port": 52698,
     "remote.onstartup": true,
