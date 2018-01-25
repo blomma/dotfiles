@@ -14,7 +14,7 @@
 	ai = add --interactive
 	alias = "!git config -l | grep alias | cut -c 7-"
 	b = branch
-	c = clean -dfx -e app.local.config -e app.local.config.old -e Web.Local.config
+	c = clean -dfx -e appSettings.local.json -e app.local.config -e app.local.config.old -e Web.Local.config
 	co = checkout
 	commend = commit --amend --no-edit
 	conflicts = diff --name-only --diff-filter=U
