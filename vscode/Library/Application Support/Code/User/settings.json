@@ -32,5 +32,16 @@
     "terminal.integrated.fontSize": 16,
     "remote.port": 52698,
     "remote.onstartup": true,
-    "extensions.ignoreRecommendations": true
+    "extensions.ignoreRecommendations": true,
+    "todohighlight.include": [
+        "**/*.md",
+    ],
+    "todohighlight.keywords": [
+        {
+            "text": "NOTE:",
+            "color": "lightblue",
+            "backgroundColor": "editor.background",
+            "overviewRulerColor": "grey",
+        },
+    ],
    }
