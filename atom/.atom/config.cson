@@ -26,7 +26,7 @@
     telemetryConsent: "limited"
     themes: [
       "atom-material-ui"
-      "zenburn"
+      "80s-pastel-syntax"
     ]
     titleBar: "custom"
   editor:
