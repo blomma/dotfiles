@@ -5,3 +5,7 @@ set -q XDG_DATA_HOME
 
 # Load Oh My Fish configuration.
 source $OMF_PATH/init.fish
+
+set -g theme_color_scheme terminal
+set -g theme_display_date no
+set -g theme_display_cmd_duration yes
