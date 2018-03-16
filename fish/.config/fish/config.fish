@@ -9,6 +9,6 @@ set -gx EDITOR "vim"
 set -gx VISUAL "$EDITOR"
 
 ### PATH ###
-test -d $HOME/.go/bin; and set -gx PATH $HOME/.go/bin $PATH
+test -d $HOME/go/bin; and set -gx PATH $HOME/go/bin $PATH
 test -d $HOME/.bin; and set -gx PATH $HOME/.bin $PATH
 test -d $HOME/opt/bin; and set -gx PATH $HOME/opt/bin $PATH
