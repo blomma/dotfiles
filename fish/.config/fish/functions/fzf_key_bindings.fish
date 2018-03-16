@@ -1,1 +1,0 @@
-/Users/blomma/.fzf/shell/key-bindings.fish
