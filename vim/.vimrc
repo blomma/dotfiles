@@ -114,6 +114,8 @@ set backspace=indent,eol,start	  " backspace through everything in insert mode
 set nrformats-=octal
 set autowrite
 set diffopt+=iwhite
+set whichwrap+=>,l
+set whichwrap+=<,h
 
 if has("win32") || has("win16") || has("win32unix")
 	set fileformats=unix,dos
@@ -238,9 +240,9 @@ map <leader>pp :setlocal paste!<cr>
 
 " Restore cursor position when opening file
 autocmd BufReadPost *
-	\ if line("'\"") > 1 && line("'\"") <= line("$") |
-	\   execute "normal! g`\"" |
-	\ endif
+			\ if line("'\"") > 1 && line("'\"") <= line("$") |
+			\   execute "normal! g`\"" |
+			\ endif
 
 " -------------------------------------------------------------------
 " Custom filetypes
@@ -257,7 +259,7 @@ let g:fzf_layout = { 'left': '~40%' }
 
 autocmd! FileType fzf
 autocmd  FileType fzf set laststatus=0 noshowmode noruler
-	\| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+			\| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
 
 " -------------------------------------------------------------------
 " Ack
@@ -303,17 +305,17 @@ au FileType go nmap <F12> <Plug>(go-def)
 au FileType go nmap <F8> <Plug>(go-metalinter)
 let g:go_metalinter_deadline = "5s"
 let g:go_metalinter_enabled = [
-	\ 'deadcode',
-	\ 'errcheck',
-	\ 'gas',
-	\ 'goconst',
-	\ 'gocyclo',
-	\ 'golint',
-	\ 'gosimple',
-	\ 'ineffassign',
-	\ 'vet',
-	\ 'vetshadow'
-\]
+			\ 'deadcode',
+			\ 'errcheck',
+			\ 'gas',
+			\ 'goconst',
+			\ 'gocyclo',
+			\ 'golint',
+			\ 'gosimple',
+			\ 'ineffassign',
+			\ 'vet',
+			\ 'vetshadow'
+			\]
 
 " -------------------------------------------------------------------
 " Better whitespace
@@ -324,9 +326,9 @@ let g:better_whitespace_filetypes_blacklist = ['git', 'diff', 'gitcommit', 'Mail
 " Ctrlp
 " -------------------------------------------------------------------
 let g:ctrlp_custom_ignore = {
-	\ 'dir': '\v[\/](\.git|\.hg|\.svn|node_modules|\.sass-cache|bower_components|build)$',
-	\ 'file': '\v\.(exe|so|dll)$',
-	\ }
+			\ 'dir': '\v[\/](\.git|\.hg|\.svn|node_modules|\.sass-cache|bower_components|build)$',
+			\ 'file': '\v\.(exe|so|dll)$',
+			\ }
 
 " -------------------------------------------------------------------
 " Pencil
@@ -370,18 +372,18 @@ endfunction
 augroup mail
 	autocmd!
 	autocmd FileType Mail
-		\ setlocal fo+=w
-		\ tw=72
-		\ colorcolumn=+1
-		\ fo+=cql
-		\ expandtab
-		\ nosmartindent
-		\ noautoindent
-		\ linebreak
-		\ comments+=n:>
-		\ nobackup
-		\ noswapfile
-		\ nowritebackup
+				\ setlocal fo+=w
+				\ tw=72
+				\ colorcolumn=+1
+				\ fo+=cql
+				\ expandtab
+				\ nosmartindent
+				\ noautoindent
+				\ linebreak
+				\ comments+=n:>
+				\ nobackup
+				\ noswapfile
+				\ nowritebackup
 	autocmd FileType Mail :call IsReply()
 augroup END
 
@@ -440,6 +442,26 @@ autocmd FileType fish setlocal foldmethod=expr
 " -------------------------------------------------------------------
 " Airline
 " -------------------------------------------------------------------
+if !exists('g:airline_symbols')
+	let g:airline_symbols = {}
+endif
+
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = '☰'
+let g:airline_symbols.maxlinenr = ''
+
+" unicode symbols
+let g:airline_symbols.crypt = '🔒'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.spell = 'Ꞩ'
+let g:airline_symbols.notexists = '∄'
+let g:airline_symbols.whitespace = 'Ξ'
+
 let g:airline_mode_map = {
 			\ '__' : '-',
 			\ 'n'  : 'N',
@@ -520,10 +542,10 @@ let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
 " Theme
 " -------------------------------------------------------------------
 let g:jellybeans_overrides = {
-	\    'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
-	\}
+			\    'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
+			\}
 colorscheme janah
-let g:airline_theme='jellybeans'
+let g:airline_theme='bubblegum'
 
 " -------------------------------------------------------------------
 " Markdown
