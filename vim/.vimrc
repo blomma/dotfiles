@@ -16,14 +16,8 @@ Plug 'mhinz/vim-janah'
 " MS
 Plug 'kmnk/vim-csharp'
 
-" Javascript
-Plug 'pangloss/vim-javascript'
-
 " Fish
 Plug 'dag/vim-fish'
-
-" Json
-Plug 'elzr/vim-json'
 
 " Swift
 Plug 'Keithbsmiley/swift.vim'
@@ -47,8 +41,6 @@ Plug 'Raimondi/delimitMate'
 
 " Git
 Plug 'tpope/vim-git'
-Plug 'blomma/agit.vim'
-Plug 'tpope/vim-fugitive'
 
 " Provides easy shortcuts for commenting out lines
 Plug 'tpope/vim-commentary'
@@ -323,14 +315,6 @@ let g:go_metalinter_enabled = [
 let g:better_whitespace_filetypes_blacklist = ['git', 'diff', 'gitcommit', 'Mail']
 
 " -------------------------------------------------------------------
-" Ctrlp
-" -------------------------------------------------------------------
-let g:ctrlp_custom_ignore = {
-			\ 'dir': '\v[\/](\.git|\.hg|\.svn|node_modules|\.sass-cache|bower_components|build)$',
-			\ 'file': '\v\.(exe|so|dll)$',
-			\ }
-
-" -------------------------------------------------------------------
 " Pencil
 " -------------------------------------------------------------------
 let g:pencil#wrapModeDefault = 'soft'   " default is 'hard'
@@ -407,9 +391,6 @@ let g:SuperTabDefaultCompletionType = "context"
 set wrap linebreak nolist
 set breakindent
 set breakindentopt=shift:5
-
-" autocmd InsertEnter * set nowrap
-" autocmd InsertLeave * set wrap linebreak nolist
 
 " -------------------------------------------------------------------
 " Buffergator
