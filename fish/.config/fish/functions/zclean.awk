@@ -1,0 +1,1 @@
+/home/blomma/.config/fisherman/z/functions/zclean.awk

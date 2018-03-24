@@ -1,0 +1,1 @@
+/home/blomma/.config/fisherman/z/conf.d/z.fish
