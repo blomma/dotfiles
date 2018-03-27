@@ -12,3 +12,7 @@ set -gx VISUAL "$EDITOR"
 test -d $HOME/go/bin; and set -gx PATH $HOME/go/bin $PATH
 test -d $HOME/.bin; and set -gx PATH $HOME/.bin $PATH
 test -d $HOME/opt/bin; and set -gx PATH $HOME/opt/bin $PATH
+
+### BOBTHEFISH
+set -g theme_display_git_ahead_verbose yes
+set -g theme_display_git_dirty_verbose yes
