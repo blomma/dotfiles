@@ -15,4 +15,5 @@ test -d $HOME/opt/bin; and set -gx PATH $HOME/opt/bin $PATH
 
 ### BOBTHEFISH
 set -g theme_display_git_ahead_verbose yes
+set -g theme_display_cmd_duration no
 set -g theme_display_git_dirty_verbose yes
