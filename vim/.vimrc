@@ -1,9 +1,9 @@
 set nocompatible	  " Use vim, no vi defaults
 
 if empty(glob('~/.vim/autoload/plug.vim'))
-	silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-				\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-	autocmd VimEnter * PlugInstall | source $MYVIMRC
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall | source $MYVIMRC
 endif
 
 call plug#begin('~/.vim/plugged')
@@ -81,9 +81,9 @@ set noshowmode	" Let airline handle the mode display
 set ttyfast
 
 if &term =~ '256color'
-	" Disable Background Color Erase (BCE) so that color schemes
-	" work properly when Vim is used inside tmux and GNU screen.
-	set t_ut=
+    " Disable Background Color Erase (BCE) so that color schemes
+    " work properly when Vim is used inside tmux and GNU screen.
+    set t_ut=
 endif
 
 " -------------------------------------------------------------------
@@ -109,10 +109,10 @@ set whichwrap+=>,l
 set whichwrap+=<,h
 
 if has("win32") || has("win16") || has("win32unix")
-	set fileformats=unix,dos
-	set fileformat=unix
+    set fileformats=unix,dos
+    set fileformat=unix
 else
-	set fileformats+=mac
+    set fileformats+=mac
 endif
 
 " dont save .netrwhist history
@@ -139,7 +139,7 @@ set shiftwidth=4
 set softtabstop=4
 set tabstop=4
 set showmatch
-
+set expandtab
 set formatoptions+=j " Delete comment character when joining commented lines
 
 " -------------------------------------------------------------------
@@ -231,15 +231,15 @@ map <leader>pp :setlocal paste!<cr>
 
 " Restore cursor position when opening file
 autocmd BufReadPost *
-			\ if line("'\"") > 1 && line("'\"") <= line("$") |
-			\   execute "normal! g`\"" |
-			\ endif
+            \ if line("'\"") > 1 && line("'\"") <= line("$") |
+            \   execute "normal! g`\"" |
+            \ endif
 
 " -------------------------------------------------------------------
 " Custom filetypes
 " -------------------------------------------------------------------
 augroup filetypedetect
-	au BufRead,BufNewFile config.local setfiletype gitconfig
+    au BufRead,BufNewFile config.local setfiletype gitconfig
 augroup END
 
 " -------------------------------------------------------------------
@@ -250,7 +250,7 @@ let g:fzf_layout = { 'left': '~40%' }
 
 autocmd! FileType fzf
 autocmd  FileType fzf set laststatus=0 noshowmode noruler
-			\| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+            \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
 
 " -------------------------------------------------------------------
 " Ack
@@ -296,17 +296,17 @@ au FileType go nmap <F12> <Plug>(go-def)
 au FileType go nmap <F8> <Plug>(go-metalinter)
 let g:go_metalinter_deadline = "5s"
 let g:go_metalinter_enabled = [
-			\ 'deadcode',
-			\ 'errcheck',
-			\ 'gas',
-			\ 'goconst',
-			\ 'gocyclo',
-			\ 'golint',
-			\ 'gosimple',
-			\ 'ineffassign',
-			\ 'vet',
-			\ 'vetshadow'
-			\]
+            \ 'deadcode',
+            \ 'errcheck',
+            \ 'gas',
+            \ 'goconst',
+            \ 'gocyclo',
+            \ 'golint',
+            \ 'gosimple',
+            \ 'ineffassign',
+            \ 'vet',
+            \ 'vetshadow'
+            \]
 
 " -------------------------------------------------------------------
 " Better whitespace
@@ -318,22 +318,22 @@ let g:better_whitespace_filetypes_blacklist = ['git', 'diff', 'gitcommit', 'Mail
 " -------------------------------------------------------------------
 let g:pencil#wrapModeDefault = 'soft'   " default is 'hard'
 augroup pencil
-	autocmd!
-	autocmd FileType markdown,mkd,md
-				\ call pencil#init({'wrap': 'hard', 'textwidth': 72, 'autoformat': 0})
-				\ | call lexical#init()
-				\ | call litecorrect#init()
-				\ | call textobj#quote#init()
-	autocmd FileType text
-				\ call pencil#init()
-				\ | call lexical#init()
-				\ | call litecorrect#init()
-				\ | call textobj#quote#init()
-	autocmd Filetype *commit*,*COMMIT*
-				\ call pencil#init({'wrap': 'hard', 'textwidth': 72, 'autoformat': 0})
-				\ | call litecorrect#init()
-	autocmd Filetype tasks
-				\ call pencil#init({'wrap': 'soft', 'textwidth': 72, 'autoformat': 0})
+    autocmd!
+    autocmd FileType markdown,mkd,md
+                \ call pencil#init({'wrap': 'hard', 'textwidth': 72, 'autoformat': 0})
+                \ | call lexical#init()
+                \ | call litecorrect#init()
+                \ | call textobj#quote#init()
+    autocmd FileType text
+                \ call pencil#init()
+                \ | call lexical#init()
+                \ | call litecorrect#init()
+                \ | call textobj#quote#init()
+    autocmd Filetype *commit*,*COMMIT*
+                \ call pencil#init({'wrap': 'hard', 'textwidth': 72, 'autoformat': 0})
+                \ | call litecorrect#init()
+    autocmd Filetype tasks
+                \ call pencil#init({'wrap': 'soft', 'textwidth': 72, 'autoformat': 0})
 augroup END
 
 nnoremap <silent> Q gqap
@@ -344,30 +344,30 @@ nnoremap <silent> <leader>Q vapJgqap
 " Mail
 " -------------------------------------------------------------------
 function! IsReply()
-	if line('$') > 1
-		:1
-		:put! =\"\n\n\"
-		:1
-	endif
-	:startinsert
+    if line('$') > 1
+        :1
+        :put! =\"\n\n\"
+        :1
+    endif
+    :startinsert
 endfunction
 
 augroup mail
-	autocmd!
-	autocmd FileType Mail
-				\ setlocal fo+=w
-				\ tw=72
-				\ colorcolumn=+1
-				\ fo+=cql
-				\ expandtab
-				\ nosmartindent
-				\ noautoindent
-				\ linebreak
-				\ comments+=n:>
-				\ nobackup
-				\ noswapfile
-				\ nowritebackup
-	autocmd FileType Mail :call IsReply()
+    autocmd!
+    autocmd FileType Mail
+                \ setlocal fo+=w
+                \ tw=72
+                \ colorcolumn=+1
+                \ fo+=cql
+                \ expandtab
+                \ nosmartindent
+                \ noautoindent
+                \ linebreak
+                \ comments+=n:>
+                \ nobackup
+                \ noswapfile
+                \ nowritebackup
+    autocmd FileType Mail :call IsReply()
 augroup END
 
 " -------------------------------------------------------------------
@@ -423,7 +423,7 @@ autocmd FileType fish setlocal foldmethod=expr
 " Airline
 " -------------------------------------------------------------------
 if !exists('g:airline_symbols')
-	let g:airline_symbols = {}
+    let g:airline_symbols = {}
 endif
 
 let g:airline_left_sep = ''
@@ -443,18 +443,18 @@ let g:airline_symbols.notexists = '∄'
 let g:airline_symbols.whitespace = 'Ξ'
 
 let g:airline_mode_map = {
-			\ '__' : '-',
-			\ 'n'  : 'N',
-			\ 'i'  : 'I',
-			\ 'R'  : 'R',
-			\ 'c'  : 'C',
-			\ 'v'  : 'V',
-			\ 'V'  : 'V',
-			\ '' : 'V',
-			\ 's'  : 'S',
-			\ 'S'  : 'S',
-			\ '' : 'S',
-			\ }
+            \ '__' : '-',
+            \ 'n'  : 'N',
+            \ 'i'  : 'I',
+            \ 'R'  : 'R',
+            \ 'c'  : 'C',
+            \ 'v'  : 'V',
+            \ 'V'  : 'V',
+            \ '' : 'V',
+            \ 's'  : 'S',
+            \ 'S'  : 'S',
+            \ '' : 'S',
+            \ }
 
 let g:airline#extensions#wordcount#enabled = 0
 
@@ -467,23 +467,23 @@ let g:goyo_margin_top = 2
 let g:goyo_margin_bottom = 2
 
 function! GoyoBefore()
-	if exists('$TMUX')
-		silent !tmux set status off
-	endif
+    if exists('$TMUX')
+        silent !tmux set status off
+    endif
 
-	set showmode
-	set noshowcmd
-	set scrolloff=999
+    set showmode
+    set noshowcmd
+    set scrolloff=999
 endfunction
 
 function! GoyoAfter()
-	if exists('$TMUX')
-		silent !tmux set status on
-	endif
+    if exists('$TMUX')
+        silent !tmux set status on
+    endif
 
-	set noshowmode
-	set showcmd
-	set scrolloff=5
+    set noshowmode
+    set showcmd
+    set scrolloff=5
 endfunction
 
 let g:goyo_callbacks = [function('GoyoBefore'), function('GoyoAfter')]
@@ -522,8 +522,8 @@ let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
 " Theme
 " -------------------------------------------------------------------
 let g:jellybeans_overrides = {
-			\    'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
-			\}
+            \    'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
+            \}
 colorscheme janah
 let g:airline_theme='bubblegum'
 
