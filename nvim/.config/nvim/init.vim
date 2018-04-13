@@ -3,3 +3,5 @@ let &packpath = &runtimepath
 source ~/.vimrc
 
 tnoremap <Esc> <C-\><C-n>
+
+set clipboard=unnamed

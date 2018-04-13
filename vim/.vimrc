@@ -70,6 +70,12 @@ Plug 'mileszs/ack.vim'
 
 Plug 'junegunn/fzf.vim'
 
+if has('nvim')
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    Plug 'zchee/deoplete-go'
+endif
+let g:deoplete#enable_at_startup = 1
+
 call plug#end()
 
 " -------------------------------------------------------------------
