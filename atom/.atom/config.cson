@@ -1,11 +1,15 @@
 "*":
   "atom-material-ui":
-    colors: {}
+    colors:
+      abaseColor: "#607d8b"
+      predefinedColor: "Blue Grey"
     fonts:
-      fontSize: 18
-    tabs: {}
+      fontSize: 20
+    tabs:
+      compactTabs: true
     treeView:
       compactList: true
+    ui: {}
   core:
     allowPendingPaneItems: false
     audioBeep: false
@@ -26,7 +30,7 @@
     telemetryConsent: "limited"
     themes: [
       "atom-material-ui"
-      "duotone-dark-syntax"
+      "atom-material-syntax-dark"
     ]
     titleBar: "custom"
   editor:
