@@ -2,22 +2,39 @@
 # get started fast.
 
 [general]
-accounts = personal
+accounts = personal,secondary
 pythonfile = ~/.offlineimap.py
 
 [Account personal]
-localrepository = Local
-remoterepository = Remote
+localrepository = personal-local
+remoterepository = personal-remote
 postsynchook = ~/.offlineimap.postsynchook
 
-[Repository Local]
+[Repository personal-local]
 type = Maildir
-localfolders = ~/.mail
+localfolders = ~/.mail/personal
 
-[Repository Remote]
+[Repository personal-remote]
 type = IMAP
 ssl = yes
 cert_fingerprint = bddc89dae48629898af13421d7844f806ca33943
 remotehost = mail.messagingengine.com
 remoteuser = user@example.com
-remotepasseval = imappasswd()
+remotepasseval = imappasswd("personal")
+
+[Account secondary]
+localrepository = secondary-local
+remoterepository = secondary-remote
+postsynchook = ~/.offlineimap.postsynchook
+
+[Repository secondary-local]
+type = Maildir
+localfolders = ~/.mail/secondary
+
+[Repository secondary-remote]
+type = IMAP
+ssl = yes
+cert_fingerprint = 86a1fdde63098a6caa65f6e9396da9dcc4af5f5d
+remotehost = imap.one.com
+remoteuser = user@example.com
+remotepasseval = imappasswd("secondary")
