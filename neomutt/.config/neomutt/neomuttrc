@@ -57,7 +57,7 @@ set sort_aux			= reverse-last-date-received                   # like gmail
 set sort_re                                                            # thread based on regex
 set status_chars		= " *%A"
 set status_format		= "───[ Folder: %f ]───[%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]───%>─%?p?( %p postponed )?───"
-set text_flowed
+set text_flowed         = yes
 set timeout				= 60		# idle time before scanning
 set uncollapse_jump                                                    # don't collapse on an unread message
 set wait_key			= no		# Don't ask me to press a key to continue
@@ -77,6 +77,9 @@ bind index,pager <down> sidebar-next
 bind index,pager <up> sidebar-prev
 bind index,pager <right> sidebar-open
 
+#sync email
+macro index O "<shell-escape>offlineimap<enter>" "run offlineimap to sync all mail"
+
 # bind index,pager \CP sidebar-prev
 # bind index,pager \CN sidebar-next
 # bind index,pager \CO sidebar-open
@@ -93,7 +96,6 @@ hdr_order from: to: cc: date: subject:                                 # and in 
 # Colors ----------------------------------------------
 source ~/.config/neomutt/mhn.muttrc
 
-set spoolfile = "+blomma/INBOX"
 source ~/.config/neomutt/accounts/blomma
 
 folder-hook blomma/* source ~/.config/neomutt/accounts/blomma

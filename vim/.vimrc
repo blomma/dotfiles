@@ -361,10 +361,9 @@ endfunction
 augroup mail
     autocmd!
     autocmd FileType Mail
-                \ setlocal fo+=w
+                \ setlocal fo+=cqlaw
                 \ tw=72
                 \ colorcolumn=+1
-                \ fo+=cql
                 \ expandtab
                 \ nosmartindent
                 \ noautoindent

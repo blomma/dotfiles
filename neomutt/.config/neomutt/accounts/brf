@@ -1,8 +1,8 @@
 set from = "Mikael Hultgren <hultgren.mikael@brfflygledaren.se>"
 
-set postponed	= +brf/INBOX.Drafts
-set record		= +brf/INBOX.Sent
-set spoolfile	= +brf/INBOX
+set postponed	= =brf/INBOX.Drafts
+set record		= =brf/INBOX.Sent
+set spoolfile	= =brf/INBOX
 
 # Sending ----------------------------------------------
 set sendmail		= "/usr/local/bin/msmtp -a brf"
@@ -11,14 +11,14 @@ set use_from		= yes
 
 macro index,pager s "\
 <enter-command>unset resolve<enter>\
-<save-message>=+brf/INBOX.LSpam<enter>\
+<save-message>=brf/INBOX.LSpam<enter>\
 <sync-mailbox><enter>\
 <enter-command>set resolve<enter>" \
 "Learn Spam"
 
 macro index,pager a "\
 <enter-command>unset resolve<enter>\
-<save-message>=+brf/INBOX.Archive<enter>\
+<save-message>=brf/INBOX.Archive<enter>\
 <sync-mailbox><enter>\
 <enter-command>set resolve<enter>" \
 "Archive message"
