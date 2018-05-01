@@ -2,22 +2,39 @@
 # get started fast.
 
 [general]
-accounts = blomma
+accounts = blomma,brf
 pythonfile = ~/.offlineimap.py
 
 [Account blomma]
-localrepository = Local
-remoterepository = Remote
+localrepository = blomma-local
+remoterepository = blomma-remote
 postsynchook = ~/.offlineimap.postsynchook
 
-[Repository Local]
+[Repository blomma-local]
 type = Maildir
-localfolders = ~/.mail
+localfolders = ~/.mail/blomma
 
-[Repository Remote]
+[Repository blomma-remote]
 type = IMAP
 ssl = yes
 cert_fingerprint = bddc89dae48629898af13421d7844f806ca33943
 remotehost = mail.messagingengine.com
 remoteuser = blomma@artsoftheinsane.com
-remotepasseval = imappasswd()
+remotepasseval = imappasswd("blomma")
+
+[Account brf]
+localrepository = brf-local
+remoterepository = brf-remote
+postsynchook = ~/.offlineimap.postsynchook
+
+[Repository brf-local]
+type = Maildir
+localfolders = ~/.mail/brf
+
+[Repository brf-remote]
+type = IMAP
+ssl = yes
+cert_fingerprint = 86a1fdde63098a6caa65f6e9396da9dcc4af5f5d
+remotehost = imap.one.com
+remoteuser = hultgren.mikael@brfflygledaren.se
+remotepasseval = imappasswd("brf")

@@ -6,24 +6,31 @@ set message_cachedir = /tmp/				# where to store bodies
 set signature        = ~/.mutt/sig			# my signature file
 set tmpdir           = /tmp/				# where to keep temp files
 
+# sidebar patch config
+set sidebar_visible
+set sidebar_short_path
+set sidebar_folder_indent
+set sidebar_width = 25
+set sidebar_divider_char = '│'
+set sidebar_indent_string = '  ''
+set sidebar_format = "%B %* [%?N?%N / ?%S]"
+set mail_check_stats
+set sidebar_delim_chars = '/'
+
+# Mailboxes to show in the sidebar.
+mailboxes =blomma
+mailboxes =blomma/INBOX =blomma/INBOX.Archive =blomma/INBOX.Sent
+mailboxes =brf
+mailboxes =brf/INBOX =brf/INBOX.Archive
+
 # Mailbox ----------------------------------------------
 set mbox_type	= Maildir
-set postponed	= +Inbox.Drafts
-set record		= +Inbox.Sent
-set spoolfile	= +Inbox
 
 folder-hook . 'set read_inc=1000'
 
 # This variable specifies notmuch query type,
 # supported types: 'threads' and 'messages'.
 set nm_query_type = threads
-
-# When set, mutt will use the first virtual mailbox
-# (see virtual-mailboxes) as a spoolfile.
-set virtual_spoolfile = yes
-
-virtual-mailboxes "Inbox" "notmuch://?query=folder:INBOX"
-virtual-mailboxes "Archive" "notmuch://?query=folder:INBOX.Archive"
 
 # Basic Options --------------------------------------
 alternative_order text/plain text/enriched text/html                   # save html for last
@@ -59,33 +66,23 @@ unset mark_old			# read/new is good enough for me
 unset markers                                                          # In the pager, don't display + at the beginning of wrapped lines; it's distracting
 
 # Macros and Keybindings ----------------------------------------------
-bind pager <down> next-line
-bind pager <up> previous-line
+bind pager j next-line
+bind pager k previous-line
 
-macro index,pager s "\
-<enter-command>unset resolve<enter>\
-<save-message>=INBOX.LSpam<enter>\
-<sync-mailbox><enter>\
-<enter-command>set resolve<enter>" \
-"Learn Spam"
-
-macro index,pager a "\
-<enter-command>unset resolve<enter>\
-<save-message>=INBOX.Archive<enter>\
-<sync-mailbox><enter>\
-<enter-command>set resolve<enter>" \
-"Archive message"
-
-macro index,pager c "<change-vfolder>?" "Change to vfolder overview"
 macro index,pager C "<vfolder-from-query>" "Search mailbox"
 macro pager \Cb "|urlview<enter>" "call urlview to open links"
 
+# Sidebar Navigation
+bind index,pager <down> sidebar-next
+bind index,pager <up> sidebar-prev
+bind index,pager <right> sidebar-open
+
+# bind index,pager \CP sidebar-prev
+# bind index,pager \CN sidebar-next
+# bind index,pager \CO sidebar-open
+
 # Sending ----------------------------------------------
-set from			= "Mikael Hultgren <blomma@artsoftheinsane.com>"
 set realname		= "Mikael Hultgren"
-set sendmail		= "/usr/local/bin/msmtp"
-set sendmail_wait	= 0
-set use_from		= yes
 
 # Header Options ----------------------------------------------
 ignore *                                                               # ignore all headers
@@ -95,5 +92,11 @@ hdr_order from: to: cc: date: subject:                                 # and in 
 
 # Colors ----------------------------------------------
 source ~/.config/neomutt/mhn.muttrc
+
+set spoolfile = "+blomma/INBOX"
+source ~/.config/neomutt/accounts/blomma
+
+folder-hook blomma/* source ~/.config/neomutt/accounts/blomma
+folder-hook brf/* source ~/.config/neomutt/accounts/brf
 
 push <show-version>
