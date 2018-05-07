@@ -22,3 +22,10 @@ macro index,pager a "\
 <sync-mailbox><enter>\
 <enter-command>set resolve<enter>" \
 "Archive message"
+
+alias brf \
+Indira <babic.indira@brfflygledaren.se>, \
+Pablo <utter.pablo@brfflygledaren.se>, \
+Holm Mikael <holm.mikael@brfflygledaren.se>, \
+Jonas <mattsson.jonas@brfflygledaren.se>, \
+Agneta <kocko.agneta@brfflygledaren.se>
