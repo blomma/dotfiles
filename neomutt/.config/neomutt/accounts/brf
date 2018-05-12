@@ -3,6 +3,7 @@ set from = "Mikael Hultgren <hultgren.mikael@brfflygledaren.se>"
 set postponed	= =brf/INBOX.Drafts
 set record		= =brf/INBOX.Sent
 set spoolfile	= =brf/INBOX
+set trash       = =brf/INBOX.Trash
 
 # Sending ----------------------------------------------
 set sendmail		= "/usr/local/bin/msmtp -a brf"

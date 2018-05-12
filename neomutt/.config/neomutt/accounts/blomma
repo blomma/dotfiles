@@ -3,6 +3,7 @@ set from = "Mikael Hultgren <blomma@artsoftheinsane.com>"
 set postponed	= =blomma/INBOX.Drafts
 set record		= =blomma/INBOX.Sent
 set spoolfile	= =blomma/INBOX
+set trash       = =blomma/INBOX.Trash
 
 # Sending ----------------------------------------------
 set sendmail		= "/usr/local/bin/msmtp -a blomma"
