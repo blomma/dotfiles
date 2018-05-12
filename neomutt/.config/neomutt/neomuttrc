@@ -19,9 +19,9 @@ set sidebar_delim_chars = '/'
 
 # Mailboxes to show in the sidebar.
 mailboxes =personal
-mailboxes =personal/INBOX =personal/INBOX.Archive =personal/INBOX.Sent
+mailboxes =personal/INBOX =personal/INBOX.Archive =personal/INBOX.Sent =personal/INBOX.Trash
 mailboxes =secondary
-mailboxes =secondary/INBOX =secondary/INBOX.Archive
+mailboxes =secondary/INBOX =secondary/INBOX.Archive =secondary/INBOX.Trash
 
 # Mailbox ----------------------------------------------
 set mbox_type	= Maildir
