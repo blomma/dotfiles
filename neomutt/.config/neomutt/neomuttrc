@@ -6,7 +6,7 @@ set message_cachedir = /tmp/				# where to store bodies
 set signature        = ~/.mutt/sig			# my signature file
 set tmpdir           = /tmp/				# where to keep temp files
 
-# sidebar patch config
+# Sidebar ----------------------------------------------
 set sidebar_visible
 set sidebar_short_path
 set sidebar_folder_indent
@@ -16,6 +16,14 @@ set sidebar_indent_string = '  ''
 set sidebar_format = "%B %* [%?N?%N / ?%S]"
 set mail_check_stats
 set sidebar_delim_chars = '/'
+
+# Sidebar Navigation
+bind index,pager <down> sidebar-next
+bind index,pager <up> sidebar-prev
+bind index,pager <right> sidebar-open
+
+# Toggle the visibility of the Sidebar.
+bind index,pager B sidebar-toggle-visible
 
 # Mailboxes to show in the sidebar.
 mailboxes =blomma
@@ -43,7 +51,7 @@ set fast_reply                                                         # do not 
 set forward_format		= "Fwd: %s"                                    # when forwarding email, simply add a Fwd to the subject
 set help				= no
 set include                                                            # always include message when replying
-set index_format		= "[%Z]  %D  %-20.20F  %s"                     # format of the index view, show all flags, date, the sender and finally the subject
+set index_format		= "[%Z]%?X?A& ?  %D  %-20.20F  %s"                     # format of the index view, show all flags, date, the sender and finally the subject
 set mail_check			= 60		# minimum time between scans
 set menu_scroll                                                        # scroll in menus
 set pager_context		= 5                                            # When going to the next page, keep the bottom two lines of this page on top so that I have some context
@@ -72,17 +80,9 @@ bind pager k previous-line
 macro index,pager C "<vfolder-from-query>" "Search mailbox"
 macro pager \Cb "|urlview<enter>" "call urlview to open links"
 
-# Sidebar Navigation
-bind index,pager <down> sidebar-next
-bind index,pager <up> sidebar-prev
-bind index,pager <right> sidebar-open
 
 #sync email
-macro index O "<shell-escape>offlineimap<enter>" "run offlineimap to sync all mail"
-
-# bind index,pager \CP sidebar-prev
-# bind index,pager \CN sidebar-next
-# bind index,pager \CO sidebar-open
+macro index,pager O "<shell-escape>offlineimap<enter>" "run offlineimap to sync all mail"
 
 # Sending ----------------------------------------------
 set realname		= "Mikael Hultgren"
