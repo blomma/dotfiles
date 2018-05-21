@@ -6,6 +6,7 @@ set message_cachedir = /tmp/				# where to store bodies
 set signature        = ~/.mutt/sig			# my signature file
 set tmpdir           = ~/.config/neomutt/tmp/				# where to keep temp files
 set header_cache     = ~/.config/neomutt/tmp/
+set header_cache_backend = lmdb
 
 # Sidebar ----------------------------------------------
 set sidebar_visible
