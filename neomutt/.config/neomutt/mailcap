@@ -1,1 +1,2 @@
 text/html; w3m -I %{charset} -T text/html -dump; copiousoutput;
+application/vnd.openxmlformats-officedocument.wordprocessingml.document; /Users/blomma/.config/neomutt/view_attachment.sh %s
