@@ -29,7 +29,6 @@ Plug 'plasticboy/vim-markdown'
 Plug 'neomutt/neomutt.vim'
 
 " Tmux
-Plug 'keith/tmux.vim'
 Plug 'christoomey/vim-tmux-navigator'
 
 " Airline provides a stylish appearance for the styleline
