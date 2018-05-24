@@ -110,8 +110,7 @@ set backspace=indent,eol,start	  " backspace through everything in insert mode
 set nrformats-=octal
 set autowrite
 set diffopt+=iwhite
-set whichwrap+=>,l
-set whichwrap+=<,h
+set whichwrap+=<,>,l,h,[,]
 
 if has("win32") || has("win16") || has("win32unix")
     set fileformats=unix,dos
