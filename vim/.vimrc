@@ -68,6 +68,7 @@ Plug 'mhinz/vim-startify'
 Plug 'mileszs/ack.vim'
 
 Plug 'junegunn/fzf.vim'
+Plug 'farmergreg/vim-lastplace'
 
 if has('nvim')
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -232,12 +233,6 @@ map <leader>t :tabnew<cr>
 
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
-
-" Restore cursor position when opening file
-autocmd BufReadPost *
-            \ if line("'\"") > 1 && line("'\"") <= line("$") |
-            \   execute "normal! g`\"" |
-            \ endif
 
 " -------------------------------------------------------------------
 " Custom filetypes
