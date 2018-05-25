@@ -333,7 +333,7 @@ augroup pencil
                 \ | call lexical#init()
                 \ | call litecorrect#init()
                 \ | call textobj#quote#init()
-    autocmd Filetype *commit*,*COMMIT*
+    autocmd Filetype *gitcommit*,*GITCOMMIT*
                 \ call pencil#init({'wrap': 'hard', 'textwidth': 72, 'autoformat': 0})
                 \ | call litecorrect#init()
     autocmd Filetype tasks
