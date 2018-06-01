@@ -31,7 +31,7 @@ bind index,pager B sidebar-toggle-visible
 mailboxes =personal
 mailboxes =personal/INBOX =personal/INBOX.Archive =personal/INBOX.Sent =personal/INBOX.Trash
 mailboxes =secondary
-mailboxes =secondary/INBOX =secondary/INBOX.Archive =secondary/INBOX.Trash
+mailboxes =secondary/INBOX =secondary/INBOX.Archive =secondary/INBOX.Sent =secondary/INBOX.Trash
 
 # Mailbox ----------------------------------------------
 set mbox_type	= Maildir
