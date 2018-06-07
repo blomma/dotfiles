@@ -345,7 +345,7 @@ nnoremap <silent> <leader>Q vapJgqap
 function! IsReply()
     if line('$') > 1
         :1
-        :put! =\"\n\n\"
+        :put! =\"\n\"
         :1
     endif
     :startinsert

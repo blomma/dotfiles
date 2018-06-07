@@ -1,3 +1,3 @@
 text/html; /Users/blomma/.config/neomutt/view_attachment.sh %s; nametemplate=%s.html
-text/html; w3m -I %{charset} -T text/html -dump; copiousoutput;
+text/html; links -codepage %{charset} -dump %s; copiousoutput;
 application/vnd.openxmlformats-officedocument.wordprocessingml.document; /Users/blomma/.config/neomutt/view_attachment.sh %s
