@@ -83,6 +83,8 @@ editor_stop_format_chars=-+*\\,.;:&>
 mcview_eof=
 skin=default
 
+safe_overwrite=false
+
 [Layout]
 message_visible=1
 keybar_visible=1

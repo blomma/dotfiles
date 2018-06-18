@@ -6,6 +6,11 @@ set -q XDG_DATA_HOME
 # Load Oh My Fish configuration.
 source $OMF_PATH/init.fish
 
+### BOBTHEFISH
+set -g theme_display_git_ahead_verbose yes
+set -g theme_display_cmd_duration no
+set -g theme_display_git_dirty_verbose yes
+
 set -g theme_color_scheme terminal
 set -g theme_display_date no
 set -g theme_display_cmd_duration yes
