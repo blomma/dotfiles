@@ -30,7 +30,7 @@
     telemetryConsent: "limited"
     themes: [
       "atom-material-ui"
-      "zenburn"
+      "one-dark-syntax"
     ]
     titleBar: "custom"
   editor:
