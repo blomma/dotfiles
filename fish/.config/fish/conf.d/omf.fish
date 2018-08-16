@@ -15,5 +15,5 @@ set -g theme_display_git_dirty_verbose yes
 set -g theme_display_git_master_branch yes
 
 set -g theme_display_cmd_duration no
-set -g theme_color_scheme terminal
+set -g theme_color_scheme dark
 set -g theme_display_date no
