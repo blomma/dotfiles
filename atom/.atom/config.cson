@@ -1,57 +1,75 @@
-"*":
-  "atom-material-ui":
-    colors:
-      abaseColor: "#607d8b"
-      predefinedColor: "Blue Grey"
-    fonts:
-      fontSize: 20
-    tabs:
-      compactTabs: true
-    treeView:
-      compactList: true
-    ui: {}
-  core:
-    allowPendingPaneItems: false
-    audioBeep: false
-    autoHideMenuBar: true
-    customFileTypes:
-      "source.shell": [
-        "ini"
-      ]
-    disabledPackages: [
-      "wrap-guide"
-      "language-gfm"
-      "github"
-      "open-on-github"
-    ]
-    followSymlinks: true
-    openEmptyEditorOnStart: false
-    projectHome: "/Users/blomma/Dropbox/Projects/private"
-    telemetryConsent: "limited"
-    themes: [
-      "atom-material-ui"
-      "one-dark-syntax"
-    ]
-    titleBar: "custom"
-  editor:
-    fontSize: 18
-    softWrapAtPreferredLineLength: true
-    softWrapHangingIndent: 10
-    tabLength: 4
-    tabType: "hard"
-  "exception-reporting":
-    userId: "b78a39d0-ae79-fc18-2b76-f25ff0bca832"
-  "file-icons":
-    tabPaneIcon: false
-  "indentation-indicator":
-    spaceAfterColon: true
-  "remote-atom":
-    keep_alive: true
-    launch_at_startup: true
-  tabs:
-    alwaysShowTabBar: false
-    enableVcsColoring: true
-  welcome:
-    showOnStartup: false
-  whitespace:
-    ensureSingleTrailingNewline: false
+{
+  "*": {
+    "atom-material-ui": {
+      "colors": {
+        "abaseColor": "#607d8b",
+        "predefinedColor": "Blue Grey"
+      },
+      "fonts": {
+        "fontSize": 20
+      },
+      "tabs": {
+        "compactTabs": true
+      },
+      "treeView": {
+        "compactList": true
+      },
+      "ui": {}
+    },
+    "core": {
+      "allowPendingPaneItems": false,
+      "audioBeep": false,
+      "autoHideMenuBar": true,
+      "customFileTypes": {
+        "source.shell": [
+          "ini"
+        ]
+      },
+      "disabledPackages": [
+        "wrap-guide",
+        "language-gfm",
+        "github",
+        "open-on-github"
+      ],
+      "followSymlinks": true,
+      "openEmptyEditorOnStart": false,
+      "projectHome": "/Users/blomma/Dropbox/Projects/private",
+      "telemetryConsent": "limited",
+      "themes": [
+        "atom-material-ui",
+        "one-dark-syntax"
+      ],
+      "titleBar": "custom"
+    },
+    "editor": {
+      "fontSize": 18,
+      "softWrapAtPreferredLineLength": true,
+      "softWrapHangingIndent": 10,
+      "tabLength": 4,
+      "tabType": "hard"
+    },
+    "exception-reporting": {
+      "userId": "b78a39d0-ae79-fc18-2b76-f25ff0bca832"
+    },
+    "file-icons": {
+      "tabPaneIcon": false
+    },
+    "indentation-indicator": {
+      "spaceAfterColon": true
+    },
+    "remote-atom": {
+      "keep_alive": true,
+      "launch_at_startup": true
+    },
+    "tabs": {
+      "alwaysShowTabBar": false,
+      "enableVcsColoring": true
+    },
+    "welcome": {
+      "showOnStartup": false
+    },
+    "whitespace": {
+      "ensureSingleTrailingNewline": false
+    }
+  }
+}
