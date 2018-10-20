@@ -29,7 +29,7 @@ bind index,pager B sidebar-toggle-visible
 
 # Mailboxes to show in the sidebar.
 mailboxes =personal
-mailboxes =personal/INBOX =personal/INBOX.Archive =personal/INBOX.Sent =personal/INBOX.Trash
+mailboxes =personal/INBOX =personal/INBOX.Drafts =personal/INBOX.Archive =personal/INBOX.Sent =personal/INBOX.Trash =personal/INBOX.Spam
 mailboxes =secondary
 mailboxes =secondary/INBOX =secondary/INBOX.Archive =secondary/INBOX.Sent =secondary/INBOX.Trash
 
