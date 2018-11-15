@@ -23,3 +23,5 @@ macro index,pager a "\
 <sync-mailbox><enter>\
 <enter-command>set resolve<enter>" \
 "Archive message"
+
+macro attach W "<save-entry><bol>~/Download/<eol>" "Save to desktop"

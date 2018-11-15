@@ -24,6 +24,8 @@ macro index,pager a "\
 <enter-command>set resolve<enter>" \
 "Archive message"
 
+macro attach W "<save-entry><bol>~/Documents/brf/<eol>" "Save to brf"
+
 alias brf \
 Indira <babic.indira@brfflygledaren.se>, \
 Pablo <utter.pablo@brfflygledaren.se>, \
