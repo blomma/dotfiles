@@ -46,6 +46,7 @@ set nm_query_type = threads
 alternative_order text/plain text/enriched text/html                   # save html for last
 auto_view text/html                                                    # autoview html
 
+set rfc2047_parameters  = yes
 set date_format			= "%d-%m-%y"                                   # a simple date format
 set delete				# don't ask, just do
 set edit_headers		= no
