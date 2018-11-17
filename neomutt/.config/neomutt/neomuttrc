@@ -76,6 +76,7 @@ set wait_key			= no		# Don't ask me to press a key to continue
 unset confirmappend		# When saving a message, append the message to an existing mailbox without asking (Why should it ask, anyway? Mailboxes generally have multiple messages...)
 unset mark_old			# read/new is good enough for me
 unset markers                                                          # In the pager, don't display + at the beginning of wrapped lines; it's distracting
+set query_command="/usr/local/bin/lbdbq '%s'"
 
 # Macros and Keybindings ----------------------------------------------
 bind pager j next-line
