@@ -1,0 +1,3 @@
+METHODS="m_muttalias m_osx_addressbook"
+MUTT_DIRECTORY="$HOME/.config/neomutt"
+MUTTALIAS_FILES="aliases"
