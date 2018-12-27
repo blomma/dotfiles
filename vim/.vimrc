@@ -12,6 +12,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'nanotech/jellybeans.vim'
 Plug 'blomma/Zenburn'
 Plug 'mhinz/vim-janah'
+Plug 'morhetz/gruvbox'
 
 " MS
 Plug 'kmnk/vim-csharp'
@@ -70,10 +71,9 @@ Plug 'mileszs/ack.vim'
 Plug 'junegunn/fzf.vim'
 Plug 'farmergreg/vim-lastplace'
 
-if has('nvim')
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-    Plug 'zchee/deoplete-go'
-endif
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'zchee/deoplete-go'
+
 let g:deoplete#enable_at_startup = 1
 
 call plug#end()
@@ -91,6 +91,7 @@ if &term =~ '256color'
     " work properly when Vim is used inside tmux and GNU screen.
     set t_ut=
 endif
+set guifont=Fira\ Code:h20
 
 " -------------------------------------------------------------------
 " Basic Setup
