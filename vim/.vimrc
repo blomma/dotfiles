@@ -71,7 +71,15 @@ Plug 'mileszs/ack.vim'
 Plug 'junegunn/fzf.vim'
 Plug 'farmergreg/vim-lastplace'
 
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+let g:deoplete#enable_at_startup = 1
+
 Plug 'zchee/deoplete-go'
 
 let g:deoplete#enable_at_startup = 1
