@@ -1,99 +1,93 @@
 * {
     border: none;
     border-radius: 0;
-    font-family: Roboto, Helvetica, Arial, sans-serif;
-    font-size: 13px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 15px;
     min-height: 0;
+    background: rgba(43, 48, 59, 1);
 }
 
 window#waybar {
-    background: rgba(43, 48, 59, 1);
-    border-bottom: 3px solid transparent;
-    color: @foreground;
+    color: rgb(221, 219, 219);
 }
 
 #workspaces button {
     padding: 0 5px;
-    background: rgba(43, 48, 59, 0.8);
-    color: @foreground;
-    border-bottom: 3px solid transparent;
+    color: white;
 }
 
 #workspaces button.focused {
     background: rgba(100, 114, 125, 0.2);
-    border-bottom: 3px solid @color15;
+    border-bottom: 3px solid white;
 }
 
 #mode {
     background: transparent;
-    border-bottom: 3px solid @color15;
+    border-bottom: 3px solid white;
 }
 
-#clock, #battery, #cpu, #memory, #network, #pulseaudio, #custom-spotify, #tray, #mode, #custom-temp, #custom-root, #custom-home, #custom-backup, #custom-scratch, #custom-main {
+#clock,
+#battery,
+#cpu,
+#memory,
+#network,
+#pulseaudio,
+#custom-spotify,
+#custom-brightness,
+#tray,
+#mode,
+#custom-temp,
+#custom-root,
+#custom-home,
+#custom-backup,
+#custom-scratch,
+#custom-main {
     padding: 0 6px;
     margin: 0 3px;
 }
 
 #clock {
-    background-color: transparent;
-    border-bottom: 3px solid @color1;
-    color: @foreground;
+    border-bottom: 3px solid white;
+    color: white;
 }
 
 #battery {
-    background-color: #ffffff;
-    color: black;
+    border-bottom: 3px solid white;
+    color: white;
 }
 
 #battery.charging {
     color: white;
-    background-color: #26A65B;
-}
-
-@keyframes blink {
-    to {
-        background-color: #ffffff;
-        color: black;
-    }
+    border-bottom: 3px solid #26a65b;
 }
 
 #battery.warning:not(.charging) {
-    background: #f53c3c;
+    border-bottom: 3px solid #fd6865;
     color: white;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
 }
 
 #cpu {
-    background: transparent;
-    border-bottom: 3px solid @color5;
-    color: @foreground;
+    border-bottom: 3px solid white;
+    color: white;
 }
 
 #memory {
-    background: transparent;
-    border-bottom: 3px solid @color7;
-    color: @foreground
+    border-bottom: 3px solid white;
+    color: white;
 }
 
 #network {
-    background: transparent;
-    border-bottom: 3px solid @color16;
-    color: @foreground
+    border-bottom: 3px solid white;
+    color: white;
 }
 
 #network.disconnected {
-    background: transparent;
     color: crimson;
 }
 
 #pulseaudio {
-    background: transparent;
-    border-bottom: 3px solid @color15;
-    color: @foreground;
+    border-bottom: 3px solid white;
+    color: white;
 }
 
 #pulseaudio.muted {
@@ -101,13 +95,11 @@ window#waybar {
     color: #2a5c45;
 }
 
-#custom-spotify {
-    background: #66cc99;
-    color: #2a5c45;
+#custom-brightness {
+    border-bottom: 3px solid white;
+    color: white;
 }
 
 #tray {
-    background-color: transparent;
-    border-bottom: 3px solid @color15;
+    border-bottom: 3px solid white;
 }
-
