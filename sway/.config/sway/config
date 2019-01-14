@@ -38,6 +38,7 @@ output eDP-1 mode 1920x1080@143.998001Hz
 input "1267:12446:ELAN061B:00_04F3:309E_Touchpad" {
     tap enabled
     natural_scroll enabled
+    dwt enabled
 }
 
 input "*" {
@@ -163,7 +164,7 @@ bindsym $mod+f fullscreen
 bindsym $mod+Shift+space floating toggle
 
 # Swap focus between the tiling area and the floating area
-bindsym $mod+space focus mode_toggle
+# bindsym $mod+space focus mode_toggle
 
 # move focus to the parent container
 bindsym $mod+a focus parent
@@ -229,10 +230,11 @@ exec_always $HOME/.config/sway/waybar.sh
 # DPMS & auto-lock
 #
 exec swayidle \
-         timeout 300 'swaylock' \
-         timeout 600 'swaymsg "output * dpms off"' \
-         resume 'swaymsg "output * dpms on"' \
-         before-sleep 'swaylock'
+    timeout 300 'swaylock -c 000000' \
+    timeout 600 'swaymsg "output * dpms off"' \
+    resume 'swaymsg "output * dpms on"' \
+    before-sleep 'swaylock -c 000000'
+
 #
 # Miscellaneous:
 #

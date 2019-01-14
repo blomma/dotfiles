@@ -13,6 +13,7 @@ test -d $HOME/go/bin; and set -gx PATH $HOME/go/bin $PATH
 test -d $HOME/.bin; and set -gx PATH $HOME/.bin $PATH
 test -d $HOME/opt/bin; and set -gx PATH $HOME/opt/bin $PATH
 test -d $HOME/.pyenv/bin; and set -gx PATH $HOME/.pyenv/bin $PATH
+test -d $HOME/.rbenv/bin; and set -gx PATH $HOME/.rbenv/bin $PATH
 
 ### Ruby (rbenv) ###
 if command -s rbenv >/dev/null
