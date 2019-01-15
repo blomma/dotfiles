@@ -9,11 +9,11 @@ set -gx EDITOR "vim"
 set -gx VISUAL "$EDITOR"
 
 ### PATH ###
-test -d $HOME/go/bin; and set -gx PATH $HOME/go/bin $PATH
-test -d $HOME/.bin; and set -gx PATH $HOME/.bin $PATH
-test -d $HOME/opt/bin; and set -gx PATH $HOME/opt/bin $PATH
-test -d $HOME/.pyenv/bin; and set -gx PATH $HOME/.pyenv/bin $PATH
-test -d $HOME/.rbenv/bin; and set -gx PATH $HOME/.rbenv/bin $PATH
+set -gx PATH $HOME/go/bin $PATH
+set -gx PATH $HOME/.bin $PATH
+set -gx PATH $HOME/opt/bin $PATH
+set -gx PATH $HOME/.pyenv/bin $PATH
+set -gx PATH $HOME/.rbenv/bin $PATH
 
 ### Ruby (rbenv) ###
 if command -s rbenv >/dev/null
@@ -31,4 +31,3 @@ if not functions -q fisher
     curl https://git.io/fisher --create-dirs -sLo $XDG_CONFIG_HOME/fish/functions/fisher.fish
     fish -c fisher
 end
-
