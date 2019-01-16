@@ -1,9 +1,10 @@
+set -l host (echo $hostname | sed -E 's/(-[0-9]+)?(\.(local|home))?$//' | tr '[:upper:]' '[:lower:]')
 set -l LOCAL_CONFIG "$HOME/.config/fish"
 set -l user (whoami | tr '[:upper:]' '[:lower:]')
 set -l platform (uname -s | tr '[:upper:]' '[:lower:]')
 
 # Load custom settings for current hostname
-set -l host_specific_file $LOCAL_CONFIG/hosts/$hostname.fish
+set -l host_specific_file $LOCAL_CONFIG/hosts/$host.fish
 if test -f $host_specific_file
   source $host_specific_file
 else
