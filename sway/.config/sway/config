@@ -80,6 +80,7 @@ bindsym $mod+Shift+q kill
 # start your launcher
 bindsym $mod+d exec rofi -show run
 
+# bindsym $mod+d exec rofi -combi-modi window,drun -show combi -modi combi
 # Drag floating windows by holding down $mod and left mouse button.
 # Resize them with right mouse button + $mod.
 # Despite the name, also works for non-floating windows.
@@ -241,5 +242,14 @@ exec swayidle \
 font pango:Fira Code 12
 focus_follows_mouse no
 default_border pixel
+gaps inner 20
+
+# Colors
+# class                 border  backgr. text    indicator child_border
+client.focused          #1e2229 #353535 #bbbbbb #959595   #1e2229
+client.focused_inactive #1e2229 #5f676a #bbbbbb #484e50   #1e2229
+client.unfocused        #1e2229 #222222 #888888 #292d2e   #1e2229
+# client.urgent           #2f343a #900000 #bbbbbb #900000
+
 
 include /etc/sway/config.d/*
