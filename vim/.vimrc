@@ -78,7 +78,6 @@ else
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
-let g:deoplete#enable_at_startup = 1
 
 Plug 'zchee/deoplete-go'
 
@@ -138,6 +137,9 @@ set notimeout
 set ttimeout
 set ttimeoutlen=10
 
+if exists(':tnoremap')
+    tnoremap <Esc> <C-\><C-n>
+endif
 " -------------------------------------------------------------------
 " Mouse
 " -------------------------------------------------------------------
@@ -155,6 +157,21 @@ set tabstop=4
 set showmatch
 set expandtab
 set formatoptions+=j " Delete comment character when joining commented lines
+
+" -------------------------------------------------------------------
+" Copy/Paste
+" -------------------------------------------------------------------
+" " Copy to clipboard
+vnoremap  <leader>y  "+y
+nnoremap  <leader>Y  "+yg_
+nnoremap  <leader>y  "+y
+nnoremap  <leader>yy  "+yy
+
+" " Paste from clipboard
+nnoremap <leader>p "+p
+nnoremap <leader>P "+P
+vnoremap <leader>p "+p
+vnoremap <leader>P "+P
 
 " -------------------------------------------------------------------
 " Folds
