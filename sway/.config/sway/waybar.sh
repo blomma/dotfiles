@@ -7,5 +7,5 @@ killall -q waybar
 while pgrep -x waybar >/dev/null; do sleep 1; done
 
 # Launch main
-/usr/local/bin/waybar &
+$HOME/Downloads/Waybar/build/waybar &
 
