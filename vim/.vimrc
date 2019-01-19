@@ -68,6 +68,7 @@ Plug 'irrationalistic/vim-tasks'
 Plug 'mhinz/vim-startify'
 Plug 'mileszs/ack.vim'
 
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'farmergreg/vim-lastplace'
 
