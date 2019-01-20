@@ -13,12 +13,12 @@ if status --is-interactive
 
     ### Ruby (rbenv) ###
     if command -s rbenv >/dev/null
-        source (rbenv init -|psub)
+        rbenv init -| source
     end
 
     ### Python (pyenv) ###
     if command -s pyenv >/dev/null
-        source (pyenv init -|psub)
+        pyenv init -| source
     end
 end
 
