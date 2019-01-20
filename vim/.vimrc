@@ -58,7 +58,6 @@ Plug 'reedes/vim-lexical'
 Plug 'reedes/vim-litecorrect'
 Plug 'kana/vim-textobj-user'
 Plug 'reedes/vim-textobj-quote'
-Plug 'mhinz/vim-grepper'
 Plug 'ekalinin/Dockerfile.vim'
 
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }

@@ -10,27 +10,28 @@ set -gx VISUAL "$EDITOR"
 ### Abbreviations
 if status --is-interactive
     abbr --add --global tma tmux attach -d -t
+
+    ### Ruby (rbenv) ###
+    if command -s rbenv >/dev/null
+        source (rbenv init -|psub)
+    end
+
+    ### Python (pyenv) ###
+    if command -s pyenv >/dev/null
+        source (pyenv init -|psub)
+    end
 end
 
 ### PATH ###
-set -U fish_user_paths $fish_user_paths $HOME/go/bin
-set -U fish_user_paths $fish_user_paths $HOME/.bin
-set -U fish_user_paths $fish_user_paths $HOME/opt/bin
-set -U fish_user_paths $fish_user_paths $HOME/.pyenv/bin
-set -U fish_user_paths $fish_user_paths $HOME/.rbenv/bin
-set -U fish_user_paths $fish_user_paths /home/linuxbrew/.linuxbrew/bin
+# set -U fish_user_paths $HOME/go/bin $HOME/.bin $HOME/opt/bin $HOME/.pyenv/bin $HOME/.rbenv/bin /home/linuxbrew/.linuxbrew/bin
 
-### Ruby (rbenv) ###
-if command -s rbenv >/dev/null
-    status --is-interactive
-    and source (rbenv init -|psub)
-end
+set -gx PATH $HOME/go/bin $PATH
+set -gx PATH $HOME/.bin $PATH
+set -gx PATH $HOME/opt/bin $PATH
+set -gx PATH $HOME/.pyenv/bin $PATH
+set -gx PATH $HOME/.rbenv/bin $PATH
+set -gx PATH /home/linuxbrew/.linuxbrew/bin $PATH
 
-### Python (pyenv) ###
-if command -s pyenv >/dev/null
-    status --is-interactive
-    and source (pyenv init -|psub)
-end
 
 ### Fisher
 if not functions -q fisher
