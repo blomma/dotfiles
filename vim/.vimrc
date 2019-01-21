@@ -260,6 +260,8 @@ map <leader>t :tabnew<cr>
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
 
+map <C-a> <esc>ggVG<CR>
+
 " -------------------------------------------------------------------
 " Custom filetypes
 " -------------------------------------------------------------------
