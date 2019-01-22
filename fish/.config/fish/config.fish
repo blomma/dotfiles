@@ -7,18 +7,23 @@ set -gx LC_ALL en_US.UTF-8
 set -gx EDITOR "vim"
 set -gx VISUAL "$EDITOR"
 
-### Abbreviations
 if status --is-interactive
+    ### Abbreviations
     abbr --add --global tma tmux attach -d -t
+
 
     ### Ruby (rbenv) ###
     if command -s rbenv >/dev/null
-        rbenv init -| source
+        rbenv init - | source
     end
 
     ### Python (pyenv) ###
     if command -s pyenv >/dev/null
-        pyenv init -| source
+        pyenv init - | source
+    end
+
+    if test -e ~/.fzf/shell/key-bindings.fish
+        source ~/.fzf/shell/key-bindings.fish
     end
 end
 
@@ -31,7 +36,7 @@ set -gx PATH $HOME/opt/bin $PATH
 set -gx PATH $HOME/.pyenv/bin $PATH
 set -gx PATH $HOME/.rbenv/bin $PATH
 set -gx PATH /home/linuxbrew/.linuxbrew/bin $PATH
-
+set -gx PATH $HOME/.fzf/bin $PATH
 
 ### Fisher
 if not functions -q fisher
