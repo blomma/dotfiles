@@ -9,19 +9,19 @@ function _git_ahead_verbose -S -d 'Print a more verbose ahead/behind state for t
     set -l behind (count (for arg in $commits; echo $arg; end | command grep '^<'))
     set -l ahead (count (for arg in $commits; echo $arg; end | command grep -v '^<'))
 
-    set -l git_ahead_glyph      \u2191 # '↑'
-    set -l git_behind_glyph \u2193 # '↓'
+    set -l git_ahead_glyph \u21E1
+    set -l git_behind_glyph \u21E3
 
     switch "$ahead $behind"
         case '' # no upstream
         case '0 0' # equal to upstream
             echo "·"
         case '* 0' # ahead of upstream
-            echo "$git_ahead_glyph$ahead"
+            echo "·$git_ahead_glyph$ahead"
         case '0 *' # behind upstream
-            echo "$git_behind_glyph$behind"
+            echo "·$git_behind_glyph$behind"
         case '*' # diverged from upstream
-            echo "$git_ahead_glyph$ahead$git_behind_glyph$behind"
+            echo "·$git_ahead_glyph$ahead$git_behind_glyph$behind"
     end
 end
 
@@ -43,7 +43,8 @@ function fish_prompt
     if test $status -eq 0
         if [ (_git_is_dirty) ]
             set -l yellow (set_color yellow)
-            set git_info '(' $yellow $git_branch "±" $normal ')'
+            set -l cyan (set_color cyan)
+            set git_info '(' $yellow $git_branch $cyan"±" $normal ')'
         else
             set -l green (set_color green)
             set git_info '(' $green $git_branch $normal ')'
