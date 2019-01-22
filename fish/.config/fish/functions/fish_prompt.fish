@@ -1,7 +1,3 @@
-function _git_branch_name
-    echo (command git symbolic-ref --short HEAD ^/dev/null)
-end
-
 function _git_is_dirty
     echo (command git status -s --ignore-submodules=dirty 2> /dev/null)
 end
@@ -20,7 +16,7 @@ function fish_prompt
     echo -n -s $cwd $normal
 
     # Show git branch and status
-    set -l git_branch (_git_branch_name)
+    set -l git_branch (command git symbolic-ref --short HEAD ^/dev/null)
     if test $status -eq 0
         if [ (_git_is_dirty) ]
             set -l yellow (set_color yellow)
