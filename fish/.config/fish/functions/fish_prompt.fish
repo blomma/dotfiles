@@ -2,6 +2,29 @@ function _git_is_dirty
     echo (command git status -s --ignore-submodules=dirty 2> /dev/null)
 end
 
+function _git_ahead_verbose -S -d 'Print a more verbose ahead/behind state for the current branch'
+    set -l commits (command git rev-list --left-right '@{upstream}...HEAD' 2>/dev/null)
+    or return
+
+    set -l behind (count (for arg in $commits; echo $arg; end | command grep '^<'))
+    set -l ahead (count (for arg in $commits; echo $arg; end | command grep -v '^<'))
+
+    set -l git_ahead_glyph      \u2191 # '↑'
+    set -l git_behind_glyph \u2193 # '↓'
+
+    switch "$ahead $behind"
+        case '' # no upstream
+        case '0 0' # equal to upstream
+            echo "·"
+        case '* 0' # ahead of upstream
+            echo "$git_ahead_glyph$ahead"
+        case '0 *' # behind upstream
+            echo "$git_behind_glyph$behind"
+        case '*' # diverged from upstream
+            echo "$git_ahead_glyph$ahead$git_behind_glyph$behind"
+    end
+end
+
 function fish_prompt
     set -l last_status $status
 
@@ -25,7 +48,9 @@ function fish_prompt
             set -l green (set_color green)
             set git_info '(' $green $git_branch $normal ')'
         end
-        echo -n -s ' · ' $git_info $normal
+
+        set -l git_ahead (_git_ahead_verbose)
+        echo -n -s ' ' $git_ahead ' ' $git_info $normal
     end
 
     set -l prompt_color $normal
