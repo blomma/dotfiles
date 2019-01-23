@@ -1,5 +1,3 @@
-set fish_greeting "くコ:彡 welcome to fish"
-
 source ~/.config/fish/color.fish
 
 ### DEFAULTS
