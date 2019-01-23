@@ -34,8 +34,6 @@ function fish_prompt
     set -l cwd $blue(echo $PWD | string replace (echo $HOME) "~")
 
     # Output the prompt, left to right
-    echo -e ''
-
     echo -n -s $cwd $normal
 
     # Show git branch and status
@@ -61,6 +59,5 @@ function fish_prompt
     end
 
     # Terminate with a nice prompt char
-    echo -e ''
-    echo -e -n -s $prompt_color '⟩ ' $normal
+    echo -e -n -s $prompt_color ' ⟩⟩ ' $normal
 end
