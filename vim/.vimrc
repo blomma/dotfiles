@@ -78,8 +78,6 @@ endif
 
 Plug 'zchee/deoplete-go'
 
-let g:deoplete#enable_at_startup = 1
-
 call plug#end()
 
 " -------------------------------------------------------------------
@@ -262,9 +260,13 @@ map <C-a> <esc>ggVG<CR>
 " -------------------------------------------------------------------
 " Deoplete
 " -------------------------------------------------------------------
+" Enable deoplete when InsertEnter.
+let g:deoplete#enable_at_startup = 0
+" autocmd InsertEnter * call deoplete#enable()
 autocmd FileType markdown,mkd,md,*gitcommit*,*GITCOMMIT*
             \ call deoplete#custom#buffer_option('auto_complete', v:false)
-
+autocmd FileType go,vim
+            \ call deoplete#enable()
 " -------------------------------------------------------------------
 " Custom filetypes
 " -------------------------------------------------------------------
