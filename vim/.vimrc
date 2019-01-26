@@ -58,8 +58,10 @@ Plug 'kana/vim-textobj-user'
 Plug 'reedes/vim-textobj-quote'
 Plug 'ekalinin/Dockerfile.vim'
 
-Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'godoctor/godoctor.vim'
+Plug 'zchee/deoplete-go', { 'do': 'make'}
+
 Plug 'hrother/offlineimaprc.vim'
 Plug 'irrationalistic/vim-tasks'
 Plug 'mhinz/vim-startify'
@@ -76,7 +78,6 @@ else
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 
-Plug 'zchee/deoplete-go'
 
 call plug#end()
 
