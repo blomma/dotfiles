@@ -12,7 +12,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'nanotech/jellybeans.vim'
 Plug 'blomma/Zenburn'
 Plug 'mhinz/vim-janah'
-Plug 'morhetz/gruvbox'
 
 " MS
 Plug 'kmnk/vim-csharp'
@@ -54,7 +53,6 @@ Plug 'ervandew/supertab'
 Plug 'jeetsukumaran/vim-buffergator'
 
 Plug 'reedes/vim-pencil'
-Plug 'reedes/vim-lexical'
 Plug 'reedes/vim-litecorrect'
 Plug 'kana/vim-textobj-user'
 Plug 'reedes/vim-textobj-quote'
@@ -65,7 +63,6 @@ Plug 'godoctor/godoctor.vim'
 Plug 'hrother/offlineimaprc.vim'
 Plug 'irrationalistic/vim-tasks'
 Plug 'mhinz/vim-startify'
-Plug 'mileszs/ack.vim'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
@@ -263,6 +260,12 @@ map <leader>pp :setlocal paste!<cr>
 map <C-a> <esc>ggVG<CR>
 
 " -------------------------------------------------------------------
+" Deoplete
+" -------------------------------------------------------------------
+autocmd FileType markdown,mkd,md,*gitcommit*,*GITCOMMIT*
+            \ call deoplete#custom#buffer_option('auto_complete', v:false)
+
+" -------------------------------------------------------------------
 " Custom filetypes
 " -------------------------------------------------------------------
 augroup filetypedetect
@@ -278,11 +281,6 @@ let g:fzf_layout = { 'left': '~40%' }
 autocmd! FileType fzf
 autocmd  FileType fzf set laststatus=0 noshowmode noruler
             \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
-
-" -------------------------------------------------------------------
-" Ack
-" -------------------------------------------------------------------
-let g:ackprg = 'ag --vimgrep'
 
 " -------------------------------------------------------------------
 " Tasks
@@ -348,12 +346,10 @@ augroup pencil
     autocmd!
     autocmd FileType markdown,mkd,md
                 \ call pencil#init({'wrap': 'hard', 'textwidth': 72, 'autoformat': 0})
-                \ | call lexical#init()
                 \ | call litecorrect#init()
                 \ | call textobj#quote#init()
     autocmd FileType text
                 \ call pencil#init()
-                \ | call lexical#init()
                 \ | call litecorrect#init()
                 \ | call textobj#quote#init()
     autocmd Filetype *gitcommit*,*GITCOMMIT*
