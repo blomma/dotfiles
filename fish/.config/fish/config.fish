@@ -4,11 +4,22 @@ source ~/.config/fish/color.fish
 set -gx LC_ALL en_US.UTF-8
 set -gx EDITOR "vim"
 set -gx VISUAL "$EDITOR"
+set -gx MAILDIR $HOME/.mail
+
+### PATH ###
+# set -U fish_user_paths $HOME/go/bin $HOME/.bin $HOME/opt/bin $HOME/.pyenv/bin $HOME/.rbenv/bin /home/linuxbrew/.linuxbrew/bin
+
+set -gx PATH $HOME/go/bin $PATH
+set -gx PATH $HOME/.bin $PATH
+set -gx PATH $HOME/opt/bin $PATH
+set -gx PATH $HOME/.pyenv/bin $PATH
+set -gx PATH $HOME/.rbenv/bin $PATH
+set -gx PATH /home/linuxbrew/.linuxbrew/bin $PATH
+set -gx PATH $HOME/.fzf/bin $PATH
 
 if status --is-interactive
     ### Abbreviations
     abbr --add --global tma tmux attach -d -t
-
 
     ### Ruby (rbenv) ###
     if command -s rbenv >/dev/null
@@ -25,16 +36,6 @@ if status --is-interactive
     end
 end
 
-### PATH ###
-# set -U fish_user_paths $HOME/go/bin $HOME/.bin $HOME/opt/bin $HOME/.pyenv/bin $HOME/.rbenv/bin /home/linuxbrew/.linuxbrew/bin
-
-set -gx PATH $HOME/go/bin $PATH
-set -gx PATH $HOME/.bin $PATH
-set -gx PATH $HOME/opt/bin $PATH
-set -gx PATH $HOME/.pyenv/bin $PATH
-set -gx PATH $HOME/.rbenv/bin $PATH
-set -gx PATH /home/linuxbrew/.linuxbrew/bin $PATH
-set -gx PATH $HOME/.fzf/bin $PATH
 
 ### Fisher
 if not functions -q fisher
