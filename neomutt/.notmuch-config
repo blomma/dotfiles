@@ -10,8 +10,8 @@
 # Notmuch will store its database within a sub-directory of the path
 # configured here named ".notmuch".
 #
-[database]
-path=/Users/blomma/.mail
+# [database]
+# path=$HOME/.mail
 
 # User configuration
 #
