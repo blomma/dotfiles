@@ -102,7 +102,6 @@ hdr_order from: to: cc: date: subject:                                 # and in 
 source ~/.config/neomutt/mhn.muttrc
 
 source ~/.config/neomutt/accounts/personal
-
 folder-hook personal/* source ~/.config/neomutt/accounts/personal
 folder-hook secondary/* source ~/.config/neomutt/accounts/secondary
 
