@@ -102,7 +102,6 @@ hdr_order from: to: cc: date: subject:                                 # and in 
 source ~/.config/neomutt/mhn.muttrc
 
 source ~/.config/neomutt/accounts/blomma
-
 folder-hook blomma/* source ~/.config/neomutt/accounts/blomma
 folder-hook brf/* source ~/.config/neomutt/accounts/brf
 

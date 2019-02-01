@@ -58,7 +58,7 @@ color attachment black green
 color error red black
 color message white black
 color search brightwhite magenta
-color status brightyellow blue
+color status brightyellow black
 color tree brightblue black
 color normal white black
 color tilde green black
