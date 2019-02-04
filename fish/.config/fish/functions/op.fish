@@ -1,6 +1,6 @@
 function op
-    if command op list users ^| string match -ir "(401: Authentication required|You are not currently signed in)"
-        set -l session_key (command op signin blomma --output=raw)
+    if command op list users ^| string match -ir "(401: Authentication required|You are not currently signed in)" > /dev/null
+        set -l session_key (command op signin blomma.1password.com blomma@artsoftheinsane.com --output=raw)
         set -gx OP_SESSION_blomma $session_key
     end
 
