@@ -1,0 +1,4 @@
+function op_github
+    op get item example-item | jq -r '.details?.sections[1].fields[] | select(.t=="personal access token").v'
+end
+
