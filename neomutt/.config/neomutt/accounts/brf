@@ -6,7 +6,7 @@ set spoolfile	= =brf/INBOX
 set trash       = =brf/INBOX.Trash
 
 # Sending ----------------------------------------------
-set sendmail		= "/usr/local/bin/msmtp -a brf"
+set sendmail		= "msmtp -a brf"
 set sendmail_wait	= 0
 set use_from		= yes
 

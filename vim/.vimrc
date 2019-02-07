@@ -1,12 +1,21 @@
 set nocompatible	  " Use vim, no vi defaults
 
-if empty(glob('~/.vim/autoload/plug.vim'))
-    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+if has('nvim')
+    if empty(glob('~/.config/nvim/autoload/plug.vim'))
+        silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
                 \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    autocmd VimEnter * PlugInstall | source $MYVIMRC
+        autocmd VimEnter * PlugInstall | source $MYVIMRC
+    endif
+    call plug#begin('~/.config/nvim/plugged')
+else
+    if empty(glob('~/.vim/autoload/plug.vim'))
+        silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+        autocmd VimEnter * PlugInstall | source $MYVIMRC
+    endif
+    call plug#begin('~/.vim/plugged')
 endif
 
-call plug#begin('~/.vim/plugged')
 
 " Themes
 Plug 'nanotech/jellybeans.vim'

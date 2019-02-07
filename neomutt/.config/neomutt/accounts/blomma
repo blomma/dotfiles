@@ -6,7 +6,7 @@ set spoolfile	= =blomma/INBOX
 set trash       = =blomma/INBOX.Trash
 
 # Sending ----------------------------------------------
-set sendmail		= "/usr/local/bin/msmtp -a blomma"
+set sendmail		= "msmtp -a blomma"
 set sendmail_wait	= 0
 set use_from		= yes
 
