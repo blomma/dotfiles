@@ -57,7 +57,7 @@ bindsym $mod+Return exec $term
 bindsym $mod+Shift+q kill
 
 # start your launcher
-bindsym $mod+d exec rofi -show run
+bindsym $mod+d exec /home/linuxbrew/.linuxbrew/bin/fish -c "rofi -show run"
 
 # bindsym $mod+d exec rofi -combi-modi window,drun -show combi -modi combi
 # Drag floating windows by holding down $mod and left mouse button.
