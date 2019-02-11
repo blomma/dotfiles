@@ -68,8 +68,6 @@ Plug 'reedes/vim-textobj-quote'
 Plug 'ekalinin/Dockerfile.vim'
 
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'godoctor/godoctor.vim'
-Plug 'zchee/deoplete-go', { 'do': 'make'}
 
 Plug 'hrother/offlineimaprc.vim'
 Plug 'irrationalistic/vim-tasks'
@@ -78,6 +76,8 @@ Plug 'mhinz/vim-startify'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'farmergreg/vim-lastplace'
+
+Plug 'zchee/deoplete-go', { 'do': 'make'}
 
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
