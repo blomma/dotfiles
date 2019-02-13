@@ -572,7 +572,7 @@ let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
 let g:jellybeans_overrides = {
             \    'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
             \}
-colorscheme Sierra
+colorscheme sierra
 let g:airline_theme='nord'
 
 " -------------------------------------------------------------------
