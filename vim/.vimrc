@@ -1,17 +1,22 @@
-set nocompatible	  " Use vim, no vi defaults
+set encoding=utf-8
+scriptencoding utf-8
+
+augroup vimrc
+    autocmd!
+augroup END
 
 if has('nvim')
     if empty(glob('~/.config/nvim/autoload/plug.vim'))
         silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
                 \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-        autocmd VimEnter * PlugInstall | source $MYVIMRC
+        autocmd vimrc VimEnter * PlugInstall --sync | source $MYVIMRC
     endif
     call plug#begin('~/.config/nvim/plugged')
 else
     if empty(glob('~/.vim/autoload/plug.vim'))
         silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
                 \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-        autocmd VimEnter * PlugInstall | source $MYVIMRC
+        autocmd vimrc VimEnter * PlugInstall --sync | source $MYVIMRC
     endif
     call plug#begin('~/.vim/plugged')
 endif
@@ -21,21 +26,20 @@ endif
 Plug 'nanotech/jellybeans.vim'
 Plug 'blomma/Zenburn'
 Plug 'mhinz/vim-janah'
+Plug 'arcticicestudio/nord-vim'
+Plug 'AlessandroYorba/Despacio'
+Plug 'AlessandroYorba/Sierra'
 
-" MS
+" Languages
 Plug 'kmnk/vim-csharp'
-
-" Fish
 Plug 'dag/vim-fish'
-
-" Swift
 Plug 'Keithbsmiley/swift.vim'
-
-" Markdown
 Plug 'plasticboy/vim-markdown'
-
-" Neomutt
 Plug 'neomutt/neomutt.vim'
+Plug 'hrother/offlineimaprc.vim'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'ekalinin/Dockerfile.vim'
+Plug 'irrationalistic/vim-tasks'
 
 " Tmux
 Plug 'christoomey/vim-tmux-navigator'
@@ -65,12 +69,7 @@ Plug 'reedes/vim-pencil'
 Plug 'reedes/vim-litecorrect'
 Plug 'kana/vim-textobj-user'
 Plug 'reedes/vim-textobj-quote'
-Plug 'ekalinin/Dockerfile.vim'
 
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-
-Plug 'hrother/offlineimaprc.vim'
-Plug 'irrationalistic/vim-tasks'
 Plug 'mhinz/vim-startify'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
@@ -87,6 +86,8 @@ else
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 
+" Lint
+Plug 'w0rp/ale'
 
 call plug#end()
 
@@ -98,23 +99,21 @@ syntax enable
 set noshowmode	" Let airline handle the mode display
 set ttyfast
 
-if &term =~ '256color'
+if &term =~? '256color'
     " Disable Background Color Erase (BCE) so that color schemes
     " work properly when Vim is used inside tmux and GNU screen.
     set t_ut=
 endif
-set guifont=Fira\ Code:h20
 
 " -------------------------------------------------------------------
 " Basic Setup
 " -------------------------------------------------------------------
 set ruler			  " Show line and column number
-set encoding=utf-8	  " Set default encoding to UTF-8
 set termencoding=utf-8
-let mapleader=","
+let mapleader=','
 set history=1000				" Store lots of :cmdline history
 set showcmd						" Show incomplete cmds down the bottom
-set gcr=a:blinkon0				" Disable cursor blink
+set guicursor=a:blinkon0		" Disable cursor blink
 set laststatus=2				" Always show status line
 set hidden						" Buffers can exist in the background
 set splitright					" Opens vertical split right of current window
@@ -126,7 +125,7 @@ set autowrite
 set diffopt+=iwhite
 set whichwrap+=<,>,l,h,[,]
 
-if has("win32") || has("win16") || has("win32unix")
+if has('win32') || has('win16') || has('win32unix')
     set fileformats=unix,dos
     set fileformat=unix
 else
@@ -257,7 +256,7 @@ nmap <leader>w :w!<cr>
 map <C-n> :cnext<CR>
 map <C-m> :cprevious<CR>
 nnoremap <leader>a :cclose<CR>
-autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
+autocmd vimrc BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 
 " Quickly open a buffer for scribble
 map <leader>t :tabnew<cr>
@@ -272,27 +271,30 @@ map <C-a> <esc>ggVG<CR>
 " -------------------------------------------------------------------
 " Enable deoplete when InsertEnter.
 let g:deoplete#enable_at_startup = 0
-" autocmd InsertEnter * call deoplete#enable()
-autocmd FileType markdown,mkd,md,*gitcommit*,*GITCOMMIT*
+augroup deoplete
+    autocmd!
+    autocmd FileType markdown,mkd,md,*gitcommit*,*GITCOMMIT*
             \ call deoplete#custom#buffer_option('auto_complete', v:false)
-autocmd FileType go,vim
+    autocmd FileType go,vim
             \ call deoplete#enable()
+augroup END
+
 " -------------------------------------------------------------------
 " Custom filetypes
 " -------------------------------------------------------------------
 augroup filetypedetect
-    au BufRead,BufNewFile config.local setfiletype gitconfig
+    autocmd BufRead,BufNewFile config.local setfiletype gitconfig
 augroup END
 
 " -------------------------------------------------------------------
 " FZF
 " -------------------------------------------------------------------
-" let g:fzf_layout = {'left':'~30%'}
 let g:fzf_layout = { 'left': '~40%' }
-
-autocmd! FileType fzf
-autocmd  FileType fzf set laststatus=0 noshowmode noruler
+augroup fzf
+    autocmd! FileType fzf
+    autocmd  FileType fzf set laststatus=0 noshowmode noruler
             \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+augroup END
 
 " -------------------------------------------------------------------
 " Tasks
@@ -304,10 +306,9 @@ let g:TasksMarkerCancelled = 'x'
 " -------------------------------------------------------------------
 " Go
 " -------------------------------------------------------------------
-au FileType go set noexpandtab
 
-let g:go_list_type = "quickfix"
-let g:go_fmt_command = "goimports"
+let g:go_list_type = 'quickfix'
+let g:go_fmt_command = 'goimports'
 
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_extra_types = 1
@@ -323,15 +324,19 @@ let g:go_auto_sameids = 1
 
 let g:go_auto_type_info = 1
 
-au FileType go nmap <leader>gd <Plug>(go-doc)
-au FileType go nmap <leader>gv <Plug>(go-doc-vertical)
-au FileType go nmap <leader>gb <Plug>(go-doc-browser)
-au FileType go nmap <leader>e <Plug>(go-rename)
-au FileType go nmap <leader>gt :GoDeclsDir<cr>
-au FileType go nmap <F12> <Plug>(go-def)
+augroup go
+    autocmd!
+    autocmd FileType go set noexpandtab
+    autocmd FileType go nmap <leader>gd <Plug>(go-doc)
+    autocmd FileType go nmap <leader>gv <Plug>(go-doc-vertical)
+    autocmd FileType go nmap <leader>gb <Plug>(go-doc-browser)
+    autocmd FileType go nmap <leader>e <Plug>(go-rename)
+    autocmd FileType go nmap <leader>gt :GoDeclsDir<cr>
+    autocmd FileType go nmap <F12> <Plug>(go-def)
+    autocmd FileType go nmap <F8> <Plug>(go-metalinter)
+augroup END
 
-au FileType go nmap <F8> <Plug>(go-metalinter)
-let g:go_metalinter_deadline = "5s"
+let g:go_metalinter_deadline = '5s'
 let g:go_metalinter_enabled = [
             \ 'deadcode',
             \ 'errcheck',
@@ -416,7 +421,7 @@ set completeopt=menuone,longest
 set pumheight=15
 
 " SuperTab option for context aware completion
-let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabDefaultCompletionType = 'context'
 
 " -------------------------------------------------------------------
 " Wrap
@@ -444,14 +449,20 @@ let g:delimitMate_smart_matchpairs = '^\%(\w\|\$\)'
 " -------------------------------------------------------------------
 " Whitespace
 " -------------------------------------------------------------------
-autocmd BufWritePre * StripWhitespace
+augroup whitespace
+    autocmd!
+    autocmd BufWritePre * StripWhitespace
+augroup END
 
 " -------------------------------------------------------------------
 " Fish
 " -------------------------------------------------------------------
-autocmd FileType fish compiler fish
-autocmd FileType fish setlocal textwidth=79
-autocmd FileType fish setlocal foldmethod=expr
+augroup fish
+    autocmd!
+    autocmd FileType fish compiler fish
+    autocmd FileType fish setlocal textwidth=79
+    autocmd FileType fish setlocal foldmethod=expr
+augroup END
 
 " -------------------------------------------------------------------
 " Airline
@@ -491,6 +502,7 @@ let g:airline_mode_map = {
             \ }
 
 let g:airline#extensions#wordcount#enabled = 0
+let g:airline#extensions#ale#enabled = 1
 
 " -------------------------------------------------------------------
 " Goyo
@@ -528,8 +540,10 @@ let g:goyo_callbacks = [function('GoyoBefore'), function('GoyoAfter')]
 let g:limelight_conceal_ctermfg = 'gray'
 let g:limelight_conceal_ctermfg = 240
 
-autocmd! User GoyoEnter Limelight
-autocmd! User GoyoLeave Limelight!
+augroup limelight
+    autocmd! User GoyoEnter Limelight
+    autocmd! User GoyoLeave Limelight!
+augroup END
 
 " -------------------------------------------------------------------
 " Easymotion
@@ -558,8 +572,8 @@ let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
 let g:jellybeans_overrides = {
             \    'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
             \}
-colorscheme janah
-let g:airline_theme='bubblegum'
+colorscheme Sierra
+let g:airline_theme='nord'
 
 " -------------------------------------------------------------------
 " Markdown
