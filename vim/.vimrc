@@ -246,7 +246,7 @@ map <leader>rr :source ~/.vimrc<CR>
 nnoremap <leader>q gqip
 
 " ,ev open .vimrc in a vertical split
-nnoremap <leader>ev <C-w><C-s><C-l>:e $MYVIMRC<cr>
+nnoremap <leader>ev <C-w><C-s><C-l>:e ~/.vimrc<cr>
 
 map <F7> mzgg=G`z
 
@@ -502,6 +502,14 @@ let g:airline_mode_map = {
             \ }
 
 let g:airline#extensions#wordcount#enabled = 0
+
+" -------------------------------------------------------------------
+" Ale
+" -------------------------------------------------------------------
+let g:ale_lint_delay = 1000
+let g:ale_sign_warning = '──'
+let g:ale_sign_error = '══'
+
 let g:airline#extensions#ale#enabled = 1
 
 " -------------------------------------------------------------------
@@ -517,19 +525,16 @@ function! GoyoBefore()
         silent !tmux set status off
     endif
 
-    set showmode
-    set noshowcmd
-    set scrolloff=999
+    Limelight
+    let &l:statusline = '%M'
+    hi StatusLine ctermfg=red guifg=red cterm=NONE gui=NONE
 endfunction
 
 function! GoyoAfter()
     if exists('$TMUX')
         silent !tmux set status on
     endif
-
-    set noshowmode
-    set showcmd
-    set scrolloff=5
+    Limelight!
 endfunction
 
 let g:goyo_callbacks = [function('GoyoBefore'), function('GoyoAfter')]
@@ -539,11 +544,8 @@ let g:goyo_callbacks = [function('GoyoBefore'), function('GoyoAfter')]
 " -------------------------------------------------------------------
 let g:limelight_conceal_ctermfg = 'gray'
 let g:limelight_conceal_ctermfg = 240
-
-augroup limelight
-    autocmd! User GoyoEnter Limelight
-    autocmd! User GoyoLeave Limelight!
-augroup END
+let g:limelight_paragraph_span = 1
+let g:limelight_priority = -1
 
 " -------------------------------------------------------------------
 " Easymotion
