@@ -11,7 +11,7 @@ port 465
 tls on
 tls_certcheck on
 tls_starttls off
-tls_fingerprint E4:F7:93:72:46:19:3B:B8:DD:96:53:75:7E:41:AF:F7:95:32:6F:C5:DB:85:F4:B4:33:99:3B:BB:DE:C3:11:ED
+tls_fingerprint BD:DC:89:DA:E4:86:29:89:8A:F1:34:21:D7:84:4F:80:6C:A3:39:43
 
 # smtp hostname
 host mail.messagingengine.com
@@ -34,7 +34,7 @@ port 465
 tls on
 tls_certcheck on
 tls_starttls off
-tls_fingerprint 86:A1:FD:DE:63:09:8A:6C:AA:65:F6:E9:39:6D:A9:DC:C4:AF:5F:5D
+tls_fingerprint 5D:97:F8:92:75:BD:6D:B0:3E:18:6E:53:BE:E1:06:58:C5:D3:F7:70
 
 # smtp hostname
 host send.one.com
