@@ -40,6 +40,7 @@ Plug 'hrother/offlineimaprc.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'irrationalistic/vim-tasks'
+Plug 'neoclide/jsonc.vim'
 
 " Tmux
 Plug 'christoomey/vim-tmux-navigator'
@@ -91,6 +92,7 @@ Plug 'w0rp/ale'
 
 call plug#end()
 
+
 " -------------------------------------------------------------------
 " Appearance
 " -------------------------------------------------------------------
@@ -118,7 +120,7 @@ set laststatus=2				" Always show status line
 set hidden						" Buffers can exist in the background
 set splitright					" Opens vertical split right of current window
 set splitbelow					" Opens horizontal split below current window
-set shortmess=filnxtToOI		" see :help shortmess
+set shortmess=atToOI		" see :help shortmess
 set backspace=indent,eol,start	  " backspace through everything in insert mode
 set nrformats-=octal
 set autowrite

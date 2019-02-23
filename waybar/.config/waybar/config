@@ -9,11 +9,9 @@
     "modules-right": [
         "custom/brightness",
         "pulseaudio",
-        "network",
         "cpu",
         "memory",
-        "battery",
-        "clock"
+        "battery"
     ],
     // Modules configuration
     "sway/workspaces": {
@@ -86,3 +84,4 @@
         "exec": "$HOME/.config/waybar/brightness 2> /dev/null"
     }
 }
+// vi:syntax=jsonc
