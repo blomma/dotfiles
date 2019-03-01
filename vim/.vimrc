@@ -282,13 +282,6 @@ augroup deoplete
 augroup END
 
 " -------------------------------------------------------------------
-" Custom filetypes
-" -------------------------------------------------------------------
-augroup filetypedetect
-    autocmd BufRead,BufNewFile config.local setfiletype gitconfig
-augroup END
-
-" -------------------------------------------------------------------
 " FZF
 " -------------------------------------------------------------------
 let g:fzf_layout = { 'left': '~40%' }
