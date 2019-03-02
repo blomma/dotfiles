@@ -8,19 +8,18 @@ augroup END
 if has('nvim')
     if empty(glob('~/.config/nvim/autoload/plug.vim'))
         silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
-                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+                    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
         autocmd vimrc VimEnter * PlugInstall --sync | source $MYVIMRC
     endif
     call plug#begin('~/.config/nvim/plugged')
 else
     if empty(glob('~/.vim/autoload/plug.vim'))
         silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+                    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
         autocmd vimrc VimEnter * PlugInstall --sync | source $MYVIMRC
     endif
     call plug#begin('~/.vim/plugged')
 endif
-
 
 " Themes
 Plug 'nanotech/jellybeans.vim'
@@ -70,6 +69,7 @@ Plug 'reedes/vim-pencil'
 Plug 'reedes/vim-litecorrect'
 Plug 'kana/vim-textobj-user'
 Plug 'reedes/vim-textobj-quote'
+Plug 'rhysd/vim-grammarous'
 
 Plug 'mhinz/vim-startify'
 
@@ -80,18 +80,17 @@ Plug 'farmergreg/vim-lastplace'
 Plug 'zchee/deoplete-go', { 'do': 'make'}
 
 if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
+    Plug 'Shougo/deoplete.nvim'
+    Plug 'roxma/nvim-yarp'
+    Plug 'roxma/vim-hug-neovim-rpc'
 endif
 
 " Lint
 Plug 'w0rp/ale'
 
 call plug#end()
-
 
 " -------------------------------------------------------------------
 " Appearance
@@ -271,14 +270,13 @@ map <C-a> <esc>ggVG<CR>
 " -------------------------------------------------------------------
 " Deoplete
 " -------------------------------------------------------------------
-" Enable deoplete when InsertEnter.
 let g:deoplete#enable_at_startup = 0
 augroup deoplete
     autocmd!
     autocmd FileType markdown,mkd,md,*gitcommit*,*GITCOMMIT*
-            \ call deoplete#custom#buffer_option('auto_complete', v:false)
+                \ call deoplete#custom#buffer_option('auto_complete', v:false)
     autocmd FileType go,vim
-            \ call deoplete#enable()
+                \ call deoplete#enable()
 augroup END
 
 " -------------------------------------------------------------------
@@ -288,7 +286,7 @@ let g:fzf_layout = { 'left': '~40%' }
 augroup fzf
     autocmd! FileType fzf
     autocmd  FileType fzf set laststatus=0 noshowmode noruler
-            \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+                \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
 augroup END
 
 " -------------------------------------------------------------------
@@ -301,7 +299,6 @@ let g:TasksMarkerCancelled = 'x'
 " -------------------------------------------------------------------
 " Go
 " -------------------------------------------------------------------
-
 let g:go_list_type = 'quickfix'
 let g:go_fmt_command = 'goimports'
 
@@ -314,9 +311,7 @@ let g:go_highlight_methods = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_types = 1
-
 let g:go_auto_sameids = 1
-
 let g:go_auto_type_info = 1
 
 augroup go
@@ -357,7 +352,7 @@ let g:pencil#wrapModeDefault = 'soft'   " default is 'hard'
 augroup pencil
     autocmd!
     autocmd FileType markdown,mkd,md
-                \ call pencil#init({'wrap': 'hard', 'textwidth': 72, 'autoformat': 0})
+                \ call pencil#init({'wrap': 'soft', 'textwidth': 72, 'autoformat': 0})
                 \ | call litecorrect#init()
                 \ | call textobj#quote#init()
     autocmd FileType text
@@ -374,6 +369,13 @@ augroup END
 nnoremap <silent> Q gqap
 xnoremap <silent> Q gq
 nnoremap <silent> <leader>Q vapJgqap
+
+" -------------------------------------------------------------------
+" Grammarous
+" -------------------------------------------------------------------
+let g:grammarous#default_comments_only_filetypes = {
+            \ '*' : 1, 'help' : 0, 'markdown' : 0,
+            \ }
 
 " -------------------------------------------------------------------
 " Mail
@@ -515,31 +517,33 @@ nnoremap <Leader><Space> :Goyo<CR>
 let g:goyo_margin_top = 2
 let g:goyo_margin_bottom = 2
 
-function! GoyoBefore()
-    if exists('$TMUX')
-        silent !tmux set status off
-    endif
-
+function! s:goyo_enter()
+    silent !tmux set status off
+    silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
+    set noshowcmd
+    set scrolloff=999
     Limelight
-    let &l:statusline = '%M'
-    hi StatusLine ctermfg=red guifg=red cterm=NONE gui=NONE
 endfunction
 
-function! GoyoAfter()
-    if exists('$TMUX')
-        silent !tmux set status on
-    endif
+function! s:goyo_leave()
+    silent !tmux set status on
+    silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
+    set showcmd
+    set scrolloff=5
     Limelight!
 endfunction
 
-let g:goyo_callbacks = [function('GoyoBefore'), function('GoyoAfter')]
+augroup Goyo
+    autocmd! User GoyoEnter nested call <SID>goyo_enter()
+    autocmd! User GoyoLeave nested call <SID>goyo_leave()
+augroup END
 
 " -------------------------------------------------------------------
 " Limelight
 " -------------------------------------------------------------------
 let g:limelight_conceal_ctermfg = 'gray'
 let g:limelight_conceal_ctermfg = 240
-let g:limelight_paragraph_span = 1
+let g:limelight_paragraph_span = 0
 let g:limelight_priority = -1
 
 " -------------------------------------------------------------------
