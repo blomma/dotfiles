@@ -64,9 +64,12 @@
     new = green bold
     whitespace = red reverse
 
+[protocol]
+    version = 2
+
 [user]
     name = Mikael Hultgren
-    email = blomma@gmail.com
+    email = blomma@artsoftheinsane.com
 
 [includeIf "gitdir:C:/Projects/"]
     path = config.work
@@ -74,12 +77,8 @@
 [includeIf "gitdir:/mnt/c/Projects/"]
     path = config.work
 
-[filter "lfs"]
-    required = true
-    clean = git-lfs clean -- %f
-    smudge = git-lfs smudge -- %f
-    process = git-lfs filter-process
-[protocol]
-    version = 2
+[include]
+    path = config.local
+
 
 # vi:syntax=gitconfig
