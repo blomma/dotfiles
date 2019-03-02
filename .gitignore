@@ -13,4 +13,4 @@ atom/.atom/!snippets.cson
 atom/.atom/!styles.less
 nvim/.config/nvim/plugged
 nvim/.config/nvim/autoload
-
+git/.config/git/config.local

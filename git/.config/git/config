@@ -64,18 +64,8 @@
     new = green bold
     whitespace = red reverse
 
-
-
-
-[filter "lfs"]
-    required = true
-    clean = git-lfs clean -- %f
-    smudge = git-lfs smudge -- %f
-    process = git-lfs filter-process
 [protocol]
     version = 2
-
-# vi:syntax=gitconfig
 
 [include]
     path = config.local
