@@ -74,6 +74,9 @@
 [includeIf "gitdir:C:/Projects/"]
     path = config.work
 
+[includeIf "gitdir:~/Projects/work/"]
+    path = config.work
+
 [includeIf "gitdir:/mnt/c/Projects/"]
     path = config.work
 
@@ -83,7 +86,7 @@
 
 # vi:syntax=gitconfig
 [filter "lfs"]
-	process = git-lfs filter-process
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
