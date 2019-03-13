@@ -1,21 +1,21 @@
 source ~/.config/fish/color.fish
 
 ### DEFAULTS
-set -gx LC_ALL en_US.UTF-8
-set -gx EDITOR "vim"
-set -gx VISUAL "$EDITOR"
-set -gx MAILDIR $HOME/.mail
+set -x LC_ALL en_US.UTF-8
+set -x EDITOR "vim"
+set -x VISUAL "$EDITOR"
+set -x MAILDIR $HOME/.mail
 
 ### PATH ###
 # set -U fish_user_paths $HOME/go/bin $HOME/.bin $HOME/opt/bin $HOME/.pyenv/bin $HOME/.rbenv/bin /home/linuxbrew/.linuxbrew/bin
 
-set -gx PATH $HOME/go/bin $PATH
-set -gx PATH $HOME/.bin $PATH
-set -gx PATH $HOME/opt/bin $PATH
-set -gx PATH $HOME/.pyenv/bin $PATH
-set -gx PATH $HOME/.rbenv/bin $PATH
-set -gx PATH /home/linuxbrew/.linuxbrew/bin $PATH
-set -gx PATH $HOME/.fzf/bin $PATH
+set -x PATH $HOME/go/bin $PATH
+set -x PATH $HOME/.bin $PATH
+set -x PATH $HOME/opt/bin $PATH
+set -x PATH $HOME/.pyenv/bin $PATH
+set -x PATH $HOME/.rbenv/bin $PATH
+set -x PATH /home/linuxbrew/.linuxbrew/bin $PATH
+set -x PATH $HOME/.fzf/bin $PATH
 
 if status --is-interactive
     ### Abbreviations
