@@ -1,4 +1,9 @@
 [user]
 	email = mikael.hultgren@consortiofashion.com
 
+[alias]
+        spull = subtree pull --prefix=Subtree/Contract --squash contract master
+        spush = subtree push --prefix=Subtree/Contract contract master
+
+
 # vi:syntax=gitconfig
