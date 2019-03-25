@@ -99,6 +99,7 @@ syntax on
 syntax enable
 set noshowmode	" Let airline handle the mode display
 set ttyfast
+set termguicolors
 
 if &term =~? '256color'
     " Disable Background Color Erase (BCE) so that color schemes
