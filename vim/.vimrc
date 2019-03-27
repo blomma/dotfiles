@@ -328,18 +328,18 @@ augroup go
 augroup END
 
 let g:go_metalinter_deadline = '5s'
-let g:go_metalinter_enabled = [
-            \ 'deadcode',
-            \ 'errcheck',
-            \ 'gas',
-            \ 'goconst',
-            \ 'gocyclo',
-            \ 'golint',
-            \ 'gosimple',
-            \ 'ineffassign',
-            \ 'vet',
-            \ 'vetshadow'
-            \]
+" let g:go_metalinter_enabled = [
+"             \ 'deadcode',
+"             \ 'errcheck',
+"             \ 'gas',
+"             \ 'goconst',
+"             \ 'gocyclo',
+"             \ 'golint',
+"             \ 'gosimple',
+"             \ 'ineffassign',
+"             \ 'vet',
+"             \ 'vetshadow'
+"             \]
 
 " -------------------------------------------------------------------
 " Better whitespace
