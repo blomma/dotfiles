@@ -1,28 +1,29 @@
 * {
     border: none;
     border-radius: 0;
-    font-family: Helvetica, Arial, sans-serif;
-    font-size: 15px;
-    min-height: 0;
-    background: rgba(43, 48, 59, 1);
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+    font-size: 13px;
 }
 
-window#waybar {
-    color: rgb(221, 219, 219);
+window {
+    background: rgba(43, 48, 59, 0.5);
+    border-bottom: 3px solid rgba(100, 114, 125, 0.5);
+    color: white;
 }
 
 #workspaces button {
     padding: 0 5px;
+    background: transparent;
     color: white;
+    border-bottom: 3px solid transparent;
+}
+
+#workspaces button.icon label {
+    font-size: 10px;
 }
 
 #workspaces button.focused {
-    background: rgba(100, 114, 125, 0.2);
-    border-bottom: 3px solid white;
-}
-
-#mode {
-    background: transparent;
+    background: #64727d;
     border-bottom: 3px solid white;
 }
 
@@ -32,62 +33,62 @@ window#waybar {
 #memory,
 #network,
 #pulseaudio,
-#custom-spotify,
-#custom-brightness,
-#tray,
-#mode,
-#custom-temp,
-#custom-root,
-#custom-home,
-#custom-backup,
-#custom-scratch,
-#custom-main {
-    padding: 0 6px;
-    margin: 0 3px;
+#custom-spotify {
+    padding: 0 10px;
+    margin: 0 5px;
 }
 
 #clock {
-    border-bottom: 3px solid white;
-    color: white;
+    background-color: #64727d;
 }
 
 #battery {
-    border-bottom: 3px solid white;
-    color: white;
+    background-color: #ffffff;
+    color: black;
 }
 
 #battery.charging {
     color: white;
-    border-bottom: 3px solid #26a65b;
+    background-color: #26a65b;
 }
 
-#battery.warning:not(.charging) {
-    border-bottom: 3px solid #fd6865;
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: black;
+    }
+}
+
+#battery.warning {
+    background: #f53c3c;
     color: white;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
 }
 
 #cpu {
-    border-bottom: 3px solid white;
-    color: white;
+    background: #2ecc71;
+    color: #000000;
 }
 
 #memory {
-    border-bottom: 3px solid white;
-    color: white;
+    background: #9b59b6;
 }
 
 #network {
-    border-bottom: 3px solid white;
-    color: white;
+    background: #2980b9;
 }
 
 #network.disconnected {
-    color: crimson;
+    background: #f53c3c;
 }
 
 #pulseaudio {
-    border-bottom: 3px solid white;
-    color: white;
+    background: #f1c40f;
+    color: black;
 }
 
 #pulseaudio.muted {
@@ -95,11 +96,7 @@ window#waybar {
     color: #2a5c45;
 }
 
-#custom-brightness {
-    border-bottom: 3px solid white;
-    color: white;
-}
-
-#tray {
-    border-bottom: 3px solid white;
+#custom-spotify {
+    background: #66cc99;
+    color: #2a5c45;
 }
