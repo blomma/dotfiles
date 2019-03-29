@@ -67,6 +67,9 @@
 [protocol]
     version = 2
 
+[fetch]
+    pruneTags = true
+
 
 
 
