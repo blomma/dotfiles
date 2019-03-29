@@ -14,7 +14,7 @@ set $down j
 set $up k
 set $right l
 
-set $term gnome-terminal
+set $term ~/.local/kitty.app/bin/kitty
 set $sway_path ~/.config/sway
 
 ### Output configuration
