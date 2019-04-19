@@ -3,7 +3,6 @@
 
 # the tmp directory to use.
 tmpdir="$HOME/.config/neomutt/tmp/mutt_attach"
-open_with=$2
 
 # make sure the tmpdir exists.
 mkdir -p $tmpdir
@@ -30,11 +29,11 @@ cp $1 $newfile
 
 o=`uname -s`
 if [[ "${o,,}" == "darwin" ]] ;then
-    if [ -z $open_with ]; then
+    if [ -z $2 ]; then
         open $newfile
     else
         open -a "$open_with" $newfile
     fi
-elif [[ "${o,,}" == "darwin" ]] ;then
-    setsid xdg-open "$file" >/dev/null 2>&1 &
+elif [[ "${o,,}" == "linux" ]] ;then
+    setsid xdg-open "$newfile" >/dev/null 2>&1 &
 fi
