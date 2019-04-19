@@ -59,7 +59,7 @@ Plug 'tpope/vim-commentary'
 
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
-Plug 'tpope/vim-vinegar'
+Plug 'scrooloose/nerdtree'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'ervandew/supertab'
