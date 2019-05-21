@@ -2,3 +2,4 @@ text/html; ~/.config/neomutt/view_attachment.sh %s; nametemplate=%s.html
 text/html; links -codepage %{charset} -dump %s; copiousoutput;
 application/vnd.openxmlformats-officedocument.wordprocessingml.document; ~/.config/neomutt/view_attachment.sh %s
 application/pdf; ~/.config/neomutt/view_attachment.sh %s
+application/vnd.oasis.opendocument.text; ~/.config/neomutt/view_attachment.sh %s

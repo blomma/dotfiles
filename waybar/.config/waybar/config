@@ -1,19 +1,14 @@
 {
-    "layer": "top", // Waybar at top layer
-    // "position": "bottom", // Waybar at the bottom of your screen
-    // "height": 30, // Waybar height
-    // "width": 1280, // Waybar width
-    // Choose the order of the modules
+    "layer": "top",
     "modules-left": ["sway/workspaces", "sway/mode"],
-    "modules-center": ["sway/window"],
     "modules-right": [
         "custom/brightness",
+        "network",
         "pulseaudio",
         "cpu",
         "memory",
         "battery"
     ],
-    // Modules configuration
     "sway/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
@@ -36,7 +31,8 @@
         "spacing": 10
     },
     "clock": {
-        "format-alt": "{:%Y-%m-%d}"
+        "interval": 1,
+        "format": "{:%Y-%m-%d %H:%M:%S}"
     },
     "cpu": {
         "format": "{usage:3}%"
@@ -57,7 +53,7 @@
     },
     "network": {
         // "interface": "wlp2s0", // (Optional) To force the use of this interface
-        "format-wifi": "{essid} ({signalStrength:3}%)",
+        "format-wifi": "{essid} {signalStrength:3}%",
         "format-ethernet": "{ifname}: {ipaddr}/{cidr}",
         "format-disconnected": "Disconnected"
     },
