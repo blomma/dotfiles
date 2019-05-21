@@ -1,30 +1,33 @@
 * {
-    border: none;
-    border-radius: 0;
-    font-family: Roboto, Helvetica, Arial, sans-serif;
-    font-size: 13px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 14px;
 }
 
 window {
-    background: rgba(43, 48, 59, 0.5);
-    border-bottom: 3px solid rgba(100, 114, 125, 0.5);
+    background: transparent;
     color: white;
 }
 
+#workspaces {
+    padding: 0px;
+    border-radius: 0px 0px 10px 0px;
+    background: rgba(43, 48, 59, 0.5);
+}
+
 #workspaces button {
-    padding: 0 5px;
-    background: transparent;
     color: white;
     border-bottom: 3px solid transparent;
 }
 
-#workspaces button.icon label {
-    font-size: 10px;
+#workspaces button.focused {
+    border-bottom: 3px solid white;
 }
 
-#workspaces button.focused {
-    background: #64727d;
-    border-bottom: 3px solid white;
+#mode {
+    padding: 0px;
+    padding-left: 8px;
+    border-radius: 0px 0px 10px 0px;
+    background: rgba(43, 48, 59, 0.5);
 }
 
 #clock,
@@ -33,9 +36,8 @@ window {
 #memory,
 #network,
 #pulseaudio,
-#custom-spotify {
+#custom-brightness {
     padding: 0 10px;
-    margin: 0 5px;
 }
 
 #clock {
@@ -96,7 +98,7 @@ window {
     color: #2a5c45;
 }
 
-#custom-spotify {
-    background: #66cc99;
-    color: #2a5c45;
+#custom-brightness {
+    border-radius: 0px 0px 0px 10px;
+    background: rgba(43, 48, 59, 0.5);
 }
