@@ -33,7 +33,7 @@
     puf = push --force-with-lease
     raib = "!f() { git rebase -i $(git merge-base --fork-point master); }; f"
     rem="!git config -l | grep remote.*url | tail -n +2"
-    rp = rebase --preserve-merges
+    rp = rebase --rebase-merges
     st = status -s --branch
 
 [core]
