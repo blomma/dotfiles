@@ -80,6 +80,9 @@
 [includeIf "gitdir:~/Projects/work/"]
     path = config.work
 
+[includeIf "gitdir:~/projects/work/"]
+    path = config.work
+
 [includeIf "gitdir:/mnt/c/Projects/"]
     path = config.work
 
