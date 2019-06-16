@@ -11,11 +11,17 @@ if has('nvim')
                     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
         autocmd vimrc VimEnter * PlugInstall --sync | source $MYVIMRC
     endif
+    if empty(glob('~/.config/nvim/plugged'))
+        autocmd vimrc VimEnter * PlugInstall --sync | source $MYVIMRC
+    endif
     call plug#begin('~/.config/nvim/plugged')
 else
     if empty(glob('~/.vim/autoload/plug.vim'))
         silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
                     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+        autocmd vimrc VimEnter * PlugInstall --sync | source $MYVIMRC
+    endif
+    if empty(glob('~/.vim/plugged'))
         autocmd vimrc VimEnter * PlugInstall --sync | source $MYVIMRC
     endif
     call plug#begin('~/.vim/plugged')
