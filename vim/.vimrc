@@ -94,7 +94,7 @@ else
 endif
 
 " Lint
-Plug 'w0rp/ale'
+" Plug 'w0rp/ale'
 
 call plug#end()
 
