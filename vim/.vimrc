@@ -28,12 +28,12 @@ else
 endif
 
 " Themes
-Plug 'nanotech/jellybeans.vim'
+Plug 'AlessandroYorba/Sierra'
+Plug 'arcticicestudio/nord-vim'
 Plug 'blomma/Zenburn'
 Plug 'mhinz/vim-janah'
-Plug 'arcticicestudio/nord-vim'
-Plug 'AlessandroYorba/Despacio'
-Plug 'AlessandroYorba/Sierra'
+Plug 'nanotech/jellybeans.vim'
+Plug 'nightsense/snow'
 
 " Languages
 Plug 'kmnk/vim-csharp'
@@ -583,7 +583,7 @@ let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
 let g:jellybeans_overrides = {
             \    'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
             \}
-colorscheme sierra
+colorscheme janah
 let g:airline_theme='nord'
 
 " -------------------------------------------------------------------
