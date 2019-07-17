@@ -32,7 +32,8 @@ output eDP-1 mode 1920x1080@143.998001Hz
 input "1267:12446:ELAN061B:00_04F3:309E_Touchpad" {
     tap enabled
     natural_scroll enabled
-    dwt disabled
+    dwt enabled
+    drag disabled
 }
 
 input "*" {

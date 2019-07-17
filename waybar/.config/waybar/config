@@ -5,8 +5,8 @@
         "custom/brightness",
         "network",
         "pulseaudio",
-        "cpu",
-        "memory",
+        // "cpu",
+        // "memory",
         "battery"
     ],
     "sway/workspaces": {
