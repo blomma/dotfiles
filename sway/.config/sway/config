@@ -1,10 +1,5 @@
-# Default config for sway
-#
-# Copy this to ~/.config/sway/config and edit it to your liking.
-#
-# Read `man 5 sway` for a complete reference.
 ### Variables
-#
+
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
 
@@ -15,19 +10,14 @@ set $up k
 set $right l
 
 set $term gnome-terminal
-# set $term ~/.local/kitty.app/bin/kitty
 set $sway_path ~/.config/sway
 
 ### Output configuration
-#
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-#output * bg /usr/share/backgrounds/f29/default/normalish/f29.png fill
-exec_always $sway_path/sway_bg.fish
 
+exec_always $sway_path/sway_bg.fish
 output eDP-1 mode 1920x1080@143.998001Hz
 
 ### Input configuration
-#
 
 input "1267:12446:ELAN061B:00_04F3:309E_Touchpad" {
     tap enabled
@@ -42,7 +32,6 @@ input "*" {
 
 
 ### Key bindings
-#
 
 # Brightness
 bindsym XF86MonBrightnessUp exec brightnessctl set +10%
@@ -60,8 +49,8 @@ bindsym $mod+Shift+q kill
 
 # start your launcher
 bindsym $mod+d exec /bin/fish -c "rofi -show run"
-
 # bindsym $mod+d exec rofi -combi-modi window,drun -show combi -modi combi
+
 # Drag floating windows by holding down $mod and left mouse button.
 # Resize them with right mouse button + $mod.
 # Despite the name, also works for non-floating windows.
@@ -74,6 +63,7 @@ bindsym $mod+Shift+c reload
 
 # exit sway (logs you out of your wayland session)
 bindsym $mod+Shift+e exit
+
 #
 # Moving around:
 #
@@ -154,6 +144,7 @@ bindsym $mod+Shift+space floating toggle
 
 # move focus to the parent container
 bindsym $mod+a focus parent
+
 #
 # Scratchpad:
 #
@@ -193,9 +184,8 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-#
-# Status Bar:
-#
+## Status Bar
+
 # Read `man 5 sway-bar` for more information about this section.
 # bar {
 #     font Fira Code 12
@@ -214,6 +204,16 @@ bindsym $mod+r mode "resize"
 
 exec_always $sway_path/waybar.sh
 
+## Behavior
+
+# xwayland version
+for_window [class="Google-chrome"] inhibit_idle fullscreen
+for_window [class="Firefox"] inhibit_idle fullscreen
+
+# wayland vesion
+for_window [app_id="firefox"] inhibit_idle fullscreen
+
+for_window [class="Code"] move container to workspace 5
 #
 # DPMS & auto-lock
 #
