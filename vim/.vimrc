@@ -83,15 +83,17 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'farmergreg/vim-lastplace'
 
-Plug 'zchee/deoplete-go', { 'do': 'make'}
+" Plug 'zchee/deoplete-go', { 'do': 'make'}
 
-if has('nvim')
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-    Plug 'Shougo/deoplete.nvim'
-    Plug 'roxma/nvim-yarp'
-    Plug 'roxma/vim-hug-neovim-rpc'
-endif
+" if has('nvim')
+"     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" else
+"     Plug 'Shougo/deoplete.nvim'
+"     Plug 'roxma/nvim-yarp'
+"     Plug 'roxma/vim-hug-neovim-rpc'
+" endif
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Lint
 " Plug 'w0rp/ale'
@@ -280,14 +282,14 @@ map <C-a> <esc>ggVG<CR>
 " -------------------------------------------------------------------
 " Deoplete
 " -------------------------------------------------------------------
-let g:deoplete#enable_at_startup = 0
-augroup deoplete
-    autocmd!
-    autocmd FileType markdown,mkd,md,*gitcommit*,*GITCOMMIT*
-                \ call deoplete#custom#buffer_option('auto_complete', v:false)
-    autocmd FileType go,vim
-                \ call deoplete#enable()
-augroup END
+" let g:deoplete#enable_at_startup = 0
+" augroup deoplete
+"     autocmd!
+"     autocmd FileType markdown,mkd,md,*gitcommit*,*GITCOMMIT*
+"                 \ call deoplete#custom#buffer_option('auto_complete', v:false)
+"     autocmd FileType go,vim
+"                 \ call deoplete#enable()
+" augroup END
 
 " -------------------------------------------------------------------
 " FZF
