@@ -34,7 +34,7 @@ port 465
 tls on
 tls_certcheck on
 tls_starttls off
-tls_fingerprint 02:7E:8C:16:AC:16:EE:FF:E8:47:66:BE:00:FE:53:36:49:2D:01:EC:7C:E7:3D:07:86:6E:01:4B:89:B0:45:AE
+tls_fingerprint C3:3C:A4:5C:4B:87:4C:28:02:A5:4F:66:6A:1D:76:92:C2:76:C9:87:3E:58:EA:8F:C3:3F:26:A1:88:F3:24:F0
 
 # smtp hostname
 host send.one.com
