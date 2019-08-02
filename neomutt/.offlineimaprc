@@ -34,7 +34,7 @@ localfolders = ~/.mail/brf
 [Repository brf-remote]
 type = IMAP
 ssl = yes
-cert_fingerprint = 43b00d67a87425fbf585be88bab40fb85f05e7fa
+cert_fingerprint = 2698be2e65bdac17d884252c95a9722a134abadcc932cfdea3e63876edd8f62c52ea40de60116f9d817c977c72117f97443d4df97a7ca3d895006014d2bc2cad
 remotehost = imap.one.com
 remoteuser = hultgren.mikael@brfflygledaren.se
 remotepasseval = imappasswd("brf")
