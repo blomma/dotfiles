@@ -106,6 +106,9 @@ bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 
+bindsym $mod+Ctrl+right workspace next
+bindsym $mod+Ctrl+left workspace prev
+
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
 bindsym $mod+Shift+2 move container to workspace 2
@@ -213,7 +216,7 @@ for_window [class="Firefox"] inhibit_idle fullscreen
 # wayland vesion
 for_window [app_id="firefox"] inhibit_idle fullscreen
 
-for_window [class="Code"] move container to workspace 5
+# for_window [class="Code"] move container to workspace 5
 #
 # DPMS & auto-lock
 #
