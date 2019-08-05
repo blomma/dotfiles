@@ -83,20 +83,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'farmergreg/vim-lastplace'
 
-" Plug 'zchee/deoplete-go', { 'do': 'make'}
-
-" if has('nvim')
-"     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" else
-"     Plug 'Shougo/deoplete.nvim'
-"     Plug 'roxma/nvim-yarp'
-"     Plug 'roxma/vim-hug-neovim-rpc'
-" endif
-
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-" Lint
-" Plug 'w0rp/ale'
 
 call plug#end()
 
@@ -280,16 +267,13 @@ map <leader>pp :setlocal paste!<cr>
 map <C-a> <esc>ggVG<CR>
 
 " -------------------------------------------------------------------
-" Deoplete
+" NERDTree
 " -------------------------------------------------------------------
-" let g:deoplete#enable_at_startup = 0
-" augroup deoplete
-"     autocmd!
-"     autocmd FileType markdown,mkd,md,*gitcommit*,*GITCOMMIT*
-"                 \ call deoplete#custom#buffer_option('auto_complete', v:false)
-"     autocmd FileType go,vim
-"                 \ call deoplete#enable()
-" augroup END
+nnoremap <Leader>f :NERDTreeToggle<Enter>
+noremap <silent> <Leader>v :NERDTreeFind<CR>
+let NERDTreeQuitOnOpen = 1
+" let NERDTreeMinimalUI = 1
+" let NERDTreeDirArrows = 1
 
 " -------------------------------------------------------------------
 " FZF
