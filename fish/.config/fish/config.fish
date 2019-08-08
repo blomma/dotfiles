@@ -6,16 +6,14 @@ set -x EDITOR "vim"
 set -x VISUAL "$EDITOR"
 set -x MAILDIR $HOME/.mail
 
-### PATH ###
-# set -U fish_user_paths $HOME/go/bin $HOME/.bin $HOME/opt/bin $HOME/.pyenv/bin $HOME/.rbenv/bin /home/linuxbrew/.linuxbrew/bin
-
 set -x PATH $HOME/go/bin $PATH
 set -x PATH $HOME/.bin $PATH
 set -x PATH $HOME/opt/bin $PATH
 set -x PATH $HOME/.pyenv/bin $PATH
 set -x PATH $HOME/.rbenv/bin $PATH
-set -x PATH /home/linuxbrew/.linuxbrew/bin $PATH
 set -x PATH $HOME/.fzf/bin $PATH
+
+test -d /home/linuxbrew/.linuxbrew/bin; and set -x PATH /home/linuxbrew/.linuxbrew/bin $PATH
 
 if status --is-interactive
     ### Abbreviations
