@@ -1,3 +1,4 @@
+# vi:syntax=neomuttrc
 set from = "Mikael Hultgren <hultgren.mikael@brfflygledaren.se>"
 
 set postponed	= =brf/INBOX.Drafts
@@ -31,5 +32,6 @@ babic.indira@brfflygledaren.se, \
 utter.pablo@brfflygledaren.se, \
 holm.mikael@brfflygledaren.se, \
 mattsson.jonas@brfflygledaren.se, \
-kocko.agneta@brfflygledaren.se \
-bjornhage.erik@brfflygledaren.se
+kocko.agneta@brfflygledaren.se, \
+bjornhage.erik@brfflygledaren.se, \
+inge.s.gustafsson@gmail.com

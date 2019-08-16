@@ -1,3 +1,4 @@
+# vi:syntax=neomuttrc
 set from = "Mikael Hultgren <blomma@artsoftheinsane.com>"
 
 set postponed	= =blomma/INBOX.Drafts

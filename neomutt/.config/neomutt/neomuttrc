@@ -31,7 +31,7 @@ bind index,pager B sidebar-toggle-visible
 mailboxes =blomma
 mailboxes =blomma/INBOX =blomma/INBOX.Drafts =blomma/INBOX.Archive =blomma/INBOX.Sent =blomma/INBOX.Trash =blomma/INBOX.Spam
 mailboxes =brf
-mailboxes =brf/INBOX =brf/INBOX.Archive =brf/INBOX.Sent =brf/INBOX.Trash
+mailboxes =brf/INBOX =brf/INBOX.Drafts =brf/INBOX.Archive =brf/INBOX.Sent =brf/INBOX.Trash =brf/INBOX.Spam
 
 # Mailbox ----------------------------------------------
 set mbox_type	= Maildir
@@ -78,7 +78,8 @@ unset mark_old			# read/new is good enough for me
 unset markers                                                          # In the pager, don't display + at the beginning of wrapped lines; it's distracting
 
 # Query command
-set query_command = "notmuch address from:%s"
+set query_command = "notmuch address --deduplicate=address --output=recipients from:%s or to:%s"
+set query_format="%4c %t %-70.70a %-70.70n %?e?(%e)?"
 bind editor <Tab> complete-query
 bind editor ^T complete
 set query_format="%4c %t %-70.70a %-70.70n %?e?(%e)?"
