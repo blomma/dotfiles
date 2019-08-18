@@ -1,4 +1,4 @@
-# vi:syntax=neomuttrc
+# vim: ft=neomuttrc
 set from = "Mikael Hultgren <hultgren.mikael@brfflygledaren.se>"
 
 set postponed	= =brf/INBOX.Drafts
