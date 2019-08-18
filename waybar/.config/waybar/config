@@ -80,4 +80,4 @@
         "exec": "$HOME/.config/waybar/brightness 2> /dev/null"
     }
 }
-// vi:syntax=jsonc
+// vim: ft=jsonc

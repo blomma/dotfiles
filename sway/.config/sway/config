@@ -243,3 +243,4 @@ client.unfocused        #1e2229 #222222 #888888 #292d2e   #1e2229
 
 
 include /etc/sway/config.d/*
+# vim: ft=sh
