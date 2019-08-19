@@ -85,6 +85,7 @@ Plug 'farmergreg/vim-lastplace'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+Plug 'thaerkh/vim-workspace'
 call plug#end()
 
 " -------------------------------------------------------------------
