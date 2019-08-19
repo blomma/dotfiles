@@ -3,32 +3,22 @@
     "modules-left": ["sway/workspaces", "sway/mode"],
     "modules-right": [
         "custom/brightness",
+        "idle_inhibitor",
         "network",
         "pulseaudio",
-        // "cpu",
-        // "memory",
         "battery"
     ],
     "sway/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
-        "format": "{name}",
-        "format-icons": {
-            "1": "",
-            "2": "",
-            "3": "",
-            "4": "",
-            "5": "",
-            "urgent": "",
-            "focused": "",
-            "default": ""
-        }
+        "format": "{name}"
     },
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>"
     },
     "tray": {
-        "spacing": 10
+        "spacing": 10,
+        "icon-size": 20
     },
     "clock": {
         "interval": 1,
@@ -43,24 +33,27 @@
     "battery": {
         "states": {
             "good": 95,
-            "warning": 30
-            // "critical": 15
+            "warning": 30,
+            "critical": 15
         },
-        "format": "{capacity:3}%",
-        // "format-good": "", // An empty format will hide the module
-        // "format-full": "",
-        "format-icons": ["", "", "", "", ""]
+        "format": "{icon} {capacity}%",
+		"format-icons": [
+			"",
+			"",
+			"",
+			"",
+			""
+		]
     },
     "network": {
-        // "interface": "wlp2s0", // (Optional) To force the use of this interface
-        "format-wifi": "{essid} {signalStrength:3}%",
+        "format-wifi": "{essid}",
         "format-ethernet": "{ifname}: {ipaddr}/{cidr}",
         "format-disconnected": "Disconnected"
     },
     "pulseaudio": {
-        //"scroll-step": 1,
-        "format": "{volume:3}% {icon}",
-        "format-bluetooth": "{volume}% {icon}",
+        "scroll-step": 5,
+        "format": "{icon}  {volume:3}%",
+        "format-bluetooth": "{icon}  {volume:3}%",
         "format-muted": "",
         "format-icons": {
             "headphones": "",
@@ -68,7 +61,6 @@
             "headset": "",
             "phone": "",
             "portable": "",
-            "car": "",
             "default": ["", ""]
         },
         "on-click": "pavucontrol"
@@ -78,6 +70,13 @@
         "max-length": 40,
         "interval": 1, // Remove this if your script is endless and write in loop
         "exec": "$HOME/.config/waybar/brightness 2> /dev/null"
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
     }
 }
 // vim: ft=jsonc
