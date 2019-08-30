@@ -11,7 +11,7 @@ set $right l
 
 set $term gnome-terminal
 set $sway_path ~/.config/sway
-set $menu rofi -show run -run-command 'swaymsg exec -- {cmd}'
+set $menu rofi -combi-modi window#run#ssh -modi window#run#ssh#combi -show combi -run-command 'swaymsg exec -- {cmd}'
 
 ### Output configuration
 
