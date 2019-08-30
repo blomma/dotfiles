@@ -273,6 +273,8 @@ map <C-a> <esc>ggVG<CR>
 nnoremap <Leader>f :NERDTreeToggle<Enter>
 noremap <silent> <Leader>v :NERDTreeFind<CR>
 let NERDTreeQuitOnOpen = 1
+let NERDTreeShowHidden = 1
+
 " let NERDTreeMinimalUI = 1
 " let NERDTreeDirArrows = 1
 
