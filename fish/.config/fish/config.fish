@@ -12,6 +12,7 @@ set -x PATH $HOME/opt/bin $PATH
 set -x PATH $HOME/.pyenv/bin $PATH
 set -x PATH $HOME/.rbenv/bin $PATH
 set -x PATH $HOME/.fzf/bin $PATH
+set -x PATH $PATH /home/blomma/.local/bin
 
 test -d /home/linuxbrew/.linuxbrew/bin; and set -x PATH /home/linuxbrew/.linuxbrew/bin $PATH
 
