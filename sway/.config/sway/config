@@ -11,6 +11,7 @@ set $right l
 
 set $term gnome-terminal
 set $sway_path ~/.config/sway
+set $lock_path ~/.config/sway/lock.sh
 set $menu rofi -combi-modi window#run#ssh -modi window#run#ssh#combi -show combi -run-command 'swaymsg exec -- {cmd}'
 
 ### Output configuration
@@ -33,6 +34,9 @@ input "*" {
 
 
 ### Key bindings
+
+# Screen lock
+bindsym $mod+Ctrl+l exec $lock_path
 
 # Brightness
 bindsym XF86MonBrightnessUp exec brightnessctl set +10%
@@ -222,10 +226,10 @@ for_window [app_id="firefox"] inhibit_idle fullscreen
 # DPMS & auto-lock
 #
 exec swayidle \
-    timeout 300 'swaylock -c 000000' \
+    timeout 300 $lock_path \
     timeout 600 'swaymsg "output * dpms off"' \
     resume 'swaymsg "output * dpms on"' \
-    before-sleep 'swaylock -c 000000'
+    before-sleep $lock_path
 
 #
 # Miscellaneous:
