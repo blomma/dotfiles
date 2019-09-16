@@ -79,8 +79,6 @@ Plug 'rhysd/vim-grammarous'
 
 Plug 'mhinz/vim-startify'
 
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
-Plug 'junegunn/fzf.vim'
 Plug 'farmergreg/vim-lastplace'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -381,17 +379,17 @@ let g:grammarous#default_comments_only_filetypes = {
 " -------------------------------------------------------------------
 function! IsReply()
     if line('$') > 1
-        :1
-        :put! =\"\n\"
+        :%!par w72q
+        :%s/^.\+\ze\n\(>*$\)\@!/\0 /e
+        :%s/^>*\zs\s\+$//e
         :1
     endif
-    :startinsert
 endfunction
 
 augroup mail
     autocmd!
     autocmd FileType Mail
-                \ setlocal fo+=cqlaw
+                \ setl fo=jnawrtcq
                 \ tw=72
                 \ colorcolumn=+1
                 \ expandtab
@@ -403,6 +401,7 @@ augroup mail
                 \ noswapfile
                 \ nowritebackup
     autocmd FileType Mail :call IsReply()
+    autocmd FileType Mail :exe 'startinsert'
 augroup END
 
 " -------------------------------------------------------------------
