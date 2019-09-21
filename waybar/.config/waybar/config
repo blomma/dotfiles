@@ -36,7 +36,7 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "{icon} {capacity}%",
+        "format": "{capacity}%",
 		"format-icons": [
 			"",
 			"",
@@ -66,7 +66,7 @@
         "on-click": "pavucontrol"
     },
     "custom/brightness": {
-        "format": "{:4}💡",
+        "format": "{:4}",
         "max-length": 40,
         "interval": 1, // Remove this if your script is endless and write in loop
         "exec": "$HOME/.config/waybar/brightness 2> /dev/null"
