@@ -1,13 +1,7 @@
 {
     "layer": "top",
     "modules-left": ["sway/workspaces", "sway/mode"],
-    "modules-right": [
-        "custom/brightness",
-        "idle_inhibitor",
-        "network",
-        "pulseaudio",
-        "battery"
-    ],
+    "modules-right": ["custom/brightness", "network", "pulseaudio", "battery"],
     "sway/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
@@ -36,47 +30,36 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "{capacity}%",
-		"format-icons": [
-			"",
-			"",
-			"",
-			"",
-			""
-		]
+        "format": "{capacity}{icon}",
+        "format-icons": ["", "", "", "", "", "", "", "", "", ""]
     },
     "network": {
-        "format-wifi": "{essid}",
-        "format-ethernet": "{ifname}: {ipaddr}/{cidr}",
-        "format-disconnected": "Disconnected"
+        "interval": 5,
+        "format-wifi": "{essid}",
+        "format-ethernet": "{ifname} ",
+        "format-linked": "{ifname} (No IP)",
+        "format-alt": "{ifname}: {ipaddr}",
+        "format-disconnected": "No internet",
+        "tooltip-format": "{ifname} {ipaddr}",
+        "tooltip-format-wifi": "{essid} (s:{signalStrength}) (ip:{ipaddr}) (db:{signaldBm}) (f:{frequency})",
+        "tooltip-format-ethernet": "{ifname} ",
+        "tooltip-format-disconnected": "Disconnected"
     },
     "pulseaudio": {
-        "scroll-step": 5,
-        "format": "{icon}  {volume:3}%",
-        "format-bluetooth": "{icon}  {volume:3}%",
-        "format-muted": "",
+        "tooltip": false,
+        "format": "{volume}{icon}",
+        "format-muted": "",
         "format-icons": {
-            "headphones": "",
-            "handsfree": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "default": ["", ""]
+            "headphones": "",
+            "default": [""]
         },
         "on-click": "pavucontrol"
     },
     "custom/brightness": {
-        "format": "{:4}",
+        "format": "{} ",
         "max-length": 40,
-        "interval": 1, // Remove this if your script is endless and write in loop
-        "exec": "$HOME/.config/waybar/brightness 2> /dev/null"
-    },
-    "idle_inhibitor": {
-        "format": "{icon}",
-        "format-icons": {
-            "activated": "",
-            "deactivated": ""
-        }
+        "interval": 5, // Remove this if your script is endless and write in loop
+        "exec": "fish -c bright"
     }
 }
 // vim: ft=jsonc
