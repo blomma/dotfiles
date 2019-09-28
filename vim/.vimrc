@@ -273,25 +273,13 @@ noremap <silent> <Leader>v :NERDTreeFind<CR>
 let NERDTreeQuitOnOpen = 1
 let NERDTreeShowHidden = 1
 
-" let NERDTreeMinimalUI = 1
-" let NERDTreeDirArrows = 1
-
-" -------------------------------------------------------------------
-" FZF
-" -------------------------------------------------------------------
-let g:fzf_layout = { 'left': '~40%' }
-augroup fzf
-    autocmd! FileType fzf
-    autocmd  FileType fzf set laststatus=0 noshowmode noruler
-                \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
-augroup END
-
 " -------------------------------------------------------------------
 " Tasks
 " -------------------------------------------------------------------
 let g:TasksMarkerBase = '-'
-let g:TasksMarkerDone = '+'
+let g:TasksMarkerDone = '-'
 let g:TasksMarkerCancelled = 'x'
+let g:TasksDateFormat = '%Y-%m-%d'
 
 " -------------------------------------------------------------------
 " Go
