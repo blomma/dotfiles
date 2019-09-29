@@ -345,7 +345,7 @@ augroup pencil
                 \ | call litecorrect#init()
                 \ | call textobj#quote#init()
     autocmd Filetype *gitcommit*,*GITCOMMIT*
-                \ call pencil#init({'wrap': 'hard', 'textwidth': 72, 'autoformat': 0})
+                \ call pencil#init({'wrap': 'hard', 'textwidth': 72, 'autoformat': 1})
                 \ | call litecorrect#init()
     autocmd Filetype tasks
                 \ call pencil#init({'wrap': 'soft', 'textwidth': 72, 'autoformat': 0})
