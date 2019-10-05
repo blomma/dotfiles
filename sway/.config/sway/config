@@ -1,5 +1,4 @@
-### Variables
-
+## Variables
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
 
@@ -14,13 +13,11 @@ set $sway_path ~/.config/sway
 set $lock_path ~/.config/sway/lock.sh
 set $menu rofi -combi-modi window#run#ssh -modi window#run#ssh#combi -show combi -run-command 'swaymsg exec -- {cmd}'
 
-### Output configuration
-
+## Output configuration
 exec_always $sway_path/sway_bg.fish
 output eDP-1 mode 1920x1080@143.998001Hz
 
-### Input configuration
-
+## Input configuration
 input "1267:12446:ELAN061B:00_04F3:309E_Touchpad" {
     tap enabled
     natural_scroll enabled
@@ -28,13 +25,12 @@ input "1267:12446:ELAN061B:00_04F3:309E_Touchpad" {
     drag disabled
 }
 
-input "*" {
+input "1:1:AT_Translated_Set_2_keyboard" {
     xkb_layout se
 }
 
 
-### Key bindings
-
+## Key bindings
 # Screen lock
 bindsym $mod+Ctrl+l exec $lock_path
 
@@ -54,7 +50,6 @@ bindsym $mod+Shift+q kill
 
 # start your launcher
 bindsym $mod+d exec $menu
-# bindsym $mod+d exec rofi -combi-modi window,drun -show combi -modi combi
 
 # Drag floating windows by holding down $mod and left mouse button.
 # Resize them with right mouse button + $mod.
@@ -69,9 +64,6 @@ bindsym $mod+Shift+c reload
 # exit sway (logs you out of your wayland session)
 bindsym $mod+Shift+e exit
 
-#
-# Moving around:
-#
 # Move your focus around
 bindsym $mod+$left focus left
 bindsym $mod+$down focus down
@@ -96,9 +88,6 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-#
-# Workspaces:
-#
 # switch to workspace
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
@@ -110,7 +99,6 @@ bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
-
 bindsym $mod+Ctrl+right workspace next
 bindsym $mod+Ctrl+left workspace prev
 
@@ -128,8 +116,8 @@ bindsym $mod+Shift+0 move container to workspace 10
 # Note: workspaces can have any name you want, not just numbers.
 # We just use 1-10 as the default.
 #
-# Layout stuff:
 #
+# Layout stuff:
 # You can "split" the current object of your focus with
 # $mod+b or $mod+v, for horizontal and vertical splits
 # respectively.
@@ -153,22 +141,19 @@ bindsym $mod+Shift+space floating toggle
 # move focus to the parent container
 bindsym $mod+a focus parent
 
-#
-# Scratchpad:
-#
+
+## Scratchpad:
 # Sway has a "scratchpad", which is a bag of holding for windows.
 # You can send windows there and get them back later.
 
-# Move the currently33 focused window to the scratchpad
+# Move the currently focused window to the scratchpad
 bindsym $mod+Shift+minus move scratchpad
 
 # Show the next scratchpad window or hide the focused scratchpad window.
 # If there are multiple scratchpad windows, this command cycles through them.
 bindsym $mod+minus scratchpad show
 
-#
-# Resizing containers:
-#
+## Resizing containers:
 mode "resize" {
     # left will shrink the containers width
     # right will grow the containers width
@@ -193,27 +178,12 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 ## Status Bar
-
-# Read `man 5 sway-bar` for more information about this section.
-# bar {
-#     font Fira Code 12
-#     position top
-#     colors {
-#         statusline #ffffff
-#         background #323232
-#         inactive_workspace #32323200 #32323200 #5c5c5c
-#     }
-#     status_command $HOME/Downloads/swayblocks/swayblocks
-# }
-
-#bar {
-#	swaybar_command /usr/local/bin/waybar
-#}
-
 exec_always $sway_path/waybar.sh
 
-## Behavior
+## Startup
+exec_always --no-startup-id flashfocus
 
+## Behavior
 # xwayland version
 for_window [class="Google-chrome"] inhibit_idle fullscreen
 for_window [class="Firefox"] inhibit_idle fullscreen
@@ -222,30 +192,25 @@ for_window [class="Firefox"] inhibit_idle fullscreen
 for_window [app_id="firefox"] inhibit_idle fullscreen
 
 # for_window [class="Code"] move container to workspace 5
-#
+
 # DPMS & auto-lock
-#
 exec swayidle \
     timeout 300 $lock_path \
     timeout 600 'swaymsg "output * dpms off"' \
     resume 'swaymsg "output * dpms on"' \
-    before-sleep $lock_path
+    before-sleep $lock_path \
 
-#
-# Miscellaneous:
-#
+
+## Miscellaneous:
 font pango:Fira Code 12
 focus_follows_mouse no
 default_border pixel
 gaps inner 20
 
-# Colors
+## Colors
 # class                 border  backgr. text    indicator child_border
 client.focused          #1e2229 #353535 #bbbbbb #959595   #1e2229
 client.focused_inactive #1e2229 #5f676a #bbbbbb #484e50   #1e2229
 client.unfocused        #1e2229 #222222 #888888 #292d2e   #1e2229
 # client.urgent           #2f343a #900000 #bbbbbb #900000
 
-
-include /etc/sway/config.d/*
-# vim: ft=sh
