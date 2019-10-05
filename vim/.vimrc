@@ -46,6 +46,7 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'irrationalistic/vim-tasks'
 Plug 'neoclide/jsonc.vim'
+Plug '~/projects/sway-vim-syntax'
 
 " Tmux
 Plug 'christoomey/vim-tmux-navigator'
@@ -75,7 +76,6 @@ Plug 'reedes/vim-pencil'
 Plug 'reedes/vim-litecorrect'
 Plug 'kana/vim-textobj-user'
 Plug 'reedes/vim-textobj-quote'
-Plug 'rhysd/vim-grammarous'
 
 Plug 'mhinz/vim-startify'
 
@@ -356,23 +356,8 @@ xnoremap <silent> Q gq
 nnoremap <silent> <leader>Q vapJgqap
 
 " -------------------------------------------------------------------
-" Grammarous
-" -------------------------------------------------------------------
-let g:grammarous#default_comments_only_filetypes = {
-            \ '*' : 1, 'help' : 0, 'markdown' : 0,
-            \ }
-
-" -------------------------------------------------------------------
 " Mail
 " -------------------------------------------------------------------
-function! IsReply()
-    if line('$') > 1
-        :%!par w72q
-        :%s/^.\+\ze\n\(>*$\)\@!/\0 /e
-        :%s/^>*\zs\s\+$//e
-        :1
-    endif
-endfunction
 
 augroup mail
     autocmd!
@@ -388,7 +373,6 @@ augroup mail
                 \ nobackup
                 \ noswapfile
                 \ nowritebackup
-    autocmd FileType Mail :call IsReply()
     autocmd FileType Mail :exe 'startinsert'
 augroup END
 
