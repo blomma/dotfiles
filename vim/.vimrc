@@ -47,6 +47,7 @@ Plug 'ekalinin/Dockerfile.vim'
 Plug 'irrationalistic/vim-tasks'
 Plug 'neoclide/jsonc.vim'
 Plug '~/projects/sway-vim-syntax'
+Plug 'andmatand/vim-pico8-syntax'
 
 " Tmux
 Plug 'christoomey/vim-tmux-navigator'
