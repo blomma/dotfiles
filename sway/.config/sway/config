@@ -9,6 +9,7 @@ set $up k
 set $right l
 
 set $term gnome-terminal
+set $term_alt ~/.local/kitty.app/bin/kitty
 set $sway_path ~/.config/sway
 set $lock_path ~/.config/sway/lock.sh
 set $menu rofi -combi-modi window#run#ssh -modi window#run#ssh#combi -show combi -run-command 'swaymsg exec -- {cmd}'
@@ -44,6 +45,7 @@ bindsym XF86AudioLowerVolume exec --no-startup-id $sway_path/volume -5% #decreas
 bindsym XF86AudioMute exec --no-startup-id $sway_path/volume mute_toggle # mute sound
 
 bindsym $mod+Return exec $term
+bindsym $mod+Shift+Return exec $term_alt
 
 # kill focused window
 bindsym $mod+Shift+q kill
