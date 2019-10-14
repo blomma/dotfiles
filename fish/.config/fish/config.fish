@@ -13,7 +13,6 @@ if status --is-interactive
     abbr --add --global tma tmux attach -d -t
 end
 
-
 ### Fisher
 if not functions -q fisher
     set -q XDG_CONFIG_HOME
