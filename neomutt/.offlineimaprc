@@ -1,6 +1,3 @@
-# Sample minimal config file.  Copy this to ~/.offlineimaprc and edit to
-# get started fast.
-
 [general]
 accounts = blomma,brf
 pythonfile = ~/.offlineimap.py
@@ -20,7 +17,7 @@ ssl = yes
 cert_fingerprint = bddc89dae48629898af13421d7844f806ca33943
 remotehost = mail.messagingengine.com
 remoteuser = blomma@artsoftheinsane.com
-remotepasseval = imappasswd("blomma")
+remotepasseval = op_passwd("Fastmail", "pp_blomma")
 
 [Account brf]
 localrepository = brf-local
@@ -37,4 +34,4 @@ ssl = yes
 cert_fingerprint = 3ad236f8befca58c385161507cdcacc3395c7c46f195f38eef66344ddd482e925cb44df4d7a046956b1d789bf5bc7e5b61c1262de6d86a5d28729ecfa4d75051
 remotehost = imap.one.com
 remoteuser = hultgren.mikael@brfflygledaren.se
-remotepasseval = imappasswd("brf")
+remotepasseval = op_passwd("BRF Mikael", "password")
