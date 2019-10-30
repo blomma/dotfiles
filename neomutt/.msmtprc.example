@@ -22,7 +22,7 @@ from user@example.com
 # enable authentication
 auth on
 user user@example.com
-passwordeval cat ~/.offlineimap.password
+passwordeval fish -c 'op_ example-item app_password'
 
 # -- account --
 account secondary
@@ -45,6 +45,6 @@ from user@example.com
 # enable authentication
 auth on
 user user@example.com
-passwordeval cat ~/.offlineimap.secondary.password
+passwordeval fish -c 'op_ example-item "password"'
 
 account default : personal
