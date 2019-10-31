@@ -30,8 +30,12 @@ bind index,pager B sidebar-toggle-visible
 # Mailboxes to show in the sidebar.
 mailboxes =blomma
 mailboxes =blomma/INBOX =blomma/INBOX.Drafts =blomma/INBOX.Archive =blomma/INBOX.Lists =blomma/INBOX.Sent =blomma/INBOX.Notes =blomma/INBOX.Trash =blomma/INBOX.Spam
+
 mailboxes =brf
 mailboxes =brf/INBOX =brf/INBOX.Drafts =brf/INBOX.Archive =brf/INBOX.Sent =brf/INBOX.Trash =brf/INBOX.Spam
+
+mailboxes =mother
+mailboxes =mother/INBOX =mother/INBOX.Drafts =mother/INBOX.Sent =mother/INBOX.Spam =mother/INBOX.Trash
 
 # Mailbox ----------------------------------------------
 set mbox_type	= Maildir
@@ -112,5 +116,6 @@ source ~/.config/neomutt/mhn.muttrc
 source ~/.config/neomutt/accounts/blomma
 folder-hook blomma/* source ~/.config/neomutt/accounts/blomma
 folder-hook brf/* source ~/.config/neomutt/accounts/brf
+folder-hook mother/* source ~/.config/neomutt/accounts/mother
 
 push <show-version>

@@ -1,5 +1,5 @@
 [general]
-accounts = blomma,brf
+accounts = blomma,brf, mother
 pythonfile = ~/.offlineimap.py
 
 [Account blomma]
@@ -35,3 +35,20 @@ cert_fingerprint = 3ad236f8befca58c385161507cdcacc3395c7c46f195f38eef66344ddd482
 remotehost = imap.one.com
 remoteuser = hultgren.mikael@brfflygledaren.se
 remotepasseval = op_passwd("BRF Mikael", "password")
+
+[Account mother]
+localrepository = mother-local
+remoterepository = mother-remote
+postsynchook = ~/.offlineimap.postsynchook
+
+[Repository mother-local]
+type = Maildir
+localfolders = ~/.mail/mother
+
+[Repository mother-remote]
+type = IMAP
+ssl = yes
+cert_fingerprint = e2ba8f194270451720b50344add4611534ff52e5736055e37b6285e2ce5886a450f2b6e0015317360421e5d6f688611ec05f455ee9f817a65b77e4779b8e0419
+remotehost = mail.runbox.com
+remoteuser = mikael@mother.technology
+remotepasseval = op_passwd("Runbox", "password")

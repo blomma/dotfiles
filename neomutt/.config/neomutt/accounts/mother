@@ -1,0 +1,28 @@
+# vim: ft=neomuttrc
+set from = "Mikael Hultgren <mikael@mother.technology>"
+
+set postponed	= =mother/INBOX.Drafts
+set record		= =mother/INBOX.Sent
+set spoolfile	= =mother/INBOX
+set trash       = =mother/INBOX.Trash
+
+# Sending ----------------------------------------------
+set sendmail		= "msmtp -a mother"
+set sendmail_wait	= 0
+set use_from		= yes
+
+macro index,pager s "\
+<enter-command>unset resolve<enter>\
+<save-message>=blomma/INBOX.LSpam<enter>\
+<sync-mailbox><enter>\
+<enter-command>set resolve<enter>" \
+"Learn Spam"
+
+macro index,pager a "\
+<enter-command>unset resolve<enter>\
+<save-message>=blomma/INBOX.Archive<enter>\
+<sync-mailbox><enter>\
+<enter-command>set resolve<enter>" \
+"Archive message"
+
+macro attach W "<save-entry><bol>~/Download/<eol>" "Save to desktop"
