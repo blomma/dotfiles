@@ -35,7 +35,7 @@ mailboxes =brf
 mailboxes =brf/INBOX =brf/INBOX.Drafts =brf/INBOX.Archive =brf/INBOX.Sent =brf/INBOX.Trash =brf/INBOX.Spam
 
 mailboxes =mother
-mailboxes =mother/INBOX =mother/INBOX.Drafts =mother/INBOX.Sent =mother/INBOX.Spam =mother/INBOX.Trash
+mailboxes =mother/INBOX =mother/INBOX.Drafts =mother/INBOX.Archive =mother/INBOX.Sent =mother/INBOX.Spam =mother/INBOX.Trash
 
 # Mailbox ----------------------------------------------
 set mbox_type	= Maildir
@@ -54,7 +54,7 @@ set rfc2047_parameters  = yes
 set date_format			= "%d-%m-%y"                                   # a simple date format
 set delete				# don't ask, just do
 set edit_headers		= no
-set editor				= "vim '+set filetype=Mail'"
+set editor				= "nvim '+set filetype=Mail'"
 set fast_reply                                                         # do not ask for to, subject, etc when replying
 set forward_format		= "Fwd: %s"                                    # when forwarding email, simply add a Fwd to the subject
 set help				= no
