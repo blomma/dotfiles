@@ -5,7 +5,7 @@ function op
         # When called python this needs to be done before setting it again
         set -e OP_SESSION_blomma
 
-        set -Ux OP_SESSION_blomma $session_key
+        set -gx OP_SESSION_blomma $session_key
     end
 
     command op $argv
