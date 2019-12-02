@@ -28,14 +28,11 @@ bind index,pager <right> sidebar-open
 bind index,pager B sidebar-toggle-visible
 
 # Mailboxes to show in the sidebar.
-mailboxes =personal
-mailboxes =personal/INBOX =personal/INBOX.Drafts =personal/INBOX.Archive =personal/INBOX.Lists =personal/INBOX.Sent =personal/INBOX.Notes =personal/INBOX.Trash =personal/INBOX.Spam
+named-mailboxes personal/Inbox =personal/INBOX personal/Drafts =personal/INBOX.Drafts personal/Archive =personal/INBOX.Archive personal/Lists =personal/INBOX.Lists personal/Sent =personal/INBOX.Sent personal/Notes =personal/INBOX.Notes personal/Trash =personal/INBOX.Trash personal/Spam =personal/INBOX.Spam
 
-mailboxes =secondary
-mailboxes =secondary/INBOX =secondary/INBOX.Drafts =secondary/INBOX.Archive =secondary/INBOX.Sent =secondary/INBOX.Trash =secondary/INBOX.Spam
+named-mailboxes secondary/Inbox =secondary/INBOX secondary/Drafts =secondary/INBOX.Drafts secondary/Archive =secondary/INBOX.Archive secondary/Sent =secondary/INBOX.Sent secondary/Trash =secondary/INBOX.Trash secondary/Spam =secondary/INBOX.Spam
 
-mailboxes =work
-mailboxes =work/INBOX =work/INBOX.Drafts =work/INBOX.Archive =work/INBOX.Sent =work/INBOX.Spam =work/INBOX.Trash
+named-mailboxes work/Inbox =work/INBOX work/Drafts =work/Drafts work/Sent =work/Sent work/Spam =work/Spam work/Trash =work/Trash
 
 # Mailbox ----------------------------------------------
 set mbox_type	= Maildir
