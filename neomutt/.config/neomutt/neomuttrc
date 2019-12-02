@@ -28,14 +28,11 @@ bind index,pager <right> sidebar-open
 bind index,pager B sidebar-toggle-visible
 
 # Mailboxes to show in the sidebar.
-mailboxes =blomma
-mailboxes =blomma/INBOX =blomma/INBOX.Drafts =blomma/INBOX.Archive =blomma/INBOX.Lists =blomma/INBOX.Sent =blomma/INBOX.Notes =blomma/INBOX.Trash =blomma/INBOX.Spam
+named-mailboxes blomma/Inbox =blomma/INBOX blomma/Drafts =blomma/INBOX.Drafts blomma/Archive =blomma/INBOX.Archive blomma/Lists =blomma/INBOX.Lists blomma/Sent =blomma/INBOX.Sent blomma/Notes =blomma/INBOX.Notes blomma/Trash =blomma/INBOX.Trash blomma/Spam =blomma/INBOX.Spam
 
-mailboxes =brf
-mailboxes =brf/INBOX =brf/INBOX.Drafts =brf/INBOX.Archive =brf/INBOX.Sent =brf/INBOX.Trash =brf/INBOX.Spam
+named-mailboxes brf/Inbox =brf/INBOX brf/Drafts =brf/INBOX.Drafts brf/Archive =brf/INBOX.Archive brf/Sent =brf/INBOX.Sent brf/Trash =brf/INBOX.Trash brf/Spam =brf/INBOX.Spam
 
-mailboxes =mother
-mailboxes =mother/INBOX =mother/INBOX.Drafts =mother/INBOX.Archive =mother/INBOX.Sent =mother/INBOX.Spam =mother/INBOX.Trash
+named-mailboxes mother/Inbox =mother/INBOX mother/Drafts =mother/Drafts mother/Sent =mother/Sent mother/Spam =mother/Spam mother/Trash =mother/Trash
 
 # Mailbox ----------------------------------------------
 set mbox_type	= Maildir

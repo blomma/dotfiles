@@ -1,10 +1,10 @@
 # vim: ft=neomuttrc
 set from = "Mikael Hultgren <mikael@mother.technology>"
 
-set postponed	= =mother/INBOX.Drafts
-set record		= =mother/INBOX.Sent
+set postponed	= =mother/Drafts
+set record		= =mother/Sent
 set spoolfile	= =mother/INBOX
-set trash       = =mother/INBOX.Trash
+set trash       = =mother/Trash
 
 # Sending ----------------------------------------------
 set sendmail		= "msmtp -a mother"
