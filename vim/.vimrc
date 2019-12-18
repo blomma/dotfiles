@@ -545,7 +545,7 @@ let g:jellybeans_overrides = {
             \    'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
             \}
 colorscheme janah
-let g:airline_theme='nord'
+let g:airline_theme='bubblegum'
 
 " -------------------------------------------------------------------
 " Markdown
