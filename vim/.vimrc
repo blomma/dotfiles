@@ -84,9 +84,6 @@ Plug 'farmergreg/vim-lastplace'
 
 Plug 'thaerkh/vim-workspace'
 
-" Automatically clear search highlights after you move your cursor.
-Plug 'haya14busa/is.vim'
-
 call plug#end()
 
 " -------------------------------------------------------------------
