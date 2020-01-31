@@ -1,5 +1,5 @@
 [general]
-accounts = blomma,brf, mother
+accounts = blomma,mother
 pythonfile = ~/.offlineimap.py
 
 [Account blomma]
@@ -14,27 +14,10 @@ localfolders = ~/.mail/blomma
 [Repository blomma-remote]
 type = IMAP
 ssl = yes
-cert_fingerprint = bddc89dae48629898af13421d7844f806ca33943
+cert_fingerprint = c3b43678680c605062beffc6fac48d5b0623a27f448f7fa38bd0ab6f673323d4ccb6e841fb8828e4ad174070caef4cbf3a06e3ef86ae2ea605afa35ad7ef3abd
 remotehost = mail.messagingengine.com
 remoteuser = blomma@artsoftheinsane.com
-remotepasseval = op_passwd("Fastmail", "pp_blomma")
-
-[Account brf]
-localrepository = brf-local
-remoterepository = brf-remote
-postsynchook = ~/.offlineimap.postsynchook
-
-[Repository brf-local]
-type = Maildir
-localfolders = ~/.mail/brf
-
-[Repository brf-remote]
-type = IMAP
-ssl = yes
-cert_fingerprint = 0b27ec090875e238c3f84c3f26611636516a68ce99a2dc8bdc6d86c44ca56ebcd6d6510a72d55684af8d7cf08fa6999fedc781259077e50d88ecfdb59fae34d0
-remotehost = imap.one.com
-remoteuser = hultgren.mikael@brfflygledaren.se
-remotepasseval = op_passwd("BRF Mikael", "password")
+remotepasseval = get_pass("fastmail")
 
 [Account mother]
 localrepository = mother-local
@@ -48,7 +31,7 @@ localfolders = ~/.mail/mother
 [Repository mother-remote]
 type = IMAP
 ssl = yes
-cert_fingerprint = e2ba8f194270451720b50344add4611534ff52e5736055e37b6285e2ce5886a450f2b6e0015317360421e5d6f688611ec05f455ee9f817a65b77e4779b8e0419
+cert_fingerprint = 91092da0582175dc59f162c92732756f1463e8401e5d038ed7435da316d94bdebc5d590273b4868404264f2a5f6d459a943011c460ba26adb7f73893d4cb9480
 remotehost = mail.runbox.com
 remoteuser = mikael@mother.technology
-remotepasseval = op_passwd("Runbox", "password")
+remotepasseval = get_pass("runbox")
