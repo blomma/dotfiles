@@ -14,3 +14,5 @@ nvim/.config/nvim/plugged
 nvim/.config/nvim/autoload
 git/.config/git/config.local
 neomutt/.config/neomutt/tmp
+offlineimap/.config/offlineimap/*.gpg
+offlineimap/.config/offlineimap/*.pyc

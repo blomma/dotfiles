@@ -1,11 +1,12 @@
+# vim: ft=offlineimap
 [general]
 accounts = blomma,mother
-pythonfile = ~/.offlineimap.py
+pythonfile = ~/.config/offlineimap/offlineimap.py
 
 [Account blomma]
 localrepository = blomma-local
 remoterepository = blomma-remote
-postsynchook = ~/.offlineimap.postsynchook
+postsynchook = ~/.config/offlineimap/postsynchook.sh
 
 [Repository blomma-local]
 type = Maildir
@@ -22,7 +23,7 @@ remotepasseval = get_pass("fastmail")
 [Account mother]
 localrepository = mother-local
 remoterepository = mother-remote
-postsynchook = ~/.offlineimap.postsynchook
+postsynchook = ~/.config/offlineimap/postsynchook.sh
 
 [Repository mother-local]
 type = Maildir
