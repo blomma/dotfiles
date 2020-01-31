@@ -1,4 +1,3 @@
-mutt/.offlineimap.password
 ssh/.ssh/config.d
 ssh/.ssh/known_hosts
 ssh/.ssh/*_rsa*
@@ -14,3 +13,4 @@ atom/.atom/!styles.less
 nvim/.config/nvim/plugged
 nvim/.config/nvim/autoload
 git/.config/git/config.local
+neomutt/.config/neomutt/tmp
