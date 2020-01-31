@@ -4,7 +4,7 @@ import commands
 
 
 def get_pass(account_name):
-    cmd = """gpg -dq ~/.offlineimap.%s.gpg""" % (account_name)
+    cmd = """gpg -dq ~/.config/offlineimap/%s.gpg""" % (account_name)
     return subprocess.check_output(cmd, shell=True).strip("\n")
 
 

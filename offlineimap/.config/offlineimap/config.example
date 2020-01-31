@@ -1,11 +1,12 @@
+# vim: ft=offlineimap
 [general]
 accounts = personal,work
-pythonfile = ~/.offlineimap.py
+pythonfile = ~/.config/offlineimap/offlineimap.py
 
 [Account personal]
 localrepository = personal-local
 remoterepository = personal-remote
-postsynchook = ~/.offlineimap.postsynchook
+postsynchook = ~/.config/offlineimap/postsynchook.sh
 
 [Repository personal-local]
 type = Maildir
@@ -22,7 +23,7 @@ remotepasseval = get_pass("fastmail")
 [Account work]
 localrepository = work-local
 remoterepository = work-remote
-postsynchook = ~/.offlineimap.postsynchook
+postsynchook = ~/.config/offlineimap/postsynchook.sh
 
 [Repository work-local]
 type = Maildir
