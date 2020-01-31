@@ -6,7 +6,7 @@ set -x EDITOR "vim"
 set -x VISUAL "$EDITOR"
 set -x MAILDIR $HOME/.mail
 
-set -x fish_user_paths $HOME/go/bin $HOME/opt/bin $HOME/.fzf/bin $HOME/.local/bin /home/linuxbrew/.linuxbrew/bin
+set -x fish_user_paths $HOME/go/bin $HOME/opt/bin $HOME/.fzf/bin $HOME/.local/bin /home/linuxbrew/.linuxbrew/bin $HOME/Library/Python/3.7/bin
 
 if status --is-interactive
     ### Abbreviations

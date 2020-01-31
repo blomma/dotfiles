@@ -1,3 +1,5 @@
+# vim: ft=neomuttrc
+
 # Reference https://www.neomutt.org/guide/advancedusage.html#patterns and https://www.neomutt.org/guide/configuration.html#color
 # Colours for items in the index
 color index brightyellow black ~F

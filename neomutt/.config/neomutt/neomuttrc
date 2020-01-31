@@ -30,8 +30,6 @@ bind index,pager B sidebar-toggle-visible
 # Mailboxes to show in the sidebar.
 named-mailboxes personal/Inbox =personal/INBOX personal/Drafts =personal/INBOX.Drafts personal/Archive =personal/INBOX.Archive personal/Lists =personal/INBOX.Lists personal/Sent =personal/INBOX.Sent personal/Notes =personal/INBOX.Notes personal/Trash =personal/INBOX.Trash personal/Spam =personal/INBOX.Spam
 
-named-mailboxes secondary/Inbox =secondary/INBOX secondary/Drafts =secondary/INBOX.Drafts secondary/Archive =secondary/INBOX.Archive secondary/Sent =secondary/INBOX.Sent secondary/Trash =secondary/INBOX.Trash secondary/Spam =secondary/INBOX.Spam
-
 named-mailboxes work/Inbox =work/INBOX work/Drafts =work/Drafts work/Sent =work/Sent work/Spam =work/Spam work/Trash =work/Trash
 
 # Mailbox ----------------------------------------------
@@ -103,16 +101,17 @@ set realname		= "Your Name"
 
 # Header Options ----------------------------------------------
 ignore *                                                               # ignore all headers
-unignore from: to: cc: date: subject:                                  # show only these
+# unignore from: to: cc: date: subject:                                  # show only these
 unhdr_order *                                                          # some distros order things by default
 hdr_order from: to: cc: date: subject:                                 # and in this order
 
 # Colors ----------------------------------------------
-source ~/.config/neomutt/mhn.muttrc
+source ~/.config/neomutt/themes/gruvbox-powerline
+source ~/.config/neomutt/themes/powerline
+# source ~/.config/neomutt/themes/mhn
 
 source ~/.config/neomutt/accounts/personal
 folder-hook personal/* source ~/.config/neomutt/accounts/personal
-folder-hook secondary/* source ~/.config/neomutt/accounts/secondary
 folder-hook work/* source ~/.config/neomutt/accounts/work
 
 push <show-version>

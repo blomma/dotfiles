@@ -1,0 +1,48 @@
+# vim: ft=neomuttrc
+
+#     <object>   <fg>    <bg>
+color attachment yellow  color0
+color error      red     color0
+color hdrdefault color8  color0 # Default color of the message header in the pager.
+color indicator  color15 red
+color markers    red     color0 # The + at the beginning of wrapped lines in the pager.
+color message    white   color0
+color normal     white   color0
+color prompt     white   color0
+color quoted     color8  color0
+color quoted1    color8  color0
+color quoted2    color8  color0
+color quoted3    color8  color0
+color quoted4    color8  color0
+color quoted5    color8  color0
+color quoted6    color8  color0
+color quoted7    color8  color0
+color quoted8    color8  color0
+color quoted9    color8  color0
+color search     default magenta
+color signature  color8  color0
+color status     black   blue
+color tilde      default color0 # Used to pad blank lines in the pager.
+color tree       default color0
+
+# Regexp patterns for the message header.
+color header     red     color0 ^From
+color header     red     color0 ^Subject
+
+# Color the index using patterns.  See <https://dev.mutt.org/doc/manual.html#patterns>.
+# XXX: only one color command is ever applied to a line of the index and it's the one
+# listed last here.  This means we can't set a background color and a foreground color
+# from separate patterns.
+color index      red      color0 "~z 262144-" # bigger than 256 KiB
+color index      color8   color0 ~u           # addressed to a subscribed mailing list
+color index      cyan     color0 ~g           # signed
+color index      blue     color0 ~G           # encrypted
+color index      color8   default ~P          # from me
+# TODO: it would be nice if the background color from this pattern could be active at the
+# same time as another pattern's foreground color.
+color index      default  color234 ~v # part of a collapsed thread
+color index      green    color0 ~N   # new
+color index      yellow   color0 ~T   # tagged
+color index      color8   color0 ~D   # deleted
+
+color sidebar_divider blue default
