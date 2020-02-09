@@ -20,8 +20,8 @@
     conflicts = diff --name-only --diff-filter=U
     df = diff --word-diff
     dp = diff --patch-with-stat
-    dsf = "!f() { [ -z \"$GIT_PREFIX\" ] || cd \"$GIT_PREFIX\" && git diff --color \"$@\" | sed 's/^M$//' | diff-so-fancy | less --tabs=4 -RFX; }; f"
-    dsfb = "!f() { [ -z \"$GIT_PREFIX\" ] || cd \"$GIT_PREFIX\" && git diff --color \"$@\" $(git merge-base --fork-point master) | sed 's/^M$//' | diff-so-fancy | less --tabs=4 -RFX; }; f"
+    dsf = "!f() { git diff --minimal \"$@\" | tig; }; f"
+    dsfb = "!f() { [ -z \"$GIT_PREFIX\" ] || cd \"$GIT_PREFIX\" && git diff --minimal \"$@\" $(git merge-base --fork-point master) | tig; }; f"
     dt = difftool
     hack = "!f() { git fetch -p && git rebase origin/master master && git checkout -b $1 master; }; f"
     it = "!f() { git init && git commit -m root --allow-empty; }; f"
