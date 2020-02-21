@@ -1,3 +1,5 @@
+# vi:syntax=gitconfig
+
 [push]
     default = simple
 
@@ -89,4 +91,5 @@
 [include]
     path = config.local
 
-# vi:syntax=gitconfig
+[hub]
+	protocol = https

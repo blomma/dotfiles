@@ -6,12 +6,14 @@ set -x EDITOR "vim"
 set -x VISUAL "$EDITOR"
 set -x MAILDIR $HOME/.mail
 
-set -x fish_user_paths $HOME/go/bin $HOME/opt/bin $HOME/.fzf/bin $HOME/.local/bin /home/linuxbrew/.linuxbrew/bin $HOME/Library/Python/3.7/bin
+set -x fish_user_paths $HOME/go/bin $HOME/opt/bin $HOME/.fzf/bin $HOME/.local/bin /home/linuxbrew/.linuxbrew/bin $HOME/Library/Python/3.7/bin $HOME/.dotnet/tools
 
 if status --is-interactive
     ### Abbreviations
     abbr --add --global tma tmux attach -d -t
 end
+
+status --is-interactive; and source (rbenv init -|psub)
 
 ### Fisher
 if not functions -q fisher
