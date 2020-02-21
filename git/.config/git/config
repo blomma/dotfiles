@@ -1,3 +1,5 @@
+# vi:syntax=gitconfig
+
 [push]
     default = simple
 
@@ -69,6 +71,15 @@
 
 [fetch]
     pruneTags = true
+
+
+
+
+
+
+
+[hub]
+	protocol = https
 
 [include]
     path = config.local

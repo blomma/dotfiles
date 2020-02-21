@@ -13,7 +13,7 @@
 	<key>DVTConsoleDebuggerPromptTextColor</key>
 	<string>0.262881 0.570214 0.903264 1</string>
 	<key>DVTConsoleDebuggerPromptTextFont</key>
-	<string>FiraCode-Regular - 18.0</string>
+	<string>FiraCode-Retina - 18.0</string>
 	<key>DVTConsoleExectuableInputTextColor</key>
 	<string>1 1 1 1</string>
 	<key>DVTConsoleExectuableInputTextFont</key>
@@ -33,7 +33,7 @@
 	<key>DVTFontAndColorVersion</key>
 	<integer>1</integer>
 	<key>DVTLineSpacing</key>
-	<real>1</real>
+	<real>1.1000000238418579</real>
 	<key>DVTMarkupTextBackgroundColor</key>
 	<string>0.236237 0.236237 0.236237 1</string>
 	<key>DVTMarkupTextBorderColor</key>
@@ -202,7 +202,7 @@
 		<key>xcode.syntax.number</key>
 		<string>FiraCode-Regular - 18.0</string>
 		<key>xcode.syntax.plain</key>
-		<string>FiraCode-Retina - 18.0</string>
+		<string>FiraCode-Light - 18.0</string>
 		<key>xcode.syntax.preprocessor</key>
 		<string>FiraCode-Regular - 18.0</string>
 		<key>xcode.syntax.string</key>
