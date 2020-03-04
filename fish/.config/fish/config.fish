@@ -13,7 +13,7 @@ if status --is-interactive
     abbr --add --global tma tmux attach -d -t
 end
 
-status --is-interactive; and source (rbenv init -|psub)
+status --is-interactive; and type -q rbenv; and source (rbenv init -|psub)
 
 ### Fisher
 if not functions -q fisher
