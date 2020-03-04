@@ -34,6 +34,7 @@ Plug 'blomma/Zenburn'
 Plug 'mhinz/vim-janah'
 Plug 'nanotech/jellybeans.vim'
 Plug 'nightsense/snow'
+Plug 'blasco/vim-corvine'
 
 " Languages
 Plug 'kmnk/vim-csharp'
@@ -46,7 +47,6 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'irrationalistic/vim-tasks'
 Plug 'neoclide/jsonc.vim'
-Plug '~/projects/sway-vim-syntax'
 Plug 'andmatand/vim-pico8-syntax'
 
 " Tmux
@@ -84,6 +84,9 @@ Plug 'farmergreg/vim-lastplace'
 
 Plug 'thaerkh/vim-workspace'
 
+Plug 'camspiers/animate.vim'
+Plug 'camspiers/lens.vim'
+
 call plug#end()
 
 " -------------------------------------------------------------------
@@ -101,9 +104,6 @@ if &term =~? '256color'
     set t_ut=
 endif
 
-if &term =~? 'xterm-kitty'
-    set t_ut=
-endif
 " -------------------------------------------------------------------
 " Basic Setup
 " -------------------------------------------------------------------
@@ -270,7 +270,31 @@ map <C-a> <esc>ggVG<CR>
 " -------------------------------------------------------------------
 nnoremap <Leader>f :NERDTreeToggle<Enter>
 noremap <silent> <Leader>v :NERDTreeFind<CR>
+
+" Ignore some stuff
+let NERDTreeIgnore = ['.git$', '^node_modules', 'undodir']
+
+" Enable minimal ui
+let g:NERDTreeMinimalUI = 1
+
+" Enable cursorline highlighting
+let g:NERDTreeHighlightCursorline = 1
+
+" Enable folder highlighting
+let g:NERDTreeHighlightFolders = 1
+
+" Set NERDTree size
+let g:NERDTreeWinSize = 30
+
+" Set NERDTree statusline
+let g:NERDTreeStatusline = -1
+
+" Automatically close nerdtree when opening a file
 let NERDTreeQuitOnOpen = 1
+
+" Automatically delete buffer if files deleted in nerdtree
+let NERDTreeAutoDeleteBuffer = 1
+
 let NERDTreeShowHidden = 1
 
 " -------------------------------------------------------------------
@@ -312,18 +336,6 @@ augroup go
 augroup END
 
 let g:go_metalinter_deadline = '5s'
-" let g:go_metalinter_enabled = [
-"             \ 'deadcode',
-"             \ 'errcheck',
-"             \ 'gas',
-"             \ 'goconst',
-"             \ 'gocyclo',
-"             \ 'golint',
-"             \ 'gosimple',
-"             \ 'ineffassign',
-"             \ 'vet',
-"             \ 'vetshadow'
-"             \]
 
 " -------------------------------------------------------------------
 " Better whitespace
@@ -469,15 +481,7 @@ let g:airline_mode_map = {
             \ }
 
 let g:airline#extensions#wordcount#enabled = 0
-
-" -------------------------------------------------------------------
-" Ale
-" -------------------------------------------------------------------
-let g:ale_lint_delay = 1000
-let g:ale_sign_warning = '──'
-let g:ale_sign_error = '══'
-
-let g:airline#extensions#ale#enabled = 1
+let g:airline_theme='deus'
 
 " -------------------------------------------------------------------
 " Goyo
@@ -543,8 +547,7 @@ let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
 let g:jellybeans_overrides = {
             \    'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
             \}
-colorscheme janah
-let g:airline_theme='bubblegum'
+colorscheme corvine
 
 " -------------------------------------------------------------------
 " Markdown
