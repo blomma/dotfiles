@@ -1,12 +1,31 @@
-function op_ --argument item field
-    set -l jq_command (string replace -a '#field' $field '.details?.sections[]?.fields[]? | select(.t=="#field").v')
-    set -l result (op get item $item| jq -r $jq_command)
-
-    if string length -q $result
-        echo $result
-    else
-        set -l jq_command (string replace -a '#field' $field '.details?.fields[]? | select(.designation=="#field").value')
-        set -l result (op get item $item| jq -r $jq_command)
-        echo $result
+function op_ --argument item field field2
+    function _signin
+        set -l session_key (command op signin blomma --output=raw)
+        set -e OP_SESSION_blomma
+        set -gx OP_SESSION_blomma $session_key
     end
+
+    function _test_and_achieve --argument r f
+        set -l jq_command (string replace -a '#field' $f '.details?.sections[]?.fields[]? | select(.t=="#field").v')
+        set -l result (echo $r | jq -r $jq_command 2>&1)
+
+        if string length -q $result
+            echo $result
+        else
+            set -l jq_command (string replace -a '#field' $f '.details?.fields[]? | select(.designation=="#field").value')
+            set -l result (echo $r | jq -r $jq_command 2>&1)
+            echo $result
+        end
+    end
+
+    set result (command op get item $item 2>&1)
+
+    if string match -ie 'You are not currently signed in' $result 2>&1 > /dev/null
+        _signin
+        set result (command op get item $item 2>&1)
+    end
+
+    _test_and_achieve $result $field
+    _test_and_achieve $result $field2
+
 end
