@@ -107,8 +107,7 @@ hdr_order from: to: cc: date: subject:                                 # and in 
 
 # Colors ----------------------------------------------
 source ~/.config/neomutt/themes/gruvbox-powerline
-source ~/.config/neomutt/themes/powerline
-# source ~/.config/neomutt/themes/mhn
+# source ~/.config/neomutt/themes/powerline
 
 source ~/.config/neomutt/accounts/blomma
 folder-hook blomma/* source ~/.config/neomutt/accounts/blomma
