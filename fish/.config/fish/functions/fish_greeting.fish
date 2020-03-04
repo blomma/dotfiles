@@ -3,7 +3,6 @@ function fish_greeting -d "What's up, fish?"
         and command -s lolcat >/dev/null
         neofetch --disable packages theme icons resolution host cpu gpu | lolcat
     else
-
         echo -n "くコ:彡 "
         set_color $fish_color_autosuggestion
         echo -n (uname -nmsr | string lower | string replace ".local" "")
