@@ -39,7 +39,7 @@
     st = status -s --branch
 
 [core]
-    editor = "'vim' +startinsert"
+    editor = "'nvim' +startinsert"
     whitespace = blank-at-eol,space-before-tab,blank-at-eof,cr-at-eol
 
 [commit]
