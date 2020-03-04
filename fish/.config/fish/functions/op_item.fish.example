@@ -1,0 +1,3 @@
+function op_item
+    op_ example-item passphrase password
+end
