@@ -1,4 +1,4 @@
-function op_ --argument item field field2
+function op_ --argument item
     function _signin
         set -l session_key (command op signin blomma --output=raw)
         set -e OP_SESSION_blomma
@@ -20,12 +20,16 @@ function op_ --argument item field field2
 
     set result (command op get item $item 2>&1)
 
-    if string match -ie 'You are not currently signed in' $result 2>&1 > /dev/null
+    if string match -ie 'session expired' $result 2>&1 > /dev/null
         _signin
         set result (command op get item $item 2>&1)
     end
 
-    _test_and_achieve $result $field
-    _test_and_achieve $result $field2
+    # Nuke the item from the arguments passed
+    set -e argv[1]
+    set -l fields $argv
 
+    for field in $fields
+        _test_and_achieve $result $field
+    end
 end
