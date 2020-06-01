@@ -28,7 +28,7 @@ bind index,pager <right> sidebar-open
 bind index,pager B sidebar-toggle-visible
 
 # Mailboxes to show in the sidebar.
-named-mailboxes blomma/Inbox =blomma/INBOX blomma/Drafts =blomma/INBOX.Drafts blomma/Archive =blomma/INBOX.Archive blomma/Lists =blomma/INBOX.Lists blomma/Sent =blomma/INBOX.Sent blomma/Notes =blomma/INBOX.Notes blomma/Trash =blomma/INBOX.Trash blomma/Spam =blomma/INBOX.Spam
+named-mailboxes blomma/Inbox =blomma/INBOX blomma/Drafts =blomma/INBOX.Drafts blomma/Archive =blomma/INBOX.Archive blomma/Lists =blomma/INBOX.Lists blomma/Sent =blomma/INBOX.Sent blomma/Notes =blomma/INBOX.Notes blomma/Trash =blomma/INBOX.Trash blomma/Spam =blomma/INBOX.Spam blomma/LSpam =blomma/INBOX.LSpam
 
 named-mailboxes mother/Inbox =mother/INBOX mother/Drafts =mother/Drafts mother/Sent =mother/Sent mother/Spam =mother/Spam mother/Trash =mother/Trash
 

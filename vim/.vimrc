@@ -1,5 +1,7 @@
 set encoding=utf-8
 scriptencoding utf-8
+set fileencoding=utf-8          " The encoding written to file
+set termencoding=utf-8
 
 augroup vimrc
     autocmd!
@@ -15,16 +17,6 @@ if has('nvim')
         autocmd vimrc VimEnter * PlugInstall --sync | source $MYVIMRC
     endif
     call plug#begin('~/.config/nvim/plugged')
-else
-    if empty(glob('~/.vim/autoload/plug.vim'))
-        silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-                    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-        autocmd vimrc VimEnter * PlugInstall --sync | source $MYVIMRC
-    endif
-    if empty(glob('~/.vim/plugged'))
-        autocmd vimrc VimEnter * PlugInstall --sync | source $MYVIMRC
-    endif
-    call plug#begin('~/.vim/plugged')
 endif
 
 " Themes
@@ -35,11 +27,10 @@ Plug 'mhinz/vim-janah'
 Plug 'nanotech/jellybeans.vim'
 Plug 'nightsense/snow'
 Plug 'blasco/vim-corvine'
+Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
 
 " Languages
-Plug 'kmnk/vim-csharp'
 Plug 'dag/vim-fish'
-Plug 'Keithbsmiley/swift.vim'
 Plug 'plasticboy/vim-markdown'
 Plug 'neomutt/neomutt.vim'
 Plug 'hrother/offlineimaprc.vim'
@@ -48,9 +39,8 @@ Plug 'ekalinin/Dockerfile.vim'
 Plug 'irrationalistic/vim-tasks'
 Plug 'neoclide/jsonc.vim'
 Plug 'andmatand/vim-pico8-syntax'
-
-" Tmux
-Plug 'christoomey/vim-tmux-navigator'
+Plug 'OmniSharp/omnisharp-vim'
+Plug 'keith/swift.vim'
 
 " Airline provides a stylish appearance for the styleline
 Plug 'vim-airline/vim-airline'
@@ -78,14 +68,13 @@ Plug 'reedes/vim-litecorrect'
 Plug 'kana/vim-textobj-user'
 Plug 'reedes/vim-textobj-quote'
 
-Plug 'mhinz/vim-startify'
-
 Plug 'farmergreg/vim-lastplace'
-
-Plug 'thaerkh/vim-workspace'
 
 Plug 'camspiers/animate.vim'
 Plug 'camspiers/lens.vim'
+Plug 'dense-analysis/ale'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'justinmk/vim-sneak'
 
 call plug#end()
 
@@ -95,7 +84,6 @@ call plug#end()
 syntax on
 syntax enable
 set noshowmode	" Let airline handle the mode display
-set ttyfast
 set termguicolors
 
 if &term =~? '256color'
@@ -107,29 +95,25 @@ endif
 " -------------------------------------------------------------------
 " Basic Setup
 " -------------------------------------------------------------------
-set ruler			  " Show line and column number
-set termencoding=utf-8
 let mapleader=','
-set history=1000				" Store lots of :cmdline history
-set showcmd						" Show incomplete cmds down the bottom
-set guicursor=a:blinkon0		" Disable cursor blink
-set laststatus=2				" Always show status line
-set hidden						" Buffers can exist in the background
-set splitright					" Opens vertical split right of current window
-set splitbelow					" Opens horizontal split below current window
-set shortmess=atToOI		" see :help shortmess
-set backspace=indent,eol,start	  " backspace through everything in insert mode
-set nrformats-=octal
 set autowrite
+set backspace=indent,eol,start	" backspace through everything in insert mode
+set cmdheight=2                 " More space for displaying messages
 set diffopt+=iwhite
+set guicursor=a:blinkon0		" Disable cursor blink
+set hidden						" Buffers can exist in the background
+set history=1000				" Store lots of :cmdline history
+set iskeyword+=-                " treat dash separated words as a word text object"
+set laststatus=2				" Always show status line
+set nrformats-=octal
+set ruler			            " Show line and column number
+set shortmess=atToOI		    " see :help shortmess
+set showcmd						" Show incomplete cmds down the bottom
+set splitbelow					" Opens horizontal split below current window
+set splitright					" Opens vertical split right of current window
 set whichwrap+=<,>,l,h,[,]
-
-if has('win32') || has('win16') || has('win32unix')
-    set fileformats=unix,dos
-    set fileformat=unix
-else
-    set fileformats+=mac
-endif
+set t_Co=256                    " Support 256 colors
+set conceallevel=0              " So that I can see `` in markdown files
 
 " dont save .netrwhist history
 let g:netrw_dirhistmax=0
@@ -164,17 +148,7 @@ set formatoptions+=j " Delete comment character when joining commented lines
 " -------------------------------------------------------------------
 " Copy/Paste
 " -------------------------------------------------------------------
-" " Copy to clipboard
-vnoremap  <leader>y  "+y
-nnoremap  <leader>Y  "+yg_
-nnoremap  <leader>y  "+y
-nnoremap  <leader>yy  "+yy
-
-" " Paste from clipboard
-nnoremap <leader>p "+p
-nnoremap <leader>P "+P
-vnoremap <leader>p "+p
-vnoremap <leader>P "+P
+set clipboard=unnamedplus               " Copy paste between vim and everything else
 
 " -------------------------------------------------------------------
 " Folds
@@ -235,9 +209,8 @@ set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 
 " -------------------------------------------------------------------
-" Custom Commands
+" Mappings
 " -------------------------------------------------------------------
-
 " ,rr => refresh vimrc
 map <leader>rr :source ~/.vimrc<CR>
 
@@ -265,6 +238,106 @@ map <leader>pp :setlocal paste!<cr>
 
 map <C-a> <esc>ggVG<CR>
 
+" Better window navigation
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+" Better tabbing
+vnoremap < <gv
+vnoremap > >gv
+
+" -------------------------------------------------------------------
+" Sneak
+" -------------------------------------------------------------------
+let g:sneak#label = 1
+
+" -------------------------------------------------------------------
+" C#
+" -------------------------------------------------------------------
+" Use the stdio OmniSharp-roslyn server
+let g:OmniSharp_server_stdio = 1
+
+" Set the type lookup function to use the preview window instead of echoing it
+" let g:OmniSharp_typeLookupInPreview = 1
+
+" Timeout in seconds to wait for a response from the server
+let g:OmniSharp_timeout = 5
+
+" Don't autoselect first omnicomplete option, show options even if there is only
+" one (so the preview documentation is accessible). Remove 'preview' if you
+" don't want to see any documentation whatsoever.
+" set completeopt=longest,menuone,preview
+
+" Fetch full documentation during omnicomplete requests.
+" By default, only Type/Method signatures are fetched. Full documentation can
+" still be fetched when you need it with the :OmniSharpDocumentation command.
+"let g:omnicomplete_fetch_full_documentation = 1
+
+" Set desired preview window height for viewing documentation.
+" You might also want to look at the echodoc plugin.
+set previewheight=5
+
+" Tell ALE to use OmniSharp for linting C# files, and no other linters.
+let g:ale_linters = { 'cs': ['OmniSharp'] }
+
+" Update semantic highlighting after all text changes
+let g:OmniSharp_highlight_types = 0
+" Update semantic highlighting on BufEnter and InsertLeave
+" let g:OmniSharp_highlight_types = 2
+
+augroup omnisharp_commands
+    autocmd!
+
+    autocmd FileType cs set ut=500
+    " Show type information automatically when the cursor stops moving.
+    " Note that the type is echoed to the Vim command line, and will overwrite
+    " any other messages in this space including e.g. ALE linting messages.
+    autocmd CursorHold *.cs OmniSharpTypeLookup
+
+    " The following commands are contextual, based on the cursor position.
+    autocmd FileType cs nnoremap <buffer> gd :OmniSharpGotoDefinition<CR>
+    autocmd FileType cs nnoremap <buffer> <Leader>fi :OmniSharpFindImplementations<CR>
+    autocmd FileType cs nnoremap <buffer> <Leader>fs :OmniSharpFindSymbol<CR>
+    autocmd FileType cs nnoremap <buffer> <Leader>fu :OmniSharpFindUsages<CR>
+
+    " Finds members in the current buffer
+    autocmd FileType cs nnoremap <buffer> <Leader>fm :OmniSharpFindMembers<CR>
+
+    autocmd FileType cs nnoremap <buffer> <Leader>fx :OmniSharpFixUsings<CR>
+    autocmd FileType cs nnoremap <buffer> <Leader>tt :OmniSharpTypeLookup<CR>
+    autocmd FileType cs nnoremap <buffer> <Leader>dc :OmniSharpDocumentation<CR>
+    autocmd FileType cs nnoremap <buffer> <C-\> :OmniSharpSignatureHelp<CR>
+    autocmd FileType cs inoremap <buffer> <C-\> <C-o>:OmniSharpSignatureHelp<CR>
+
+    " Navigate up and down by method/property/field
+    " autocmd FileType cs nnoremap <buffer> <C-k> :OmniSharpNavigateUp<CR>
+    " autocmd FileType cs nnoremap <buffer> <C-j> :OmniSharpNavigateDown<CR>
+
+    " Find all code errors/warnings for the current solution and populate the quickfix window
+    autocmd FileType cs nnoremap <buffer> <Leader>cc :OmniSharpGlobalCodeCheck<CR>
+augroup END
+
+" Contextual code actions (uses fzf, CtrlP or unite.vim when available)
+nnoremap <Leader><Space> :OmniSharpGetCodeActions<CR>
+" Run code actions with text selected in visual mode to extract method
+xnoremap <Leader><Space> :call OmniSharp#GetCodeActions('visual')<CR>
+
+" Rename with dialog
+nnoremap <Leader>nm :OmniSharpRename<CR>
+nnoremap <F2> :OmniSharpRename<CR>
+" Rename without dialog - with cursor on the symbol to rename: `:Rename newname`
+command! -nargs=1 Rename :call OmniSharp#RenameTo("<args>")
+
+nnoremap <Leader>cf :OmniSharpCodeFormat<CR>
+
+" Start the omnisharp server for the current solution
+nnoremap <Leader>ss :OmniSharpStartServer<CR>
+nnoremap <Leader>sp :OmniSharpStopServer<CR>
+
+" Enable snippet completion
+" let g:OmniSharp_want_snippet=1
 " -------------------------------------------------------------------
 " NERDTree
 " -------------------------------------------------------------------
@@ -394,7 +467,8 @@ augroup END
 set complete=.,w,b,u,t
 
 " Complete options (disable preview scratch window)
-set completeopt=menuone,longest
+" set completeopt=menuone,longest
+set completeopt=longest,menuone,preview
 
 " Limit popup menu height
 set pumheight=15
@@ -457,7 +531,7 @@ let g:airline_right_alt_sep = ''
 let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = '☰'
-let g:airline_symbols.maxlinenr = ''
+let g:airline_symbols.maxlinenr = ''
 
 " unicode symbols
 let g:airline_symbols.crypt = '🔒'
@@ -486,7 +560,7 @@ let g:airline_theme='deus'
 " -------------------------------------------------------------------
 " Goyo
 " -------------------------------------------------------------------
-nnoremap <Leader><Space> :Goyo<CR>
+" nnoremap <Leader><Space> :Goyo<CR>
 
 let g:goyo_margin_top = 2
 let g:goyo_margin_bottom = 2
@@ -542,15 +616,14 @@ map <Leader>h <Plug>(easymotion-linebackward)
 let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
 
 " -------------------------------------------------------------------
+" Markdown
+" -------------------------------------------------------------------
+let g:vim_markdown_frontmatter = 1
+
+" -------------------------------------------------------------------
 " Theme
 " -------------------------------------------------------------------
 let g:jellybeans_overrides = {
             \    'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
             \}
-colorscheme corvine
-
-" -------------------------------------------------------------------
-" Markdown
-" -------------------------------------------------------------------
-let g:vim_markdown_frontmatter = 1
-
+colorscheme challenger_deep
