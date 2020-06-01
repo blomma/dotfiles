@@ -28,7 +28,7 @@ bind index,pager <right> sidebar-open
 bind index,pager B sidebar-toggle-visible
 
 # Mailboxes to show in the sidebar.
-named-mailboxes personal/Inbox =personal/INBOX personal/Drafts =personal/INBOX.Drafts personal/Archive =personal/INBOX.Archive personal/Lists =personal/INBOX.Lists personal/Sent =personal/INBOX.Sent personal/Notes =personal/INBOX.Notes personal/Trash =personal/INBOX.Trash personal/Spam =personal/INBOX.Spam
+named-mailboxes personal/Inbox =personal/INBOX personal/Drafts =personal/INBOX.Drafts personal/Archive =personal/INBOX.Archive personal/Lists =personal/INBOX.Lists personal/Sent =personal/INBOX.Sent personal/Notes =personal/INBOX.Notes personal/Trash =personal/INBOX.Trash personal/Spam =personal/INBOX.Spam personal/LSpam =personal/INBOX.LSpam
 
 named-mailboxes work/Inbox =work/INBOX work/Drafts =work/Drafts work/Sent =work/Sent work/Spam =work/Spam work/Trash =work/Trash
 
