@@ -79,7 +79,10 @@
 
 
 [hub]
-	protocol = https
+    protocol = https
+
+[pull]
+    rebase = false
 
 [include]
     path = config.local
