@@ -92,4 +92,7 @@
     path = config.local
 
 [hub]
-	protocol = https
+    protocol = https
+
+[pull]
+    rebase = false
