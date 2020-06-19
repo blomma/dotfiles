@@ -81,9 +81,6 @@ set query_command = "notmuch address --deduplicate=address --output=recipients f
 set query_format="%4c %t %-70.70a %-70.70n %?e?(%e)?"
 bind editor <Tab> complete-query
 bind editor ^T complete
-set query_format="%4c %t %-70.70a %-70.70n %?e?(%e)?"
-
-#set query_command="/usr/local/bin/lbdbq '%s'"
 
 # Macros and Keybindings ----------------------------------------------
 bind pager j next-line
