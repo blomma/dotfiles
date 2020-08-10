@@ -34,7 +34,7 @@ port 465
 tls on
 tls_certcheck on
 tls_starttls off
-tls_fingerprint C8:A0:B3:1C:FF:AC:69:A4:2D:B3:05:2A:42:0B:95:79:68:94:A2:95:38:DF:0C:E0:78:49:7A:9A:4D:16:28:2E
+tls_fingerprint 18:D0:3A:76:57:A5:09:0A:47:8B:0D:26:D7:F9:61:5E:5E:5F:2A:7B:92:C3:25:DB:A5:D6:C9:1A:2C:8A:DD:AE
 
 # smtp hostname
 host mail.runbox.com
