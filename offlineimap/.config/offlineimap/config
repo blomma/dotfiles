@@ -15,7 +15,7 @@ localfolders = ~/.mail/blomma
 [Repository blomma-remote]
 type = IMAP
 ssl = yes
-cert_fingerprint = c3b43678680c605062beffc6fac48d5b0623a27f448f7fa38bd0ab6f673323d4ccb6e841fb8828e4ad174070caef4cbf3a06e3ef86ae2ea605afa35ad7ef3abd
+cert_fingerprint = 48:50:EB:01:67:E8:22:24:1A:B1:74:F4:B5:0A:98:16:F4:06:92:97:70:76:92:AF:B0:EE:0D:4D:89:6E:4A:09
 remotehost = mail.messagingengine.com
 remoteuser = blomma@artsoftheinsane.com
 remotepasseval = get_pass("fastmail")
@@ -32,7 +32,7 @@ localfolders = ~/.mail/mother
 [Repository mother-remote]
 type = IMAP
 ssl = yes
-cert_fingerprint = 35aaf5b23c8fabd5ebab703c06d9fb6421cf4cc8491ba465a49f678f692f57d26640972107dd91680723d5b6e3475b5c953c3f4014e8bb9fa8d5cefcd67501d9
+cert_fingerprint = 18:D0:3A:76:57:A5:09:0A:47:8B:0D:26:D7:F9:61:5E:5E:5F:2A:7B:92:C3:25:DB:A5:D6:C9:1A:2C:8A:DD:AE
 remotehost = mail.runbox.com
 remoteuser = mikael@mother.technology
 remotepasseval = get_pass("runbox")
