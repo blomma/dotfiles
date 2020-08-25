@@ -283,7 +283,7 @@ set previewheight=5
 let g:ale_linters = { 'cs': ['OmniSharp'] }
 
 " Update semantic highlighting after all text changes
-let g:OmniSharp_highlight_types = 0
+let g:OmniSharp_highlight_types = 1
 " Update semantic highlighting on BufEnter and InsertLeave
 " let g:OmniSharp_highlight_types = 2
 
@@ -626,4 +626,4 @@ let g:vim_markdown_frontmatter = 1
 let g:jellybeans_overrides = {
             \    'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
             \}
-colorscheme challenger_deep
+colorscheme jellybeans
