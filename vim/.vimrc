@@ -28,6 +28,7 @@ Plug 'nanotech/jellybeans.vim'
 Plug 'nightsense/snow'
 Plug 'blasco/vim-corvine'
 Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
+Plug 'dracula/vim', { 'as': 'dracula' }
 
 " Languages
 Plug 'dag/vim-fish'
@@ -626,4 +627,4 @@ let g:vim_markdown_frontmatter = 1
 let g:jellybeans_overrides = {
             \    'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
             \}
-colorscheme jellybeans
+colorscheme dracula

@@ -43,33 +43,33 @@
 	<key>DVTMarkupTextEmphasisColor</key>
 	<string>0.972826 0.972826 0.972826 1</string>
 	<key>DVTMarkupTextEmphasisFont</key>
-	<string>.SFNS-RegularItalic - 17.0</string>
+	<string>.SFNS-RegularItalic - 13.0</string>
 	<key>DVTMarkupTextInlineCodeColor</key>
 	<string>0.972826 0.972826 0.972826 0.7</string>
 	<key>DVTMarkupTextLinkColor</key>
 	<string>0.560784 0.615686 0.415686 1</string>
 	<key>DVTMarkupTextLinkFont</key>
-	<string>.SFNS-Regular - 17.0</string>
+	<string>.SFNS-Regular - 13.0</string>
 	<key>DVTMarkupTextNormalColor</key>
 	<string>0.972826 0.972826 0.972826 1</string>
 	<key>DVTMarkupTextNormalFont</key>
-	<string>.SFNS-Regular - 17.0</string>
+	<string>.SFNS-Regular - 13.0</string>
 	<key>DVTMarkupTextOtherHeadingColor</key>
 	<string>0.972826 0.972826 0.972826 0.5</string>
 	<key>DVTMarkupTextOtherHeadingFont</key>
-	<string>.SFNS-Regular - 23.8</string>
+	<string>.SFNS-Regular - 18.2</string>
 	<key>DVTMarkupTextPrimaryHeadingColor</key>
 	<string>0.972826 0.972826 0.972826 1</string>
 	<key>DVTMarkupTextPrimaryHeadingFont</key>
-	<string>.SFNS-Regular - 40.8</string>
+	<string>.SFNS-Regular - 31.2</string>
 	<key>DVTMarkupTextSecondaryHeadingColor</key>
 	<string>0.972826 0.972826 0.972826 1</string>
 	<key>DVTMarkupTextSecondaryHeadingFont</key>
-	<string>.SFNS-Regular - 30.6</string>
+	<string>.SFNS-Regular - 23.4</string>
 	<key>DVTMarkupTextStrongColor</key>
 	<string>0.972826 0.972826 0.972826 1</string>
 	<key>DVTMarkupTextStrongFont</key>
-	<string>.SFNS-Bold - 17.0</string>
+	<string>.SFNS-Bold - 13.0</string>
 	<key>DVTScrollbarMarkerAnalyzerColor</key>
 	<string>0.403922 0.372549 1 1</string>
 	<key>DVTScrollbarMarkerBreakpointColor</key>
@@ -85,7 +85,7 @@
 	<key>DVTScrollbarMarkerWarningColor</key>
 	<string>0.937255 0.717647 0.34902 1</string>
 	<key>DVTSourceTextBackground</key>
-	<string>0.169823 0.169823 0.169823 1</string>
+	<string>0.102457 0.102141 0.102699 1</string>
 	<key>DVTSourceTextBlockDimBackgroundColor</key>
 	<string>0.5 0.5 0.5 1</string>
 	<key>DVTSourceTextCurrentLineHighlightColor</key>
