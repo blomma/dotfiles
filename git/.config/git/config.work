@@ -5,5 +5,7 @@
         spull = subtree pull --prefix=Subtree/Contract --squash contract master
         spush = subtree push --prefix=Subtree/Contract contract master
 
+[credential]
+	helper = cache --timeout=3600
 
 # vi:syntax=gitconfig
