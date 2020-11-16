@@ -1,10 +1,9 @@
 # Paths ----------------------------------------------
-set alias_file       = ~/.mutt/alias		# where to store aliases
-set folder           = ~/.mail				# mailbox location
-set mailcap_path     = ~/.config/neomutt/mailcap		# entries for filetypes
-set message_cachedir = /tmp/				# where to store bodies
-set signature        = ~/.mutt/sig			# my signature file
-set tmpdir           = ~/.config/neomutt/tmp/				# where to keep temp files
+set alias_file       = ~/.mutt/alias
+set folder           = ~/.mail
+set mailcap_path     = ~/.config/neomutt/mailcap
+set signature        = ~/.mutt/sig
+set tmpdir           = ~/.config/neomutt/tmp/
 set header_cache     = ~/.config/neomutt/tmp/
 set header_cache_backend = lmdb
 
@@ -42,39 +41,36 @@ folder-hook . 'set read_inc=1000'
 set nm_query_type = threads
 
 # Basic Options --------------------------------------
-alternative_order text/plain text/enriched text/html                   # save html for last
-auto_view text/html                                                    # autoview html
+alternative_order text/html text/plain text/enriched
+auto_view text/html
 
 set rfc2047_parameters  = yes
-set date_format			= "%d-%m-%y"                                   # a simple date format
-set delete				# don't ask, just do
+set date_format			= "%d-%m-%y"
+set delete
 set edit_headers		= no
 set editor				= "nvim '+set filetype=Mail'"
-set fast_reply                                                         # do not ask for to, subject, etc when replying
-set forward_format		= "Fwd: %s"                                    # when forwarding email, simply add a Fwd to the subject
+set fast_reply
+set forward_format		= "Fwd: %s"
 set help				= no
-set include                                                            # always include message when replying
-set index_format		= "[%Z]%?X?A& ?  %D  %-20.20F  %s"                     # format of the index view, show all flags, date, the sender and finally the subject
-set mail_check			= 60		# minimum time between scans
-set menu_scroll                                                        # scroll in menus
-set pager_context		= 5                                            # When going to the next page, keep the bottom two lines of this page on top so that I have some context
-set pager_index_lines	= 10                                           # number of index lines to show
-set pager_stop			= yes                                          # If I'm at the end of a message and I try to go to the next page, don't move me to the next message
-set pipe_decode			# strip headers and eval mimes when piping
+set include
+set index_format		= "[%Z]%?X?A& ?  %D  %-20.20F  %s"
+set mail_check			= 60
+set menu_scroll
+set pager_context		= 5
+set pager_index_lines	= 10
+set pager_stop			= yes
+set pipe_decode			= yes
 set reply_regexp		= "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
-set smart_wrap                                                         # dont wrap mid word
-set sort				= threads                                      # like gmail
-set sort_aux			= reverse-last-date-received                   # like gmail
-set sort_re                                                            # thread based on regex
+set sort				= threads
+set sort_aux			= reverse-last-date-received
 set status_chars		= " *%A"
 set status_format		= "───[ Folder: %f ]───[%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]───%>─%?p?( %p postponed )?───"
 set text_flowed         = yes
-set timeout				= 60		# idle time before scanning
-set uncollapse_jump                                                    # don't collapse on an unread message
-set wait_key			= no		# Don't ask me to press a key to continue
-unset confirmappend		# When saving a message, append the message to an existing mailbox without asking (Why should it ask, anyway? Mailboxes generally have multiple messages...)
-unset mark_old			# read/new is good enough for me
-unset markers                                                          # In the pager, don't display + at the beginning of wrapped lines; it's distracting
+set timeout				= 60
+set wait_key			= no
+unset confirmappend
+unset mark_old
+unset markers
 
 # Query command
 set query_command = "notmuch address --deduplicate=address --output=recipients from:%s or to:%s"
@@ -89,6 +85,9 @@ bind pager k previous-line
 macro index,pager C "<vfolder-from-query>" "Search mailbox"
 macro pager \Cb "|urlview<enter>" "call urlview to open links"
 
+## Make quick html view macro
+bind index,pager V  noop
+macro index,pager V "<view-attachments><search>html<enter><view-mailcap><exit>"
 
 #sync email
 macro index,pager O "<shell-escape>offlineimap<enter>" "run offlineimap to sync all mail"
@@ -98,10 +97,9 @@ set realname		= "Mikael Hultgren"
 
 # Header Options ----------------------------------------------
 ignore *                                                               # ignore all headers
-unignore from date subject to cc
-unignore organization organisation x-mailer: x-newsreader: x-mailing-list:
-unignore posted-to:
-#unignore from: to: cc: date: subject:                                  # show only these
+# unignore from date subject to cc
+# unignore organization organisation x-mailer: x-newsreader: x-mailing-list:
+# unignore posted-to:
 unhdr_order *                                                          # some distros order things by default
 hdr_order from: to: cc: date: subject:                                 # and in this order
 
@@ -112,5 +110,3 @@ source ~/.config/neomutt/themes/gruvbox-powerline
 source ~/.config/neomutt/accounts/blomma
 folder-hook blomma/* source ~/.config/neomutt/accounts/blomma
 folder-hook mother/* source ~/.config/neomutt/accounts/mother
-
-push <show-version>

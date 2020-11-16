@@ -55,10 +55,6 @@ tag-formats "replied" "GR" \
             "attachment" "GA" \
 
 color status white black
-# powerline status bar hack
-#color status green black ''
-#color status yellow black ''
-#color status red black ''
 color status brightblack blue '(.*)' 1
 color status blue black '.*()' 1
 color status black blue '\s* [0-9]+\s*'
@@ -69,4 +65,31 @@ color status blue yellow '() ([0-9]+%|all|end) \s*' 1
 color status black blue ' ([0-9]+%|all|end) \s*'
 color status yellow black '()\s*' 1
 color status default black ''
+
 color index color229 color124 "~D"
+
+### Message Body -------------------------------------------------------
+# When possible, these regular expressions attempt to match http://spec.commonmark.org/
+## Weak
+# ~~~ Horizontal rules ~~~
+color body  color08  color00  "([[:space:]]*[-+=#*~_]){3,}[[:space:]]*"
+## Strong
+# *Bold* span
+color body  color03  color00  "(^|[[:space:][:punct:]])\\*[^*]+\\*([[:space:][:punct:]]|$)"
+# _Underline_ span
+color body  color05  color00  "(^|[[:space:][:punct:]])_[^_]+_([[:space:][:punct:]]|$)"
+# /Italic/ span (Sometimes gets directory names)
+color body  color05  color00  "(^|[[:space:][:punct:]])/[^/]+/([[:space:][:punct:]]|$)"
+# ATX headers
+color body  color04  color00  "^[[:space:]]{0,3}#+[[:space:]].*$"
+## Highlight
+# `Code` span
+color body  color02  color00  "(^|[[:space:][:punct:]])\`[^\`]+\`([[:space:][:punct:]]|$)"
+# URLs
+color body  color16 color00  "([a-z][a-z0-9+-]*://(((([a-z0-9_.!~*'();:&=+$,-]|%[0-9a-f][0-9a-f])*@)?((([a-z0-9]([a-z0-9-]*[a-z0-9])?)\\.)*([a-z]([a-z0-9-]*[a-z0-9])?)\\.?|[0-9]+\\.[0-9]+\\.[0-9]+\\.[0-9]+)(:[0-9]+)?)|([a-z0-9_.!~*'()$,;:@&=+-]|%[0-9a-f][0-9a-f])+)(/([a-z0-9_.!~*'():@&=+$,-]|%[0-9a-f][0-9a-f])*(;([a-z0-9_.!~*'():@&=+$,-]|%[0-9a-f][0-9a-f])*)*(/([a-z0-9_.!~*'():@&=+$,-]|%[0-9a-f][0-9a-f])*(;([a-z0-9_.!~*'():@&=+$,-]|%[0-9a-f][0-9a-f])*)*)*)?(\\?([a-z0-9_.!~*'();/?:@&=+$,-]|%[0-9a-f][0-9a-f])*)?(#([a-z0-9_.!~*'();/?:@&=+$,-]|%[0-9a-f][0-9a-f])*)?|(www|ftp)\\.(([a-z0-9]([a-z0-9-]*[a-z0-9])?)\\.)*([a-z]([a-z0-9-]*[a-z0-9])?)\\.?(:[0-9]+)?(/([-a-z0-9_.!~*'():@&=+$,]|%[0-9a-f][0-9a-f])*(;([-a-z0-9_.!~*'():@&=+$,]|%[0-9a-f][0-9a-f])*)*(/([-a-z0-9_.!~*'():@&=+$,]|%[0-9a-f][0-9a-f])*(;([-a-z0-9_.!~*'():@&=+$,]|%[0-9a-f][0-9a-f])*)*)*)?(\\?([-a-z0-9_.!~*'();/?:@&=+$,]|%[0-9a-f][0-9a-f])*)?(#([-a-z0-9_.!~*'();/?:@&=+$,]|%[0-9a-f][0-9a-f])*)?)[^].,:;!)? \t\r\n<>\"]"
+# Email addresses
+color body  color16 color00  "((@(([0-9a-z-]+\\.)*[0-9a-z-]+\\.?|#[0-9]+|\\[[0-9]?[0-9]?[0-9]\\.[0-9]?[0-9]?[0-9]\\.[0-9]?[0-9]?[0-9]\\.[0-9]?[0-9]?[0-9]\\]),)*@(([0-9a-z-]+\\.)*[0-9a-z-]+\\.?|#[0-9]+|\\[[0-9]?[0-9]?[0-9]\\.[0-9]?[0-9]?[0-9]\\.[0-9]?[0-9]?[0-9]\\.[0-9]?[0-9]?[0-9]\\]):)?[0-9a-z_.+%$-]+@(([0-9a-z-]+\\.)*[0-9a-z-]+\\.?|#[0-9]+|\\[[0-2]?[0-9]?[0-9]\\.[0-2]?[0-9]?[0-9]\\.[0-2]?[0-9]?[0-9]\\.[0-2]?[0-9]?[0-9]\\])"
+# Emoticons ;-P
+color body  black   yellow   "[;:][-o]?[})>{(<|P]"
+color body bold red default '^\[-- .* --\]$'
+color body bold red default "(Dear|important)"
