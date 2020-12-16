@@ -14,7 +14,7 @@ set sidebar_folder_indent
 set sidebar_width = 25
 set sidebar_divider_char = '│'
 set sidebar_indent_string = '  ''
-set sidebar_format = "%B %* [%?N?%N / ?%S]"
+set sidebar_format = "%D %* [%?N?%N / ?%S]"
 set mail_check_stats
 set sidebar_delim_chars = '/'
 
@@ -26,13 +26,26 @@ bind index,pager <right> sidebar-open
 # Toggle the visibility of the Sidebar.
 bind index,pager B sidebar-toggle-visible
 
-# Mailboxes to show in the sidebar.
-named-mailboxes personal/Inbox =personal/INBOX personal/Drafts =personal/INBOX.Drafts personal/Archive =personal/INBOX.Archive personal/Lists =personal/INBOX.Lists personal/Sent =personal/INBOX.Sent personal/Notes =personal/INBOX.Notes personal/Trash =personal/INBOX.Trash personal/Spam =personal/INBOX.Spam personal/LSpam =personal/INBOX.LSpam
+named-mailboxes \
+    "personal/Inbox" =personal/INBOX \
+    "personal/Drafts" =personal/INBOX.Drafts \
+    "personal/Archive" =personal/INBOX.Archive \
+    "personal/Lists" =personal/INBOX.Lists \
+    "personal/Sent" =personal/INBOX.Sent \
+    "personal/Notes" =personal/INBOX.Notes \
+    "personal/Trash" =personal/INBOX.Trash \
+    "personal/Spam" =personal/INBOX.Spam \
+    "personal/LSpam" =personal/INBOX.LSpam
 
-named-mailboxes work/Inbox =work/INBOX work/Drafts =work/Drafts work/Sent =work/Sent work/Spam =work/Spam work/Trash =work/Trash
+named-mailboxes \
+    work/Inbox =work/INBOX \
+    work/Drafts =work/Drafts \
+    work/Sent =work/Sent \
+    work/Spam =work/Spam \
+    work/Trash =work/Trash
 
 # Mailbox ----------------------------------------------
-set mbox_type	= Maildir
+set mbox_type = Maildir
 
 folder-hook . 'set read_inc=1000'
 
@@ -73,7 +86,7 @@ unset mark_old
 unset markers
 
 # Query command
-set query_command = "notmuch address --deduplicate=address --output=recipients from:%s or to:%s"
+set query_command = "notmuch address --deduplicate=address --output=sender from:%s"
 set query_format="%4c %t %-70.70a %-70.70n %?e?(%e)?"
 bind editor <Tab> complete-query
 bind editor ^T complete
@@ -97,7 +110,7 @@ set realname		= "Your Name"
 
 # Header Options ----------------------------------------------
 ignore *                                                               # ignore all headers
-# unignore from date subject to cc
+unignore from date subject to cc
 # unignore organization organisation x-mailer: x-newsreader: x-mailing-list:
 # unignore posted-to:
 unhdr_order *                                                          # some distros order things by default

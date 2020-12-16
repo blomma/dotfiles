@@ -4,8 +4,9 @@ application/vnd.ms-excel; ~/.config/neomutt/view_attachment.sh %s "-" '/Applicat
 application/vnd.openxmlformats-officedocument.presentationml.presentation; ~/.config/neomutt/view_attachment.sh %s "-" '/Applications/LibreOffice.app'
 application/vnd.oasis.opendocument.text; ~/.config/neomutt/view_attachment.sh %s "-" '/Applications/LibreOffice.app'text/html;
 
-# text/html; lynx -dump %s; copiousoutput;
+text/html; ~/.config/neomutt/view_attachment.sh %s; nametemplate=%s.html
 text/html; links -codepage 'utf-8' -dump %s; copiousoutput;
+
 application/vnd.openxmlformats-officedocument.wordprocessingml.document; ~/.config/neomutt/view_attachment.sh %s
 application/pdf; ~/.config/neomutt/view_attachment.sh %s
 application/vnd.oasis.opendocument.text; ~/.config/neomutt/view_attachment.sh %s
