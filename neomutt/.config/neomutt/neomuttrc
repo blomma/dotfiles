@@ -14,7 +14,7 @@ set sidebar_folder_indent
 set sidebar_width = 25
 set sidebar_divider_char = '│'
 set sidebar_indent_string = '  ''
-set sidebar_format = "%B %* [%?N?%N / ?%S]"
+set sidebar_format = "%D %* [%?N?%N / ?%S]"
 set mail_check_stats
 set sidebar_delim_chars = '/'
 
@@ -26,13 +26,26 @@ bind index,pager <right> sidebar-open
 # Toggle the visibility of the Sidebar.
 bind index,pager B sidebar-toggle-visible
 
-# Mailboxes to show in the sidebar.
-named-mailboxes blomma/Inbox =blomma/INBOX blomma/Drafts =blomma/INBOX.Drafts blomma/Archive =blomma/INBOX.Archive blomma/Lists =blomma/INBOX.Lists blomma/Sent =blomma/INBOX.Sent blomma/Notes =blomma/INBOX.Notes blomma/Trash =blomma/INBOX.Trash blomma/Spam =blomma/INBOX.Spam blomma/LSpam =blomma/INBOX.LSpam
+named-mailboxes \
+    "blomma/Inbox" =blomma/INBOX \
+    "blomma/Drafts" =blomma/INBOX.Drafts \
+    "blomma/Archive" =blomma/INBOX.Archive \
+    "blomma/Lists" =blomma/INBOX.Lists \
+    "blomma/Sent" =blomma/INBOX.Sent \
+    "blomma/Notes" =blomma/INBOX.Notes \
+    "blomma/Trash" =blomma/INBOX.Trash \
+    "blomma/Spam" =blomma/INBOX.Spam \
+    "blomma/LSpam" =blomma/INBOX.LSpam
 
-named-mailboxes mother/Inbox =mother/INBOX mother/Drafts =mother/Drafts mother/Sent =mother/Sent mother/Spam =mother/Spam mother/Trash =mother/Trash
+named-mailboxes \
+    mother/Inbox =mother/INBOX \
+    mother/Drafts =mother/Drafts \
+    mother/Sent =mother/Sent \
+    mother/Spam =mother/Spam \
+    mother/Trash =mother/Trash
 
 # Mailbox ----------------------------------------------
-set mbox_type	= Maildir
+set mbox_type = Maildir
 
 folder-hook . 'set read_inc=1000'
 
@@ -73,7 +86,7 @@ unset mark_old
 unset markers
 
 # Query command
-set query_command = "notmuch address --deduplicate=address --output=recipients from:%s or to:%s"
+set query_command = "notmuch address --deduplicate=address --output=sender from:%s"
 set query_format="%4c %t %-70.70a %-70.70n %?e?(%e)?"
 bind editor <Tab> complete-query
 bind editor ^T complete
@@ -97,7 +110,7 @@ set realname		= "Mikael Hultgren"
 
 # Header Options ----------------------------------------------
 ignore *                                                               # ignore all headers
-# unignore from date subject to cc
+unignore from date subject to cc
 # unignore organization organisation x-mailer: x-newsreader: x-mailing-list:
 # unignore posted-to:
 unhdr_order *                                                          # some distros order things by default
