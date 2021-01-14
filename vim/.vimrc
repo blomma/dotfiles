@@ -444,18 +444,17 @@ nnoremap <silent> <leader>Q vapJgqap
 " -------------------------------------------------------------------
 " Mail
 " -------------------------------------------------------------------
-
 augroup mail
     autocmd!
     autocmd FileType Mail
-                \ setl fo=jnawrtcq
+                \ setl fo=awq
                 \ tw=72
                 \ colorcolumn=+1
                 \ expandtab
                 \ nosmartindent
                 \ noautoindent
                 \ linebreak
-                \ comments+=n:>
+                \ comments+=nb:>
                 \ nobackup
                 \ noswapfile
                 \ nowritebackup
