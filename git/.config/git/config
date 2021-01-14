@@ -13,6 +13,8 @@
     ui = true
 
 [alias]
+    code-changes = "!git log --format=format: --name-only | egrep -v '^$' | sort | uniq -c | sort -rg | head -10"
+    cc = "!git code-changes"
     ai = add --interactive
     alias = "!git config -l | grep alias | cut -c 7-"
     b = branch
@@ -41,6 +43,14 @@
 [core]
     editor = "'nvim' +startinsert"
     whitespace = blank-at-eol,space-before-tab,blank-at-eof,cr-at-eol
+    pager = delta
+
+[diff]
+    colorMoved = default
+
+[delta]
+    syntax-theme = Dracula
+    side-by-side = true
 
 [commit]
     template = ~/.config/git/commit-message
