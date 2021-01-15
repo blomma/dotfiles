@@ -28,7 +28,7 @@
     dsfb = "!f() { [ -z \"$GIT_PREFIX\" ] || cd \"$GIT_PREFIX\" && git diff --minimal \"$@\" $(git merge-base --fork-point master) | tig; }; f"
     dt = difftool
     hack = "!f() { git fetch -p && git rebase origin/master master && git checkout -b $1 master; }; f"
-    it = "!f() { git init && git commit -m root --allow-empty && git branch -M main; }; f"
+    it = "!f() { git init && git commit -m root --allow-empty; }; f"
     l = log --pretty=format:"%C(yellow)%h\\ %C(green)%ad\\ %C(reset)%s%C(blue)\\ [%cn]" --decorate --date=short --graph
     ll = log --graph --pretty=format:'commit: %C(bold red)%h%Creset %C(red)<%H>%Creset %C(bold magenta)%d %Creset%ndate: %C(bold yellow)%cd %Creset%C(yellow)%cr%Creset%nauthor: %C(bold blue)%an%Creset %C(blue)<%ae>%Creset%n%C(cyan)%s%n%Creset'
     mof = merge --no-ff
@@ -112,3 +112,6 @@
     smudge = git-lfs smudge -- %f
     process = git-lfs filter-process
     required = true
+
+[init]
+	defaultBranch = main
