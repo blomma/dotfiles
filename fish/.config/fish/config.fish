@@ -10,7 +10,7 @@ set -x fish_user_paths $HOME/go/bin $HOME/opt/bin $HOME/.fzf/bin $HOME/.local/bi
 
 if status --is-interactive
     ### Abbreviations
-    abbr --add --global tma tmux attach -d -t
+    # abbr --add --global tma tmux attach -d -t
     type -q rbenv; and source (rbenv init -|psub)
 end
 
