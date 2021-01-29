@@ -1,4 +1,4 @@
-#source ~/.config/fish/color.fish
+source ~/.config/fish/color.fish
 
 ### DEFAULTS
 set -x LC_ALL en_US.UTF-8
