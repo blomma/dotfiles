@@ -225,7 +225,7 @@ set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 " Mappings
 " -------------------------------------------------------------------
 " ,rr => refresh vimrc
-map <leader>rr :source ~/.vimrc<CR>
+map <leader>rr :source ~/.config/nvim/init.vim<CR>
 
 " ,q rewrap pargrahp textmate style
 nnoremap <leader>q gqip
@@ -638,5 +638,6 @@ let g:vim_markdown_frontmatter = 1
 let g:jellybeans_overrides = {
             \    'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
             \}
+let g:palenight_terminal_italics=1
 set background=dark
 colorscheme palenight
