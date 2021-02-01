@@ -8,7 +8,7 @@ set header_cache     = ~/.config/neomutt/tmp/
 set header_cache_backend = lmdb
 
 # Sidebar ----------------------------------------------
-set sidebar_visible
+# set sidebar_visible
 set sidebar_short_path
 set sidebar_folder_indent
 set sidebar_width = 25
