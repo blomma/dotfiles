@@ -11,12 +11,6 @@ set sendmail		= "msmtp -a blomma"
 set sendmail_wait	= 0
 set use_from		= yes
 
-macro index,pager s "\
-<save-message>=blomma/INBOX.LSpam<enter>\
-"Learn Spam"
-
-macro index,pager a "\
-<save-message>=blomma/INBOX.Archive<enter>\
-"Archive message"
-
-macro attach W "<save-entry><bol>~/Download/<eol>" "Save to desktop"
+macro index,pager s "<save-message>=blomma/INBOX.LSpam<enter>"
+macro index,pager a ":set resolve=no\n<clear-flag>N<save-message>=blomma/INBOX.Archive<enter>\n:set resolve=yes\n<next-undeleted>"
+macro attach W "<save-entry><bol>~/Download/<eol>"
