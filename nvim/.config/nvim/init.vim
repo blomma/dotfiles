@@ -12,22 +12,23 @@
 
 set encoding=utf-8
 scriptencoding utf-8
-set fileencoding=utf-8          " The encoding written to file
+set fileencoding=utf-8
 set termencoding=utf-8
 
-augroup nvim_init
+augroup _init
     autocmd!
 augroup END
 
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
     silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
                 \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    autocmd vimrc VimEnter * PlugInstall --sync | source $MYVIMRC
+    autocmd _init VimEnter * PlugInstall --sync | source ~/.config/nvim/init.vim
 endif
 
 if empty(glob('~/.config/nvim/plugged'))
-    autocmd vimrc VimEnter * PlugInstall --sync | source $MYVIMRC
+    autocmd _init VimEnter * PlugInstall --sync | source ~/.config/nvim/init.vim
 endif
+
 call plug#begin('~/.config/nvim/plugged')
 
 " Themes
@@ -41,6 +42,7 @@ Plug 'blasco/vim-corvine'
 Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'drewtempelmeyer/palenight.vim'
+Plug 'sainnhe/gruvbox-material'
 
 " Languages
 Plug 'dag/vim-fish'
@@ -224,31 +226,17 @@ set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 " -------------------------------------------------------------------
 " Mappings
 " -------------------------------------------------------------------
-" ,rr => refresh vimrc
 map <leader>rr :source ~/.config/nvim/init.vim<CR>
-
-" ,q rewrap pargrahp textmate style
-nnoremap <leader>q gqip
-
-" ,ev open .vimrc in a vertical split
+nnoremap <leader>q gqip " ,q rewrap pargrahp textmate style
 nnoremap <leader>ev <C-w><C-s><C-l>:e ~/.config/nvim/init.vim<cr>
-
 map <F7> mzgg=G`z
-
-" Fast saving
-nmap <leader>w :w!<cr>
-
+nmap <leader>w :w!<cr> " Fast saving
 map <C-n> :cnext<CR>
 map <C-m> :cprevious<CR>
 nnoremap <leader>a :cclose<CR>
-autocmd nvim_init BufReadPost quickfix nnoremap <buffer> <CR> <CR>
-
-" Quickly open a buffer for scribble
-map <leader>t :tabnew<cr>
-
-" Toggle paste mode on and off
-map <leader>pp :setlocal paste!<cr>
-
+autocmd _init BufReadPost quickfix nnoremap <buffer> <CR> <CR>
+map <leader>t :tabnew<cr> " Quickly open a buffer for scribble
+map <leader>pp :setlocal paste!<cr> " Toggle paste mode on and off
 map <C-a> <esc>ggVG<CR>
 
 " Better window navigation
@@ -639,5 +627,8 @@ let g:jellybeans_overrides = {
             \    'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
             \}
 let g:palenight_terminal_italics=1
+" let g:gruvbox_material_background = 'hard'
+let g:gruvbox_material_enable_italic = 1
 set background=dark
 colorscheme palenight
+autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
