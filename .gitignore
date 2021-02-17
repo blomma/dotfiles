@@ -17,3 +17,4 @@ neomutt/.config/neomutt/tmp
 offlineimap/.config/offlineimap/*.gpg
 offlineimap/.config/offlineimap/*.pyc
 msmtp/.config/msmtp/*.gpg
+iTerm2/.config/iTerm2/AppSupport
