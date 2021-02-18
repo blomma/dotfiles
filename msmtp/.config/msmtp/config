@@ -11,7 +11,7 @@ port 465
 tls on
 tls_certcheck on
 tls_starttls off
-tls_fingerprint 48:50:EB:01:67:E8:22:24:1A:B1:74:F4:B5:0A:98:16:F4:06:92:97:70:76:92:AF:B0:EE:0D:4D:89:6E:4A:09
+tls_fingerprint 4A:4E:6E:C2:17:CC:B1:BC:0C:92:FD:6F:8B:C5:3F:51:1E:DA:77:C4:85:38:C8:16:BA:A6:65:F9:BF:07:F4:DF
 
 # smtp hostname
 host mail.messagingengine.com
@@ -34,7 +34,7 @@ port 465
 tls on
 tls_certcheck on
 tls_starttls off
-tls_fingerprint 18:D0:3A:76:57:A5:09:0A:47:8B:0D:26:D7:F9:61:5E:5E:5F:2A:7B:92:C3:25:DB:A5:D6:C9:1A:2C:8A:DD:AE
+tls_fingerprint EF:03:77:65:F5:D9:EC:AB:FC:D8:2B:FB:EF:11:14:D4:2F:35:59:8D:F3:3F:1E:1C:28:53:C3:89:04:E8:9C:4F
 
 # smtp hostname
 host mail.runbox.com
