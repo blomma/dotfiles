@@ -87,9 +87,8 @@ Plug 'farmergreg/vim-lastplace'
 
 Plug 'camspiers/animate.vim'
 Plug 'camspiers/lens.vim'
-Plug 'dense-analysis/ale'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'justinmk/vim-sneak'
+Plug 'https://gitlab.com/dbeniamine/vim-mail'
 
 call plug#end()
 
@@ -111,6 +110,8 @@ endif
 " Basic Setup
 " -------------------------------------------------------------------
 let mapleader=','
+let maplocalleader = "\\"
+
 set autowrite
 set backspace=indent,eol,start	" backspace through everything in insert mode
 set cmdheight=2                 " More space for displaying messages
@@ -444,22 +445,22 @@ nnoremap <silent> <leader>Q vapJgqap
 " -------------------------------------------------------------------
 " Mail
 " -------------------------------------------------------------------
-augroup mail
-    autocmd!
-    autocmd FileType Mail
-                \ setl fo=awq
-                \ tw=72
-                \ colorcolumn=+1
-                \ expandtab
-                \ nosmartindent
-                \ noautoindent
-                \ linebreak
-                \ comments+=nb:>
-                \ nobackup
-                \ noswapfile
-                \ nowritebackup
-    autocmd FileType Mail :exe 'startinsert'
-augroup END
+" augroup mail
+"     autocmd!
+"     autocmd FileType Mail
+"                 \ setl fo=awq
+"                 \ tw=72
+"                 \ colorcolumn=+1
+"                 \ expandtab
+"                 \ nosmartindent
+"                 \ noautoindent
+"                 \ linebreak
+"                 \ comments+=nb:>
+"                 \ nobackup
+"                 \ noswapfile
+"                 \ nowritebackup
+"     autocmd FileType Mail :exe 'startinsert'
+" augroup END
 
 " -------------------------------------------------------------------
 " Complete
@@ -560,8 +561,6 @@ let g:airline_theme='palenight'
 " -------------------------------------------------------------------
 " Goyo
 " -------------------------------------------------------------------
-" nnoremap <Leader><Space> :Goyo<CR>
-
 let g:goyo_margin_top = 2
 let g:goyo_margin_bottom = 2
 
@@ -585,14 +584,6 @@ augroup Goyo
     autocmd! User GoyoEnter nested call <SID>goyo_enter()
     autocmd! User GoyoLeave nested call <SID>goyo_leave()
 augroup END
-
-" -------------------------------------------------------------------
-" Limelight
-" -------------------------------------------------------------------
-let g:limelight_conceal_ctermfg = 'gray'
-let g:limelight_conceal_ctermfg = 240
-let g:limelight_paragraph_span = 0
-let g:limelight_priority = -1
 
 " -------------------------------------------------------------------
 " Easymotion
