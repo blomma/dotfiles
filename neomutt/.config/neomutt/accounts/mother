@@ -1,4 +1,14 @@
 # vim: ft=neomuttrc
+source ~/.config/neomutt/neomuttrc
+
+named-mailboxes \
+    Inbox =mother/INBOX \
+    Drafts =mother/Drafts \
+    Sent =mother/Sent \
+    Spam =mother/Spam \
+    Trash =mother/Trash
+
+set realname = "Mikael Hultgren"
 set from = "Mikael Hultgren <mikael@mother.technology>"
 
 set postponed	= =mother/Drafts

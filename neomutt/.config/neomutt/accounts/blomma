@@ -1,4 +1,20 @@
 # vim: ft=neomuttrc
+source ~/.config/neomutt/neomuttrc
+
+set sidebar_indent_string = ''
+
+named-mailboxes \
+    "Inbox" =blomma/INBOX \
+    "Drafts" =blomma/INBOX.Drafts \
+    "Archive" =blomma/INBOX.Archive \
+    "Lists" =blomma/INBOX.Lists \
+    "Sent" =blomma/INBOX.Sent \
+    "Notes" =blomma/INBOX.Notes \
+    "Trash" =blomma/INBOX.Trash \
+    "Spam" =blomma/INBOX.Spam \
+    "LSpam" =blomma/INBOX.LSpam
+
+set realname = "Mikael Hultgren"
 set from = "Mikael Hultgren <blomma@artsoftheinsane.com>"
 
 set postponed	= =blomma/INBOX.Drafts
