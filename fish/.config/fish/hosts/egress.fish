@@ -1,4 +1,4 @@
-fish_add_path $HOME/go/bin $HOME/opt/bin $HOME/.local/bin
+fish_add_path $HOME/go/bin $HOME/opt/bin $HOME/.local/bin $HOME/.cargo/bin
 
 if status --is-interactive
     ### Abbreviations
