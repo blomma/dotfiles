@@ -621,5 +621,5 @@ let g:palenight_terminal_italics=1
 " let g:gruvbox_material_background = 'hard'
 let g:gruvbox_material_enable_italic = 1
 set background=dark
-colorscheme palenight
+colorscheme dracula
 autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
