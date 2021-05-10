@@ -10,8 +10,11 @@
 # Notmuch will store its database within a sub-directory of the path
 # configured here named ".notmuch".
 #
-# [database]
-# path=$HOME/.mail
+
+[database]
+# hook_dir=$HOME
+mail_root=/Users/blomma/.mail
+path=/Users/blomma/.notmuch
 
 # User configuration
 #
@@ -28,6 +31,7 @@
 # recipient list of replies, and will set the From address based on the
 # address to which the original email was addressed.
 #
+
 [user]
 name=Mikael Hultgren
 primary_email=blomma@artsoftheinsane.com
@@ -46,6 +50,7 @@ primary_email=blomma@artsoftheinsane.com
 #		names will be ignored, independent of its depth/location
 #		in the mail store.
 #
+
 [new]
 tags=unread
 ignore=
@@ -59,6 +64,7 @@ ignore=
 #		search results by default.  Using an excluded tag in a
 #		query will override that exclusion.
 #
+
 [search]
 #exclude_tags=deleted;spam;
 exclude_tags=
@@ -84,6 +90,7 @@ exclude_tags=
 #	and update tags, while the "notmuch tag" and "notmuch restore"
 #	commands will notice tag changes and update flags in filenames
 #
+
 [maildir]
 synchronize_flags=true
 
@@ -94,5 +101,7 @@ synchronize_flags=true
 #	gpg_path
 #		binary name or full path to invoke gpg.
 #
+
 [crypto]
 gpg_path=gpg
+
