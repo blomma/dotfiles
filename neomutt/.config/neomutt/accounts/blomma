@@ -2,6 +2,7 @@
 source ~/.config/neomutt/neomuttrc
 
 set sidebar_indent_string = ''
+# set nm_query_type = 'messages'
 
 named-mailboxes \
     "Inbox" =blomma/INBOX \
@@ -13,6 +14,11 @@ named-mailboxes \
     "Trash" =blomma/INBOX.Trash \
     "Spam" =blomma/INBOX.Spam \
     "LSpam" =blomma/INBOX.LSpam
+
+set nm_default_url = "notmuch:///Users/blomma/.notmuch"
+# virtual-mailboxes "flagged" "notmuch://?query=folder:blomma/INBOX.Archive and tag:flagged"
+# virtual-mailboxes "flagged" "notmuch://?query=tag:flagged"
+virtual-mailboxes "Today's Email" "notmuch://?query=Jonna"
 
 set realname = "Mikael Hultgren"
 set from = "Mikael Hultgren <blomma@artsoftheinsane.com>"
@@ -26,6 +32,9 @@ set trash       = =blomma/INBOX.Trash
 set sendmail		= "msmtp -a blomma"
 set sendmail_wait	= 0
 set use_from		= yes
+
+# bind index,pager X change-vfolder
+# bind index,pager x entire-thread
 
 macro index,pager s "<save-message>=blomma/INBOX.LSpam<enter>"
 macro index,pager a ":set resolve=no\n<clear-flag>N<save-message>=blomma/INBOX.Archive<enter>\n:set resolve=yes\n<next-undeleted>"
