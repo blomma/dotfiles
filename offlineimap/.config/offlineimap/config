@@ -1,6 +1,6 @@
 # vim: ft=offlineimap
 [general]
-accounts = blomma,mother
+accounts = blomma
 pythonfile = ~/.config/offlineimap/offlineimap.py
 
 [Account blomma]

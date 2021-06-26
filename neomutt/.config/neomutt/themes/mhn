@@ -10,6 +10,7 @@ color index_subject brightblack black ~N
 color index_author brightblue black "~C blomma@gmail.com"
 # Highlights inside the body of a message.
 
+
 # URLs
 color body brightgreen black "(http|ftp|news|telnet|finger)://[^ \"\t\r\n]*"
 color body brightgreen black "mailto:[-a-z_0-9.]+@[-a-z_0-9.]+"
