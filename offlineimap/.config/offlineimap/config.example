@@ -1,6 +1,6 @@
 # vim: ft=offlineimap
 [general]
-accounts = personal,work
+accounts = personal
 pythonfile = ~/.config/offlineimap/offlineimap.py
 
 [Account personal]
