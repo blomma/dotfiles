@@ -1,6 +1,6 @@
 # vim: ft=offlineimap
 [general]
-accounts = blomma
+accounts = blomma, mother
 pythonfile = ~/.config/offlineimap/offlineimap.py
 
 [Account blomma]
@@ -32,7 +32,7 @@ localfolders = ~/.mail/mother
 [Repository mother-remote]
 type = IMAP
 ssl = yes
-cert_fingerprint = 07:C1:18:F6:8D:AA:A6:70:E5:11:BD:9A:54:8C:33:96:F2:D8:D1:1E:DD:C2:7E:7C:17:FF:62:23:9A:A8:23:6B:63:13:82:D6:8B:C1:26:92:7A:FF:29:14:75:75:6D:54:CE:41:77:AD:C6:A2:3F:23:F9:4B:9F:E8:79:63:ED:0A
+cert_fingerprint = 88:4E:C6:E8:16:5B:C0:7E:52:DA:7B:B9:BE:9E:72:20:30:3C:25:71:D0:6E:A6:E5:B7:DA:75:34:8B:F1:48:84:0B:6C:8A:D6:35:7B:01:2D:4A:9B:B7:93:71:68:3F:17:3D:A1:24:E7:AB:8C:DC:2F:DF:51:C9:30:63:1E:5C:EB
 remotehost = mail.runbox.com
 remoteuser = mikael@mother.technology
 remotepasseval = get_pass("runbox")
