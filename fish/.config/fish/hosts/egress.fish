@@ -6,3 +6,4 @@ if status --is-interactive
     type -q rbenv; and source (rbenv init -|psub)
 end
 
+starship init fish | source
