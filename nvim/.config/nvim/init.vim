@@ -56,6 +56,7 @@ Plug 'neoclide/jsonc.vim'
 Plug 'andmatand/vim-pico8-syntax'
 Plug 'OmniSharp/omnisharp-vim'
 Plug 'keith/swift.vim'
+Plug 'fladson/vim-kitty'
 
 " Airline provides a stylish appearance for the styleline
 Plug 'vim-airline/vim-airline'
