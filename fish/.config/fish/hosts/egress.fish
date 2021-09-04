@@ -6,4 +6,6 @@ if status --is-interactive
     type -q rbenv; and source (rbenv init -|psub)
 end
 
+set -x STARSHIP_CONFIG $HOME/.config/starship/config.toml
+
 starship init fish | source

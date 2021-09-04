@@ -32,7 +32,7 @@ localfolders = ~/.mail/mother
 [Repository mother-remote]
 type = IMAP
 ssl = yes
-cert_fingerprint = 88:4E:C6:E8:16:5B:C0:7E:52:DA:7B:B9:BE:9E:72:20:30:3C:25:71:D0:6E:A6:E5:B7:DA:75:34:8B:F1:48:84:0B:6C:8A:D6:35:7B:01:2D:4A:9B:B7:93:71:68:3F:17:3D:A1:24:E7:AB:8C:DC:2F:DF:51:C9:30:63:1E:5C:EB
+cert_fingerprint = 5A:77:EF:D5:02:D0:FF:04:6A:EE:B8:7D:77:97:DA:B3:4E:0E:A5:81:23:C7:58:91:0C:6D:8D:1E:CC:F0:E8:B9:C3:A4:58:0A:FA:58:59:DB:CD:61:04:A9:F3:A0:62:A1:D7:2A:5C:56:B4:68:3A:19:CE:3D:0F:45:90:7D:DD:C3
 remotehost = mail.runbox.com
 remoteuser = mikael@mother.technology
 remotepasseval = get_pass("runbox")
