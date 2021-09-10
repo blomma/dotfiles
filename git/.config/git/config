@@ -95,16 +95,10 @@
     name = Mikael Hultgren
     email = blomma@artsoftheinsane.com
 
-[includeIf "gitdir:C:/Projects/"]
+[includeIf "gitdir:C:/projects/"]
     path = config.work
 
-[includeIf "gitdir:~/Projects/work/"]
-    path = config.work
-
-[includeIf "gitdir:~/projects/work/"]
-    path = config.work
-
-[includeIf "gitdir:/mnt/c/Projects/"]
+[includeIf "gitdir:/mnt/c/projects/"]
     path = config.work
 
 [include]
