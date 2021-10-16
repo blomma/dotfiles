@@ -22,7 +22,7 @@ from blomma@artsoftheinsane.com
 # enable authentication
 auth on
 user blomma@artsoftheinsane.com
-passwordeval    "gpg --quiet --for-your-eyes-only --no-tty --decrypt ~/.config/msmtp/fastmail.gpg"
+passwordeval    "gpg --quiet --for-your-eyes-only --no-tty --decrypt ~/.secure/fastmail.gpg"
 
 # -- account --
 account mother
@@ -45,6 +45,6 @@ from mikael@mother.technology
 # enable authentication
 auth on
 user mikael@mother.technology
-passwordeval    "gpg --quiet --for-your-eyes-only --no-tty --decrypt ~/.config/msmtp/runbox.gpg"
+passwordeval    "gpg --quiet --for-your-eyes-only --no-tty --decrypt ~/.secure/runbox.gpg"
 
 account default : blomma
