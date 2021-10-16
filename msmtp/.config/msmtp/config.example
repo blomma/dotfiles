@@ -22,7 +22,7 @@ from user@example.com
 # enable authentication
 auth on
 user user@example.com
-passwordeval    "gpg --quiet --for-your-eyes-only --no-tty --decrypt ~/.config/msmtp/fastmail.gpg"
+passwordeval    "gpg --quiet --for-your-eyes-only --no-tty --decrypt ~/.secure/fastmail.gpg"
 
 # -- account --
 account work
@@ -45,6 +45,6 @@ from user@example.com
 # enable authentication
 auth on
 user user@example.com
-passwordeval    "gpg --quiet --for-your-eyes-only --no-tty --decrypt ~/.config/msmtp/runbox.gpg"
+passwordeval    "gpg --quiet --for-your-eyes-only --no-tty --decrypt ~/.secure/runbox.gpg"
 
 account default : personal
