@@ -15,10 +15,10 @@ named-mailboxes \
     "Spam" =blomma/INBOX.Spam \
     "LSpam" =blomma/INBOX.LSpam
 
-set nm_default_url = "notmuch:///Users/blomma/.notmuch"
+set nm_default_url = "notmuch:///Users/blomma/"
 # virtual-mailboxes "flagged" "notmuch://?query=folder:blomma/INBOX.Archive and tag:flagged"
-# virtual-mailboxes "flagged" "notmuch://?query=tag:flagged"
-virtual-mailboxes "Today's Email" "notmuch://?query=Jonna"
+virtual-mailboxes "flagged" "notmuch://?query=tag:flagged"
+# virtual-mailboxes "Today's Email" "notmuch://?query=Jonna"
 
 set realname = "Mikael Hultgren"
 set from = "Mikael Hultgren <blomma@artsoftheinsane.com>"

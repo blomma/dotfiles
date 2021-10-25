@@ -54,8 +54,9 @@ set pager_index_lines	= 10
 set pager_stop			= yes
 set pipe_decode			= yes
 set reply_regexp		= "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
-set sort				= threads
+set sort				= date
 set sort_aux			= reverse-last-date-received
+set use_threads         = yes
 set status_chars		= " *%A"
 set status_format		= "───[ Folder: %f ]───[%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]───%>─%?p?( %p postponed )?───"
 set text_flowed         = yes
@@ -82,8 +83,10 @@ macro pager \Cb "|urlview<enter>" "call urlview to open links"
 bind index,pager V  noop
 macro index,pager V "<view-attachments><search>html<enter><view-mailcap><exit>"
 
-#sync email
+## External commands
 macro index,pager O "<shell-escape>offlineimap<enter>" "run offlineimap to sync all mail"
+macro index,pager M "<shell-escape>notmuch new<enter>" "run notmuch to sync all mail"
+
 
 # Header Options ----------------------------------------------
 ignore *                                                               # ignore all headers
