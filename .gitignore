@@ -1,5 +1,5 @@
 ssh/.ssh/config.d
-ssh/.ssh/known_hosts
+ssh/.ssh/known_hosts*
 ssh/.ssh/*_rsa*
 fish/.config/fish/fishd.*
 fish/.config/fish/fish_history
