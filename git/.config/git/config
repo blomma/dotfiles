@@ -43,18 +43,13 @@
 [core]
     editor = "'nvim' +startinsert"
     whitespace = blank-at-eol,space-before-tab,blank-at-eof,cr-at-eol
-
-[pager]
-    diff = delta
-    log = delta
-    reflog = delta
-    show = delta
-
-[interactive]
-    diffFilter = delta --color-only --features=interactive
+    pager = delta
 
 [diff]
     colorMoved = default
+
+[interactive]
+    diffFilter = delta --color-only --features=interactive
 
 [delta]
     side-by-side = true
