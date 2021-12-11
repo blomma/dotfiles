@@ -16,6 +16,7 @@ git/.config/git/config.local
 neomutt/.config/neomutt/tmp
 offlineimap/.config/offlineimap/*.gpg
 offlineimap/.config/offlineimap/*.pyc
+offlineimap/.config/offlineimap/__pycache__
 msmtp/.config/msmtp/*.gpg
 iTerm2/.config/iTerm2/AppSupport
 micro/.config/micro/buffers

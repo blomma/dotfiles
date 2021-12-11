@@ -24,27 +24,4 @@ auth on
 user blomma@artsoftheinsane.com
 passwordeval    "gpg --quiet --for-your-eyes-only --no-tty --decrypt ~/.secure/fastmail.gpg"
 
-# -- account --
-account mother
-
-# port number
-port 465
-
-# tls settings
-tls on
-tls_certcheck on
-tls_starttls off
-tls_fingerprint EF:03:77:65:F5:D9:EC:AB:FC:D8:2B:FB:EF:11:14:D4:2F:35:59:8D:F3:3F:1E:1C:28:53:C3:89:04:E8:9C:4F
-
-# smtp hostname
-host mail.runbox.com
-
-# from address
-from mikael@mother.technology
-
-# enable authentication
-auth on
-user mikael@mother.technology
-passwordeval    "gpg --quiet --for-your-eyes-only --no-tty --decrypt ~/.secure/runbox.gpg"
-
 account default : blomma
