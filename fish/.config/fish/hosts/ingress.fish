@@ -1,4 +1,4 @@
-fish_add_path $HOME/go/bin $HOME/opt/bin $HOME/.local/bin $HOME/.cargo/bin /opt/homebrew/bin
+fish_add_path $HOME/go/bin $HOME/opt/bin $HOME/.local/bin $HOME/.cargo/bin /opt/homebrew/bin /opt/homebrew/opt/node@16/bin
 
 if status --is-interactive
     ### Abbreviations
@@ -7,5 +7,4 @@ if status --is-interactive
 end
 
 set -x STARSHIP_CONFIG $HOME/.config/starship/config.toml
-
 starship init fish | source
