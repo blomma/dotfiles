@@ -13,7 +13,8 @@ named-mailboxes \
     "Notes" =blomma/INBOX.Notes \
     "Trash" =blomma/INBOX.Trash \
     "Spam" =blomma/INBOX.Spam \
-    "LSpam" =blomma/INBOX.LSpam
+    "LSpam" =blomma/INBOX.LSpam \
+	"Mother" =blomma/INBOX.Mother.INBOX
 
 set nm_default_url = "notmuch:///Users/blomma/"
 # virtual-mailboxes "flagged" "notmuch://?query=folder:blomma/INBOX.Archive and tag:flagged"
