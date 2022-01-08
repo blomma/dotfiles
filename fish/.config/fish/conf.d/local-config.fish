@@ -1,4 +1,4 @@
-set -l host (echo $hostname | string lower  | string replace ".local" "")
+set -l host (echo $hostname | string lower  | string replace ".local" "" | string replace ".lan" "")
 set -l LOCAL_CONFIG "$HOME/.config/fish"
 
 # Load custom settings for current hostname

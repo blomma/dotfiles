@@ -11,10 +11,37 @@ set sidebar_folder_indent
 set sidebar_width = 25
 set sidebar_divider_char = '│'
 set sidebar_indent_string = ' '
-set sidebar_format = "%D %* [%?N?%N / ?%S]"
 set mail_check_stats
 set sidebar_delim_chars = '/.'
 set sidebar_sort_method = 'path'
+
+# Formats
+set index_format=" %zs %zc %zt %{!%d %b} . %-28.28L  %?M?(%1M)? %?X?·%X·? %s"
+set pager_format=" %n %zc  %T %s%* %{!%d %b · %H:%M} %?X? %X ? %P "
+set status_format = " %f%?r? %r?  %m %?n? %n ?  %?d? %d ?%?t? %t ?%?F? %F? %> %?p?  %p ?"
+set vfolder_format = " %N %?n?%3n?  %8m · %f"
+set attach_format = "%u%D %T%-75.75d %?T?%T?%5s · %m/%M"
+set sidebar_format = "%D %* [%?N?%N / ?%S]"
+
+# no addressed to me, to me, group, cc, sent by me, mailing list
+#set to_chars=""
+# unchanged mailbox, changed, read only, attach mode
+#set status_chars = " "
+#ifdef crypt_chars set crypt_chars = " "
+#set flag_chars = "      "
+
+# Tags https://neomutt.org/feature/custom-tags
+set hidden_tags = "unread,draft,flagged,passed,replied,attachment,signed,encrypted"
+tag-transforms "replied" "↻ "  \
+               "encrytpted" "" \
+               "signed" "" \
+               "attachment" "" \
+
+# The formats must start with 'G' and the entire sequence is case sensitive.
+tag-formats "replied" "GR" \
+            "encrypted" "GE" \
+            "signed" "GS" \
+            "attachment" "GA" \
 
 # Sidebar Navigation
 bind index,pager <down> sidebar-next
@@ -97,4 +124,4 @@ unhdr_order *                                                          # some di
 hdr_order from: to: cc: date: subject:                                 # and in this order
 
 # Colors ----------------------------------------------
-source ~/.config/neomutt/themes/gruvbox-powerline
+source ~/.config/neomutt/themes/dracula
