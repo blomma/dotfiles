@@ -22,11 +22,9 @@
     co = checkout
     commend = commit --amend --no-edit
     conflicts = diff --name-only --diff-filter=U
-    df = diff --word-diff
-    dp = diff --patch-with-stat
-    dsf = "!f() { git diff --minimal \"$@\" | tig; }; f"
-    dsfb = "!f() { [ -z \"$GIT_PREFIX\" ] || cd \"$GIT_PREFIX\" && git diff --minimal \"$@\" $(git merge-base --fork-point master) | tig; }; f"
-    dt = difftool
+    dh = diff --histogram
+    dsf = "!f() { git diff --histogram \"$@\" | tig; }; f"
+    dsfb = "!f() { [ -z \"$GIT_PREFIX\" ] || cd \"$GIT_PREFIX\" && git diff --histogram \"$@\" $(git merge-base --fork-point main) | tig; }; f"
     hack = "!f() { git fetch -p && git rebase origin/master master && git checkout -b $1 master; }; f"
     it = "!f() { git init && git commit -m root --allow-empty; }; f"
     l = log --pretty=format:"%C(yellow)%h\\ %C(green)%ad\\ %C(reset)%s%C(blue)\\ [%cn]" --decorate --date=short --graph
@@ -35,41 +33,26 @@
     p = pull --rebase=merges
     pud = push origin --delete
     puf = push --force-with-lease
-    raib = "!f() { git rebase -i $(git merge-base --fork-point master); }; f"
+    raib = "!f() { git rebase -i $(git merge-base --fork-point $1); }; f"
     rem="!git config -l | grep remote.*url | tail -n +2"
     rp = rebase --rebase-merges
     st = status -s --branch
 
+	lg = lg1
+    lg1 = lg1-specific --all --simplify-by-decoration
+    lg2 = lg2-specific --all --simplify-by-decoration
+    lg3 = lg3-specific --all --simplify-by-decoration
+
+    lg1-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'
+    lg2-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
+    lg3-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset) %C(bold cyan)(committed: %cD)%C(reset) %C(auto)%d%C(reset)%n''         %C(white)%s%C(reset)%n''          %C(dim white)- %an <%ae> %C(reset) %C(dim white)(committer: %cn <%ce>)%C(reset)' 
+
 [core]
     editor = "'nvim' +startinsert"
     whitespace = blank-at-eol,space-before-tab,blank-at-eof,cr-at-eol
-    pager = delta
 
 [diff]
     colorMoved = default
-
-[interactive]
-    diffFilter = delta --color-only --features=interactive
-
-[delta]
-    side-by-side = true
-    line-numbers-left-format = ""
-    line-numbers-right-format = "│ "
-    syntax-theme = Dracula
-    features = line-numbers decorations
-    whitespace-error-style = 22 reverse
-
-[delta "interactive"]
-    keep-plus-minus-markers = false
-
-[delta "decorations"]
-    commit-decoration-style = blue ol
-    commit-style = raw
-    file-style = omit
-    hunk-header-decoration-style = blue box
-    hunk-header-file-style = red
-    hunk-header-line-number-style = "#067a00"
-    hunk-header-style = file line-number syntax
 
 [commit]
     template = ~/.config/git/commit-message
@@ -104,12 +87,6 @@
 [user]
     name = Mikael Hultgren
     email = blomma@artsoftheinsane.com
-
-[includeIf "gitdir:C:/projects/"]
-    path = config.work
-
-[includeIf "gitdir:/mnt/c/projects/"]
-    path = config.work
 
 [include]
     path = config.local
