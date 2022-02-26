@@ -27115,7 +27115,7 @@
 	<key>DimOnlyText</key>
 	<false/>
 	<key>DisableFullscreenTransparency</key>
-	<true/>
+	<false/>
 	<key>EnableDivisionView</key>
 	<false/>
 	<key>EnableRendezvous</key>
@@ -27850,7 +27850,7 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>FiraCodeNerdFontCompleteM-Light 18</string>
+			<string>FiraCodeNerdFontCompleteM-Regular 18</string>
 			<key>Option Key Sends</key>
 			<integer>0</integer>
 			<key>Prompt Before Closing 2</key>
@@ -30230,7 +30230,7 @@
 	<key>SoundForEsc</key>
 	<false/>
 	<key>SplitPaneDimmingAmount</key>
-	<real>0.4000000059604645</real>
+	<real>0.3998881279264839</real>
 	<key>StatusBarPosition</key>
 	<integer>1</integer>
 	<key>SwitchTabModifier</key>
@@ -30240,7 +30240,7 @@
 	<key>TabStyle</key>
 	<integer>1</integer>
 	<key>TabStyleWithAutomaticOption</key>
-	<integer>4</integer>
+	<integer>5</integer>
 	<key>TabViewType</key>
 	<integer>0</integer>
 	<key>TerminalMargin</key>
