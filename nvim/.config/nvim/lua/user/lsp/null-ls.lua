@@ -16,5 +16,7 @@ null_ls.setup {
             extra_filetypes = { "toml", "solidity" },
         },
         formatting.stylua,
+        formatting.fish_indent,
+        formatting.swiftformat,
     },
 }
