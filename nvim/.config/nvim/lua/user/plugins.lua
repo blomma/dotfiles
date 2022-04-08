@@ -47,7 +47,7 @@ return packer.startup(function(use)
     use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
     use "numToStr/Comment.nvim"
     use "kyazdani42/nvim-web-devicons"
-    use { "kyazdani42/nvim-tree.lua", commit = "f183c7f31197ae499c3420341fb8b275636a49b8" }
+    use "kyazdani42/nvim-tree.lua"
     use "akinsho/bufferline.nvim"
     use "moll/vim-bbye"
     use "nvim-lualine/lualine.nvim"
@@ -62,7 +62,7 @@ return packer.startup(function(use)
     use "andymass/vim-matchup"
     use "nacro90/numb.nvim"
     use "monaqa/dial.nvim"
-    use "br1anchen/nvim-colorizer.lua"
+    use "norcalli/nvim-colorizer.lua"
     use "windwp/nvim-spectre"
     use "folke/zen-mode.nvim"
     use "karb94/neoscroll.nvim"
@@ -82,7 +82,7 @@ return packer.startup(function(use)
     use "rebelot/kanagawa.nvim"
 
     -- cmp plugins
-    use { "hrsh7th/nvim-cmp", commit = "d93104244c3834fbd8f3dd01da9729920e0b5fe7" } -- The completion plugin
+    use "hrsh7th/nvim-cmp" -- The completion plugin
     use "hrsh7th/cmp-buffer" -- buffer completions
     use "hrsh7th/cmp-path" -- path completions
     use "hrsh7th/cmp-cmdline" -- cmdline completions
@@ -121,7 +121,7 @@ return packer.startup(function(use)
         run = ":TSUpdate",
     }
     use "JoosepAlviste/nvim-ts-context-commentstring"
-    use { "p00f/nvim-ts-rainbow", commit = "c6c26c4def0e9cd82f371ba677d6fc9baa0038af" }
+    use "p00f/nvim-ts-rainbow"
     use "nvim-treesitter/playground"
     use "windwp/nvim-ts-autotag"
     use "romgrk/nvim-treesitter-context"
