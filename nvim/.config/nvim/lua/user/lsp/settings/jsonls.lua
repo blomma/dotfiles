@@ -1,4 +1,3 @@
----@diagnostic disable-next-line: unused-local
 local status_ok, schemastore = pcall(require, "schemastore")
 if not status_ok then
     return
