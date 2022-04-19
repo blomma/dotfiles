@@ -6,9 +6,15 @@ end
 local actions = require "telescope.actions"
 telescope.load_extension "media_files"
 
+local icons = require "user.icons"
+
 telescope.setup {
     defaults = {
+
+        prompt_prefix = icons.ui.Telescope .. " ",
+        selection_caret = " ",
         path_display = { "smart" },
+
         mappings = {
             i = {
                 ["<C-n>"] = actions.cycle_history_next,
@@ -27,8 +33,10 @@ telescope.setup {
                 ["<C-v>"] = actions.select_vertical,
                 ["<C-t>"] = actions.select_tab,
 
-                ["<C-u>"] = actions.preview_scrolling_up,
-                ["<C-d>"] = actions.preview_scrolling_down,
+                ["<c-d>"] = require("telescope.actions").delete_buffer,
+
+                -- ["<C-u>"] = actions.preview_scrolling_up,
+                -- ["<C-d>"] = actions.preview_scrolling_down,
 
                 ["<PageUp>"] = actions.results_scrolling_up,
                 ["<PageDown>"] = actions.results_scrolling_down,
@@ -64,10 +72,10 @@ telescope.setup {
                 ["gg"] = actions.move_to_top,
                 ["G"] = actions.move_to_bottom,
 
-                ["<c-d>"] = require("telescope.actions").delete_buffer,
+                -- ["<c-d>"] = require("telescope.actions").delete_buffer,
 
-                -- ["<C-u>"] = actions.preview_scrolling_up,
-                -- ["<C-d>"] = actions.preview_scrolling_down,
+                ["<C-u>"] = actions.preview_scrolling_up,
+                ["<C-d>"] = actions.preview_scrolling_down,
 
                 ["<PageUp>"] = actions.results_scrolling_up,
                 ["<PageDown>"] = actions.results_scrolling_down,

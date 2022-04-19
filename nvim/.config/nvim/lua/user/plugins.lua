@@ -31,6 +31,7 @@ end
 
 -- Have packer use a popup window
 packer.init {
+    max_jobs = 2,
     display = {
         open_fn = function()
             return require("packer.util").float { border = "rounded" }
@@ -40,7 +41,6 @@ packer.init {
 
 -- Install your plugins here
 return packer.startup(function(use)
-    -- My plugins here
     use "wbthomason/packer.nvim" -- Have packer manage itself
     use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
     use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
@@ -70,12 +70,12 @@ return packer.startup(function(use)
     use "kevinhwang91/nvim-bqf"
     use "ThePrimeagen/harpoon"
     use "MattesGroeger/vim-bookmarks"
-    use "lunarvim/vim-solidity"
     use "Mephistophiles/surround.nvim"
     use "Shatur/neovim-session-manager"
     use "rcarriga/nvim-notify"
     use "tversteeg/registers.nvim"
     use "nyngwang/NeoZoom.lua"
+    use "https://gitlab.com/dbeniamine/vim-mail"
 
     -- Colorschemes
     use "folke/tokyonight.nvim"
@@ -114,6 +114,8 @@ return packer.startup(function(use)
     use "nvim-telescope/telescope.nvim"
     use "tom-anders/telescope-vim-bookmarks.nvim"
     use "nvim-telescope/telescope-media-files.nvim"
+    use "nvim-telescope/telescope-ui-select.nvim"
+    use "nvim-telescope/telescope-file-browser.nvim"
 
     -- Treesitter
     use {
@@ -125,6 +127,9 @@ return packer.startup(function(use)
     use "nvim-treesitter/playground"
     use "windwp/nvim-ts-autotag"
     use "romgrk/nvim-treesitter-context"
+
+    -- Git
+    use "lewis6991/gitsigns.nvim"
 
     -- DAP
     use "mfussenegger/nvim-dap"

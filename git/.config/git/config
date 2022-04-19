@@ -53,6 +53,7 @@
 
 [diff]
     colorMoved = default
+	tool = difftastic
 
 [commit]
     template = ~/.config/git/commit-message
@@ -60,6 +61,12 @@
 [difftool]
     useBuiltin = true
     prompt = false
+
+[difftool "difftastic"]
+	cmd = difft "$LOCAL" "$REMOTE"
+
+[pager]
+	difftool = true
 
 [mergetool]
     keepBackup = false
