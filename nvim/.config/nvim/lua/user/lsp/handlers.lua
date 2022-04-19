@@ -1,11 +1,12 @@
 local M = {}
 
 M.setup = function()
+    local icons = require "user.icons"
     local signs = {
-        { name = "DiagnosticSignError", text = "x" },
-        { name = "DiagnosticSignWarn", text = "!" },
-        { name = "DiagnosticSignHint", text = "?" },
-        { name = "DiagnosticSignInfo", text = "i" },
+        { name = "DiagnosticSignError", text = icons.diagnostics.Error },
+        { name = "DiagnosticSignWarn", text = icons.diagnostics.Warning },
+        { name = "DiagnosticSignHint", text = icons.diagnostics.Hint },
+        { name = "DiagnosticSignInfo", text = icons.diagnostics.Information },
     }
 
     for _, sign in ipairs(signs) do
@@ -14,7 +15,7 @@ M.setup = function()
 
     local config = {
         -- disable virtual text
-        virtual_text = true,
+        virtual_text = false,
         -- show signs
         signs = {
             active = signs,
