@@ -15,8 +15,8 @@ vim.api.nvim_set_keymap(
     '<cmd>lua require("renamer").rename({empty = true})<cr>',
     { noremap = true, silent = true }
 )
-local mappings_utils = require "renamer.mappings.utils"
-renamer.setup {
+local mappings_utils = require("renamer.mappings.utils")
+renamer.setup({
     -- The popup title, shown if `border` is true
     title = "Rename",
     -- The padding around the popup content
@@ -43,4 +43,4 @@ renamer.setup {
         ["<c-u>"] = mappings_utils.undo,
         ["<c-r>"] = mappings_utils.redo,
     },
-}
+})

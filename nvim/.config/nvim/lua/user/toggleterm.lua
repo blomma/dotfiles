@@ -3,7 +3,7 @@ if not status_ok then
     return
 end
 
-toggleterm.setup {
+toggleterm.setup({
     size = 20,
     open_mapping = [[<c-\>]],
     hide_numbers = true,
@@ -24,7 +24,7 @@ toggleterm.setup {
             background = "Normal",
         },
     },
-}
+})
 
 function _G.set_terminal_keymaps()
     local opts = { noremap = true }
@@ -36,10 +36,10 @@ function _G.set_terminal_keymaps()
     vim.api.nvim_buf_set_keymap(0, "t", "<C-l>", [[<C-\><C-n><C-W>l]], opts)
 end
 
-vim.cmd "autocmd! TermOpen term://* lua set_terminal_keymaps()"
+vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
 
 local Terminal = require("toggleterm.terminal").Terminal
-local tig_git = Terminal:new { cmd = "tig", hidden = true }
+local tig_git = Terminal:new({ cmd = "tig", hidden = true })
 
 function _TIG_GIT_TOGGLE()
     tig_git:toggle()

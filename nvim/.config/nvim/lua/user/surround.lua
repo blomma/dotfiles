@@ -3,7 +3,7 @@ if not status_ok then
     return
 end
 
-surround.setup {
+surround.setup({
     context_offset = 100,
     load_autogroups = false,
     mappings_style = "sandwich",
@@ -15,4 +15,4 @@ surround.setup {
         linear = { { "'", "'" }, { "`", "`" }, { '"', '"' } },
     },
     prefix = "s",
-}
+})

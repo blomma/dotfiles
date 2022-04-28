@@ -3,7 +3,7 @@ if not status_ok then
     return
 end
 
-configs.setup {
+configs.setup({
     ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
     sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
     ignore_install = { "phpdoc" }, -- List of parsers to ignore installing
@@ -39,4 +39,9 @@ configs.setup {
     playground = {
         enable = true,
     },
-}
+    matchup = {
+        enable = true, -- mandatory, false will disable the whole extension
+        disable = { "c", "ruby" }, -- optional, list of language that will be disabled
+        -- [options]
+    },
+})
