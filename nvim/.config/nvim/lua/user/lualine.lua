@@ -7,7 +7,7 @@ local hide_in_width = function()
     return vim.fn.winwidth(0) > 80
 end
 
-local icons = require "user.icons"
+local icons = require("user.icons")
 local diagnostics = {
     "diagnostics",
     sources = { "nvim_diagnostic" },
@@ -50,22 +50,22 @@ local mode = {
     end,
 }
 
-local progress = {
-    function()
-        local current_line = vim.fn.line "."
-        local total_lines = vim.fn.line "$"
-        local chars = { "_", "▁", "▂", "▃", "▄", "▅", "▆", "▇", "█" }
-        local line_ratio = current_line / total_lines
-        local index = math.ceil(line_ratio * #chars)
-        return chars[index]
-    end,
-    padding = 0,
-}
-
+-- local progress = {
+--     function()
+--         local current_line = vim.fn.line(".")
+--         local total_lines = vim.fn.line("$")
+--         local chars = { "_", "▁", "▂", "▃", "▄", "▅", "▆", "▇", "█" }
+--         local line_ratio = current_line / total_lines
+--         local index = math.ceil(line_ratio * #chars)
+--         return chars[index]
+--     end,
+--     padding = 0,
+-- }
+--
 -- TODO: find out what is overriding this
 vim.opt.laststatus = 3
 
-lualine.setup {
+lualine.setup({
     options = {
         icons_enabled = true,
         theme = "auto",
@@ -93,4 +93,4 @@ lualine.setup {
     },
     tabline = {},
     extensions = {},
-}
+})

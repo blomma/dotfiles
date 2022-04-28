@@ -3,16 +3,13 @@ if not status_ok then
     return
 end
 
-local actions = require "telescope.actions"
-telescope.load_extension "media_files"
+local actions = require("telescope.actions")
+telescope.load_extension("media_files")
+telescope.load_extension("fzf")
 
-local icons = require "user.icons"
-
-telescope.setup {
+telescope.setup({
     defaults = {
 
-        prompt_prefix = icons.ui.Telescope .. " ",
-        selection_caret = " ",
         path_display = { "smart" },
 
         mappings = {
@@ -101,4 +98,4 @@ telescope.setup {
             find_cmd = "rg", -- find command (defaults to `fd`)
         },
     },
-}
+})

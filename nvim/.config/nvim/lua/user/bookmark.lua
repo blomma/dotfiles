@@ -1,4 +1,4 @@
-local icons = require "user.icons"
+local icons = require("user.icons")
 vim.g.bookmark_sign = icons.ui.BookMark
 vim.g.bookmark_annotation_sign = icons.ui.Comment
 vim.g.bookmark_no_default_key_mappings = 1

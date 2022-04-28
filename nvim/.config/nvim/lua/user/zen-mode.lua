@@ -3,7 +3,7 @@ if not status_ok then
     return
 end
 
-zen_mode.setup {
+zen_mode.setup({
     window = {
         backdrop = 1,
         height = 0.9, -- height of the Zen window
@@ -37,4 +37,4 @@ zen_mode.setup {
     --       IndentBlanklineEnable
     --       ]]
     -- end,
-}
+})
