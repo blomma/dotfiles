@@ -39,6 +39,7 @@ local options = {
 
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
+vim.opt.fillchars.eob = " "
 
 vim.g.VimMailDontUseComplete = 1
 vim.g.VimMailDoNotFold = 1

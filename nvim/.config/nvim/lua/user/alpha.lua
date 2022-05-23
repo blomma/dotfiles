@@ -24,8 +24,13 @@ dashboard.section.buttons.val = {
 
 local function footer()
     local handle = io.popen("fortune")
+    if handle == nil then
+        return
+    end
+
     local fortune = handle:read("*a")
     handle:close()
+
     return fortune
 end
 
