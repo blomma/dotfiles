@@ -32,11 +32,6 @@ end
 -- Have packer use a popup window
 packer.init({
     max_jobs = 2,
-    -- display = {
-    --     open_fn = function()
-    --         return require("packer.util").float { border = "rounded" }
-    --     end,
-    -- },
 })
 
 -- Install your plugins here
@@ -46,9 +41,13 @@ return packer.startup(function(use)
     use("nvim-lua/plenary.nvim") -- Useful lua functions used ny lots of plugins
     use("windwp/nvim-autopairs") -- Autopairs, integrates with both cmp and treesitter
     use("numToStr/Comment.nvim")
-    use("kyazdani42/nvim-web-devicons")
-    use("kyazdani42/nvim-tree.lua")
-    use("akinsho/bufferline.nvim")
+    use({
+        "kyazdani42/nvim-tree.lua",
+        requires = {
+            "kyazdani42/nvim-web-devicons", -- optional, for file icon
+        },
+    })
+    use({ "akinsho/bufferline.nvim", tag = "v2.*", requires = "kyazdani42/nvim-web-devicons" }) -- using packer.nvim
     use("moll/vim-bbye")
     use("nvim-lualine/lualine.nvim")
     use("akinsho/toggleterm.nvim")
@@ -78,6 +77,9 @@ return packer.startup(function(use)
     -- Colorschemes
     use("folke/tokyonight.nvim")
     use("rebelot/kanagawa.nvim")
+    use("lunarvim/colorschemes") -- A bunch of colorschemes you can try out
+    use("lunarvim/darkplus.nvim")
+    use("rose-pine/neovim")
 
     -- cmp plugins
     use("hrsh7th/nvim-cmp") -- The completion plugin

@@ -13,9 +13,9 @@ M.setup = function()
         vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
     end
 
-    local config = {
+    vim.diagnostic.config({
         -- disable virtual text
-        virtual_text = false,
+        virtual_text = true,
         -- show signs
         signs = {
             active = signs,
@@ -31,9 +31,7 @@ M.setup = function()
             header = "",
             prefix = "",
         },
-    }
-
-    vim.diagnostic.config(config)
+    })
 
     vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
         border = "rounded",
@@ -45,13 +43,11 @@ M.setup = function()
 end
 
 local function lsp_highlight_document(client)
-    if client.resolved_capabilities.document_highlight then
-        local status_ok, illuminate = pcall(require, "illuminate")
-        if not status_ok then
-            return
-        end
-        illuminate.on_attach(client)
+    local status_ok, illuminate = pcall(require, "illuminate")
+    if not status_ok then
+        return
     end
+    illuminate.on_attach(client)
 end
 
 local function lsp_keymaps(bufnr)
@@ -94,37 +90,5 @@ if not status_ok then
 end
 
 M.capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
-
--- function M.enable_format_on_save()
---     vim.cmd [[
---     augroup format_on_save
---       autocmd!
---       autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()
---     augroup end
---   ]]
---     vim.notify "Enabled format on save"
--- end
---
--- function M.disable_format_on_save()
---     M.remove_augroup "format_on_save"
---     vim.notify "Disabled format on save"
--- end
---
--- function M.toggle_format_on_save()
---     if vim.fn.exists "#format_on_save#BufWritePre" == 0 then
---         M.enable_format_on_save()
---     else
---         M.disable_format_on_save()
---     end
--- end
---
--- function M.remove_augroup(name)
---     if vim.fn.exists("#" .. name) == 1 then
---         vim.cmd("au! " .. name)
---     end
--- end
---
--- vim.cmd [[ command! LspToggleAutoFormat execute 'lua require("user.lsp.handlers").toggle_format_on_save()' ]]
---
 
 return M
