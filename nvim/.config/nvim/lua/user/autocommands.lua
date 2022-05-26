@@ -1,12 +1,3 @@
-vim.api.nvim_create_autocmd({ "User" }, {
-    pattern = { "AlphaReady" },
-    callback = function()
-        vim.cmd([[
-      set showtabline=0 | autocmd BufUnload <buffer> set showtabline=2
-    ]])
-    end,
-})
-
 vim.api.nvim_create_autocmd({ "FileType" }, {
     pattern = { "qf", "help", "man", "lspinfo", "spectre_panel" },
     callback = function()
