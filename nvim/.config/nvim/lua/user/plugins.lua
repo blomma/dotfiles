@@ -47,7 +47,6 @@ return packer.startup(function(use)
             "kyazdani42/nvim-web-devicons", -- optional, for file icon
         },
     })
-    use({ "akinsho/bufferline.nvim", tag = "v2.*", requires = "kyazdani42/nvim-web-devicons" }) -- using packer.nvim
     use("moll/vim-bbye")
     use("nvim-lualine/lualine.nvim")
     use("akinsho/toggleterm.nvim")
