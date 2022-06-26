@@ -6,6 +6,7 @@ set sidebar_indent_string = ''
 
 named-mailboxes \
     "Inbox" =blomma/INBOX \
+    "Gmail" =blomma/INBOX.Gmail \
     "Drafts" =blomma/INBOX.Drafts \
     "Archive" =blomma/INBOX.Archive \
     "Lists" =blomma/INBOX.Lists \
@@ -13,8 +14,7 @@ named-mailboxes \
     "Notes" =blomma/INBOX.Notes \
     "Trash" =blomma/INBOX.Trash \
     "Spam" =blomma/INBOX.Spam \
-    "LSpam" =blomma/INBOX.LSpam \
-	"Mother" =blomma/INBOX.Mother.INBOX
+    "LSpam" =blomma/INBOX.LSpam
 
 set nm_default_url = "notmuch:///Users/blomma/"
 # virtual-mailboxes "flagged" "notmuch://?query=folder:blomma/INBOX.Archive and tag:flagged"
