@@ -23,7 +23,8 @@
     commend = commit --amend --no-edit
     conflicts = diff --name-only --diff-filter=U
     dh = diff --histogram
-    dsf = "!f() { git diff --histogram \"$@\" | tig; }; f"
+	dft = difftool 
+	dsf = "!f() { git diff --histogram \"$@\" | tig; }; f"
     dsfb = "!f() { [ -z \"$GIT_PREFIX\" ] || cd \"$GIT_PREFIX\" && git diff --histogram \"$@\" $(git merge-base --fork-point main) | tig; }; f"
     hack = "!f() { git fetch -p && git rebase origin/master master && git checkout -b $1 master; }; f"
     it = "!f() { git init && git commit -m root --allow-empty; }; f"
@@ -56,13 +57,6 @@
 
 [commit]
     template = ~/.config/git/commit-message
-
-; [difftool]
-;     useBuiltin = true
-;     prompt = false
-;
-; [pager]
-; 	difftool = true
 
 [mergetool]
     keepBackup = false

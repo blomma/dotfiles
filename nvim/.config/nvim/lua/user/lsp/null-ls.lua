@@ -58,7 +58,6 @@ null_ls.setup({
     sources = {
         formatting.prettier.with({
             prefer_local = "node_modules/.bin",
-            extra_filetypes = { "toml" },
         }),
         formatting.stylua,
         formatting.fish_indent,
