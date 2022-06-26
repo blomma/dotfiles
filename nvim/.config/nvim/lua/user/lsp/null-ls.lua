@@ -62,5 +62,6 @@ null_ls.setup({
         formatting.stylua,
         formatting.fish_indent,
         formatting.swiftformat,
+        formatting.shfmt,
     },
 })
