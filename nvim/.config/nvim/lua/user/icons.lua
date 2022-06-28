@@ -52,8 +52,11 @@ if vim.fn.has("mac") == 1 then
             Rename = "",
             Diff = "",
             Repo = "",
+            Octoface = "",
         },
         ui = {
+            ArrowClosed = "",
+            ArrowOpen = "",
             Lock = "",
             Circle = "",
             BigCircle = "",
@@ -73,6 +76,7 @@ if vim.fn.has("mac") == 1 then
             Package = "",
             List = "",
             SignIn = "",
+            SignOut = "",
             Check = "",
             Fire = "",
             Note = "",
@@ -81,6 +85,7 @@ if vim.fn.has("mac") == 1 then
             ChevronRight = ">",
             Table = "",
             Calendar = "",
+            CloudDownload = "",
         },
         diagnostics = {
             Error = "",
