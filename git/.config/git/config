@@ -23,7 +23,6 @@
     commend = commit --amend --no-edit
     conflicts = diff --name-only --diff-filter=U
     dh = diff --histogram
-	dft = difftool 
 	dsf = "!f() { git diff --histogram \"$@\" | tig; }; f"
     dsfb = "!f() { [ -z \"$GIT_PREFIX\" ] || cd \"$GIT_PREFIX\" && git diff --histogram \"$@\" $(git merge-base --fork-point main) | tig; }; f"
     hack = "!f() { git fetch -p && git rebase origin/master master && git checkout -b $1 master; }; f"
@@ -51,6 +50,7 @@
 [core]
     editor = "'nvim' +startinsert"
     whitespace = blank-at-eol,space-before-tab,blank-at-eof,cr-at-eol
+	fsmonitor = true
 
 [diff]
     colorMoved = default
@@ -68,10 +68,6 @@
     pruneTags = true
 
 
-
-[hub]
-    protocol = https
-
 [pull]
     rebase = false
 
@@ -83,6 +79,10 @@
 
 [init]
     defaultBranch = main
+
+; [include]
+;     path = config.local
+;
 
 [include]
     path = config.local

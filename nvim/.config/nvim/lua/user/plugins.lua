@@ -37,14 +37,16 @@ packer.init({
 -- Install your plugins here
 return packer.startup(function(use)
     use("wbthomason/packer.nvim") -- Have packer manage itself
-    use("nvim-lua/popup.nvim") -- An implementation of the Popup API from vim in Neovim
     use("nvim-lua/plenary.nvim") -- Useful lua functions used ny lots of plugins
     use("windwp/nvim-autopairs") -- Autopairs, integrates with both cmp and treesitter
     use("numToStr/Comment.nvim")
     use({
-        "kyazdani42/nvim-tree.lua",
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v2.x",
         requires = {
-            "kyazdani42/nvim-web-devicons", -- optional, for file icon
+            "nvim-lua/plenary.nvim",
+            "kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
+            "MunifTanjim/nui.nvim",
         },
     })
     use("moll/vim-bbye")
@@ -53,9 +55,8 @@ return packer.startup(function(use)
     use("ahmedkhalf/project.nvim")
     use("lukas-reineke/indent-blankline.nvim")
     use("goolord/alpha-nvim")
-    use("antoinemadec/FixCursorHold.nvim") -- This is needed to fix lsp doc highlight
     use("folke/which-key.nvim")
-    use("unblevable/quick-scope")
+    -- use("unblevable/quick-scope")
     use("phaazon/hop.nvim")
     use("andymass/vim-matchup")
     use("nacro90/numb.nvim")
@@ -70,7 +71,7 @@ return packer.startup(function(use)
     use("Mephistophiles/surround.nvim")
     use("rcarriga/nvim-notify")
     use("tversteeg/registers.nvim")
-    use("nyngwang/NeoZoom.lua")
+    -- use("nyngwang/NeoZoom.lua")
     use("https://gitlab.com/dbeniamine/vim-mail")
 
     -- Colorschemes
@@ -113,7 +114,6 @@ return packer.startup(function(use)
     use("nvim-telescope/telescope-media-files.nvim")
     use("nvim-telescope/telescope-ui-select.nvim")
     use("nvim-telescope/telescope-file-browser.nvim")
-    use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 
     -- Treesitter
     use({
@@ -124,16 +124,16 @@ return packer.startup(function(use)
     use("p00f/nvim-ts-rainbow")
     use("nvim-treesitter/playground")
     use("windwp/nvim-ts-autotag")
-    use("lewis6991/nvim-treesitter-context")
+    -- use("lewis6991/nvim-treesitter-context")
 
     -- Git
     use("lewis6991/gitsigns.nvim")
 
     -- DAP
-    use("mfussenegger/nvim-dap")
-    use("theHamsta/nvim-dap-virtual-text")
-    use("rcarriga/nvim-dap-ui")
-    use("Pocco81/DAPInstall.nvim")
+    -- use("mfussenegger/nvim-dap")
+    -- use("theHamsta/nvim-dap-virtual-text")
+    -- use("rcarriga/nvim-dap-ui")
+    -- use("Pocco81/DAPInstall.nvim")
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins

@@ -2,8 +2,8 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     pattern = { "qf", "help", "man", "lspinfo", "spectre_panel" },
     callback = function()
         vim.cmd([[
-      nnoremap <silent> <buffer> q :close<CR> 
-      set nobuflisted 
+			nnoremap <silent> <buffer> q :close<CR> 
+			set nobuflisted 
     ]])
     end,
 })
@@ -11,20 +11,18 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 vim.api.nvim_create_autocmd({ "FileType" }, {
     pattern = { "gitcommit", "markdown" },
     callback = function()
-        vim.cmd([[
-    setlocal wrap
-    setlocal spell
-    ]])
+        vim.opt_local.wrap = true
+        vim.opt_local.spell = true
     end,
 })
 
-vim.api.nvim_create_autocmd({ "BufEnter" }, {
-    callback = function()
-        vim.cmd([[
-      if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif
-    ]])
-    end,
-})
+-- vim.api.nvim_create_autocmd({ "BufEnter" }, {
+--     callback = function()
+--         vim.cmd([[
+--       if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif
+--     ]])
+--     end,
+-- })
 
 vim.api.nvim_create_autocmd({ "VimResized" }, {
     callback = function()
@@ -59,5 +57,14 @@ vim.api.nvim_create_autocmd({ "VimEnter" }, {
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
     callback = function()
         vim.lsp.buf.formatting_sync()
+    end,
+})
+
+vim.api.nvim_create_autocmd({ "InsertLeave" }, {
+    callback = function()
+        local luasnip = require("luasnip")
+        if luasnip.expand_or_jumpable() then
+            luasnip.unlink_current()
+        end
     end,
 })

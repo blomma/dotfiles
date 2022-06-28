@@ -5,12 +5,15 @@ end
 
 local actions = require("telescope.actions")
 telescope.load_extension("media_files")
-telescope.load_extension("fzf")
 
+local icons = require("user.icons")
 telescope.setup({
     defaults = {
 
+        prompt_prefix = icons.ui.Telescope .. " ",
+        selection_caret = " ",
         path_display = { "smart" },
+        file_ignore_patterns = { ".git/", "node_modules/", "target/", "docs/", ".settings/" },
 
         mappings = {
             i = {
