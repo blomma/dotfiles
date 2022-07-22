@@ -4,7 +4,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
         vim.cmd([[
 			nnoremap <silent> <buffer> q :close<CR> 
 			set nobuflisted 
-    ]]   )
+    ]])
     end,
 })
 
@@ -56,7 +56,7 @@ vim.api.nvim_create_autocmd({ "VimEnter" }, {
 
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
     callback = function()
-        vim.lsp.buf.format()
+        vim.lsp.buf.formatting_sync()
     end,
 })
 
