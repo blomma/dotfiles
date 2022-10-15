@@ -29,7 +29,6 @@ if not status_ok then
     return
 end
 
--- Have packer use a popup window
 packer.init({
     max_jobs = 2,
 })
@@ -39,7 +38,9 @@ return packer.startup(function(use)
     use("wbthomason/packer.nvim") -- Have packer manage itself
     use("nvim-lua/plenary.nvim") -- Useful lua functions used ny lots of plugins
     use("windwp/nvim-autopairs") -- Autopairs, integrates with both cmp and treesitter
-    use("numToStr/Comment.nvim")
+    use({
+        "numToStr/Comment.nvim",
+    })
     use({
         "nvim-neo-tree/neo-tree.nvim",
         branch = "v2.x",
@@ -51,12 +52,10 @@ return packer.startup(function(use)
     })
     use("moll/vim-bbye")
     use("nvim-lualine/lualine.nvim")
-    use("akinsho/toggleterm.nvim")
     use("ahmedkhalf/project.nvim")
     use("lukas-reineke/indent-blankline.nvim")
     use("goolord/alpha-nvim")
     use("folke/which-key.nvim")
-    -- use("unblevable/quick-scope")
     use("phaazon/hop.nvim")
     use("andymass/vim-matchup")
     use("nacro90/numb.nvim")
@@ -71,13 +70,12 @@ return packer.startup(function(use)
     use("Mephistophiles/surround.nvim")
     use("rcarriga/nvim-notify")
     use("tversteeg/registers.nvim")
-    -- use("nyngwang/NeoZoom.lua")
     use("https://gitlab.com/dbeniamine/vim-mail")
 
     -- Colorschemes
     use("folke/tokyonight.nvim")
     use("rebelot/kanagawa.nvim")
-    use("lunarvim/colorschemes") -- A bunch of colorschemes you can try out
+    use("EdenEast/nightfox.nvim")
 
     -- cmp plugins
     use("hrsh7th/nvim-cmp") -- The completion plugin
@@ -124,16 +122,6 @@ return packer.startup(function(use)
     use("p00f/nvim-ts-rainbow")
     use("nvim-treesitter/playground")
     use("windwp/nvim-ts-autotag")
-    -- use("lewis6991/nvim-treesitter-context")
-
-    -- Git
-    use("lewis6991/gitsigns.nvim")
-
-    -- DAP
-    -- use("mfussenegger/nvim-dap")
-    -- use("theHamsta/nvim-dap-virtual-text")
-    -- use("rcarriga/nvim-dap-ui")
-    -- use("Pocco81/DAPInstall.nvim")
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins

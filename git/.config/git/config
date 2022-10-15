@@ -50,7 +50,7 @@
 [core]
     editor = "'nvim' +startinsert"
     whitespace = blank-at-eol,space-before-tab,blank-at-eof,cr-at-eol
-	fsmonitor = true
+	fsmonitor = false
 
 [diff]
     colorMoved = default

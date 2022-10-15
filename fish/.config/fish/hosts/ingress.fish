@@ -2,6 +2,7 @@ fish_add_path /usr/local/share/dotnet/x64 /opt/homebrew/opt/ruby/bin /opt/homebr
 fish_add_path /opt/homebrew/sbin
 
 set -x NODE_BINARY /opt/homebrew/opt/node@16/bin/node
+set -x K9SCONFIG $HOME/.config/k9s
 
 if status --is-interactive
     type -q rbenv; and source (rbenv init -|psub)

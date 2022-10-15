@@ -11,7 +11,6 @@ local icons = require("user.icons")
 local diagnostics = {
     "diagnostics",
     sources = { "nvim_diagnostic" },
-    -- sections = { "error", "warn", "info", "hint" },
     sections = { "error", "warn" },
     symbols = { error = icons.diagnostics.Error .. " ", warn = icons.diagnostics.Warning .. " " },
     colored = true,
@@ -50,19 +49,6 @@ local mode = {
     end,
 }
 
--- local progress = {
---     function()
---         local current_line = vim.fn.line(".")
---         local total_lines = vim.fn.line("$")
---         local chars = { "_", "▁", "▂", "▃", "▄", "▅", "▆", "▇", "█" }
---         local line_ratio = current_line / total_lines
---         local index = math.ceil(line_ratio * #chars)
---         return chars[index]
---     end,
---     padding = 0,
--- }
---
--- TODO: find out what is overriding this
 vim.opt.laststatus = 3
 
 lualine.setup({
@@ -70,7 +56,6 @@ lualine.setup({
         icons_enabled = true,
         theme = "auto",
         component_separators = { left = "", right = "" },
-        -- disabled_filetypes = { "alpha", "dashboard", "NvimTree", "Outline", "toggleterm" },
         disabled_filetypes = { "alpha", "dashboard", "toggleterm" },
         always_divide_middle = true,
     },
@@ -78,7 +63,6 @@ lualine.setup({
         lualine_a = { branch },
         lualine_b = { mode },
         lualine_c = { diagnostics },
-        -- lualine_x = {},
         lualine_x = { diff, "encoding", filetype },
         lualine_y = {},
         lualine_z = { location },
