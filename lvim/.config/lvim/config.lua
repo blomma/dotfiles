@@ -10,11 +10,10 @@ an executable
 
 -- general
 lvim.log.level = "warn"
-lvim.format_on_save = true
-lvim.colorscheme = "nightfox"
+lvim.format_on_save.enabled = true
+lvim.colorscheme = "tokyonight-storm"
 -- to disable icons and use a minimalist setup, uncomment the following
 -- lvim.use_icons = false
-
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
@@ -44,10 +43,6 @@ lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 --     ["<C-k>"] = actions.move_selection_previous,
 --   },
 -- }
-
--- Change theme settings
--- lvim.builtin.theme.options.dim_inactive = true
--- lvim.builtin.theme.options.style = "storm"
 
 -- Use which-key to add extra bindings with the leader-key prefix
 -- lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
@@ -83,7 +78,6 @@ lvim.builtin.treesitter.ensure_installed = {
     "rust",
     "java",
     "yaml",
-    "c_sharp"
 }
 
 lvim.builtin.treesitter.ignore_install = { "haskell" }
@@ -92,11 +86,10 @@ lvim.builtin.treesitter.highlight.enable = true
 -- generic LSP settings
 
 -- -- make sure server will always be installed even if the server is in skipped_servers list
-lvim.lsp.installer.setup.ensure_installed = {
-    "sumneko_lua",
-    "jsonls",
-    "omnisharp"
-}
+-- lvim.lsp.installer.setup.ensure_installed = {
+--     "sumneko_lua",
+--     "jsonls",
+-- }
 -- -- change UI setting of `LspInstallInfo`
 -- -- see <https://github.com/williamboman/nvim-lsp-installer#default-configuration>
 -- lvim.lsp.installer.setup.ui.check_outdated_servers_on_open = false
@@ -134,6 +127,8 @@ lvim.lsp.installer.setup.ensure_installed = {
 -- -- set a formatter, this will override the language server formatting capabilities (if it exists)
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
+    -- { command = "black", filetypes = { "python" } },
+    -- { command = "isort", filetypes = { "python" } },
     {
         -- each formatter accepts a list of options identical to https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#Configuration
         command = "prettier",
@@ -176,41 +171,32 @@ lvim.plugins = {
         cmd = "TroubleToggle",
     },
     {
-        "romgrk/nvim-treesitter-context",
-        config = function()
-            require("treesitter-context").setup {
-                enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
-                throttle = true, -- Throttles plugin updates (may improve performance)
-                max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.
-                patterns = { -- Match patterns for TS nodes. These get wrapped to match at word boundaries.
-                    -- For all filetypes
-                    -- Note that setting an entry here replaces all other patterns for this entry.
-                    -- By setting the 'default' entry below, you can control which nodes you want to
-                    -- appear in the context window.
-                    default = {
-                        'class',
-                        'function',
-                        'method',
-                    },
-                },
-            }
-        end
+        "https://gitlab.com/dbeniamine/vim-mail"
     },
+    -- {
+    --     "romgrk/nvim-treesitter-context",
+    --     config = function()
+    --         require("treesitter-context").setup {
+    --             enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
+    --             throttle = true, -- Throttles plugin updates (may improve performance)
+    --             max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.
+    --             patterns = { -- Match patterns for TS nodes. These get wrapped to match at word boundaries.
+    --                 -- For all filetypes
+    --                 -- Note that setting an entry here replaces all other patterns for this entry.
+    --                 -- By setting the 'default' entry below, you can control which nodes you want to
+    --                 -- appear in the context window.
+    --                 default = {
+    --                     'class',
+    --                     'function',
+    --                     'method',
+    --                 },
+    --             },
+    --         }
+    --     end
+    -- },
 }
+vim.g.VimMailDontUseComplete = 1
+vim.g.VimMailDoNotFold = 1
 
--- Autocommands (https://neovim.io/doc/user/autocmd.html)
--- vim.api.nvim_create_autocmd("BufEnter", {
---   pattern = { "*.json", "*.jsonc" },
---   -- enable wrap mode for json files only
---   command = "setlocal wrap",
--- })
--- vim.api.nvim_create_autocmd("FileType", {
---   pattern = "zsh",
---   callback = function()
---     -- let treesitter use bash highlight for zsh files as well
---     require("nvim-treesitter.highlight").attach(0, "bash")
---   end,
--- })
-vim.opt.shiftwidth = 4
-vim.opt.tabstop = 4
-vim.opt.shell = "/bin/sh"
+vim.opt.shiftwidth = 4 -- the number of spaces inserted for each indentation
+vim.opt.tabstop = 4 -- insert 2 spaces for a tabvim.opt.shiftwidth = 2 -- the number of spaces inserted for each indentation
