@@ -4,21 +4,11 @@ $username\
 [](bg:#DA627D fg:#9A348E)\
 $directory\
 [](fg:#DA627D bg:#FCA17D)\
+[](fg:#FCA17D bg:#86BBD8)\
 $git_branch\
 $git_status\
-[](fg:#FCA17D bg:#86BBD8)\
-$c\
-$dotnet\
-$golang\
-$nodejs\
-$rust\
-$lua\
-$ruby\
-$swift\
 [](fg:#86BBD8 bg:#06969A)\
-$docker_context\
 [](fg:#06969A bg:#33658A)\
-$time\
 [ ](fg:#33658A)\
 """
 
@@ -27,7 +17,6 @@ $time\
 
 # You can also replace your username with a neat symbol like  to save some space
 [username]
-show_always = true
 style_user = "bg:#9A348E"
 style_root = "bg:#9A348E"
 format = '[$user ]($style)'
@@ -51,56 +40,14 @@ truncation_symbol = "…/"
 # So either put "Important Documents" before "Documents" or use the substituted version:
 # "Important  " = "  "
 
-[c]
-symbol = " "
-style = "bg:#86BBD8"
-format = '[[ $symbol ($version) ](bg:#86BBD8)]($style)'
-
-[docker_context]
-symbol = " "
-style = "bg:#06969A"
-format = '[[ $symbol $context ](bg:#06969A)]($style) $path'
-
-[swift]
-style = "bg:#86BBD8"
-format = '[[ $symbol ($version) ](bg:#86BBD8)]($style)'
-
-[ruby]
-style = "bg:#86BBD8"
-format = '[[ $symbol ($version) ](bg:#86BBD8)]($style)'
-
-[dotnet]
-symbol = "🎯 "
-style = "bg:#86BBD8"
-format = '[[ $symbol ($version) ](bg:#86BBD8)]($style)'
-
 [git_branch]
 symbol = ""
 style = "bg:#FCA17D"
-format = '[[ $symbol $branch ](bg:#FCA17D)]($style)'
+format = '[[ $symbol $branch ](bg:#86BBD8)]($style)'
 
 [git_status]
 style = "bg:#FCA17D"
-format = '[[($all_status$ahead_behind )](bg:#FCA17D)]($style)'
-
-[lua]
-style = "bg:#86BBD8"
-format = '[[ $symbol ($version) ](bg:#86BBD8)]($style)'
-
-[golang]
-symbol = " "
-style = "bg:#86BBD8"
-format = '[[ $symbol ($version) ](bg:#86BBD8)]($style)'
-
-[nodejs]
-symbol = ""
-style = "bg:#86BBD8"
-format = '[[ $symbol ($version) ](bg:#86BBD8)]($style)'
-
-[rust]
-symbol = ""
-style = "bg:#86BBD8"
-format = '[[ $symbol ($version) ](bg:#86BBD8)]($style)'
+format = '[[($all_status$ahead_behind )](bg:#86BBD8)]($style)'
 
 [time]
 disabled = false

@@ -1,7 +1,7 @@
-fish_add_path /usr/local/share/dotnet/x64 /opt/homebrew/opt/ruby/bin /opt/homebrew/lib/ruby/gems/3.0.0/bin $HOME/go/bin $HOME/opt/bin $HOME/.local/bin $HOME/.cargo/bin /opt/homebrew/bin /opt/homebrew/opt/node@16/bin
+fish_add_path $HOME/go/bin $HOME/opt/bin $HOME/.local/bin $HOME/.cargo/bin $HOME/.dotnet/tools /opt/homebrew/bin /opt/homebrew/opt/node@18/bin
 fish_add_path /opt/homebrew/sbin
 
-set -x NODE_BINARY /opt/homebrew/opt/node@16/bin/node
+set -x NODE_BINARY /opt/homebrew/opt/node@18/bin/node
 set -x K9SCONFIG $HOME/.config/k9s
 
 if status --is-interactive

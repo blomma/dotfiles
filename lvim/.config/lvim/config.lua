@@ -11,7 +11,9 @@ an executable
 -- general
 lvim.log.level = "warn"
 lvim.format_on_save.enabled = true
-lvim.colorscheme = "tokyonight-storm"
+lvim.colorscheme = "dracula"
+
+-- vim.g.material_style = "darker"
 -- to disable icons and use a minimalist setup, uncomment the following
 -- lvim.use_icons = false
 
@@ -19,8 +21,10 @@ lvim.colorscheme = "tokyonight-storm"
 lvim.leader = "space"
 -- add your own keymapping
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
--- lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
--- lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
+lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
+lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
+lvim.keys.normal_mode["<S-x>"] = ":BufferKill<CR>"
+
 -- unmap a default keymapping
 -- vim.keymap.del("n", "<C-Up>")
 -- override a default keymapping
@@ -78,6 +82,7 @@ lvim.builtin.treesitter.ensure_installed = {
     "rust",
     "java",
     "yaml",
+    "c_sharp",
 }
 
 lvim.builtin.treesitter.ignore_install = { "haskell" }
@@ -138,6 +143,12 @@ formatters.setup {
         ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
         -- filetypes = { "typescript", "typescriptreact" },
     },
+    {
+        command = "csharpier",
+    },
+    {
+        command = "stylua",
+    },
 }
 
 -- -- set additional linters
@@ -157,21 +168,28 @@ formatters.setup {
 --     filetypes = { "javascript", "python" },
 --   },
 -- }
+--
 
 -- Additional Plugins
 lvim.plugins = {
     {
-        "rebelot/kanagawa.nvim"
+        "Mofiqul/dracula.nvim",
     },
     {
-        "EdenEast/nightfox.nvim"
+        "marko-cerovac/material.nvim",
+    },
+    {
+        "rebelot/kanagawa.nvim",
+    },
+    {
+        "EdenEast/nightfox.nvim",
     },
     {
         "folke/trouble.nvim",
         cmd = "TroubleToggle",
     },
     {
-        "https://gitlab.com/dbeniamine/vim-mail"
+        "https://gitlab.com/dbeniamine/vim-mail",
     },
     -- {
     --     "romgrk/nvim-treesitter-context",
