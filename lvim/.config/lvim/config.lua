@@ -11,7 +11,7 @@ an executable
 -- general
 lvim.log.level = "warn"
 lvim.format_on_save.enabled = true
-lvim.colorscheme = "dracula"
+lvim.colorscheme = "nordfox"
 
 -- vim.g.material_style = "darker"
 -- to disable icons and use a minimalist setup, uncomment the following
@@ -80,7 +80,6 @@ lvim.builtin.treesitter.ensure_installed = {
     "tsx",
     "css",
     "rust",
-    "java",
     "yaml",
     "c_sharp",
 }
@@ -173,6 +172,9 @@ formatters.setup {
 -- Additional Plugins
 lvim.plugins = {
     {
+        "ellisonleao/gruvbox.nvim",
+    },
+    {
         "Mofiqul/dracula.nvim",
     },
     {
@@ -191,30 +193,11 @@ lvim.plugins = {
     {
         "https://gitlab.com/dbeniamine/vim-mail",
     },
-    -- {
-    --     "romgrk/nvim-treesitter-context",
-    --     config = function()
-    --         require("treesitter-context").setup {
-    --             enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
-    --             throttle = true, -- Throttles plugin updates (may improve performance)
-    --             max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.
-    --             patterns = { -- Match patterns for TS nodes. These get wrapped to match at word boundaries.
-    --                 -- For all filetypes
-    --                 -- Note that setting an entry here replaces all other patterns for this entry.
-    --                 -- By setting the 'default' entry below, you can control which nodes you want to
-    --                 -- appear in the context window.
-    --                 default = {
-    --                     'class',
-    --                     'function',
-    --                     'method',
-    --                 },
-    --             },
-    --         }
-    --     end
-    -- },
 }
 vim.g.VimMailDontUseComplete = 1
 vim.g.VimMailDoNotFold = 1
 
+vim.opt.wrap = true -- display lines as one long line
+vim.opt.number = false -- set numbered lines
 vim.opt.shiftwidth = 4 -- the number of spaces inserted for each indentation
 vim.opt.tabstop = 4 -- insert 2 spaces for a tabvim.opt.shiftwidth = 2 -- the number of spaces inserted for each indentation

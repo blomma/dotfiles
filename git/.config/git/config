@@ -14,7 +14,6 @@
 
 [alias]
     code-changes = "!git log --format=format: --name-only | egrep -v '^$' | sort | uniq -c | sort -rg | head -10"
-    cc = "!git code-changes"
     ai = add --interactive
     alias = "!git config -l | grep alias | cut -c 7-"
     b = branch
@@ -23,8 +22,8 @@
     commend = commit --amend --no-edit
     conflicts = diff --name-only --diff-filter=U
     dh = diff --histogram
-	dsf = "!f() { git diff --histogram \"$@\" | tig; }; f"
-    dsfb = "!f() { [ -z \"$GIT_PREFIX\" ] || cd \"$GIT_PREFIX\" && git diff --histogram \"$@\" $(git merge-base --fork-point main) | tig; }; f"
+	dsf = "!f() { git diff --histogram \"$@\"; }; f"
+    dsfb = "!f() { [ -z \"$GIT_PREFIX\" ] || cd \"$GIT_PREFIX\" && git diff --histogram \"$@\" $(git merge-base --fork-point main); }; f"
     hack = "!f() { git fetch -p && git rebase origin/master master && git checkout -b $1 master; }; f"
     it = "!f() { git init && git commit -m root --allow-empty; }; f"
     l = log --pretty=format:"%C(yellow)%h\\ %C(green)%ad\\ %C(reset)%s%C(blue)\\ [%cn]" --decorate --date=short --graph
@@ -54,6 +53,13 @@
 
 [diff]
     colorMoved = default
+    tool = difftastic
+
+[difftool]
+    prompt = false
+
+[difftool "difftastic"]
+    cmd = difft --display inline "$LOCAL" "$REMOTE"
 
 [commit]
     template = ~/.config/git/commit-message
@@ -74,6 +80,9 @@
 [pull]
     rebase = false
 
+[pager]
+    difftool = true
+
 [filter "lfs"]
     clean = git-lfs clean -- %f
     smudge = git-lfs smudge -- %f
@@ -83,6 +92,4 @@
 [init]
     defaultBranch = main
 
-; [include]
-;     path = config.local
-;
+
