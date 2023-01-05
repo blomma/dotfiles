@@ -27170,6 +27170,10 @@
 	<integer>2</integer>
 	<key>MaxVertically</key>
 	<false/>
+	<key>NeverWarnAboutShortLivedSessions_3E43B8DD-2E2E-47CE-9E52-F99BF38CB8C0</key>
+	<true/>
+	<key>NeverWarnAboutShortLivedSessions_3E43B8DD-2E2E-47CE-9E52-F99BF38CB8C0_selection</key>
+	<integer>0</integer>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
