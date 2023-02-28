@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>DVTConsoleDebuggerInputTextColor</key>
+	<string>1 1 1 1</string>
+	<key>DVTConsoleDebuggerInputTextFont</key>
+	<string>FiraCodeNerdFontCompleteM-Regular - 14.0</string>
+	<key>DVTConsoleDebuggerOutputTextColor</key>
+	<string>1 1 1 1</string>
+	<key>DVTConsoleDebuggerOutputTextFont</key>
+	<string>FiraCodeNerdFontCompleteM-Regular - 14.0</string>
+	<key>DVTConsoleDebuggerPromptTextColor</key>
+	<string>0.877232 0.654423 0 1</string>
+	<key>DVTConsoleDebuggerPromptTextFont</key>
+	<string>FiraCodeNerdFontCompleteM-Regular - 14.0</string>
+	<key>DVTConsoleExectuableInputTextColor</key>
+	<string>1 1 1 1</string>
+	<key>DVTConsoleExectuableInputTextFont</key>
+	<string>FiraCodeNerdFontCompleteM-Regular - 14.0</string>
+	<key>DVTConsoleExectuableOutputTextColor</key>
+	<string>1 0.929784 0.889801 1</string>
+	<key>DVTConsoleExectuableOutputTextFont</key>
+	<string>FiraCodeNerdFontCompleteM-Regular - 14.0</string>
+	<key>DVTConsoleTextBackgroundColor</key>
+	<string>0.132607 0.106067 0.141312 1</string>
+	<key>DVTConsoleTextInsertionPointColor</key>
+	<string>1 1 1 1</string>
+	<key>DVTConsoleTextSelectionColor</key>
+	<string>0.317647 0.356862 0.439215 1</string>
+	<key>DVTFontAndColorVersion</key>
+	<integer>1</integer>
+	<key>DVTLineSpacing</key>
+	<real>1.1000000238418579</real>
+	<key>DVTMarkupTextBackgroundColor</key>
+	<string>0.18856 0.195 0.22444 1</string>
+	<key>DVTMarkupTextBorderColor</key>
+	<string>0.253475 0.2594 0.286485 1</string>
+	<key>DVTMarkupTextCodeFont</key>
+	<string>SFMono-Regular - 9.0</string>
+	<key>DVTMarkupTextEmphasisColor</key>
+	<string>1 1 1 1</string>
+	<key>DVTMarkupTextEmphasisFont</key>
+	<string>.SFNS-RegularItalic - 17.0</string>
+	<key>DVTMarkupTextInlineCodeColor</key>
+	<string>1 1 1 0.7</string>
+	<key>DVTMarkupTextLinkColor</key>
+	<string>0.33 0.247124 0.894195 1</string>
+	<key>DVTMarkupTextLinkFont</key>
+	<string>.SFNS-Regular - 17.0</string>
+	<key>DVTMarkupTextNormalColor</key>
+	<string>1 1 1 1</string>
+	<key>DVTMarkupTextNormalFont</key>
+	<string>.SFNS-Regular - 17.0</string>
+	<key>DVTMarkupTextOtherHeadingColor</key>
+	<string>1 1 1 0.5</string>
+	<key>DVTMarkupTextOtherHeadingFont</key>
+	<string>.SFNS-Regular - 23.8</string>
+	<key>DVTMarkupTextPrimaryHeadingColor</key>
+	<string>1 1 1 1</string>
+	<key>DVTMarkupTextPrimaryHeadingFont</key>
+	<string>.SFNS-Regular - 40.8</string>
+	<key>DVTMarkupTextSecondaryHeadingColor</key>
+	<string>1 1 1 1</string>
+	<key>DVTMarkupTextSecondaryHeadingFont</key>
+	<string>.SFNS-Regular - 30.6</string>
+	<key>DVTMarkupTextStrongColor</key>
+	<string>1 1 1 1</string>
+	<key>DVTMarkupTextStrongFont</key>
+	<string>.SFNS-Bold - 17.0</string>
+	<key>DVTScrollbarMarkerAnalyzerColor</key>
+	<string>0.403922 0.372549 1 1</string>
+	<key>DVTScrollbarMarkerBreakpointColor</key>
+	<string>0.290196 0.290196 0.968627 1</string>
+	<key>DVTScrollbarMarkerDiffColor</key>
+	<string>0.556863 0.556863 0.556863 1</string>
+	<key>DVTScrollbarMarkerDiffConflictColor</key>
+	<string>0.968627 0.290196 0.290196 1</string>
+	<key>DVTScrollbarMarkerErrorColor</key>
+	<string>0.968627 0.290196 0.290196 1</string>
+	<key>DVTScrollbarMarkerRuntimeIssueColor</key>
+	<string>0.643137 0.509804 1 1</string>
+	<key>DVTScrollbarMarkerWarningColor</key>
+	<string>0.937255 0.717647 0.34902 1</string>
+	<key>DVTSourceTextBackground</key>
+	<string>0.120057 0.0982635 0.141312 1</string>
+	<key>DVTSourceTextBlockDimBackgroundColor</key>
+	<string>0.5 0.5 0.5 1</string>
+	<key>DVTSourceTextCurrentLineHighlightColor</key>
+	<string>0.150271 0.109593 0.147505 1</string>
+	<key>DVTSourceTextInsertionPointColor</key>
+	<string>1 0.658879 0 1</string>
+	<key>DVTSourceTextInvisiblesColor</key>
+	<string>0.258298 0.300954 0.355207 1</string>
+	<key>DVTSourceTextSelectionColor</key>
+	<string>0.339605 0.329796 0.221079 0.40581</string>
+	<key>DVTSourceTextSyntaxColors</key>
+	<dict>
+		<key>xcode.syntax.attribute</key>
+		<string>0.74902 0.521569 0.333333 1</string>
+		<key>xcode.syntax.character</key>
+		<string>0.431734 0.815686 0.411765 1</string>
+		<key>xcode.syntax.comment</key>
+		<string>0.423943 0.474618 0.525183 1</string>
+		<key>xcode.syntax.comment.doc</key>
+		<string>0.423943 0.474618 0.525183 1</string>
+		<key>xcode.syntax.comment.doc.keyword</key>
+		<string>0.572549 0.631373 0.694118 1</string>
+		<key>xcode.syntax.declaration.other</key>
+		<string>0.394067 0.357603 0.752941 1</string>
+		<key>xcode.syntax.declaration.type</key>
+		<string>0.362946 0.998966 0.541942 1</string>
+		<key>xcode.syntax.identifier.class</key>
+		<string>0.945098 0.77921 0.619608 1</string>
+		<key>xcode.syntax.identifier.class.system</key>
+		<string>0.820581 1 0.658824 1</string>
+		<key>xcode.syntax.identifier.constant</key>
+		<string>0.822837 0.180345 0.292799 1</string>
+		<key>xcode.syntax.identifier.constant.system</key>
+		<string>0.755979 0.155226 0.165238 1</string>
+		<key>xcode.syntax.identifier.function</key>
+		<string>1 0.575668 0.132786 1</string>
+		<key>xcode.syntax.identifier.function.system</key>
+		<string>0.80312 0.593993 0.332947 1</string>
+		<key>xcode.syntax.identifier.macro</key>
+		<string>0.991311 0.560764 0.246107 1</string>
+		<key>xcode.syntax.identifier.macro.system</key>
+		<string>0.992157 0.560784 0.247059 1</string>
+		<key>xcode.syntax.identifier.type</key>
+		<string>0.621449 0.637847 0.943864 1</string>
+		<key>xcode.syntax.identifier.type.system</key>
+		<string>1 0.154496 0.353566 1</string>
+		<key>xcode.syntax.identifier.variable</key>
+		<string>0.717051 0.405383 0.405383 1</string>
+		<key>xcode.syntax.identifier.variable.system</key>
+		<string>0.679156 0.565648 0.303114 1</string>
+		<key>xcode.syntax.keyword</key>
+		<string>0.870801 0.667911 0.708745 1</string>
+		<key>xcode.syntax.mark</key>
+		<string>0.572549 0.631373 0.694118 1</string>
+		<key>xcode.syntax.markup.code</key>
+		<string>0.665 0.052 0.569 1</string>
+		<key>xcode.syntax.number</key>
+		<string>0.291275 0.9168 0.706012 1</string>
+		<key>xcode.syntax.plain</key>
+		<string>1 1 1 0.85</string>
+		<key>xcode.syntax.preprocessor</key>
+		<string>0.991311 0.560764 0.246107 1</string>
+		<key>xcode.syntax.regex</key>
+		<string>0.989117 0.41558 0.365684 1</string>
+		<key>xcode.syntax.regex.capturename</key>
+		<string>0.822837 0.180345 0.292799 1</string>
+		<key>xcode.syntax.regex.charname</key>
+		<string>0.755979 0.155226 0.165238 1</string>
+		<key>xcode.syntax.regex.number</key>
+		<string>0.291275 0.9168 0.706012 1</string>
+		<key>xcode.syntax.regex.other</key>
+		<string>1 1 1 0.85</string>
+		<key>xcode.syntax.string</key>
+		<string>0.989117 0.41558 0.365684 1</string>
+		<key>xcode.syntax.url</key>
+		<string>0.330191 0.511266 0.998589 1</string>
+	</dict>
+	<key>DVTSourceTextSyntaxFonts</key>
+	<dict>
+		<key>xcode.syntax.attribute</key>
+		<string>FiraCodeNerdFontCompleteM-Regular - 16.0</string>
+		<key>xcode.syntax.character</key>
+		<string>FiraCodeNerdFontCompleteM-Regular - 16.0</string>
+		<key>xcode.syntax.comment</key>
+		<string>FiraCodeNerdFontCompleteM-Regular - 16.0</string>
+		<key>xcode.syntax.comment.doc</key>
+		<string>FiraCodeNerdFontCompleteM-Regular - 16.0</string>
+		<key>xcode.syntax.comment.doc.keyword</key>
+		<string>FiraCodeNerdFontCompleteM-Regular - 16.0</string>
+		<key>xcode.syntax.declaration.other</key>
+		<string>FiraCodeNerdFontCompleteM-Regular - 16.0</string>
+		<key>xcode.syntax.declaration.type</key>
+		<string>FiraCodeNerdFontCompleteM-Regular - 16.0</string>
+		<key>xcode.syntax.identifier.class</key>
+		<string>FiraCodeNerdFontCompleteM-Regular - 16.0</string>
+		<key>xcode.syntax.identifier.class.system</key>
+		<string>FiraCodeNerdFontCompleteM-Regular - 16.0</string>
+		<key>xcode.syntax.identifier.constant</key>
+		<string>FiraCodeNerdFontCompleteM-Regular - 16.0</string>
+		<key>xcode.syntax.identifier.constant.system</key>
+		<string>FiraCodeNerdFontCompleteM-Regular - 16.0</string>
+		<key>xcode.syntax.identifier.function</key>
+		<string>FiraCodeNerdFontCompleteM-Regular - 16.0</string>
+		<key>xcode.syntax.identifier.function.system</key>
+		<string>FiraCodeNerdFontCompleteM-Regular - 16.0</string>
+		<key>xcode.syntax.identifier.macro</key>
+		<string>FiraCodeNerdFontCompleteM-Regular - 16.0</string>
+		<key>xcode.syntax.identifier.macro.system</key>
+		<string>FiraCodeNerdFontCompleteM-Regular - 16.0</string>
+		<key>xcode.syntax.identifier.type</key>
+		<string>FiraCodeNerdFontCompleteM-Regular - 16.0</string>
+		<key>xcode.syntax.identifier.type.system</key>
+		<string>FiraCodeNerdFontCompleteM-Regular - 16.0</string>
+		<key>xcode.syntax.identifier.variable</key>
+		<string>FiraCodeNerdFontCompleteM-Regular - 16.0</string>
+		<key>xcode.syntax.identifier.variable.system</key>
+		<string>FiraCodeNerdFontCompleteM-Regular - 16.0</string>
+		<key>xcode.syntax.keyword</key>
+		<string>FiraCodeNerdFontCompleteM-Regular - 16.0</string>
+		<key>xcode.syntax.mark</key>
+		<string>FiraCodeNerdFontCompleteM-Regular - 16.0</string>
+		<key>xcode.syntax.markup.code</key>
+		<string>FiraCodeNerdFontCompleteM-Regular - 16.0</string>
+		<key>xcode.syntax.number</key>
+		<string>FiraCodeNerdFontCompleteM-Regular - 16.0</string>
+		<key>xcode.syntax.plain</key>
+		<string>FiraCodeNerdFontCompleteM-Regular - 16.0</string>
+		<key>xcode.syntax.preprocessor</key>
+		<string>FiraCodeNerdFontCompleteM-Regular - 16.0</string>
+		<key>xcode.syntax.regex</key>
+		<string>FiraCodeNerdFontCompleteM-Regular - 16.0</string>
+		<key>xcode.syntax.regex.capturename</key>
+		<string>FiraCodeNerdFontCompleteM-Regular - 16.0</string>
+		<key>xcode.syntax.regex.charname</key>
+		<string>FiraCodeNerdFontCompleteM-Regular - 16.0</string>
+		<key>xcode.syntax.regex.number</key>
+		<string>FiraCodeNerdFontCompleteM-Regular - 16.0</string>
+		<key>xcode.syntax.regex.other</key>
+		<string>FiraCodeNerdFontCompleteM-Regular - 16.0</string>
+		<key>xcode.syntax.string</key>
+		<string>FiraCodeNerdFontCompleteM-Regular - 16.0</string>
+		<key>xcode.syntax.url</key>
+		<string>FiraCodeNerdFontCompleteM-Regular - 16.0</string>
+	</dict>
+</dict>
+</plist>

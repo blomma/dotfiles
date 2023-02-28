@@ -15,7 +15,7 @@ localfolders = ~/.mail/blomma
 [Repository blomma-remote]
 type = IMAP
 ssl = yes
-cert_fingerprint = 9C:16:9D:48:58:78:52:55:E2:99:C0:46:B9:A6:C3:CA:7C:AA:D5:5F:93:AA:EA:C5:FD:A3:E7:80:C0:4D:D8:86:9E:6D:B3:26:D5:46:A3:E1:B4:7F:C7:2C:90:F5:8A:81:2D:09:B8:FD:E4:63:A6:53:22:BA:34:C6:17:8B:9C:CE
+cert_fingerprint = f9a7b9f1403dbb0ba5eeeec20c4ddbda5a76e18c1f613e5ceece942359cd546c5ac41882ee3c7d732501abe5af85b269d373c8d81b56af45752f9bdf1500a221
 remotehost = mail.messagingengine.com
 remoteuser = blomma@artsoftheinsane.com
 remotepasseval = get_pass("fastmail")
