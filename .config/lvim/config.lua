@@ -115,7 +115,14 @@ lvim.plugins = {
         "catppuccin/nvim",
         as = "catppuccin",
     },
+    {
+        "folke/twilight.nvim",
+    },
+    {
+        "folke/zen-mode.nvim",
+    },
 }
+
 vim.g.VimMailDontUseComplete = 1
 vim.g.VimMailDoNotFold = 1
 
