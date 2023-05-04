@@ -1,133 +1,146 @@
+-- vim options
+-- vim.opt.shell = "/bin/sh"
+vim.opt.wrap = true -- display lines as one long line
+vim.opt.number = false -- set numbered lines
+vim.opt.shiftwidth = 4 -- the number of spaces inserted for each indentation
+vim.opt.tabstop = 4 -- insert 2 spaces for a tabvim.opt.shiftwidth = 2 -- the number of spaces inserted for each indentation
+
+vim.g.VimMailDontUseComplete = 1
+vim.g.VimMailDoNotFold = 1
+
 -- general
 lvim.log.level = "warn"
 lvim.format_on_save.enabled = true
-lvim.colorscheme = "catppuccin-frappe"
+lvim.use_icons = true
 
--- keymappings [view all the defaults by pressing <leader>Lk]
+-- keymappings <https://www.lunarvim.org/docs/configuration/keybindings>
 lvim.leader = "space"
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
 lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
 lvim.keys.normal_mode["<S-x>"] = ":BufferKill<CR>"
 
--- unmap a default keymapping
--- vim.keymap.del("n", "<C-Up>")
--- override a default keymapping
--- lvim.keys.normal_mode["<C-q>"] = ":q<cr>" -- or vim.keymap.set("n", "<C-q>", ":q<cr>" )
+-- Change theme settings
+lvim.colorscheme = "catppuccin-frappe"
 
--- Change Telescope navigation to use j and k for navigation and n and p for history in both input and normal mode.
--- we use protected-mode (pcall) just in case the plugin wasn't loaded yet.
--- local _, actions = pcall(require, "telescope.actions")
--- lvim.builtin.telescope.defaults.mappings = {
---   -- for input mode
---   i = {
---     ["<C-j>"] = actions.move_selection_next,
---     ["<C-k>"] = actions.move_selection_previous,
---     ["<C-n>"] = actions.cycle_history_next,
---     ["<C-p>"] = actions.cycle_history_prev,
---   },
---   -- for normal mode
---   n = {
---     ["<C-j>"] = actions.move_selection_next,
---     ["<C-k>"] = actions.move_selection_previous,
---   },
--- }
-
--- Use which-key to add extra bindings with the leader-key prefix
-lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
-lvim.builtin.which_key.mappings["t"] = {
-    name = "+Trouble",
-    r = { "<cmd>Trouble lsp_references<cr>", "References" },
-    f = { "<cmd>Trouble lsp_definitions<cr>", "Definitions" },
-    d = { "<cmd>Trouble document_diagnostics<cr>", "Diagnostics" },
-    q = { "<cmd>Trouble quickfix<cr>", "QuickFix" },
-    l = { "<cmd>Trouble loclist<cr>", "LocationList" },
-    w = { "<cmd>Trouble workspace_diagnostics<cr>", "Workspace Diagnostics" },
-}
-
--- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
 lvim.builtin.alpha.active = true
 lvim.builtin.alpha.mode = "dashboard"
 lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
+lvim.builtin.nvimtree.setup.renderer.icons.glyphs.folder = {
+	arrow_closed = "",
+	arrow_open = "",
+	default = "",
+	open = "",
+	empty = "",
+	empty_open = "",
+	symlink = "",
+	symlink_open = "",
+}
+
 lvim.builtin.gitsigns.active = false
 
--- if you don't want all the parsers change this to a table of the ones you want
-lvim.builtin.treesitter.ensure_installed = {
-    "bash",
-    "javascript",
-    "json",
-    "lua",
-    "typescript",
-    "tsx",
-    "css",
-    "yaml",
-    "c_sharp",
-    "swift",
-}
+-- Automatically install missing parsers when entering buffer
+lvim.builtin.treesitter.auto_install = true
 
-lvim.builtin.treesitter.ignore_install = { "haskell" }
-lvim.builtin.treesitter.highlight.enable = true
+-- lvim.builtin.treesitter.ignore_install = { "haskell" }
 
--- generic LSP settings
-local formatters = require "lvim.lsp.null-ls.formatters"
-formatters.setup {
-    {
-        command = "prettier",
-    },
-    {
-        command = "csharpier",
-    },
-    {
-        command = "stylua",
-    },
-}
+-- -- always installed on startup, useful for parsers without a strict filetype
+-- lvim.builtin.treesitter.ensure_installed = { "comment", "markdown_inline", "regex" }
 
--- Additional Plugins
+-- -- generic LSP settings <https://www.lunarvim.org/docs/languages#lsp-support>
+
+-- --- disable automatic installation of servers
+-- lvim.lsp.installer.setup.automatic_installation = false
+
+-- ---configure a server manually. IMPORTANT: Requires `:LvimCacheReset` to take effect
+-- ---see the full default list `:lua =lvim.lsp.automatic_configuration.skipped_servers`
+-- vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "pyright" })
+-- local opts = {} -- check the lspconfig documentation for a list of all possible options
+-- require("lvim.lsp.manager").setup("pyright", opts)
+
+-- ---remove a server from the skipped list, e.g. eslint, or emmet_ls. IMPORTANT: Requires `:LvimCacheReset` to take effect
+-- ---`:LvimInfo` lists which server(s) are skipped for the current filetype
+-- lvim.lsp.automatic_configuration.skipped_servers = vim.tbl_filter(function(server)
+--   return server ~= "emmet_ls"
+-- end, lvim.lsp.automatic_configuration.skipped_servers)
+
+-- -- you can set a custom on_attach function that will be used for all the language servers
+-- -- See <https://github.com/neovim/nvim-lspconfig#keybindings-and-completion>
+lvim.lsp.on_attach_callback = function(client, bufnr)
+	if client.name == "omnisharp" then
+		-- https://github.com/OmniSharp/omnisharp-roslyn/issues/2483#issuecomment-1492605642
+		local tokenModifiers = client.server_capabilities.semanticTokensProvider.legend.tokenModifiers
+		for i, v in ipairs(tokenModifiers) do
+			local tmp = string.gsub(v, " ", "_")
+			tokenModifiers[i] = string.gsub(tmp, "-_", "")
+		end
+		local tokenTypes = client.server_capabilities.semanticTokensProvider.legend.tokenTypes
+		for i, v in ipairs(tokenTypes) do
+			local tmp = string.gsub(v, " ", "_")
+			tokenTypes[i] = string.gsub(tmp, "-_", "")
+		end
+	end
+end
+
+-- -- linters and formatters <https://www.lunarvim.org/docs/languages#lintingformatting>
+local formatters = require("lvim.lsp.null-ls.formatters")
+formatters.setup({
+	{
+		command = "prettier",
+	},
+	{
+		command = "csharpier",
+	},
+	{
+		command = "stylua",
+	},
+})
+
+-- local linters = require "lvim.lsp.null-ls.linters"
+-- linters.setup {
+--   { command = "flake8", filetypes = { "python" } },
+--   {
+--     command = "shellcheck",
+--     args = { "--severity", "warning" },
+--   },
+-- }
+
 lvim.plugins = {
-    {
-        "ellisonleao/gruvbox.nvim",
-    },
-    {
-        "Mofiqul/dracula.nvim",
-    },
-    {
-        "marko-cerovac/material.nvim",
-    },
-    {
-        "rebelot/kanagawa.nvim",
-    },
-    {
-        "EdenEast/nightfox.nvim",
-    },
-    {
-        "folke/trouble.nvim",
-        cmd = "TroubleToggle",
-    },
-    {
-        "https://gitlab.com/dbeniamine/vim-mail",
-    },
-    {
-        "khaveesh/vim-fish-syntax",
-    },
-    {
-        "catppuccin/nvim",
-        as = "catppuccin",
-    },
-    {
-        "folke/twilight.nvim",
-    },
-    {
-        "folke/zen-mode.nvim",
-    },
+	{
+		"folke/trouble.nvim",
+		cmd = "TroubleToggle",
+	},
+	{
+		"ellisonleao/gruvbox.nvim",
+	},
+	{
+		"Mofiqul/dracula.nvim",
+	},
+	{
+		"marko-cerovac/material.nvim",
+	},
+	{
+		"rebelot/kanagawa.nvim",
+	},
+	{
+		"EdenEast/nightfox.nvim",
+	},
+	{
+		url = "https://gitlab.com/dbeniamine/vim-mail",
+	},
+	{
+		"khaveesh/vim-fish-syntax",
+	},
+	{
+		"catppuccin/nvim",
+		name = "catppuccin",
+	},
+	{
+		"folke/twilight.nvim",
+	},
+	{
+		"folke/zen-mode.nvim",
+	},
 }
-
-vim.g.VimMailDontUseComplete = 1
-vim.g.VimMailDoNotFold = 1
-
-vim.opt.shell = "/bin/sh"
-vim.opt.wrap = true -- display lines as one long line
-vim.opt.number = false -- set numbered lines
-vim.opt.shiftwidth = 4 -- the number of spaces inserted for each indentation
-vim.opt.tabstop = 4 -- insert 2 spaces for a tabvim.opt.shiftwidth = 2 -- the number of spaces inserted for each indentation
