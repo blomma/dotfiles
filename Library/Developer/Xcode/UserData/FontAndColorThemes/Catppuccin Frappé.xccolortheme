@@ -5,23 +5,23 @@
 	<key>DVTConsoleDebuggerInputTextColor</key>
 	<string>0.776471 0.815686 0.960784 1</string>
 	<key>DVTConsoleDebuggerInputTextFont</key>
-	<string>SFMono-Bold - 14.0</string>
+	<string>JetBrainsMonoNFM-Medium - 14.0</string>
 	<key>DVTConsoleDebuggerOutputTextColor</key>
 	<string>0.776471 0.815686 0.960784 1</string>
 	<key>DVTConsoleDebuggerOutputTextFont</key>
-	<string>SFMono-Medium - 14.0</string>
+	<string>JetBrainsMonoNFM-Medium - 14.0</string>
 	<key>DVTConsoleDebuggerPromptTextColor</key>
 	<string>0.65098 0.819608 0.537255 1</string>
 	<key>DVTConsoleDebuggerPromptTextFont</key>
-	<string>SFMono-Bold - 14.0</string>
+	<string>JetBrainsMonoNFM-Medium - 14.0</string>
 	<key>DVTConsoleExectuableInputTextColor</key>
 	<string>0.776471 0.815686 0.960784 1</string>
 	<key>DVTConsoleExectuableInputTextFont</key>
-	<string>SFMono-Medium - 14.0</string>
+	<string>JetBrainsMonoNFM-Medium - 14.0</string>
 	<key>DVTConsoleExectuableOutputTextColor</key>
 	<string>0.776471 0.815686 0.960784 1</string>
 	<key>DVTConsoleExectuableOutputTextFont</key>
-	<string>SFMono-Bold - 14.0</string>
+	<string>JetBrainsMonoNFM-Medium - 14.0</string>
 	<key>DVTConsoleTextBackgroundColor</key>
 	<string>0.188235 0.203922 0.27451 1</string>
 	<key>DVTConsoleTextInsertionPointColor</key>
@@ -164,69 +164,69 @@
 	<key>DVTSourceTextSyntaxFonts</key>
 	<dict>
 		<key>xcode.syntax.attribute</key>
-		<string>JetBrainsMonoNerdFontCompleteM-Regular - 16.0</string>
+		<string>JetBrainsMonoNFM-Regular - 16.0</string>
 		<key>xcode.syntax.character</key>
-		<string>JetBrainsMonoNerdFontCompleteM-Regular - 16.0</string>
+		<string>JetBrainsMonoNFM-Regular - 16.0</string>
 		<key>xcode.syntax.comment</key>
-		<string>JetBrainsMonoNerdFontCompleteM-Regular - 16.0</string>
+		<string>JetBrainsMonoNFM-Regular - 16.0</string>
 		<key>xcode.syntax.comment.doc</key>
-		<string>JetBrainsMonoNerdFontCompleteM-Regular - 16.0</string>
+		<string>JetBrainsMonoNFM-Regular - 16.0</string>
 		<key>xcode.syntax.comment.doc.keyword</key>
-		<string>JetBrainsMonoNerdFontCompleteM-Regular - 16.0</string>
+		<string>JetBrainsMonoNFM-Regular - 16.0</string>
 		<key>xcode.syntax.declaration.other</key>
-		<string>JetBrainsMonoNerdFontCompleteM-Regular - 16.0</string>
+		<string>JetBrainsMonoNFM-Regular - 16.0</string>
 		<key>xcode.syntax.declaration.type</key>
-		<string>JetBrainsMonoNerdFontCompleteM-Regular - 16.0</string>
+		<string>JetBrainsMonoNFM-Regular - 16.0</string>
 		<key>xcode.syntax.identifier.class</key>
-		<string>JetBrainsMonoNerdFontCompleteM-Regular - 16.0</string>
+		<string>JetBrainsMonoNFM-Regular - 16.0</string>
 		<key>xcode.syntax.identifier.class.system</key>
-		<string>JetBrainsMonoNerdFontCompleteM-Regular - 16.0</string>
+		<string>JetBrainsMonoNFM-Regular - 16.0</string>
 		<key>xcode.syntax.identifier.constant</key>
-		<string>JetBrainsMonoNerdFontCompleteM-Regular - 16.0</string>
+		<string>JetBrainsMonoNFM-Regular - 16.0</string>
 		<key>xcode.syntax.identifier.constant.system</key>
-		<string>JetBrainsMonoNerdFontCompleteM-Regular - 16.0</string>
+		<string>JetBrainsMonoNFM-Regular - 16.0</string>
 		<key>xcode.syntax.identifier.function</key>
-		<string>JetBrainsMonoNerdFontCompleteM-Regular - 16.0</string>
+		<string>JetBrainsMonoNFM-Regular - 16.0</string>
 		<key>xcode.syntax.identifier.function.system</key>
-		<string>JetBrainsMonoNerdFontCompleteM-Regular - 16.0</string>
+		<string>JetBrainsMonoNFM-Regular - 16.0</string>
 		<key>xcode.syntax.identifier.macro</key>
-		<string>JetBrainsMonoNerdFontCompleteM-Regular - 16.0</string>
+		<string>JetBrainsMonoNFM-Regular - 16.0</string>
 		<key>xcode.syntax.identifier.macro.system</key>
-		<string>JetBrainsMonoNerdFontCompleteM-Regular - 16.0</string>
+		<string>JetBrainsMonoNFM-Regular - 16.0</string>
 		<key>xcode.syntax.identifier.type</key>
-		<string>JetBrainsMonoNerdFontCompleteM-Regular - 16.0</string>
+		<string>JetBrainsMonoNFM-Regular - 16.0</string>
 		<key>xcode.syntax.identifier.type.system</key>
-		<string>JetBrainsMonoNerdFontCompleteM-Regular - 16.0</string>
+		<string>JetBrainsMonoNFM-Regular - 16.0</string>
 		<key>xcode.syntax.identifier.variable</key>
-		<string>JetBrainsMonoNerdFontCompleteM-Regular - 16.0</string>
+		<string>JetBrainsMonoNFM-Regular - 16.0</string>
 		<key>xcode.syntax.identifier.variable.system</key>
-		<string>JetBrainsMonoNerdFontCompleteM-Regular - 16.0</string>
+		<string>JetBrainsMonoNFM-Regular - 16.0</string>
 		<key>xcode.syntax.keyword</key>
-		<string>JetBrainsMonoNerdFontCompleteM-Regular - 16.0</string>
+		<string>JetBrainsMonoNFM-Regular - 16.0</string>
 		<key>xcode.syntax.mark</key>
-		<string>JetBrainsMonoNerdFontCompleteM-Regular - 16.0</string>
+		<string>JetBrainsMonoNFM-Regular - 16.0</string>
 		<key>xcode.syntax.markup.code</key>
-		<string>JetBrainsMonoNerdFontCompleteM-Regular - 16.0</string>
+		<string>JetBrainsMonoNFM-Regular - 16.0</string>
 		<key>xcode.syntax.number</key>
-		<string>JetBrainsMonoNerdFontCompleteM-Regular - 16.0</string>
+		<string>JetBrainsMonoNFM-Regular - 16.0</string>
 		<key>xcode.syntax.plain</key>
-		<string>JetBrainsMonoNerdFontCompleteM-Regular - 16.0</string>
+		<string>JetBrainsMonoNFM-Regular - 16.0</string>
 		<key>xcode.syntax.preprocessor</key>
-		<string>JetBrainsMonoNerdFontCompleteM-Regular - 16.0</string>
+		<string>JetBrainsMonoNFM-Regular - 16.0</string>
 		<key>xcode.syntax.regex</key>
-		<string>JetBrainsMonoNerdFontCompleteM-Regular - 16.0</string>
+		<string>JetBrainsMonoNFM-Regular - 16.0</string>
 		<key>xcode.syntax.regex.capturename</key>
-		<string>JetBrainsMonoNerdFontCompleteM-Regular - 16.0</string>
+		<string>JetBrainsMonoNFM-Regular - 16.0</string>
 		<key>xcode.syntax.regex.charname</key>
-		<string>JetBrainsMonoNerdFontCompleteM-Regular - 16.0</string>
+		<string>JetBrainsMonoNFM-Regular - 16.0</string>
 		<key>xcode.syntax.regex.number</key>
-		<string>JetBrainsMonoNerdFontCompleteM-Regular - 16.0</string>
+		<string>JetBrainsMonoNFM-Regular - 16.0</string>
 		<key>xcode.syntax.regex.other</key>
-		<string>JetBrainsMonoNerdFontCompleteM-Regular - 16.0</string>
+		<string>JetBrainsMonoNFM-Regular - 16.0</string>
 		<key>xcode.syntax.string</key>
-		<string>JetBrainsMonoNerdFontCompleteM-Regular - 16.0</string>
+		<string>JetBrainsMonoNFM-Regular - 16.0</string>
 		<key>xcode.syntax.url</key>
-		<string>JetBrainsMonoNerdFontCompleteM-Regular - 16.0</string>
+		<string>JetBrainsMonoNFM-Regular - 16.0</string>
 	</dict>
 </dict>
 </plist>
