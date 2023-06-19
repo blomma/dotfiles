@@ -1,7 +1,8 @@
 lastupdatecheck: 0
 recentrepos:
-- /Users/blomma/Projects/literature/client.literaturetime
-- /Users/blomma/Projects/games/Liminal
+    - /Users/blomma/.dotfiles
+    - /Users/blomma/Projects/literature/client.literaturetime
+    - /Users/blomma/Projects/games/Liminal
 startuppopupversion: 5
 customcommandshistory: []
 hidecommandlog: true

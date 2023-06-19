@@ -138,6 +138,7 @@ _forgit_diff() {
         $FORGIT_FZF_DEFAULT_OPTS
         +m -0 --bind=\"enter:execute($enter_cmd | $_forgit_enter_pager)\"
         --preview=\"$preview_cmd\"
+        --bind=\"alt-e:execute-silent($EDITOR \$\($get_files\) >/dev/tty </dev/tty)+refresh-preview\"
         $FORGIT_DIFF_FZF_OPTS
         --prompt=\"$commits > \"
     "
@@ -178,6 +179,7 @@ _forgit_add() {
         $FORGIT_FZF_DEFAULT_OPTS
         -0 -m --nth 2..,..
         --preview=\"$preview\"
+        --bind=\"alt-e:execute-silent($EDITOR \$\(echo {} | $extract\) >/dev/tty </dev/tty)+refresh-preview\"
         $FORGIT_ADD_FZF_OPTS
     "
     files=$(git -c color.status=always -c status.relativePaths=true status -su |
@@ -194,6 +196,7 @@ _forgit_reset_head() {
     _forgit_inside_work_tree || return 1
     local git_reset_head cmd files opts rootdir
     git_reset_head="git reset -q $FORGIT_RESET_HEAD_GIT_OPTS HEAD"
+    [[ $# -ne 0 ]] && $git_reset_head "$@" && git status --short && return
     rootdir=$(git rev-parse --show-toplevel)
     cmd="git diff --staged --color=always -- $rootdir/{} | $_forgit_diff_pager "
     opts="
@@ -211,9 +214,11 @@ _forgit_reset_head() {
 # git stash viewer
 _forgit_stash_show() {
     _forgit_inside_work_tree || return 1
-    local git_stash_list cmd opts
+    local git_stash_show git_stash_list cmd opts
+    git_stash_show="git stash show --color=always --ext-diff"
+    [[ $# -ne 0 ]] && $git_stash_show "$@" && return
     git_stash_list="git stash list $FORGIT_STASH_SHOW_GIT_OPTS"
-    cmd="echo {} |cut -d: -f1 |xargs -I% git stash show --color=always --ext-diff % |$_forgit_diff_pager"
+    cmd="echo {} |cut -d: -f1 |xargs -I% $git_stash_show % |$_forgit_diff_pager"
     opts="
         $FORGIT_FZF_DEFAULT_OPTS
         +s +m -0 --tiebreak=index --bind=\"enter:execute($cmd | $_forgit_enter_pager)\"
@@ -314,10 +319,11 @@ _forgit_cherry_pick() {
     [[ $fzf_exitval != 0 ]] && return $fzf_exitval
     [[ -z "$fzf_selection" ]] && return $fzf_exitval
 
-    old_IFS=$IFS IFS=$'\n' 
+    ${IFS+"false"} && unset old_IFS || old_IFS="$IFS"
+    IFS=$'\n'
     # shellcheck disable=2207
     commits=($(echo "$fzf_selection" | sort --numeric-sort --key=1 | cut -f2 | cut -d' ' -f1 | _forgit_reverse_lines))
-    IFS=${old_IFS}
+    ${old_IFS+"false"} && unset IFS || IFS="$old_IFS"
     [ ${#commits[@]} -eq 0 ] && return 1
 
     $git_cherry_pick "${commits[@]}"
@@ -446,7 +452,7 @@ _forgit_checkout_branch() {
     fi
 
     local git_checkout cmd preview opts branch
-    cmd="git branch --color=always --all | LC_ALL=C sort -k1.1,1.1 -rs"
+    cmd="git branch --color=always ${FORGIT_CHECKOUT_BRANCH_BRANCH_GIT_OPTS:---all} | LC_ALL=C sort -k1.1,1.1 -rs"
     preview="git log {1} $_forgit_log_preview_options"
     opts="
         $FORGIT_FZF_DEFAULT_OPTS
@@ -515,6 +521,7 @@ _forgit_branch_delete() {
     _forgit_inside_work_tree || return 1
     local git_branch preview opts cmd branches
     git_branch="git branch $FORGIT_BRANCH_DELETE_GIT_OPTS"
+    [[ $# -ne 0 ]] && $git_branch -D "$@" && return
     preview="git log {1} $_forgit_log_preview_options"
 
     opts="
@@ -534,7 +541,7 @@ _forgit_branch_delete() {
 _forgit_revert_commit() {
     _forgit_inside_work_tree || return 1
     local git_revert cmd opts files preview commits IFS
-    git_revert="git branch $FORGIT_REVERT_COMMIT_GIT_OPTS"
+    git_revert="git revert $FORGIT_REVERT_COMMIT_GIT_OPTS"
     [[ $# -ne 0 ]] && { $git_revert "$@"; return $?; }
 
     cmd="git log --graph --color=always --format='$_forgit_log_format' $* $_forgit_emojify"
@@ -553,7 +560,8 @@ _forgit_revert_commit() {
     files=$(sed -nE 's/.* -- (.*)/\1/p' <<< "$*") # extract files parameters for `git show` command
     preview="echo {} | cut -f2- | $_forgit_extract_sha | xargs -I% git show --color=always % -- $files | $_forgit_show_pager"
 
-    old_IFS=$IFS IFS=$'\n' 
+    ${IFS+"false"} && unset old_IFS || old_IFS="$IFS"
+    IFS=$'\n'
     # shellcheck disable=2207
     commits=($(eval "$cmd" | 
         nl |
@@ -561,7 +569,7 @@ _forgit_revert_commit() {
         sort --numeric-sort --key=1 | 
         cut -f2- |
         sed 's/^[^a-f^0-9]*\([a-f0-9]*\).*/\1/'))
-    IFS=${old_IFS}
+    ${old_IFS+"false"} && unset IFS || IFS="$old_IFS"
 
     [ ${#commits[@]} -eq 0 ] && return 1
 
@@ -607,11 +615,12 @@ _forgit_ignore() {
         --preview=\"eval $cmd\"
         $FORGIT_IGNORE_FZF_OPTS
     "
-    old_IFS=$IFS IFS=$'\n' 
+    ${IFS+"false"} && unset old_IFS || old_IFS="$IFS"
+    IFS=$'\n'
     # shellcheck disable=SC2206,2207
     args=($@) && [[ $# -eq 0 ]] && args=($(_forgit_ignore_list | nl -nrn -w4 -s'  ' |
         FZF_DEFAULT_OPTS="$opts" fzf | awk '{print $2}'))
-    IFS=${old_IFS}
+    ${old_IFS+"false"} && unset IFS || IFS="$old_IFS"
     [ ${#args[@]} -eq 0 ] && return 1
     # shellcheck disable=SC2068
     _forgit_ignore_get ${args[@]}
