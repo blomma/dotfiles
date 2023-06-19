@@ -52,23 +52,12 @@ map ctrl+a>o next_window
 
 # }}
 
+include themes/dracula.conf
+
 # MacOS {{
 
 macos_quit_when_last_window_closed yes
+
 macos_custom_beam_cursor yes
-macos_titlebar_color dark
 
 # }}
-
-tab_bar_min_tabs            2
-tab_bar_edge                bottom
-tab_bar_style               powerline
-# tab_bar_style               hidden
-tab_powerline_style         slanted
-tab_title_template          {title}{' :{}:'.format(num_windows) if num_windows > 1 else ''}
-
-# hide_window_decorations titlebar-only
-# BEGIN_KITTY_THEME
-# Catppuccin-Frappe
-include current-theme.conf
-# END_KITTY_THEME
