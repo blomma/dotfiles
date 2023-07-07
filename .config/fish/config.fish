@@ -6,4 +6,3 @@ set -x EDITOR lvim
 set -x VISUAL "$EDITOR"
 set -x MAILDIR $HOME/.mail
 
-set -x HOMEBREW_NO_GOOGLE_ANALYTICS 1
