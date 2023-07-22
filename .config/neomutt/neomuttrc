@@ -31,17 +31,17 @@ set sidebar_format = "%D %* [%?N?%N / ?%S]"
 #set flag_chars = "      "
 
 # Tags https://neomutt.org/feature/custom-tags
-set hidden_tags = "unread,draft,flagged,passed,replied,attachment,signed,encrypted"
-tag-transforms "replied" "↻ "  \
-               "encrytpted" "" \
-               "signed" "" \
-               "attachment" "" \
+# set hidden_tags = "unread,draft,flagged,passed,replied,attachment,signed,encrypted"
+# tag-transforms "replied" "↻ "  \
+#                "encrytpted" "" \
+#                "signed" "" \
+#                "attachment" "" \
 
-# The formats must start with 'G' and the entire sequence is case sensitive.
-tag-formats "replied" "GR" \
-            "encrypted" "GE" \
-            "signed" "GS" \
-            "attachment" "GA" \
+# # The formats must start with 'G' and the entire sequence is case sensitive.
+# tag-formats "replied" "GR" \
+#             "encrypted" "GE" \
+#             "signed" "GS" \
+#             "attachment" "GA" \
 
 # Sidebar Navigation
 bind index,pager <down> sidebar-next
@@ -124,4 +124,4 @@ unhdr_order *                                                          # some di
 hdr_order from: to: cc: date: subject:                                 # and in this order
 
 # Colors ----------------------------------------------
-source ~/.config/neomutt/themes/zenburn.neomuttrc
+source ~/.config/neomutt/themes/catppuccin
