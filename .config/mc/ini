@@ -81,7 +81,7 @@ editor_backup_extension=~
 editor_filesize_threshold=64M
 editor_stop_format_chars=-+*\\,.;:&>
 mcview_eof=
-skin=default
+skin=catppuccin
 
 safe_overwrite=false
 
@@ -97,7 +97,7 @@ menubar_visible=true
 free_space=true
 horizontal_split=false
 vertical_equal=true
-left_panel_size=39
+left_panel_size=77
 horizontal_equal=true
 top_panel_size=1
 
@@ -122,6 +122,8 @@ color_terminals=
 screen-256color=
 
 xterm-kitty=
+
+alacritty=
 
 [Panels]
 show_mini_info=true

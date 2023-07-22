@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # the tmp directory to use.
-tmpdir="$HOME/.config/neomutt/tmp/mutt_attach"
+tmpdir="$HOME/.tmp/neomutt/view_attachment"
 
 # make sure the tmpdir exists.
 mkdir -p $tmpdir
