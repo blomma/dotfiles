@@ -104,7 +104,9 @@ bind pager j next-line
 bind pager k previous-line
 
 macro index,pager C "<vfolder-from-query>" "Search mailbox"
-macro pager \Cb "|urlview<enter>" "call urlview to open links"
+# macro pager \Cb "|urlview<enter>" "call urlview to open links"
+macro index,pager \cb "<pipe-message> urlscan<Enter>" "call urlscan to extract URLs out of a message"
+macro attach,compose \cb "<pipe-entry> urlscan<Enter>" "call urlscan to extract URLs out of a message"
 
 ## Make quick html view macro
 bind index,pager V  noop
