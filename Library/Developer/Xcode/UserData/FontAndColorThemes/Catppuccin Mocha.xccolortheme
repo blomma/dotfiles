@@ -30,6 +30,8 @@
 	<string>0.270588 0.278431 0.352941 1</string>
 	<key>DVTFontAndColorVersion</key>
 	<integer>1</integer>
+	<key>DVTLineSpacing</key>
+	<real>1.1000000238418579</real>
 	<key>DVTMarkupTextBackgroundColor</key>
 	<string>0.18856 0.195 0.22444 1</string>
 	<key>DVTMarkupTextBorderColor</key>
@@ -144,6 +146,16 @@
 		<string>0.803922 0.839216 0.956863 1</string>
 		<key>xcode.syntax.preprocessor</key>
 		<string>0.921569 0.627451 0.67451 1</string>
+		<key>xcode.syntax.regex</key>
+		<string>0.65098 0.890196 0.631373 1</string>
+		<key>xcode.syntax.regex.capturename</key>
+		<string>0.921569 0.627451 0.67451 1</string>
+		<key>xcode.syntax.regex.charname</key>
+		<string>0.921569 0.627451 0.67451 1</string>
+		<key>xcode.syntax.regex.number</key>
+		<string>0.803922 0.839216 0.956863 1</string>
+		<key>xcode.syntax.regex.other</key>
+		<string>0.803922 0.839216 0.956863 1</string>
 		<key>xcode.syntax.string</key>
 		<string>0.65098 0.890196 0.631373 1</string>
 		<key>xcode.syntax.url</key>
@@ -152,59 +164,69 @@
 	<key>DVTSourceTextSyntaxFonts</key>
 	<dict>
 		<key>xcode.syntax.attribute</key>
-		<string>SFMono-Regular - 14.0</string>
+		<string>JetBrainsMonoNFM-Regular - 15.0</string>
 		<key>xcode.syntax.character</key>
-		<string>SFMono-Regular - 14.0</string>
+		<string>JetBrainsMonoNFM-Regular - 15.0</string>
 		<key>xcode.syntax.comment</key>
-		<string>SFMono-Regular - 14.0</string>
+		<string>JetBrainsMonoNFM-Regular - 15.0</string>
 		<key>xcode.syntax.comment.doc</key>
-		<string>SFMono-Regular - 14.0</string>
+		<string>JetBrainsMonoNFM-Regular - 15.0</string>
 		<key>xcode.syntax.comment.doc.keyword</key>
-		<string>SFMono-Regular - 14.0</string>
+		<string>JetBrainsMonoNFM-Regular - 15.0</string>
 		<key>xcode.syntax.declaration.other</key>
-		<string>SFMono-Regular - 14.0</string>
+		<string>JetBrainsMonoNFM-Regular - 15.0</string>
 		<key>xcode.syntax.declaration.type</key>
-		<string>SFMono-Regular - 14.0</string>
+		<string>JetBrainsMonoNFM-Regular - 15.0</string>
 		<key>xcode.syntax.identifier.class</key>
-		<string>SFMono-Regular - 14.0</string>
+		<string>JetBrainsMonoNFM-Regular - 15.0</string>
 		<key>xcode.syntax.identifier.class.system</key>
-		<string>SFMono-Regular - 14.0</string>
+		<string>JetBrainsMonoNFM-Regular - 15.0</string>
 		<key>xcode.syntax.identifier.constant</key>
-		<string>SFMono-Regular - 14.0</string>
+		<string>JetBrainsMonoNFM-Regular - 15.0</string>
 		<key>xcode.syntax.identifier.constant.system</key>
-		<string>SFMono-Regular - 14.0</string>
+		<string>JetBrainsMonoNFM-Regular - 15.0</string>
 		<key>xcode.syntax.identifier.function</key>
-		<string>SFMono-Regular - 14.0</string>
+		<string>JetBrainsMonoNFM-Regular - 15.0</string>
 		<key>xcode.syntax.identifier.function.system</key>
-		<string>SFMono-Regular - 14.0</string>
+		<string>JetBrainsMonoNFM-Regular - 15.0</string>
 		<key>xcode.syntax.identifier.macro</key>
-		<string>SFMono-Regular - 14.0</string>
+		<string>JetBrainsMonoNFM-Regular - 15.0</string>
 		<key>xcode.syntax.identifier.macro.system</key>
-		<string>SFMono-Regular - 14.0</string>
+		<string>JetBrainsMonoNFM-Regular - 15.0</string>
 		<key>xcode.syntax.identifier.type</key>
-		<string>SFMono-Regular - 14.0</string>
+		<string>JetBrainsMonoNFM-Regular - 15.0</string>
 		<key>xcode.syntax.identifier.type.system</key>
-		<string>SFMono-Regular - 14.0</string>
+		<string>JetBrainsMonoNFM-Regular - 15.0</string>
 		<key>xcode.syntax.identifier.variable</key>
-		<string>SFMono-Regular - 14.0</string>
+		<string>JetBrainsMonoNFM-Regular - 15.0</string>
 		<key>xcode.syntax.identifier.variable.system</key>
-		<string>SFMono-Regular - 14.0</string>
+		<string>JetBrainsMonoNFM-Regular - 15.0</string>
 		<key>xcode.syntax.keyword</key>
-		<string>SFMono-Regular - 14.0</string>
+		<string>JetBrainsMonoNFM-Regular - 15.0</string>
 		<key>xcode.syntax.mark</key>
-		<string>SFMono-Regular - 14.0</string>
+		<string>JetBrainsMonoNFM-Regular - 15.0</string>
 		<key>xcode.syntax.markup.code</key>
-		<string>SFMono-Regular - 14.0</string>
+		<string>JetBrainsMonoNFM-Regular - 15.0</string>
 		<key>xcode.syntax.number</key>
-		<string>SFMono-Regular - 14.0</string>
+		<string>JetBrainsMonoNFM-Regular - 15.0</string>
 		<key>xcode.syntax.plain</key>
-		<string>SFMono-Regular - 14.0</string>
+		<string>JetBrainsMonoNFM-Regular - 15.0</string>
 		<key>xcode.syntax.preprocessor</key>
-		<string>SFMono-Regular - 14.0</string>
+		<string>JetBrainsMonoNFM-Regular - 15.0</string>
+		<key>xcode.syntax.regex</key>
+		<string>JetBrainsMonoNFM-Regular - 15.0</string>
+		<key>xcode.syntax.regex.capturename</key>
+		<string>JetBrainsMonoNFM-Regular - 15.0</string>
+		<key>xcode.syntax.regex.charname</key>
+		<string>JetBrainsMonoNFM-Regular - 15.0</string>
+		<key>xcode.syntax.regex.number</key>
+		<string>JetBrainsMonoNFM-Regular - 15.0</string>
+		<key>xcode.syntax.regex.other</key>
+		<string>JetBrainsMonoNFM-Regular - 15.0</string>
 		<key>xcode.syntax.string</key>
-		<string>SFMono-Regular - 14.0</string>
+		<string>JetBrainsMonoNFM-Regular - 15.0</string>
 		<key>xcode.syntax.url</key>
-		<string>SFMono-Regular - 14.0</string>
+		<string>JetBrainsMonoNFM-Regular - 15.0</string>
 	</dict>
 </dict>
 </plist>
