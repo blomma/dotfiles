@@ -64,6 +64,8 @@ set nm_query_type = threads
 alternative_order text/plain text/enriched text/html
 auto_view text/html
 
+set send_charset        = "utf-8"
+set charset             = "utf-8"
 set rfc2047_parameters  = yes
 set date_format			= "%d-%m-%y"
 set delete
