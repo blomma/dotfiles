@@ -4,43 +4,38 @@
 palette = "catppuccin_macchiato"
 
 format = """
-[♥ ](fg:maroon)\
+[](inverted #9A348E)\
+[](fg:#9A348E bg:#DA627D)\
 $directory\
+[](fg:#DA627D bg:#FCA17D)\
+[](fg:#FCA17D bg:#86BBD8)\
+[](fg:#86BBD8 bg:#06969A)\
+[](fg:#06969A bg:#33658A)\
 $git_branch\
-$git_state\
 $git_status\
-$line_break\
-$character"""
+[ ](fg:#33658A)\
+"""
 
 [character]
-success_symbol = "[❯](maroon)"
+# Note the use of Catppuccin color 'maroon'
+success_symbol = "[[♥](green) ❯](maroon)"
 error_symbol = "[❯](red)"
-vimcmd_symbol = "[❮](green)"
+vicmd_symbol = "[❮](green)"
 
 [directory]
-style = "blue"
-format = "[$path]($style)"
+style = "bg:#DA627D"
+format = "[ $path ]($style)"
 truncation_length = 4
 truncation_symbol = "…/"
 
 [git_branch]
-format = "[ $branch]($style)"
-style = "bright-black"
+symbol = ""
+style = "bg:#33658A"
+format = '[[ $symbol $branch ](bg:#33658A)]($style)'
 
 [git_status]
-format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
-style = "cyan"
-conflicted = "​"
-untracked = "​"
-modified = "​"
-staged = "​"
-renamed = "​"
-deleted = "​"
-stashed = "≡"
-
-[git_state]
-format = '\([$state( $progress_current/$progress_total)]($style)\) '
-style = "bright-black"
+style = "bg:#33658A"
+format = '[[($all_status$ahead_behind )](bg:#33658A)]($style)'
 
 # palette tables should be last in the config ⚓️
 [palettes.catppuccin_macchiato]
