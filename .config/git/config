@@ -22,6 +22,7 @@
     commend = commit --amend --no-edit
     conflicts = diff --name-only --diff-filter=U
     dh = diff --histogram
+    db = "!git diff | bat --theme="Catppuccin-mocha""
 	dsf = "!f() { git diff --histogram \"$@\"; }; f"
     dsfb = "!f() { [ -z \"$GIT_PREFIX\" ] || cd \"$GIT_PREFIX\" && git diff --histogram \"$@\" $(git merge-base --fork-point main); }; f"
     hack = "!f() { git fetch -p && git rebase origin/master master && git checkout -b $1 master; }; f"
@@ -53,13 +54,6 @@
 
 [diff]
     colorMoved = default
-    tool = difftastic
-
-[difftool]
-    prompt = false
-
-[difftool "difftastic"]
-    cmd = difft --display inline "$LOCAL" "$REMOTE"
 
 [commit]
     template = ~/.config/git/commit-message
@@ -79,9 +73,6 @@
 
 [pull]
     rebase = false
-
-[pager]
-    difftool = true
 
 [filter "lfs"]
     clean = git-lfs clean -- %f
