@@ -23,7 +23,8 @@ lvim.keys.normal_mode["<S-x>"] = ":BufferKill<CR>"
 vim.keymap.set("i", "[[", "<cmd>Telekasten insert_link<CR>")
 
 -- Change theme settings
-lvim.colorscheme = "catppuccin-frappe"
+lvim.colorscheme = "duskfox"
+-- lvim.colorscheme = "catppuccin-frappe"
 
 lvim.builtin.alpha.active = true
 lvim.builtin.alpha.mode = "dashboard"
@@ -39,28 +40,28 @@ lvim.builtin.lualine.options.section_separators = {
 -- Automatically install missing parsers when entering buffer
 lvim.builtin.treesitter.auto_install = true
 
-vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "csharp_ls" })
+-- vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "csharp_ls" })
 
-lvim.lsp.automatic_configuration.skipped_servers = vim.tbl_filter(function(server)
-    return server ~= "omnisharp"
-end, lvim.lsp.automatic_configuration.skipped_servers)
+-- lvim.lsp.automatic_configuration.skipped_servers = vim.tbl_filter(function(server)
+--     return server ~= "omnisharp"
+-- end, lvim.lsp.automatic_configuration.skipped_servers)
 
 ---@diagnostic disable-next-line: unused-local
-lvim.lsp.on_attach_callback = function(client, bufnr)
-    if client.name == "omnisharp" then
-        -- https://github.com/OmniSharp/omnisharp-roslyn/issues/2483#issuecomment-1492605642
-        local tokenModifiers = client.server_capabilities.semanticTokensProvider.legend.tokenModifiers
-        for i, v in ipairs(tokenModifiers) do
-            local tmp = string.gsub(v, " ", "_")
-            tokenModifiers[i] = string.gsub(tmp, "-_", "")
-        end
-        local tokenTypes = client.server_capabilities.semanticTokensProvider.legend.tokenTypes
-        for i, v in ipairs(tokenTypes) do
-            local tmp = string.gsub(v, " ", "_")
-            tokenTypes[i] = string.gsub(tmp, "-_", "")
-        end
-    end
-end
+-- lvim.lsp.on_attach_callback = function(client, bufnr)
+--     if client.name == "omnisharp" then
+--         -- https://github.com/OmniSharp/omnisharp-roslyn/issues/2483#issuecomment-1492605642
+--         local tokenModifiers = client.server_capabilities.semanticTokensProvider.legend.tokenModifiers
+--         for i, v in ipairs(tokenModifiers) do
+--             local tmp = string.gsub(v, " ", "_")
+--             tokenModifiers[i] = string.gsub(tmp, "-_", "")
+--         end
+--         local tokenTypes = client.server_capabilities.semanticTokensProvider.legend.tokenTypes
+--         for i, v in ipairs(tokenTypes) do
+--             local tmp = string.gsub(v, " ", "_")
+--             tokenTypes[i] = string.gsub(tmp, "-_", "")
+--         end
+--     end
+-- end
 
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
@@ -145,5 +146,24 @@ lvim.plugins = {
             "sindrets/diffview.nvim", -- optional
         },
         config = true,
+    },
+    {
+        "cameron-wags/rainbow_csv.nvim",
+        config = true,
+        ft = {
+            "csv",
+            "tsv",
+            "csv_semicolon",
+            "csv_whitespace",
+            "csv_pipe",
+            "rfc_csv",
+            "rfc_semicolon",
+        },
+        cmd = {
+            "RainbowDelim",
+            "RainbowDelimSimple",
+            "RainbowDelimQuoted",
+            "RainbowMultiDelim",
+        },
     },
 }
