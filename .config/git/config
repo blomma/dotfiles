@@ -1,17 +1,5 @@
 # vi:syntax=gitconfig
 
-[push]
-    default = simple
-
-[color]
-    branch = auto
-    diff = auto
-    grep = auto
-    interactive = auto
-    showBranch = auto
-    status = auto
-    ui = true
-
 [alias]
     code-changes = "!git log --format=format: --name-only | egrep -v '^$' | sort | uniq -c | sort -rg | head -10"
     ai = add --interactive
@@ -46,14 +34,37 @@
     lg1-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'
     lg2-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
     lg3-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset) %C(bold cyan)(committed: %cD)%C(reset) %C(auto)%d%C(reset)%n''         %C(white)%s%C(reset)%n''          %C(dim white)- %an <%ae> %C(reset) %C(dim white)(committer: %cn <%ce>)%C(reset)' 
+[push]
+    default = simple
+
+[color]
+    branch = auto
+    diff = auto
+    grep = auto
+    interactive = auto
+    showBranch = auto
+    status = auto
+    ui = true
 
 [core]
     editor = "'lvim' +startinsert"
     whitespace = blank-at-eol,space-before-tab,blank-at-eof,cr-at-eol
-	fsmonitor = false
+    fsmonitor = false
 
 [diff]
     colorMoved = default
+    compactionHeuristic = true
+    submodule = log
+    algorithm = histogram
+
+[status]
+    submoduleSummary = true
+
+[submodule]
+    recurse = true
+
+[log]
+    decorate = true
 
 [commit]
     template = ~/.config/git/commit-message
@@ -83,4 +94,6 @@
 [init]
     defaultBranch = main
 
+[merge]
+	conflictStyle = zdiff3
 
