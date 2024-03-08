@@ -23,8 +23,8 @@ lvim.keys.normal_mode["<S-x>"] = ":BufferKill<CR>"
 vim.keymap.set("i", "[[", "<cmd>Telekasten insert_link<CR>")
 
 -- Change theme settings
-lvim.colorscheme = "duskfox"
--- lvim.colorscheme = "catppuccin-frappe"
+-- lvim.colorscheme = "duskfox"
+lvim.colorscheme = "catppuccin-mocha"
 
 lvim.builtin.alpha.active = true
 lvim.builtin.alpha.mode = "dashboard"
@@ -92,6 +92,16 @@ linters.setup {
 }
 
 lvim.plugins = {
+    {
+        "sontungexpt/witch",
+        priority = 1000,
+        lazy = false,
+        config = function(_, opts)
+            require("witch").setup(opts)
+        end,
+    }, -- {
+    --     "folke/tokyonight.nvim",
+    -- },
     {
         "folke/trouble.nvim",
         cmd = "TroubleToggle",
