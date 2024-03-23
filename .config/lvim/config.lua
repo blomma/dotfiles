@@ -8,7 +8,6 @@ vim.g.VimMailDontUseComplete = 1
 vim.g.VimMailDoNotFold = 1
 
 -- general
-lvim.log.level = "warn"
 lvim.format_on_save.enabled = true
 lvim.use_icons = true
 
@@ -19,12 +18,21 @@ lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
 lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
 lvim.keys.normal_mode["<S-x>"] = ":BufferKill<CR>"
 
+lvim.builtin.which_key.mappings["t"] = {
+    name = "Diagnostics",
+    t = { "<cmd>TroubleToggle<cr>", "trouble" },
+    w = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "workspace" },
+    d = { "<cmd>TroubleToggle document_diagnostics<cr>", "document" },
+    q = { "<cmd>TroubleToggle quickfix<cr>", "quickfix" },
+    l = { "<cmd>TroubleToggle loclist<cr>", "loclist" },
+    r = { "<cmd>TroubleToggle lsp_references<cr>", "references" },
+}
+
 -- Call insert link automatically when we start typing a link
 vim.keymap.set("i", "[[", "<cmd>Telekasten insert_link<CR>")
 
 -- Change theme settings
--- lvim.colorscheme = "duskfox"
-lvim.colorscheme = "catppuccin-mocha"
+lvim.colorscheme = "catppuccin-frappe"
 
 lvim.builtin.alpha.active = true
 lvim.builtin.alpha.mode = "dashboard"
@@ -99,9 +107,7 @@ lvim.plugins = {
         config = function(_, opts)
             require("witch").setup(opts)
         end,
-    }, -- {
-    --     "folke/tokyonight.nvim",
-    -- },
+    },
     {
         "folke/trouble.nvim",
         cmd = "TroubleToggle",
