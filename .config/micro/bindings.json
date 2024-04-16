@@ -1,8 +1,4 @@
 {
     "Alt-/": "lua:comment.comment",
-    "CtrlD": "CutLine",
-    "CtrlK": "SelectToEndOfLine,Delete",
-    "CtrlShiftZ": "Redo",
-    "CtrlSpace": "fzf.fzf",
-    "CtrlUnderscore": "comment.comment"
+    "CtrlUnderscore": "lua:comment.comment"
 }

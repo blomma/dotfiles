@@ -11,7 +11,7 @@ port 465
 tls on
 tls_certcheck on
 tls_starttls off
-tls_fingerprint CA:56:50:90:CF:EB:70:24:40:FB:D7:CE:3A:A6:A3:4B:C5:4E:5F:14:DE:04:65:EA:90:62:F4:8B:96:2E:16:E0
+tls_fingerprint FE:D6:1F:CD:91:73:EB:35:77:64:8F:A8:FA:21:5C:AF:15:79:FF:3F:CC:70:C5:2D:AA:02:BB:2D:F1:B2:B4:FF
 
 # smtp hostname
 host mail.messagingengine.com
