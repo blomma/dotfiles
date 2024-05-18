@@ -70,7 +70,7 @@ set rfc2047_parameters  = yes
 set date_format			= "%d-%m-%y"
 set delete
 set edit_headers		= yes
-set editor				= "lvim '+set filetype=Mail'"
+set editor				= "nvim '+set filetype=Mail'"
 set fast_reply
 set forward_format		= "Fwd: %s"
 set help				= no
