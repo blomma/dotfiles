@@ -1,13 +1,16 @@
 lastupdatecheck: 0
 recentrepos:
-- /Users/blomma/Projects/literature/vittra.literaturetime
-- /Users/blomma/.dotfiles
-- /Users/blomma/Projects/literature/client.literaturetime
-- /Users/blomma/Projects/games/Liminal
+    - /Users/blomma/Projects/literature/vittra.literaturetime
+    - /Users/blomma/.dotfiles
+    - /Users/blomma/Projects/literature/client.literaturetime
+    - /Users/blomma/Projects/games/Liminal
 startuppopupversion: 5
+lastversion: HEAD-0fbed71
 customcommandshistory: []
 hidecommandlog: true
 ignorewhitespaceindiffview: false
 diffcontextsize: 3
 localbranchsortorder: recency
 remotebranchsortorder: alphabetical
+gitlogorder: topo-order
+gitlogshowgraph: when-maximised

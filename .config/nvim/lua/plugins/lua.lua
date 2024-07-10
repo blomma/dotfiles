@@ -4,16 +4,7 @@ return {
         optional = true,
         opts = {
             config = {
-                lua_ls = {
-                    settings = {
-                        Lua = {
-                            hint = {
-                                enable = true,
-                                arrayIndex = "Disable",
-                            },
-                        },
-                    },
-                },
+                lua_ls = { settings = { Lua = { hint = { enable = true, arrayIndex = "Disable" } } } },
             },
         },
     },
