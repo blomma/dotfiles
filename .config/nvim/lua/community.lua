@@ -5,6 +5,5 @@
 ---@type LazySpec
 return {
     "AstroNvim/astrocommunity",
-    { import = "astrocommunity.pack.typescript-all-in-one" },
-    { import = "astrocommunity.pack.cpp" },
+    { import = "astrocommunity.pack.cs" },
 }
