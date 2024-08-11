@@ -73,13 +73,17 @@ return {
                             cond.not_before_regex("xxx", 3)
                         )
                         -- don't move right when repeat character
-                        :with_move(cond.none())
+                        :with_move(
+                            cond.none()
+                        )
                         -- don't delete if the next character is xx
                         :with_del(
                             cond.not_after_regex "xx"
                         )
                         -- disable adding a newline when you press <cr>
-                        :with_cr(cond.none()),
+                        :with_cr(
+                            cond.none()
+                        ),
                 },
                 -- disable for .vim files, but it work for another filetypes
                 Rule("a", "a", "-vim")

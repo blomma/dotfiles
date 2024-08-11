@@ -1,9 +1,8 @@
 # Paths ----------------------------------------------
 set folder           = ~/.mail
 set mailcap_path     = ~/.config/neomutt/mailcap
-set tmpdir           = ~/.tmp/neomutt/
-set header_cache     = ~/.tmp/neomutt/
-set header_cache_backend = lmdb
+set header_cache     = "$XDG_CACHE_HOME/mutt/headers/" 
+set header_cache_backend = "lmdb"
 
 # Sidebar ----------------------------------------------
 set sidebar_short_path
@@ -14,6 +13,7 @@ set sidebar_indent_string = ' '
 set mail_check_stats
 set sidebar_delim_chars = '/.'
 set sidebar_sort_method = 'path'
+# set sidebar_indent_string = ''
 
 # Formats
 set index_format=" %zs %zc %zt %{!%d %b} . %-28.28L  %?M?(%1M)? %?X?·%X·? %s"
@@ -83,6 +83,7 @@ set pager_index_lines	= 10
 set pager_stop			= yes
 set pipe_decode			= yes
 set reply_regexp		= "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
+set quote_regexp = "^( {0,4}[>|:#%]| {0,4}[a-z0-9]+[>|]+)+"
 set sort				= date
 set sort_aux			= reverse-last-date-received
 set use_threads         = yes
@@ -91,6 +92,8 @@ set status_format		= "───[ Folder: %f ]───[%r%m messages%?n? (%n new
 set text_flowed         = yes
 set timeout				= 60
 set wait_key			= no
+set reverse_name                     # reply as whomever it was to
+set text_flowed=yes                  # correct indentation for plain text
 unset confirmappend
 unset mark_old
 unset markers
@@ -106,7 +109,6 @@ bind pager j next-line
 bind pager k previous-line
 
 macro index,pager C "<vfolder-from-query>" "Search mailbox"
-# macro pager \Cb "|urlview<enter>" "call urlview to open links"
 macro index,pager \cb "<pipe-message> urlscan<Enter>" "call urlscan to extract URLs out of a message"
 macro attach,compose \cb "<pipe-entry> urlscan<Enter>" "call urlscan to extract URLs out of a message"
 
@@ -118,14 +120,47 @@ macro index,pager V "<view-attachments><search>html<enter><view-mailcap><exit>"
 macro index,pager O "<shell-escape>offlineimap<enter>" "run offlineimap to sync all mail"
 macro index,pager M "<shell-escape>notmuch new<enter>" "run notmuch to sync all mail"
 
-
 # Header Options ----------------------------------------------
 ignore *                                                               # ignore all headers
 unignore from date subject to cc
-# unignore organization organisation x-mailer: x-newsreader: x-mailing-list:
-# unignore posted-to:
 unhdr_order *                                                          # some distros order things by default
 hdr_order from: to: cc: date: subject:                                 # and in this order
 
+alternates '^blomma@gmail.com$'
+
+named-mailboxes \
+    "Inbox" =blomma/INBOX \
+    "Gmail" =blomma/Gmail \
+    "Drafts" =blomma/Drafts \
+    "Archive" =blomma/Archive \
+    "Lists" =blomma/Lists \
+    "Sent" =blomma/Sent \
+    "Notes" =blomma/Notes \
+    "Trash" =blomma/Trash \
+    "Spam" =blomma/Spam \
+    "LSpam" =blomma/LSpam
+
+set nm_default_url = "notmuch:///Users/blomma/"
+virtual-mailboxes "flagged" "notmuch://?query=tag:flagged"
+
+set realname = "Mikael Hultgren"
+set from = "Mikael Hultgren <blomma@artsoftheinsane.com>"
+
+set postponed	= =blomma/Drafts
+set record		= =blomma/Sent
+set spoolfile	= =blomma/INBOX
+set trash       = =blomma/Trash
+
+# Sending ----------------------------------------------
+set sendmail		= "msmtp -a blomma"
+set sendmail_wait	= 0
+set use_from		= yes
+
+bind index,pager x entire-thread
+
+macro index,pager s "<save-message>=blomma/LSpam<enter>"
+macro index,pager a ":set resolve=no\n<clear-flag>N<save-message>=blomma/Archive<enter>\n:set resolve=yes\n<next-undeleted>"
+macro attach W "<save-entry><bol>~/Download/<eol>"
+
 # Colors ----------------------------------------------
-source ~/.config/neomutt/themes/catppuccin
+source ~/.config/neomutt/themes/dracula

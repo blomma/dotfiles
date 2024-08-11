@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # the tmp directory to use.
-tmpdir="$HOME/.tmp/neomutt/view_attachment"
+tmpdir="$XDG_CACHE_HOME/mutt/view_attachment"
 
 # make sure the tmpdir exists.
 mkdir -p $tmpdir
@@ -15,8 +15,6 @@ rm -rf $tmpdir/*
 filename=`basename $1`
 
 # get rid of the extenson and save the name for later.
-#file=`echo $filename | cut -d"." -f1`
-# file=`echo $filename | sed 's/\.[^.]*$//'`
 newfile=$tmpdir/$filename
 
 # Copy the file to our new spot so mutt can't delete it

@@ -1,15 +1,18 @@
 lastupdatecheck: 0
 recentrepos:
+    - /Users/blomma/Projects/keyboard/elora/qmk_firmware
     - /Users/blomma/Projects/literature/vittra.literaturetime
+    - /Users/blomma/Projects/keyboard/elora/splitkb_qmk_firmware
     - /Users/blomma/.dotfiles
     - /Users/blomma/Projects/literature/client.literaturetime
     - /Users/blomma/Projects/games/Liminal
 startuppopupversion: 5
-lastversion: HEAD-0fbed71
+lastversion: HEAD-f598da0
 customcommandshistory: []
 hidecommandlog: true
 ignorewhitespaceindiffview: false
 diffcontextsize: 3
+renamesimilaritythreshold: 50
 localbranchsortorder: recency
 remotebranchsortorder: alphabetical
 gitlogorder: topo-order
