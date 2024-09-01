@@ -19,7 +19,7 @@ function op_ --argument item
     end
 
     set result (command op get item $item 2>&1)
-    if string match -ir 'session expired|not currently signed in' $result 2>&1 > /dev/null
+    if string match -ir 'session expired|not currently signed in' $result 2>&1 >/dev/null
         _signin
         set result (command op get item $item 2>&1)
     end
