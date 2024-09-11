@@ -20,5 +20,5 @@
 .config/msmtp/*.gpg
 .config/iTerm2/AppSupport
 .config/micro/buffers
-.config/lvim/lazy-lock.json
+.config/nvim/lazy-lock.json
 
