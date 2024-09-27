@@ -39,6 +39,7 @@ if is_linux then
     config.window_decorations = "RESIZE"
     config.initial_cols = 100
     config.initial_rows = 30
+    config.font_size = 15
 end
 
 return config
