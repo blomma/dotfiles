@@ -97,6 +97,6 @@
 [merge]
 	conflictStyle = zdiff3
 
-[include]
+[includeIf "gitdir:/home"]
     path = persephone.config 
 
