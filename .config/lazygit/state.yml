@@ -1,11 +1,11 @@
 lastupdatecheck: 0
 recentrepos:
+    - /Users/blomma/Projects/literature/client.literaturetime
     - /Users/blomma/Projects/literature/translated.quotes.literaturetime
     - /Users/blomma/Projects/keyboard/elora/qmk_firmware
     - /Users/blomma/Projects/literature/vittra.literaturetime
     - /Users/blomma/Projects/keyboard/elora/splitkb_qmk_firmware
     - /Users/blomma/.dotfiles
-    - /Users/blomma/Projects/literature/client.literaturetime
     - /Users/blomma/Projects/games/Liminal
 startuppopupversion: 5
 lastversion: HEAD-a04ad24
