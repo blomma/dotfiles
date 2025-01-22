@@ -1,5 +1,6 @@
-font-size = 18
+font-size = 16
 theme = catppuccin-frappe
 window-padding-x = 4
 window-padding-y = 0
 window-padding-color = extend
+term = xterm-256color

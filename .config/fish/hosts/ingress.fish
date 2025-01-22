@@ -6,8 +6,6 @@ set -x NODE_BINARY /opt/homebrew/opt/node@20/bin/node
 set -x K9SCONFIG $HOME/.config/k9s
 
 if status --is-interactive
-    # type -q rbenv; and source (rbenv init -|psub)
-
     set -x STARSHIP_CONFIG $HOME/.config/starship/config.toml
 
     starship init fish | source
