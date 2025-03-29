@@ -97,6 +97,7 @@ set text_flowed=yes                  # correct indentation for plain text
 unset confirmappend
 unset mark_old
 unset markers
+unset resolve
 
 # Query command
 set query_command = "echo '' && notmuch address --deduplicate=address 'from:%s*'"
