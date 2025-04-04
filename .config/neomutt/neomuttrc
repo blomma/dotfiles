@@ -164,4 +164,4 @@ macro index,pager a ":set resolve=no\n<clear-flag>N<save-message>=blomma/Archive
 macro attach W "<save-entry><bol>~/Download/<eol>"
 
 # Colors ----------------------------------------------
-source ~/.config/neomutt/themes/dracula
+source ~/.config/neomutt/themes/mars
