@@ -8,6 +8,7 @@ return {
                 opt = {
                     wrap = true,
                     cmdheight = 1,
+                    showtabline = 0,
                 },
             },
             mappings = {
