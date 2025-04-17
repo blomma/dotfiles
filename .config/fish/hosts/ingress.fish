@@ -8,7 +8,7 @@ set -x K9SCONFIG $HOME/.config/k9s
 if status --is-interactive
     set -x STARSHIP_CONFIG $HOME/.config/starship/config.toml
 
-    starship init fish | source
+    # starship init fish | source
 
     # pyenv init - | source
 end
