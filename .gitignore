@@ -21,4 +21,4 @@
 .config/iTerm2/AppSupport
 .config/micro/buffers
 .config/nvim/lazy-lock.json
-
+.config/ghostty/override
