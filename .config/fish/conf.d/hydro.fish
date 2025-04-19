@@ -101,7 +101,7 @@ end
 
 set --global hydro_color_normal (set_color normal)
 
-for color in hydro_color_{pwd,git,error,prompt,duration,start}
+for color in hydro_color_{pwd,git,error,prompt,start}
     function $color --on-variable $color --inherit-variable color
         set --query $color && set --global _$color (set_color $$color)
     end && $color
@@ -121,4 +121,3 @@ set --query hydro_symbol_git_dirty || set --global hydro_symbol_git_dirty •
 set --query hydro_symbol_git_ahead || set --global hydro_symbol_git_ahead ↑
 set --query hydro_symbol_git_behind || set --global hydro_symbol_git_behind ↓
 set --query hydro_multiline || set --global hydro_multiline false
-set --query hydro_cmd_duration_threshold || set --global hydro_cmd_duration_threshold 1000
