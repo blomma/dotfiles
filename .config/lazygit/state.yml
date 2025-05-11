@@ -1,5 +1,6 @@
 lastupdatecheck: 0
 recentrepos:
+    - /Users/blomma/Projects/games/2048
     - /Users/blomma/.dotfiles
     - /Users/blomma/Projects/keyboard/elora/qmk_firmware
     - /Users/blomma/Projects/literature/vittra.literaturetime
@@ -7,7 +8,7 @@ recentrepos:
     - /Users/blomma/Projects/literature/translated.quotes.literaturetime
     - /Users/blomma/Projects/games/Liminal
 startuppopupversion: 5
-lastversion: HEAD-b3b8223
+lastversion: HEAD-5f80980
 customcommandshistory: []
 hidecommandlog: true
 ignorewhitespaceindiffview: false
