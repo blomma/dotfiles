@@ -1,0 +1,39 @@
+version = "1"
+
+includes = ["profiles.local.toml"]
+
+[default]
+  [default.backup]
+    verbose = true
+    compression = "max"
+    source = [
+      "/home/user/Projects/",
+      "/home/user/Documents/",
+      "/home/user/.mail",
+    ]
+    exclude-file = "excludes.txt"
+    schedule = "*-*-* 03:00:00"
+    schedule-permission = "user"
+    schedule-priority = "background"
+    schedule-log = "backup.log"
+    schedule-lock-mode = "default"
+    schedule-lock-wait = "15m30s"
+    schedule-ignore-on-battery = false
+
+  [default.retention]
+    after-backup = true
+    verbose = true
+    keep-hourly = 0
+    keep-daily = 30
+    keep-weekly = 52
+    keep-monthly = 0
+    prune = true
+
+  [default.rewrite]
+    verbose = true
+    source = [
+      "/home/user/Projects/",
+      "/home/user/Documents/",
+      "/home/user/.mail",
+    ]
+    exclude-file = "excludes.txt"
