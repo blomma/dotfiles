@@ -7,6 +7,7 @@ return {
         integrations = {
             aerial = true,
             alpha = true,
+            blink_cmp = true,
             cmp = true,
             dap = true,
             dap_ui = true,
@@ -29,5 +30,27 @@ return {
             colorful_winsep = { enabled = true, color = "lavender" },
         },
     },
-    specs = {},
+    specs = {
+        {
+            "akinsho/bufferline.nvim",
+            optional = true,
+            opts = function(_, opts)
+                return require("astrocore").extend_tbl(opts, {
+                    highlights = require(
+                        "catppuccin.groups.integrations.bufferline"
+                    ).get(),
+                })
+            end,
+        },
+        {
+            "nvim-telescope/telescope.nvim",
+            optional = true,
+            opts = {
+                highlight = {
+                    enable = true,
+                    additional_vim_regex_highlighting = false,
+                },
+            },
+        },
+    },
 }
