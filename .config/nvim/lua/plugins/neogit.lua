@@ -3,6 +3,7 @@ return {
     cmd = "Neogit",
     dependencies = {
         "nvim-lua/plenary.nvim",
+        "sindrets/diffview.nvim",
         { "AstroNvim/astroui", opts = { icons = { Neogit = "󰰔" } } },
         {
             "AstroNvim/astrocore",
