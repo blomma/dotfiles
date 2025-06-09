@@ -2,38 +2,44 @@ version = "1"
 
 includes = ["/Users/blomma/.secure/resticprofile/profiles.toml"]
 
+[global]
+    restic-stale-lock-age = "2h"
+
 [default]
-  [default.backup]
-    verbose = true
-    compression = "max"
-    source = [
-      "/Users/blomma/Projects/",
-      "/Users/blomma/Documents/",
-      "/Users/blomma/.mail",
-    ]
-    exclude-file = "excludes.txt"
-    schedule = "*-*-* 00:30:00"
-    schedule-permission = "user"
-    schedule-priority = "background"
-    schedule-log = "/Users/blomma/.secure/resticprofile/profile-backup.log"
-    schedule-lock-mode = "default"
-    schedule-lock-wait = "15m30s"
-    schedule-ignore-on-battery = false
 
-  [default.retention]
-    after-backup = true
-    verbose = true
-    keep-hourly = 0
-    keep-daily = 30
-    keep-weekly = 52
-    keep-monthly = 0
-    prune = true
+    force-inactive-lock = true
 
-  [default.rewrite]
-    verbose = true
-    source = [
-      "/Users/blomma/Projects/",
-      "/Users/blomma/Documents/",
-      "/Users/blomma/.mail",
-    ]
-    exclude-file = "excludes.txt"
+    [default.backup]
+        verbose = true
+        compression = "max"
+        source = [
+            "/Users/blomma/Projects/",
+            "/Users/blomma/Documents/",
+            "/Users/blomma/.mail",
+        ]
+        exclude-file = "excludes.txt"
+        schedule = "*-*-* 00:30:00"
+        schedule-permission = "user"
+        schedule-priority = "background"
+        schedule-log = "/Users/blomma/.secure/resticprofile/profile-backup.log"
+        schedule-lock-mode = "default"
+        schedule-lock-wait = "15m30s"
+        schedule-ignore-on-battery = false
+
+    [default.retention]
+        after-backup = true
+        verbose = true
+        keep-hourly = 0
+        keep-daily = 30
+        keep-weekly = 52
+        keep-monthly = 0
+        prune = true
+
+    [default.rewrite]
+        verbose = true
+        source = [
+            "/Users/blomma/Projects/",
+            "/Users/blomma/Documents/",
+            "/Users/blomma/.mail",
+        ]
+        exclude-file = "excludes.txt"
