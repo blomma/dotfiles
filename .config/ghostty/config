@@ -1,9 +1,7 @@
-# font-size = 17
 theme = catppuccin-frappe
 window-padding-x = 4
 window-padding-y = 0
 window-padding-color = extend
-# term = xterm-256color
 
 font-family = "Monaspace Neon Var"
 font-feature = "ss01"
