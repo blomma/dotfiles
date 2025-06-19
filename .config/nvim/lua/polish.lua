@@ -7,11 +7,11 @@ local group = vim.api.nvim_create_augroup("MyQMK", {})
 vim.api.nvim_create_autocmd("BufEnter", {
     desc = "Format simple keymap",
     group = group,
-    pattern = "*fourth/keymap.c", -- this is a pattern to match the filepath of whatever board you wish to target
+    pattern = "*elora/keymaps/fourth/keymap.c", -- this is a pattern to match the filepath of whatever board you wish to target
     callback = function()
         require("qmk").setup {
             name = "LAYOUT",
-            auto_format_pattern = "*fourth/keymap.c",
+            auto_format_pattern = "*elora/keymaps/fourth/keymap.c",
             layout = {
                 "x x x x x x _ x _ _ x _ x x x x x x",
                 "x x x x x x _ x _ _ x _ x x x x x x",
@@ -23,17 +23,21 @@ vim.api.nvim_create_autocmd("BufEnter", {
     end,
 })
 
--- vim.api.nvim_create_autocmd("BufEnter", {
---     desc = "Format overlap keymap",
---     group = group,
---     pattern = "*overlap/keymap.c",
---     callback = function()
---         require("qmk").setup {
---             name = "LAYOUT_preonic_grid",
---             auto_format_pattern = "*overlap/keymap.c",
---             layout = {
---                 "x x x x x",
---             },
---         }
---     end,
--- })
+vim.api.nvim_create_autocmd("BufEnter", {
+    desc = "Format simple keymap",
+    group = group,
+    pattern = "*halcyon/kyria/keymaps/fourth/keymap.c", -- this is a pattern to match the filepath of whatever board you wish to target
+    callback = function()
+        require("qmk").setup {
+            name = "LAYOUT_split_3x6_5_hlc",
+            auto_format_pattern = "*halcyon/kyria/keymaps/fourth/keymap.c",
+            layout = {
+                "x x x x x x _ _ _ _ _ _ x x x x x x",
+                "x x x x x x _ _ _ _ _ _ x x x x x x",
+                "x x x x x x x x _ _ x x x x x x x x",
+                "_ _ _ x x x x x _ _ x x x x x _ _ _",
+                "x x x x x _ _ _ _ _ _ _ _ x x x x x",
+            },
+        }
+    end,
+})
