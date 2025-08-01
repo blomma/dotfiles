@@ -2,7 +2,6 @@ return {
     "catppuccin/nvim",
     name = "catppuccin",
     lazy = true,
-    ---@type CatppuccinOptions
     opts = {
         integrations = {
             aerial = true,
