@@ -15,5 +15,7 @@ font-feature = "ss08"
 font-feature = "ss09"
 font-feature = "ss10"
 font-feature = "liga"
+font-feature = "calt"
+font-feature = "cv60"
 
 config-file = ?override
