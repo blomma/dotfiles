@@ -15,6 +15,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
             comment_preview = {
                 keymap_overrides = {
                     SE_LESS = "<",
+                    SE_GRTR = ">",
                     SE_AA = "å",
                     SE_OSLH = "ö",
                     SE_ADIA = "ä",
@@ -59,6 +60,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
             comment_preview = {
                 keymap_overrides = {
                     SE_LESS = "<",
+                    SE_GRTR = ">",
                     SE_AA = "å",
                     SE_OSLH = "ö",
                     SE_ADIA = "ä",
