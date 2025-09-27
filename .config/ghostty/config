@@ -1,4 +1,4 @@
-theme = catppuccin-frappe
+theme = "Catppuccin Frappe"
 window-padding-x = 4
 window-padding-y = 0
 window-padding-color = extend
