@@ -6,7 +6,8 @@ return {
         -- change colorscheme
         -- colorscheme = "astrodark",
         -- colorscheme = "kanagawa-paper-ink",
-        colorscheme = "catppuccin-frappe",
+        -- colorscheme = "catppuccin-frappe",
+        colorscheme = "tokyonight-storm",
         -- AstroUI allows you to easily modify highlight groups easily for any and all colorschemes
         highlights = {
             init = { -- this table overrides highlights in all themes
