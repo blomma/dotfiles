@@ -5,6 +5,7 @@ includes = ["/Users/blomma/.secure/resticprofile/profiles.toml"]
 [global]
 restic-stale-lock-age = "2h"
 prevent-sleep = true
+verbose = true
 
 [default]
 force-inactive-lock = true
@@ -13,8 +14,8 @@ force-inactive-lock = true
 verbose = true
 compression = "max"
 source = [
-    "/Users/blomma/Projects/",
-    "/Users/blomma/Documents/",
+    "/Users/blomma/Projects",
+    "/Users/blomma/Documents",
     "/Users/blomma/.mail",
 ]
 exclude-file = "excludes.txt"
@@ -30,16 +31,8 @@ schedule-ignore-on-battery-less-than = 40
 after-backup = true
 verbose = true
 keep-hourly = 0
-keep-daily = 30
-keep-weekly = 52
-keep-monthly = 0
+keep-daily = 7
+keep-weekly = 5
+keep-monthly = 12
 prune = true
-
-[default.rewrite]
-verbose = true
-source = [
-    "/Users/blomma/Projects/",
-    "/Users/blomma/Documents/",
-    "/Users/blomma/.mail",
-]
-exclude-file = "excludes.txt"
+group-by = ""
