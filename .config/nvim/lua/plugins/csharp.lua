@@ -38,18 +38,4 @@ return {
                 })
         end,
     },
-    -- {
-    --     "nvim-neotest/neotest",
-    --     optional = true,
-    --     dependencies = { "Issafalcon/neotest-dotnet", config = function() end },
-    --     opts = function(_, opts)
-    --         if not opts.adapters then opts.adapters = {} end
-    --         table.insert(
-    --             opts.adapters,
-    --             require "neotest-dotnet"(
-    --                 require("astrocore").plugin_opts "neotest-dotnet"
-    --             )
-    --         )
-    --     end,
-    -- },
 }
