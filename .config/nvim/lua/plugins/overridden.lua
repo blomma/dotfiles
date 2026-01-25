@@ -36,7 +36,7 @@ return {
         ---@type AstroLSPOpts
         opts = {
             features = {
-                inlay_hints = true, -- enable/disable inlay hints on start
+                inlay_hints = false, -- enable/disable inlay hints on start
             },
             mappings = {
                 n = {
