@@ -1,15 +1,11 @@
 return {
     {
-        "nvim-treesitter/nvim-treesitter",
+        "AstroNvim/astrocore",
         optional = true,
-        opts = function(_, opts)
-            if opts.ensure_installed ~= "all" then
-                opts.ensure_installed = require("astrocore").list_insert_unique(
-                    opts.ensure_installed,
-                    { "fish" }
-                )
-            end
-        end,
+        ---@type AstroCoreOpts
+        opts = {
+            treesitter = { ensure_installed = { "fish" } },
+        },
     },
     {
         "nvimtools/none-ls.nvim",
@@ -22,5 +18,23 @@ return {
                 nls.builtins.diagnostics.fish,
             })
         end,
+    },
+    {
+        "stevearc/conform.nvim",
+        optional = true,
+        opts = {
+            formatters_by_ft = {
+                fish = { "fish_indent" },
+            },
+        },
+    },
+    {
+        "mfussenegger/nvim-lint",
+        optional = true,
+        opts = {
+            linters_by_ft = {
+                fish = { "fish" },
+            },
+        },
     },
 }

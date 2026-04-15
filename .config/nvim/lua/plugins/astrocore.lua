@@ -1,3 +1,8 @@
+-- AstroCore provides a central place to modify mappings, vim options, autocommands, and more!
+-- Configuration documentation can be found with `:h astrocore`
+-- NOTE: We highly recommend setting up the Lua Language Server (`:LspInstall lua_ls`)
+--       as this provides autocomplete and documentation while editing
+
 ---@type LazySpec
 return {
     "AstroNvim/astrocore",
@@ -22,18 +27,18 @@ return {
             },
         },
         -- passed to `vim.filetype.add`
-        -- filetypes = {
-        --     -- see `:h vim.filetype.add` for usage
-        --     extension = {
-        --         foo = "fooscript",
-        --     },
-        --     filename = {
-        --         [".foorc"] = "fooscript",
-        --     },
-        --     pattern = {
-        --         [".*/etc/foo/.*"] = "fooscript",
-        --     },
-        -- },
+        filetypes = {
+            -- see `:h vim.filetype.add` for usage
+            extension = {
+                foo = "fooscript",
+            },
+            filename = {
+                [".foorc"] = "fooscript",
+            },
+            pattern = {
+                [".*/etc/foo/.*"] = "fooscript",
+            },
+        },
         -- vim options can be configured here
         options = {
             opt = { -- vim.opt.<key>
@@ -42,6 +47,8 @@ return {
                 spell = false, -- sets vim.opt.spell
                 signcolumn = "yes", -- sets vim.opt.signcolumn to yes
                 wrap = false, -- sets vim.opt.wrap
+                cmdheight = 1,
+                showtabline = 0,
             },
             g = { -- vim.g.<key>
                 -- configure global vim variables (vim.g)
@@ -57,15 +64,14 @@ return {
                 -- second key is the lefthand side of the map
 
                 -- navigate buffer tabs
-                ["]b"] = {
+                L = {
                     function() require("astrocore.buffer").nav(vim.v.count1) end,
                     desc = "Next buffer",
                 },
-                ["[b"] = {
+                H = {
                     function() require("astrocore.buffer").nav(-vim.v.count1) end,
                     desc = "Previous buffer",
                 },
-
                 -- mappings seen under group name "Buffer"
                 ["<Leader>bd"] = {
                     function()
