@@ -15,7 +15,7 @@ return {
             },
             zen = {
                 toggles = {
-                    dim = true,
+                    dim = false,
                     git_signs = false,
                     mini_diff_signs = false,
                     -- diagnostics = false,

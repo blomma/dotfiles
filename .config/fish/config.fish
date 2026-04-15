@@ -10,3 +10,6 @@ set -x MAILDIR $HOME/.mail
 set --global hydro_multiline true
 set --global hydro_symbol_start "♥ "
 set --global hydro_color_start ee99a0
+
+# opencode
+fish_add_path /Users/blomma/.opencode/bin
