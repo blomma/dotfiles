@@ -25,7 +25,7 @@ schedule-priority = "background"
 schedule-log = "/Users/blomma/.secure/resticprofile/profile-backup.log"
 schedule-lock-mode = "default"
 schedule-lock-wait = "15m30s"
-schedule-ignore-on-battery-less-than = 40
+schedule-ignore-on-battery-less-than = 20
 
 [default.retention]
 after-backup = true
