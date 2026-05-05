@@ -61,7 +61,10 @@ return {
         mappings = {
             -- first key is the mode
             n = {
-                -- second key is the lefthand side of the map
+                ["<Leader>gg"] = {
+                    "<Cmd>Neogit<CR>",
+                    desc = "Open Neogit Tab Page",
+                },
 
                 -- navigate buffer tabs
                 L = {
