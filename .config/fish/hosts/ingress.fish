@@ -11,5 +11,4 @@ if status --is-interactive
     starship init fish | source
 
     source "$HOME/.cargo/env.fish" # For fish
-    # pyenv init - | source
 end

@@ -5,15 +5,12 @@
     ai = add --interactive
     alias = "!git config -l | grep alias | cut -c 7-"
     b = branch
-    c = clean -dfx -e appSettings.local.json -e app.local.config -e app.local.config.old -e Web.Local.config
     co = checkout
     commend = commit --amend --no-edit
     conflicts = diff --name-only --diff-filter=U
     dh = diff --histogram
-    db = "!git diff | bat --theme="Catppuccin-mocha""
 	dsf = "!f() { git diff --histogram \"$@\"; }; f"
     dsfb = "!f() { [ -z \"$GIT_PREFIX\" ] || cd \"$GIT_PREFIX\" && git diff --histogram \"$@\" $(git merge-base --fork-point main); }; f"
-    hack = "!f() { git fetch -p && git rebase origin/master master && git checkout -b $1 master; }; f"
     it = "!f() { git init && git commit -m root --allow-empty; }; f"
     l = log --pretty=format:"%C(yellow)%h\\ %C(green)%ad\\ %C(reset)%s%C(blue)\\ [%cn]" --decorate --date=short --graph
     ll = log --graph --pretty=format:'commit: %C(bold red)%h%Creset %C(red)<%H>%Creset %C(bold magenta)%d %Creset%ndate: %C(bold yellow)%cd %Creset%C(yellow)%cr%Creset%nauthor: %C(bold blue)%an%Creset %C(blue)<%ae>%Creset%n%C(cyan)%s%n%Creset'
@@ -34,6 +31,8 @@
     lg1-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'
     lg2-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
     lg3-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset) %C(bold cyan)(committed: %cD)%C(reset) %C(auto)%d%C(reset)%n''         %C(white)%s%C(reset)%n''          %C(dim white)- %an <%ae> %C(reset) %C(dim white)(committer: %cn <%ce>)%C(reset)' 
+    sweep = "!f() { git branch -d \"$1\" 2>/dev/null; git push origin --delete \"$1\"; }; f"
+
 [push]
     default = simple
 
