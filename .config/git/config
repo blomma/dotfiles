@@ -48,7 +48,6 @@
 [core]
     editor = "'nvim' +startinsert"
     whitespace = blank-at-eol,space-before-tab,blank-at-eof,cr-at-eol
-    fsmonitor = false
 
 [diff]
     colorMoved = default
@@ -90,8 +89,12 @@
 [init]
     defaultBranch = main
 
-[merge]
-	conflictStyle = zdiff3
+
+[credential]
+	helper = /usr/local/share/gcm-core/git-credential-manager
+
+[credential "https://dev.azure.com"]
+	useHttpPath = true
 
 [include]
     path = config.local
