@@ -47,8 +47,9 @@ return {
                 spell = false, -- sets vim.opt.spell
                 signcolumn = "yes", -- sets vim.opt.signcolumn to yes
                 wrap = false, -- sets vim.opt.wrap
-                cmdheight = 1,
+                cmdheight = 0,
                 showtabline = 0,
+                showcmd = false,
             },
             g = { -- vim.g.<key>
                 -- configure global vim variables (vim.g)
@@ -90,6 +91,16 @@ return {
                 -- tables with just a `desc` key will be registered with which-key if it's installed
                 -- this is useful for naming menus
                 -- ["<Leader>b"] = { desc = "Buffers" },
+                
+                ["<Leader>x"] = { desc = "󰈙 Scratch" },
+                ["<Leader>xx"] = {
+                    function() require("snacks").scratch() end,
+                    desc = "Toggle Scratch Buffer",
+                },
+                ["<Leader>xs"] = {
+                    function() require("snacks").scratch.select() end,
+                    desc = "Select Scratch Buffer",
+                },
 
                 -- setting a mapping to false will disable it
                 -- ["<C-S>"] = false,
