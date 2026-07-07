@@ -6,5 +6,6 @@ set -x EDITOR nvim
 set -x VISUAL "$EDITOR"
 set -x MAILDIR $HOME/.mail
 
-# opencode
-fish_add_path /Users/blomma/.opencode/bin
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH
