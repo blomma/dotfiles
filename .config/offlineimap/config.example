@@ -15,7 +15,7 @@ localfolders = ~/.mail/personal
 [Repository personal-remote]
 type = IMAP
 ssl = yes
-cert_fingerprint = BB:7C:B5:E5:58:0D:1C:F2:08:62:CF:50:AC:47:23:E4:09:15:9B:D2:65:F2:8D:4F:5E:16:48:7A:87:0F:44:58
+cert_fingerprint = F8:92:A1:28:9D:92:8C:C8:B8:72:F9:13:46:C6:BD:9A:3B:5B:88:9A:6C:DD:B9:8E:48:87:79:DA:6D:35:3D:AE:56:4C:C0:8E:55:58:D8:14:E3:F4:9F:6C:51:32:F5:A9:23:D4:7A:EF:BD:38:EB:8F:9C:0A:69:DA:19:EF:30:1E
 remotehost = mail.messagingengine.com
 remoteuser = user@example.com
 remotepasseval = get_pass("fastmail")
