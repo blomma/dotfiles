@@ -54,7 +54,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
     pattern = "*halcyon/elora/keymaps/fourth/keymap.c", -- this is a pattern to match the filepath of whatever board you wish to target
     callback = function()
         require("qmk").setup {
-            name = "LAYOUT_elora_hlc",
+            name = "LAYOUT",
             auto_format_pattern = "*halcyon/elora/keymaps/fourth/keymap.c",
             comment_preview = {
                 keymap_overrides = {
@@ -89,7 +89,6 @@ vim.api.nvim_create_autocmd("BufEnter", {
                 "x x x x x x _ _ _ _ _ x x x x x x",
                 "x x x x x x x x _ x x x x x x x x",
                 "_ _ _ x x x x x _ x x x x x _ _ _",
-                "x x x x x _ _ _ _ _ _ _ x x x x x",
             },
         }
     end,
