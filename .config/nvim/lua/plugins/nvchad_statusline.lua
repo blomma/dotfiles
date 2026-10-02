@@ -23,17 +23,27 @@ return {
                 -- add new colors that can be used by heirline
                 colors = function(hl)
                     local get_hlgroup = require("astroui").get_hlgroup
+                    ---@param group string
+                    ---@param attribute "fg"|"bg"
+                    ---@return string
+                    local function get_color(group, attribute)
+                        local color = get_hlgroup(group)[attribute]
+                        if type(color) == "number" then
+                            return ("#%06x"):format(color)
+                        end
+                        return color or "NONE"
+                    end
                     -- use helper function to get highlight group properties
-                    local comment_fg = get_hlgroup("Comment").fg
+                    local comment_fg = get_color("Comment", "fg")
                     hl.git_branch_fg = comment_fg
                     hl.git_added = comment_fg
                     hl.git_changed = comment_fg
                     hl.git_removed = comment_fg
-                    hl.blank_bg = get_hlgroup("Folded").fg
-                    hl.file_info_bg = get_hlgroup("Visual").bg
-                    hl.nav_icon_bg = get_hlgroup("String").fg
+                    hl.blank_bg = get_color("Folded", "fg")
+                    hl.file_info_bg = get_color("Visual", "bg")
+                    hl.nav_icon_bg = get_color("String", "fg")
                     hl.nav_fg = hl.nav_icon_bg
-                    hl.folder_icon_bg = get_hlgroup("Error").fg
+                    hl.folder_icon_bg = get_color("Error", "fg")
                     return hl
                 end,
                 attributes = {
