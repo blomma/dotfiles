@@ -35,25 +35,9 @@ return {
         },
     },
     {
-        "mason-org/mason-lspconfig.nvim",
-        optional = true,
-        opts = function(_, opts)
-            opts.ensure_installed = require("astrocore").list_insert_unique(
-                opts.ensure_installed,
-                { "lua_ls" }
-            )
-        end,
-    },
-    {
         "jay-babu/mason-null-ls.nvim",
         optional = true,
         opts = function(_, opts)
-            opts.ensure_installed =
-                require("astrocore").list_insert_unique(opts.ensure_installed, {
-                    "stylua",
-                    (not is_aarch64 and "selene") or nil,
-                })
-
             if not opts.handlers then opts.handlers = {} end
 
             if not is_aarch64 then
@@ -82,32 +66,6 @@ return {
                     "stylua",
                     (not is_aarch64 and "selene") or nil,
                 })
-        end,
-    },
-    {
-        "stevearc/conform.nvim",
-        optional = true,
-        opts = {
-            formatters_by_ft = {
-                lua = { "stylua" },
-            },
-        },
-    },
-    {
-        "mfussenegger/nvim-lint",
-        optional = true,
-        opts = function(_, opts)
-            if not is_aarch64 then
-                opts.linters_by_ft = {
-                    lua = { "selene" },
-                }
-                opts.linters = opts.linters or {}
-                opts.linters.selene = {
-                    condition = function(ctx)
-                        return selene_configured(ctx.filename)
-                    end,
-                }
-            end
         end,
     },
 }

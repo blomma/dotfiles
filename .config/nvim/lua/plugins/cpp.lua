@@ -33,18 +33,6 @@ return {
         },
     },
     {
-        "mason-org/mason-lspconfig.nvim",
-        optional = true,
-        opts = function(_, opts)
-            if not is_linux_arm then
-                opts.ensure_installed = require("astrocore").list_insert_unique(
-                    opts.ensure_installed,
-                    { "clangd" }
-                )
-            end
-        end,
-    },
-    {
         "p00f/clangd_extensions.nvim",
         lazy = true,
         dependencies = {
@@ -105,16 +93,7 @@ return {
         "Civitasv/cmake-tools.nvim",
         ft = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
         dependencies = {
-            {
-                "jay-babu/mason-nvim-dap.nvim",
-                opts = function(_, opts)
-                    opts.ensure_installed =
-                        require("astrocore").list_insert_unique(
-                            opts.ensure_installed,
-                            { "codelldb" }
-                        )
-                end,
-            },
+            "jay-babu/mason-nvim-dap.nvim",
         },
         opts = {},
     },

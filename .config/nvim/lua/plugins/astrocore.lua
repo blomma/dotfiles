@@ -11,11 +11,7 @@ return {
         -- Configure core features of AstroNvim
         features = {
             large_buf = { size = 1024 * 256, lines = 10000 }, -- set global limits for large files for disabling features like treesitter
-            autopairs = true, -- enable autopairs at start
-            cmp = true, -- enable completion at start
             diagnostics = { virtual_text = false, virtual_lines = false }, -- diagnostic settings on startup
-            highlighturl = true, -- highlight URLs at start
-            notifications = true, -- enable notifications at start
         },
         -- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
         diagnostics = {
@@ -24,19 +20,6 @@ return {
             virtual_lines = {
                 --  Only show virtual line diagnostics for the current cursor line
                 current_line = true,
-            },
-        },
-        -- passed to `vim.filetype.add`
-        filetypes = {
-            -- see `:h vim.filetype.add` for usage
-            extension = {
-                foo = "fooscript",
-            },
-            filename = {
-                [".foorc"] = "fooscript",
-            },
-            pattern = {
-                [".*/etc/foo/.*"] = "fooscript",
             },
         },
         -- vim options can be configured here
@@ -62,36 +45,45 @@ return {
         mappings = {
             -- first key is the mode
             n = {
+                -- Swedish keyboard navigation: ö for previous, ä for next.
+                -- https://docs.astronvim.com/mappings/
+                -- Remap to retain counts and buffer-local plugin mappings.
+                ["ö"] = { desc = "Previous" },
+                ["ä"] = { desc = "Next" },
+                ["öt"] = { "[t", remap = true, desc = "Previous tab" },
+                ["ät"] = { "]t", remap = true, desc = "Next tab" },
+                ["öb"] = { "[b", remap = true, desc = "Previous buffer" },
+                ["äb"] = { "]b", remap = true, desc = "Next buffer" },
+                ["öq"] = {
+                    "[q",
+                    remap = true,
+                    desc = "Previous quickfix entry",
+                },
+                ["äq"] = { "]q", remap = true, desc = "Next quickfix entry" },
+                ["öQ"] = { "[Q", remap = true, desc = "First quickfix entry" },
+                ["äQ"] = { "]Q", remap = true, desc = "Last quickfix entry" },
+                ["öl"] = {
+                    "[l",
+                    remap = true,
+                    desc = "Previous location entry",
+                },
+                ["äl"] = { "]l", remap = true, desc = "Next location entry" },
+                ["öL"] = { "[L", remap = true, desc = "First location entry" },
+                ["äL"] = { "]L", remap = true, desc = "Last location entry" },
+                ["öd"] = { "[d", remap = true, desc = "Previous diagnostic" },
+                ["äd"] = { "]d", remap = true, desc = "Next diagnostic" },
+                ["öe"] = { "[e", remap = true, desc = "Previous error" },
+                ["äe"] = { "]e", remap = true, desc = "Next error" },
+                ["öw"] = { "[w", remap = true, desc = "Previous warning" },
+                ["äw"] = { "]w", remap = true, desc = "Next warning" },
+                ["öy"] = { "[y", remap = true, desc = "Previous symbol" },
+                ["äy"] = { "]y", remap = true, desc = "Next symbol" },
+
                 ["<Leader>gg"] = {
                     "<Cmd>Neogit<CR>",
                     desc = "Open Neogit Tab Page",
                 },
 
-                -- navigate buffer tabs
-                L = {
-                    function() require("astrocore.buffer").nav(vim.v.count1) end,
-                    desc = "Next buffer",
-                },
-                H = {
-                    function() require("astrocore.buffer").nav(-vim.v.count1) end,
-                    desc = "Previous buffer",
-                },
-                -- mappings seen under group name "Buffer"
-                ["<Leader>bd"] = {
-                    function()
-                        require("astroui.status.heirline").buffer_picker(
-                            function(bufnr)
-                                require("astrocore.buffer").close(bufnr)
-                            end
-                        )
-                    end,
-                    desc = "Close buffer from tabline",
-                },
-
-                -- tables with just a `desc` key will be registered with which-key if it's installed
-                -- this is useful for naming menus
-                -- ["<Leader>b"] = { desc = "Buffers" },
-                
                 ["<Leader>x"] = { desc = "󰈙 Scratch" },
                 ["<Leader>xx"] = {
                     function() require("snacks").scratch() end,
@@ -101,9 +93,6 @@ return {
                     function() require("snacks").scratch.select() end,
                     desc = "Select Scratch Buffer",
                 },
-
-                -- setting a mapping to false will disable it
-                -- ["<C-S>"] = false,
             },
         },
     },
