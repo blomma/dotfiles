@@ -91,7 +91,72 @@ return {
     },
     {
         "Civitasv/cmake-tools.nvim",
-        ft = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
+        lazy = true,
+        cmd = {
+            "CMakeGenerate",
+            "CMakeClean",
+            "CMakeBuild",
+            "CMakeQuickBuild",
+            "CMakeInstall",
+            "CMakeStopExecutor",
+            "CMakeStopRunner",
+            "CMakeCloseExecutor",
+            "CMakeCloseRunner",
+            "CMakeOpenExecutor",
+            "CMakeOpenRunner",
+            "CMakeOpenCache",
+            "CMakeRun",
+            "CMakeQuickRun",
+            "CMakeRunCurrentFile",
+            "CMakeBuildCurrentFile",
+            "CMakeLaunchArgs",
+            "CMakeSelectBuildType",
+            "CMakeSelectKit",
+            "CMakeSelectConfigurePreset",
+            "CMakeSelectBuildPreset",
+            "CMakeSelectTestPreset",
+            "CMakeSelectBuildTarget",
+            "CMakeSelectLaunchTarget",
+            "CMakeTargetSettings",
+            "CMakeSettings",
+            "CMakeSelectCwd",
+            "CMakeSelectBuildDir",
+            "CMakeRunTest",
+            "CMakeQuickStart",
+        },
+        init = function(plugin)
+            local group = vim.api.nvim_create_augroup("cmake_tools_lazy", {
+                clear = true,
+            })
+            vim.api.nvim_create_autocmd("FileType", {
+                group = group,
+                desc = "Load CMake tooling only for CMake projects",
+                pattern = {
+                    "c",
+                    "cpp",
+                    "objc",
+                    "objcpp",
+                    "cuda",
+                    "proto",
+                    "cmake",
+                },
+                callback = function(args)
+                    if package.loaded["cmake-tools"] then
+                        vim.api.nvim_clear_autocmds { group = group }
+                        return
+                    end
+                    if
+                        vim.fs.root(args.buf, {
+                            "CMakeLists.txt",
+                            "CMakePresets.json",
+                        })
+                    then
+                        require("lazy").load { plugins = { plugin.name } }
+                        vim.api.nvim_clear_autocmds { group = group }
+                    end
+                end,
+            })
+        end,
         dependencies = {
             "jay-babu/mason-nvim-dap.nvim",
         },

@@ -1,55 +1,24 @@
 return {
     "https://codeberg.org/andyg/leap.nvim",
-    dependencies = {
-        "tpope/vim-repeat",
+    dependencies = { "tpope/vim-repeat" },
+    keys = {
         {
-            "AstroNvim/astrocore",
-            opts = {
-                mappings = {
-                    n = {
-                        ["s"] = {
-                            "<Plug>(leap-forward)",
-                            desc = "Leap forward",
-                        },
-                        ["S"] = {
-                            "<Plug>(leap-backward)",
-                            desc = "Leap backward",
-                        },
-                        ["gs"] = {
-                            "<Plug>(leap-from-window)",
-                            desc = "Leap from window",
-                        },
-                    },
-                    x = {
-                        ["s"] = {
-                            "<Plug>(leap-forward)",
-                            desc = "Leap forward",
-                        },
-                        ["S"] = {
-                            "<Plug>(leap-backward)",
-                            desc = "Leap backward",
-                        },
-                        ["gs"] = {
-                            "<Plug>(leap-from-window)",
-                            desc = "Leap from window",
-                        },
-                    },
-                    o = {
-                        ["s"] = {
-                            "<Plug>(leap-forward)",
-                            desc = "Leap forward",
-                        },
-                        ["S"] = {
-                            "<Plug>(leap-backward)",
-                            desc = "Leap backward",
-                        },
-                        ["gs"] = {
-                            "<Plug>(leap-from-window)",
-                            desc = "Leap from window",
-                        },
-                    },
-                },
-            },
+            "s",
+            "<Plug>(leap-forward)",
+            mode = { "n", "x", "o" },
+            desc = "Leap forward",
+        },
+        {
+            "S",
+            "<Plug>(leap-backward)",
+            mode = { "n", "x", "o" },
+            desc = "Leap backward",
+        },
+        {
+            "gs",
+            "<Plug>(leap-from-window)",
+            mode = { "n", "x", "o" },
+            desc = "Leap from window",
         },
     },
     specs = {
