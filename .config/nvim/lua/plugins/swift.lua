@@ -13,6 +13,10 @@ return {
         ---@type AstroLSPOpts
         opts = {
             servers = { "sourcekit" },
+            config = {
+                -- clangd handles C, C++, Objective-C, and Objective-C++.
+                sourcekit = { filetypes = { "swift" } },
+            },
         },
     },
 }

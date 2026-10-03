@@ -55,25 +55,40 @@ local boards = {
 
 local group = vim.api.nvim_create_augroup("MyQMK", {})
 
-for _, board in ipairs(boards) do
-    vim.api.nvim_create_autocmd("BufEnter", {
-        desc = "Format simple keymap",
-        group = group,
-        pattern = board.pattern,
-        callback = function()
-            require("qmk").setup {
-                name = board.name,
-                auto_format_pattern = board.pattern,
-                comment_preview = {
-                    keymap_overrides = vim.tbl_extend(
-                        "force",
-                        {},
-                        swedish_key_labels,
-                        board.keymap_overrides or {}
-                    ),
-                },
-                layout = board.layout,
-            }
-        end,
-    })
-end
+vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePre" }, {
+    desc = "Configure and format the QMK board for this buffer",
+    group = group,
+    pattern = "*keymap.c",
+    callback = function(args)
+        -- Prefer the specific Halcyon path over the shared Elora suffix.
+        for i = #boards, 1, -1 do
+            local board = boards[i]
+            if
+                vim.fn.match(args.file, vim.fn.glob2regpat(board.pattern)) >= 0
+            then
+                local qmk = require "qmk"
+                qmk.setup {
+                    name = board.name,
+                    auto_format_pattern = board.pattern,
+                    comment_preview = {
+                        keymap_overrides = vim.tbl_extend(
+                            "force",
+                            {},
+                            swedish_key_labels,
+                            board.keymap_overrides or {}
+                        ),
+                    },
+                    layout = board.layout,
+                }
+                -- qmk.setup creates a save hook using its global board options.
+                -- Handle saves here so :wall also selects each buffer's board.
+                vim.api.nvim_clear_autocmds {
+                    group = "QMK",
+                    event = "BufWritePre",
+                }
+                if args.event == "BufWritePre" then qmk.format(args.buf) end
+                return
+            end
+        end
+    end,
+})

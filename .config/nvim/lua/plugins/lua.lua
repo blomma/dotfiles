@@ -12,10 +12,14 @@ return {
         "AstroNvim/astrolsp",
         optional = true,
         opts = {
+            -- StyLua is provided by none-ls; avoid additional Lua formatters.
+            formatting = { disabled = { "lua_ls" } },
+            handlers = { stylua = false },
             config = {
                 lua_ls = {
                     settings = {
                         Lua = {
+                            format = { enable = false },
                             hint = {
                                 enable = true,
                                 arrayIndex = "Disable",
