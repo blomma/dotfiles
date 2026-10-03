@@ -19,13 +19,16 @@ source = [
     "/home/user/.mail",
 ]
 exclude-file = "excludes.txt"
-schedule = "*-*-* 03:00:00"
-schedule-permission = "user"
-schedule-priority = "background"
-schedule-log = "backup.log"
-schedule-lock-mode = "default"
-schedule-lock-wait = "15m30s"
-schedule-ignore-on-battery-less-than = 20
+exclude-caches = true
+
+[default.backup.schedule]
+at = "*-*-* 03:00:00"
+permission = "user_logged_on"
+priority = "background"
+log = "backup.log"
+lock-mode = "default"
+lock-wait = "15m30s"
+ignore-on-battery-less-than = 20
 
 [default.retention]
 after-backup = true
