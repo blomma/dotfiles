@@ -3,6 +3,125 @@
 -- NOTE: We highly recommend setting up the Lua Language Server (`:LspInstall lua_ls`)
 --       as this provides autocomplete and documentation while editing
 
+-- Swedish keyboard aliases: ö replaces [, ä replaces ]. Keep the original
+-- mappings and resolve them recursively to retain counts and buffer-local actions.
+local motion_modes = { "n", "x", "o" }
+local bracket_pairs = {
+    { "[b", "]b", "Previous buffer", "Next buffer" },
+    { "[B", "]B", "First buffer", "Last buffer" },
+    { "[t", "]t", "Previous tab", "Next tab" },
+    { "[q", "]q", "Previous quickfix entry", "Next quickfix entry" },
+    { "[Q", "]Q", "First quickfix entry", "Last quickfix entry" },
+    { "[<C-Q>", "]<C-Q>", "Previous quickfix file", "Next quickfix file" },
+    { "[l", "]l", "Previous location entry", "Next location entry" },
+    { "[L", "]L", "First location entry", "Last location entry" },
+    { "[<C-L>", "]<C-L>", "Previous location file", "Next location file" },
+    { "[<C-T>", "]<C-T>", "Previous preview tag", "Next preview tag" },
+    { "[d", "]d", "Previous diagnostic", "Next diagnostic" },
+    { "[D", "]D", "First diagnostic", "Last diagnostic" },
+    { "[e", "]e", "Previous error", "Next error" },
+    { "[w", "]w", "Previous warning", "Next warning" },
+    { "[y", "]y", "Previous symbol", "Next symbol" },
+    { "[Y", "]Y", "Previous higher-level symbol", "Next higher-level symbol" },
+    { "[r", "]r", "Previous reference", "Next reference" },
+    { "[T", "]T", "Previous TODO comment", "Next TODO comment" },
+    { "[g", "]g", "Previous Git hunk", "Next Git hunk" },
+    { "[G", "]G", "First Git hunk", "Last Git hunk" },
+    {
+        "[k",
+        "]k",
+        "Previous block start",
+        "Next block start",
+        modes = motion_modes,
+    },
+    {
+        "[K",
+        "]K",
+        "Previous block end",
+        "Next block end",
+        modes = motion_modes,
+    },
+    {
+        "[f",
+        "]f",
+        "Previous function start",
+        "Next function start",
+        modes = motion_modes,
+    },
+    {
+        "[F",
+        "]F",
+        "Previous function end",
+        "Next function end",
+        modes = motion_modes,
+    },
+    { "[a", "]a", "Previous argument", "Next argument", modes = motion_modes },
+    {
+        "[A",
+        "]A",
+        "Previous argument end or first file",
+        "Next argument end or last file",
+        modes = motion_modes,
+    },
+    { "[i", "]i", "Scope top", "Scope bottom", modes = motion_modes },
+    {
+        "[%",
+        "]%",
+        "Previous unmatched group",
+        "Next unmatched group",
+        modes = motion_modes,
+    },
+    {
+        "[c",
+        "]c",
+        "Previous change or Neogit item",
+        "Next change or Neogit item",
+        modes = motion_modes,
+    },
+    {
+        "[[",
+        "]]",
+        "Previous section or plugin item",
+        "Next section or plugin item",
+        modes = motion_modes,
+    },
+    {
+        "[n",
+        "]n",
+        "Previous Treesitter node",
+        "Next Treesitter node",
+        modes = { "x" },
+    },
+    {
+        "[N",
+        "]N",
+        "Previous sibling node",
+        "Next sibling node",
+        modes = { "x" },
+    },
+    { "[<Space>", "]<Space>", "Add empty line above", "Add empty line below" },
+}
+local bracket_mappings = {}
+for _, pair in ipairs(bracket_pairs) do
+    for _, mode in ipairs(pair.modes or { "n" }) do
+        if not bracket_mappings[mode] then
+            bracket_mappings[mode] = {
+                ["ö"] = { desc = "Previous" },
+                ["ä"] = { desc = "Next" },
+            }
+        end
+        for direction = 1, 2 do
+            local target = pair[direction]
+            local alias = target:gsub("%[", "ö"):gsub("%]", "ä")
+            bracket_mappings[mode][alias] = {
+                target,
+                remap = true,
+                desc = pair[direction + 2],
+            }
+        end
+    end
+end
+
 ---@type LazySpec
 return {
     "AstroNvim/astrocore",
@@ -44,40 +163,19 @@ return {
         -- NOTE: keycodes follow the casing in the vimdocs. For example, `<Leader>` must be capitalized
         mappings = {
             -- first key is the mode
-            n = {
-                -- Swedish keyboard navigation: ö for previous, ä for next.
-                -- https://docs.astronvim.com/mappings/
-                -- Remap to retain counts and buffer-local plugin mappings.
-                ["ö"] = { desc = "Previous" },
-                ["ä"] = { desc = "Next" },
-                ["öt"] = { "[t", remap = true, desc = "Previous tab" },
-                ["ät"] = { "]t", remap = true, desc = "Next tab" },
-                ["öb"] = { "[b", remap = true, desc = "Previous buffer" },
-                ["äb"] = { "]b", remap = true, desc = "Next buffer" },
-                ["öq"] = {
-                    "[q",
-                    remap = true,
-                    desc = "Previous quickfix entry",
+            n = vim.tbl_extend("force", bracket_mappings.n, {
+                ["<Leader>k"] = {
+                    function()
+                        local path = vim.fs.joinpath(
+                            vim.fn.stdpath "config",
+                            "CHEATSHEET.md"
+                        )
+                        vim.cmd.split(vim.fn.fnameescape(path))
+                        vim.wo.wrap = true
+                        vim.wo.linebreak = true
+                    end,
+                    desc = "Keymap cheat sheet",
                 },
-                ["äq"] = { "]q", remap = true, desc = "Next quickfix entry" },
-                ["öQ"] = { "[Q", remap = true, desc = "First quickfix entry" },
-                ["äQ"] = { "]Q", remap = true, desc = "Last quickfix entry" },
-                ["öl"] = {
-                    "[l",
-                    remap = true,
-                    desc = "Previous location entry",
-                },
-                ["äl"] = { "]l", remap = true, desc = "Next location entry" },
-                ["öL"] = { "[L", remap = true, desc = "First location entry" },
-                ["äL"] = { "]L", remap = true, desc = "Last location entry" },
-                ["öd"] = { "[d", remap = true, desc = "Previous diagnostic" },
-                ["äd"] = { "]d", remap = true, desc = "Next diagnostic" },
-                ["öe"] = { "[e", remap = true, desc = "Previous error" },
-                ["äe"] = { "]e", remap = true, desc = "Next error" },
-                ["öw"] = { "[w", remap = true, desc = "Previous warning" },
-                ["äw"] = { "]w", remap = true, desc = "Next warning" },
-                ["öy"] = { "[y", remap = true, desc = "Previous symbol" },
-                ["äy"] = { "]y", remap = true, desc = "Next symbol" },
 
                 ["<Leader>gg"] = {
                     "<Cmd>Neogit<CR>",
@@ -93,7 +191,9 @@ return {
                     function() require("snacks").scratch.select() end,
                     desc = "Select Scratch Buffer",
                 },
-            },
+            }),
+            x = bracket_mappings.x,
+            o = bracket_mappings.o,
         },
     },
 }
