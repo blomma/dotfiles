@@ -29,5 +29,5 @@ node_modules
 /.vol
 /.file
 literature/gutenberg
-games/**/target
-games/**/build
+project/**/target
+project/**/build
