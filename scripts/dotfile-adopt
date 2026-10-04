@@ -1,0 +1,189 @@
+#!/bin/bash
+# Move a local dotfile into the shared sources and add it to a profile.
+set -eo pipefail
+
+repo=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd -P)
+source "$repo/scripts/dotfile-common.sh"
+target=$HOME
+dry_run=false
+arguments=()
+fail() { printf '%s\n' "dotfile-adopt: $*" >&2; exit 1; }
+usage='usage: dotfile-adopt [--dry-run] [--target DIR] PATH PROFILE'
+
+while [ "$#" -gt 0 ]; do
+    case "$1" in
+        -n|--dry-run) dry_run=true ;;
+        -t|--target) [ "$#" -ge 2 ] || fail "--target requires a directory"; target=$2; shift ;;
+        --) shift; arguments+=("$@"); break ;;
+        -*) fail "unknown option: $1" ;;
+        *) arguments+=("$1") ;;
+    esac
+    shift
+done
+[ "${#arguments[@]}" -eq 2 ] || fail "$usage"
+input=${arguments[0]}
+profile_name=${arguments[1]}
+validate_profile_name "$profile_name"
+target=$(CDPATH= cd -- "$target" && pwd -P) || fail "target must be an existing directory"
+case "$target/" in "$repo/"*) fail "target must be outside this repository" ;; esac
+case "$input" in /*) ;; *) input=$PWD/$input ;; esac
+input=$(normalize_path "$input")
+case "$input" in
+    "$repo"/*) path=${input#"$repo/"} ;;
+    "$target"/*) path=${input#"$target/"} ;;
+    *) fail "path must be inside $target or $repo" ;;
+esac
+validate_profile_path "$path"
+destination=$repo/$path
+link_target=$target/$path
+profile=$repo/profiles/$profile_name
+[ -d "$repo/profiles" ] && [ ! -L "$repo/profiles" ] || fail "profiles must be a real directory"
+[ ! -L "$profile" ] || fail "profile must be a regular file: $profile"
+[ ! -e "$profile" ] || [ -f "$profile" ] || fail "profile must be a regular file: $profile"
+[ -f "$input" ] || [ -d "$input" ] || fail "path must be an existing file or directory: $input"
+command -v stow >/dev/null || fail "GNU Stow is required"
+entry_parent "$path"
+
+# Check repository parents before mkdir or mv can follow a directory symlink.
+created_parents=()
+parent=$(dirname -- "$destination")
+while [ "$parent" != "$repo" ]; do
+    [ ! -L "$parent" ] || fail "repository parent must be a real directory: $parent"
+    if [ -e "$parent" ]; then [ -d "$parent" ] || fail "repository parent is not a directory: $parent"
+    else created_parents+=("$parent"); fi
+    parent=$(dirname -- "$parent")
+done
+
+physical_input=$(CDPATH= cd -- "$(dirname -- "$input")" && printf '%s/%s\n' "$(pwd -P)" "$(basename -- "$input")")
+moved=false
+already_shared=false
+old_link=
+if [ -L "$input" ]; then
+    raw=$(readlink "$input")
+    case "$raw" in /*) physical_input=$raw ;; *) physical_input=$(dirname -- "$input")/$raw ;; esac
+    physical_input=$(normalize_path "$physical_input")
+    [ "$physical_input" = "$destination" ] || fail "path is linked to a different source: $input"
+fi
+if [ "$physical_input" = "$destination" ]; then
+    already_shared=true
+else
+    case "$physical_input" in "$repo"/*) fail "path is already inside another shared source: $input" ;; esac
+    [ ! -e "$destination" ] && [ ! -L "$destination" ] || fail "shared destination already exists: $destination"
+fi
+if [ -L "$link_target" ]; then
+    old_link=$(readlink "$link_target")
+    case "$old_link" in /*) actual=$old_link ;; *) actual=$(dirname -- "$link_target")/$old_link ;; esac
+    [ "$(normalize_path "$actual")" = "$destination" ] || fail "target links to a different source: $link_target"
+elif "$already_shared" && ! "$shared_parent" && [ -e "$link_target" ]; then
+    fail "target already contains an unlinked file: $link_target"
+fi
+
+if [ -f "$profile" ]; then
+    while IFS= read -r entry || [ -n "$entry" ]; do
+        case "$entry" in ''|\#*) continue ;; esac
+        validate_profile_path "$entry"
+    done < "$profile"
+fi
+add_entry=false
+if ! profile_covers "$profile" "$path"; then add_entry=true; fi
+if ! "$already_shared"; then printf 'MOVE: %s -> %s\n' "$input" "$destination"; fi
+if "$add_entry"; then printf 'PROFILE: %s += %s\n' "$profile_name" "$path"; fi
+printf 'LINK: %s -> %s\n' "$link_target" "$destination"
+if "$dry_run"; then report_dry_run; exit 0; fi
+
+work=$(mktemp -d "${TMPDIR:-/tmp}/dotfile-adopt.XXXXXXXX")
+trap 'rm -rf "$work"' EXIT
+trap 'exit 130' INT
+trap 'exit 143' TERM
+profile_existed=false
+if [ -f "$profile" ]; then
+    profile_existed=true
+    cp -p "$profile" "$work/profile.original"
+    cp -p "$profile" "$work/profile.new"
+else : > "$work/profile.new"; fi
+if "$add_entry"; then
+    if [ -s "$work/profile.new" ] && [ -n "$(tail -c 1 "$work/profile.new")" ]; then printf '\n' >> "$work/profile.new"; fi
+    printf '%s\n' "$path" >> "$work/profile.new"
+fi
+
+# Keep relative symlinks to files outside a moved directory pointing to the
+# same locations. Internal relative links move with their directory unchanged.
+external_paths=()
+external_old=()
+external_new=()
+if ! "$already_shared" && [ -d "$input" ]; then
+    find "$input" -type l -print0 > "$work/links"
+    while IFS= read -r -d '' entry; do
+        value=$(readlink "$entry")
+        case "$value" in /*) continue ;; esac
+        original=$(normalize_path "$(dirname -- "$entry")/$value")
+        case "$original" in "$input"|"$input"/*) continue ;; esac
+        relative=${entry#"$input/"}
+        external_paths+=("$relative")
+        external_old+=("$value")
+        external_new+=("$(relative_path "$(dirname -- "$destination/$relative")" "$original")")
+    done < "$work/links"
+fi
+
+profile_changed=false
+link_changed=false
+adjusted=0
+rollback() {
+    local status=$? index entry keep_work=false
+    trap - EXIT
+    set +e
+    if [ "$status" -ne 0 ]; then
+        if "$link_changed" && [ -L "$link_target" ]; then
+            value=$(readlink "$link_target")
+            case "$value" in /*) actual=$value ;; *) actual=$(dirname -- "$link_target")/$value ;; esac
+            if [ "$(normalize_path "$actual")" = "$destination" ]; then rm -- "$link_target"; fi
+        fi
+        if [ -n "$old_link" ] && [ ! -e "$link_target" ] && [ ! -L "$link_target" ]; then ln -s "$old_link" "$link_target"; fi
+        for ((index = 0; index < adjusted; index++)); do
+            ln -sfn "${external_old[index]}" "$destination/${external_paths[index]}"
+        done
+        if "$moved"; then
+            if [ ! -e "$input" ] && [ ! -L "$input" ]; then
+                mv -n -- "$destination" "$input" || keep_work=true
+            else printf 'dotfile-adopt: cannot restore %s; data remains at %s\n' "$input" "$destination" >&2; keep_work=true; fi
+        fi
+        if "$profile_changed"; then
+            if "$profile_existed"; then cp -p "$work/profile.original" "$profile" || keep_work=true
+            else rm -- "$profile"; fi
+        fi
+        for entry in "${created_parents[@]}"; do rmdir "$entry" 2>/dev/null; done
+    fi
+    if "$keep_work"; then printf 'dotfile-adopt: recovery files retained at %s\n' "$work" >&2
+    else rm -rf "$work"; fi
+    exit "$status"
+}
+trap rollback EXIT
+trap 'exit 130' INT
+trap 'exit 143' TERM
+
+if ! "$already_shared"; then
+    mkdir -p "$(dirname -- "$destination")"
+    mv -n -- "$input" "$destination"
+    [ ! -e "$input" ] && [ ! -L "$input" ] || fail "source was not moved; destination changed: $destination"
+    moved=true
+    for ((index = 0; index < ${#external_paths[@]}; index++)); do
+        adjusted=$((adjusted + 1))
+        ln -sfn "${external_new[index]}" "$destination/${external_paths[index]}"
+    done
+fi
+if "$add_entry"; then profile_changed=true; cp -p "$work/profile.new" "$profile"; fi
+if [ -n "$old_link" ]; then
+    new_link=$(relative_path "$(dirname -- "$link_target")" "$destination")
+    if [ "$new_link" != "$old_link" ]; then
+        link_changed=true
+        ln -sfn "$new_link" "$link_target"
+    fi
+fi
+entry_parent "$path"
+if ! "$shared_parent"; then
+    mkdir -p "$(dirname -- "$link_target")"
+    stow_entry "$path" "$(dirname -- "$link_target")" -n 2> "$work/errors" || { cat "$work/errors" >&2; exit 1; }
+    link_changed=true
+    stow_entry "$path" "$(dirname -- "$link_target")" --verbose=1
+fi
+[ "$link_target" -ef "$destination" ] || fail "Stow did not link $path; check Stow ignore rules"

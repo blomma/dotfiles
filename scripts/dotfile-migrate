@@ -1,0 +1,92 @@
+#!/bin/bash
+# Convert absolute legacy links to relative links to the same shared sources.
+set -eo pipefail
+
+repo=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd -P)
+source "$repo/scripts/dotfile-common.sh"
+target=$HOME
+dry_run=false
+profile_name=
+fail() { printf '%s\n' "dotfile-migrate: $*" >&2; exit 1; }
+usage='usage: dotfile-migrate [--dry-run] [--target DIR] PROFILE'
+
+while [ "$#" -gt 0 ]; do
+    case "$1" in
+        -n|--dry-run) dry_run=true ;;
+        -t|--target) [ "$#" -ge 2 ] || fail "--target requires a directory"; target=$2; shift ;;
+        -*) fail "unknown option: $1" ;;
+        *) [ -z "$profile_name" ] || fail "$usage"; profile_name=$1 ;;
+    esac
+    shift
+done
+[ -n "$profile_name" ] || fail "$usage"
+validate_profile_name "$profile_name"
+profile=$repo/profiles/$profile_name
+[ -f "$profile" ] || fail "unknown profile: $profile_name"
+target=$(CDPATH= cd -- "$target" && pwd -P) || fail "target must be an existing directory"
+case "$target/" in "$repo/"*) fail "target must be outside this repository" ;; esac
+
+link_destination() {
+    local value
+    value=$(readlink "$1")
+    case "$value" in /*) ;; *) value=$(dirname -- "$1")/$value ;; esac
+    (CDPATH= cd -- "$(dirname -- "$value")" && printf '%s/%s\n' "$(pwd -P)" "$(basename -- "$value")")
+}
+destinations=()
+old_links=()
+new_links=()
+while IFS= read -r path || [ -n "$path" ]; do
+    case "$path" in ''|\#*) continue ;; esac
+    validate_profile_path "$path"
+    [ -e "$repo/$path" ] || fail "missing shared source: $path"
+    destination=$target/$path
+    parent=$(dirname -- "$destination")
+    while [ "$parent" != "$target" ]; do
+        [ ! -L "$parent" ] || fail "cannot migrate through a symlinked directory: $parent"
+        [ ! -e "$parent" ] || [ -d "$parent" ] || fail "target parent is not a directory: $parent"
+        parent=$(dirname -- "$parent")
+    done
+    if [ ! -L "$destination" ]; then
+        [ ! -e "$destination" ] || fail "target is not a shared-source symlink: $destination"
+        continue
+    fi
+    old_source=$(link_destination "$destination") || fail "unrelated target symlink: $destination"
+    [ "$old_source" = "$repo/$path" ] || fail "unrelated target symlink: $destination"
+    new_link=$(relative_path "$(dirname -- "$destination")" "$repo/$path")
+    old_link=$(readlink "$destination")
+    [ "$old_link" != "$new_link" ] || continue
+    destinations+=("$destination")
+    old_links+=("$old_link")
+    new_links+=("$new_link")
+done < "$profile"
+for ((index = 0; index < ${#destinations[@]}; index++)); do
+    printf 'MIGRATE: %s: %s -> %s\n' "${destinations[index]#"$target/"}" "${old_links[index]}" "${new_links[index]}"
+done
+if "$dry_run"; then report_dry_run; exit 0; fi
+
+changed=0
+rollback() {
+    local status=$? destination
+    trap - EXIT
+    if [ "$status" -ne 0 ]; then
+        while [ "$changed" -gt 0 ]; do
+            changed=$((changed - 1))
+            destination=${destinations[changed]}
+            if { [ -L "$destination" ] && [ "$(readlink "$destination")" = "${new_links[changed]}" ]; } ||
+                { [ ! -e "$destination" ] && [ ! -L "$destination" ]; }; then
+                ln -sfn "${old_links[changed]}" "$destination"
+            fi
+        done
+    fi
+    exit "$status"
+}
+trap rollback EXIT
+trap 'exit 130' INT
+trap 'exit 143' TERM
+for ((index = 0; index < ${#destinations[@]}; index++)); do
+    destination=${destinations[index]}
+    [ -L "$destination" ] && [ "$(readlink "$destination")" = "${old_links[index]}" ] || fail "target changed: $destination"
+    changed=$((changed + 1))
+    ln -sfn "${new_links[index]}" "$destination"
+done
+"$repo/scripts/dotfile-stow" --target "$target" "$profile_name"

@@ -1,0 +1,130 @@
+#!/bin/bash
+set -eu
+
+repo=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd -P)
+source "$repo/scripts/dotfile-common.sh"
+target=$HOME
+dry_run=false
+delete=false
+profile_name=
+fail() { printf '%s\n' "dotfile-stow: $*" >&2; exit 1; }
+usage='usage: dotfile-stow [--dry-run] [--delete] [--target DIR] PROFILE'
+
+while [ "$#" -gt 0 ]; do
+    case "$1" in
+        -n|--dry-run) dry_run=true ;;
+        -D|--delete) delete=true ;;
+        -t|--target) [ "$#" -ge 2 ] || fail "--target requires a directory"; target=$2; shift ;;
+        -*) fail "unknown option: $1" ;;
+        *) [ -z "$profile_name" ] || fail "$usage"; profile_name=$1 ;;
+    esac
+    shift
+done
+[ -n "$profile_name" ] || fail "$usage"
+validate_profile_name "$profile_name"
+profile=$repo/profiles/$profile_name
+[ -f "$profile" ] || fail "unknown profile: $profile_name"
+target=$(CDPATH= cd -- "$target" && pwd -P) || fail "target must be an existing directory"
+case "$target/" in "$repo/"*) fail "target must be outside this repository" ;; esac
+
+newline='
+'
+selected_paths=$newline
+while IFS= read -r path || [ -n "$path" ]; do
+    case "$path" in ''|\#*) continue ;; esac
+    validate_profile_path "$path"
+    if ! "$delete"; then [ -e "$repo/$path" ] || fail "missing shared source: $path"; fi
+    selected_paths=$selected_paths$path$newline
+done < "$profile"
+[ "$selected_paths" != "$newline" ] || fail "profile contains no dotfiles"
+
+work=$(mktemp -d "${TMPDIR:-/tmp}/dotfile-stow.XXXXXXXX")
+trap 'rm -rf "$work"' EXIT
+trap 'exit 130' INT
+trap 'exit 143' TERM
+
+in_profile() {
+    selection_path=$1
+    while :; do
+        case "$selected_paths" in *"$newline$selection_path$newline"*) return 0 ;; esac
+        case "$selection_path" in */*) selection_path=${selection_path%/*} ;; *) return 1 ;; esac
+    done
+}
+
+report_link() {
+    local entry=$1 relative link source
+    [ -L "$entry" ] || return 0
+    relative=${entry#"$target/"}
+    if in_profile "$relative"; then return 0; fi
+    link=$(readlink "$entry")
+    case "$link" in /*) source=$link ;; *) source=$(dirname -- "$entry")/$link ;; esac
+    source=$(normalize_path "$source")
+    case "$source" in
+        "$repo"|"$repo"/*) printf '  %s -> %s\n' "$relative" "$link" ;;
+    esac
+}
+
+repo_pattern=$(basename -- "$repo" | sed 's/[][\\*?]/\\&/g')
+report_links() {
+    local entry relative candidate
+    for entry in "$1"/* "$1"/.[!.]* "$1"/..?*; do
+        [ "$entry" != "$repo" ] || continue
+        [ -L "$entry" ] || [ -d "$entry" ] || continue
+        relative=${entry#"$target/"}
+        if in_profile "$relative"; then continue; fi
+        if [ -L "$entry" ]; then
+            report_link "$entry"
+        elif [ -d "$entry" ]; then
+            # Scan .config, including stale directories. Elsewhere, follow only
+            # directories mirrored in the checkout to avoid scanning all of home.
+            case "$relative" in
+                .git|profiles) continue ;;
+                .config)
+                    # Direct links into this checkout name its directory. Let
+                    # find filter the other applications' links without forks.
+                    while IFS= read -r -d '' candidate; do
+                        report_link "$candidate"
+                    done < <(find "$entry" -type l \( -lname "*/$repo_pattern/*" -o -lname "*/$repo_pattern" \) -print0)
+                    ;;
+                *) if [ -d "$repo/$relative" ]; then report_links "$entry"; fi ;;
+            esac
+        fi
+    done
+}
+
+report_links "$target" > "$work/unlisted"
+if [ -s "$work/unlisted" ]; then
+    printf 'Existing links not listed in profile %s:\n' "$profile_name"
+    cat "$work/unlisted"
+fi
+
+# Check every selected entry before installing any of them.
+mkdir "$work/dry-run"
+operation=--stow
+if "$delete"; then operation=--delete; fi
+set -- -n "$operation"
+if "$delete"; then set -- "$@" --no-folding; fi
+while IFS= read -r path || [ -n "$path" ]; do
+    case "$path" in ''|\#*) continue ;; esac
+    entry_parent "$path"
+    if "$shared_parent"; then continue; fi
+    destination=$(dirname -- "$target/$path")
+    if [ ! -d "$destination" ]; then
+        if "$delete"; then continue; fi
+        destination=$work/dry-run
+    fi
+    stow_entry "$path" "$destination" "$@" 2>"$work/errors" || { cat "$work/errors" >&2; exit 1; }
+done < "$profile"
+if "$dry_run"; then report_dry_run; exit 0; fi
+
+set -- --verbose=1 "$operation"
+if "$delete"; then set -- "$@" --no-folding; fi
+while IFS= read -r path || [ -n "$path" ]; do
+    case "$path" in ''|\#*) continue ;; esac
+    entry_parent "$path"
+    if "$shared_parent"; then continue; fi
+    destination=$(dirname -- "$target/$path")
+    if "$delete"; then [ -d "$destination" ] || continue
+    else mkdir -p "$destination"; fi
+    stow_entry "$path" "$destination" "$@"
+done < "$profile"
