@@ -1,0 +1,36 @@
+alternates '^user@example.com$'
+
+named-mailboxes \
+    "Inbox" =personal/INBOX \
+    "Gmail" =personal/Gmail \
+    "Drafts" =personal/Drafts \
+    "Archive" =personal/Archive \
+    "Lists" =personal/Lists \
+    "Sent" =personal/Sent \
+    "Notes" =personal/Notes \
+    "Trash" =personal/Trash \
+    "Spam" =personal/Spam \
+    "LSpam" =personal/LSpam
+
+set nm_default_url = "notmuch:///home/user/"
+virtual-mailboxes "flagged" "notmuch://?query=tag:flagged"
+
+set realname = "Your Name"
+set from = "Your Name <user@example.com>"
+
+set postponed	= =personal/Drafts
+set record		= =personal/Sent
+set spoolfile	= =personal/INBOX
+set trash       = =personal/Trash
+
+# Sending ----------------------------------------------
+set sendmail		= "msmtp -a personal"
+set sendmail_wait	= 0
+set use_from		= yes
+
+bind index,pager x entire-thread
+
+macro index,pager s "<save-message>=personal/LSpam<enter>"
+macro index,pager a ":set resolve=no\n<clear-flag>N<save-message>=personal/Archive<enter>\n:set resolve=yes\n<next-undeleted>"
+macro attach W "<save-entry><bol>~/Download/<eol>"
+

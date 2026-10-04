@@ -1,6 +1,6 @@
 version = "1"
 
-includes = ["profiles.local.toml"]
+includes = ["profiles.local.toml", "profiles.local.credentials.toml"]
 
 [global]
 restic-stale-lock-age = "2h"
@@ -13,21 +13,8 @@ force-inactive-lock = true
 [default.backup]
 verbose = true
 compression = "max"
-source = [
-    "/home/user/Projects",
-    "/home/user/Documents",
-    "/home/user/.mail",
-]
 exclude-file = "excludes.txt"
 exclude-caches = true
-
-[default.backup.schedule]
-at = "*-*-* 03:00:00"
-permission = "user_logged_on"
-priority = "background"
-log = "backup.log"
-lock-mode = "default"
-lock-wait = "15m30s"
 
 [default.retention]
 after-backup = true
