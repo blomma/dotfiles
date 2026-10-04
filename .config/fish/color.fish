@@ -7,7 +7,7 @@ set fish_color_end 969696
 set fish_color_error FFA779
 set fish_color_escape cyan
 set fish_color_history_current cyan
-set fish_color_host \x2do\x1ecyan
+set -g fish_color_host --bold cyan
 set fish_color_match cyan
 set fish_color_normal normal
 set fish_color_operator cyan
@@ -17,9 +17,9 @@ set fish_color_redirection FAFAFA
 set fish_color_search_match \x2d\x2dbackground\x3dpurple
 set fish_color_selection \x2d\x2dbackground\x3dpurple
 set fish_color_status red
-set fish_color_user \x2do\x1egreen
+set -g fish_color_user --bold green
 set fish_color_valid_path \x2d\x2dunderline
 set fish_pager_color_completion normal
-set fish_pager_color_description 555\x1eyellow
+set -g fish_pager_color_description 555 yellow
 set fish_pager_color_prefix cyan
 set fish_pager_color_progress cyan

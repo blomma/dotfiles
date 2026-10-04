@@ -1,34 +1,17 @@
-function op_ --argument item
-    function _signin
-        set -l session_key (command op signin account --output=raw)
-        set -e OP_SESSION_account
-        set -gx OP_SESSION_account $session_key
+function op_ --description 'Read 1Password item fields' --argument-names item
+    if test (count $argv) -lt 2
+        echo 'Usage: op_ <item> <field> [field ...]' >&2
+        return 2
     end
 
-    function _test_and_achieve --argument r f
-        set -l jq_command (string replace -a '#field' $f '.details?.sections[]?.fields[]? | select(.t=="#field").v')
-        set -l result (echo $r | jq -r $jq_command 2>&1)
+    # Let the CLI handle authentication, including desktop app integration.
+    # Read JSON once so field values retain their quotes, commas, and newlines.
+    set -l item_json (command op item get --reveal --format json -- "$item")
+    or return $status
 
-        if string length -q $result
-            echo $result
-        else
-            set -l jq_command (string replace -a '#field' $f '.details?.fields[]? | select(.designation=="#field").value')
-            set -l result (echo $r | jq -r $jq_command 2>&1)
-            echo $result
-        end
-    end
-
-    set result (command op get item $item 2>&1)
-    if string match -ir 'session expired|not currently signed in' $result 2>&1 >/dev/null
-        _signin
-        set result (command op get item $item 2>&1)
-    end
-
-    # Nuke the item from the arguments passed
-    set -e argv[1]
-    set -l fields $argv
-
-    for field in $fields
-        _test_and_achieve $result $field
+    for field in $argv[2..-1]
+        printf '%s\n' $item_json | command jq --raw-output --exit-status --arg field "$field" \
+            '.fields[] | select(.label == $field) | .value'
+        or return $status
     end
 end
