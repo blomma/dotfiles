@@ -37,3 +37,6 @@ __pycache__
 .godot/shader_cache
 
 # Generated Steam Deck distributions
+Projects/**/target
+Projects/**/build
+Projects/**/dist

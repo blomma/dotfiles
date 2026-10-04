@@ -1,8 +1,0 @@
-[Personal]
-source   = maildir:///home/user/.mail/personal
-outgoing = smtps://user%40example.com@smtp.fastmail.com
-outgoing-cred-cmd = op read op://vault/item/field
-default  = INBOX
-folders-sort      = INBOX,Snoozed,Archive,Drafts,Sent,Spam,Trash
-from     = Your Name <user@example.com>
-copy-to = Sent

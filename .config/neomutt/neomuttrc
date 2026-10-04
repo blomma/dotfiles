@@ -130,5 +130,4 @@ hdr_order from: to: cc: date: subject:                                 # and in 
 # Colors ----------------------------------------------
 source ~/.config/neomutt/themes/mars
 
-# Account settings are kept outside version control.
 source ~/.config/neomutt/private.rc

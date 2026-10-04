@@ -1,3 +1,0 @@
-function op_github
-    op_ 'user@example.com' 'personal access token'
-end
