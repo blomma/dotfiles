@@ -28,7 +28,6 @@ priority = "background"
 log = "backup.log"
 lock-mode = "default"
 lock-wait = "15m30s"
-ignore-on-battery-less-than = 20
 
 [default.retention]
 after-backup = true
