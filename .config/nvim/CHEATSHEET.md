@@ -1,6 +1,6 @@
 # Neovim keymap cheat sheet
 
-**Space → k** (N) opens this sheet; `:close` closes its split.
+**Space → k** (N) toggles this sheet in a popup; `Esc`, `Ctrl+c` or `q` closes it.
 
 **N** normal · **I** insert · **V** visual · **S** select · **O** operator-pending (after `d`/`c`/`y`) · **T** terminal input.
 Keys like `gd` are sequential; `Ctrl+j` is held together; capitals require Shift.

@@ -122,6 +122,10 @@ for _, pair in ipairs(bracket_pairs) do
     end
 end
 
+-- Reused so <Leader>k toggles the same floating window.
+---@type snacks.win?
+local cheatsheet
+
 ---@type LazySpec
 return {
     "AstroNvim/astrocore",
@@ -166,13 +170,25 @@ return {
             n = vim.tbl_extend("force", bracket_mappings.n, {
                 ["<Leader>k"] = {
                     function()
-                        local path = vim.fs.joinpath(
-                            vim.fn.stdpath "config",
-                            "CHEATSHEET.md"
-                        )
-                        vim.cmd.split(vim.fn.fnameescape(path))
-                        vim.wo.wrap = true
-                        vim.wo.linebreak = true
+                        if cheatsheet then return cheatsheet:toggle() end
+                        cheatsheet = require("snacks").win {
+                            file = vim.fs.joinpath(
+                                vim.fn.stdpath "config",
+                                "CHEATSHEET.md"
+                            ),
+                            title = " Keymap cheat sheet ",
+                            border = true,
+                            width = 0.9,
+                            max_width = 152,
+                            height = 0.9,
+                            footer_keys = true,
+                            wo = { wrap = true, linebreak = true },
+                            keys = {
+                                q = "close",
+                                ["<Esc>"] = "close",
+                                ["<C-c>"] = "close",
+                            },
+                        }
                     end,
                     desc = "Keymap cheat sheet",
                 },
