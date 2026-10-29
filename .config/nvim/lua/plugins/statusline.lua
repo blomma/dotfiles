@@ -126,6 +126,11 @@ return {
                     hl.teal = hl_color("Character", "fg", fallback.green)
                     hl.red = hl_color("Error", "fg", fallback.red)
                     hl.dim = hl_color("Comment", "fg", fallback.grey)
+                    -- float the pills on the editor background. Ghostty won't
+                    -- extend a row holding powerline glyphs into the window
+                    -- padding below it, so a StatusLine-coloured bar would
+                    -- sit above a strip of the terminal background.
+                    hl.bg = hl_color("Normal", "bg", fallback.bg)
                     hl.pill_bg = hl_color(
                         "PmenuSel",
                         "bg",
