@@ -4,9 +4,9 @@ window-padding-y = 0
 window-padding-color = extend
 
 window-save-state = always
-background-opacity = 0.9
+background-opacity = 0.95
 background-blur = macos-glass-regular
-# macos-titlebar-style = native
+macos-titlebar-style = tabs
 
 # Splits:
 unfocused-split-opacity = 0.4
