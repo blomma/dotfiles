@@ -27,7 +27,7 @@
 .ssh/config
 .ssh/1Password/
 .config/git/*.local
-.config/fish/hosts/
+# .config/fish/hosts/
 .config/fish/private/
 .config/fish/functions/op_*.fish
 !.config/fish/functions/op_.fish
