@@ -371,6 +371,32 @@ return {
                 },
             }
 
+            local encoding = pill {
+                side = "right",
+                accent = "peach",
+                icon = get_icon "File",
+                body = {
+                    provider = function()
+                        local enc = vim.bo.fileencoding or vim.o.encoding or "utf-8"
+                        return " " .. enc .. " "
+                    end,
+                    hl = { fg = "peach", bold = true },
+                },
+            }
+
+            local filetype = pill {
+                side = "right",
+                accent = "mauve",
+                icon = get_icon "FileType",
+                body = {
+                    provider = function()
+                        local ft = vim.bo.filetype
+                        return ft ~= "" and (" " .. ft .. " ") or ""
+                    end,
+                    hl = { fg = "mauve", bold = true },
+                },
+            }
+
             local cwd = pill {
                 side = "right",
                 accent = "peach",
@@ -434,6 +460,8 @@ return {
                 -- as the window narrows, shed in this order: cwd, LSP clients,
                 -- git diff counts, scroll percentage and bar
                 { flexible = FLEX_LSP, lsp, {} },
+                encoding,
+                filetype,
                 { flexible = FLEX_CWD, cwd, {} },
                 position,
             }
