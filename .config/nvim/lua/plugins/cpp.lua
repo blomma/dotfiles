@@ -28,7 +28,7 @@ return {
         ---@type AstroCoreOpts
         opts = {
             treesitter = {
-                ensure_installed = { "cpp", "c", "objc", "cuda", "proto" },
+                ensure_installed = { "cpp", "c", "objc", "cuda" },
             },
         },
     },
@@ -121,7 +121,6 @@ return {
                     "objc",
                     "objcpp",
                     "cuda",
-                    "proto",
                     "cmake",
                 },
                 callback = function(args)

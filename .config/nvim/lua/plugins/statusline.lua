@@ -174,6 +174,7 @@ return {
     },
     {
         "rebelot/heirline.nvim",
+        event = "UIEnter",
         opts = function(_, opts)
             local status = require "astroui.status"
             local get_icon = require("astroui").get_icon

@@ -93,18 +93,21 @@ return {
     init = function()
         local group = vim.api.nvim_create_augroup("MyQMK", {})
 
-        vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePre" }, {
-            desc = "Configure and format the QMK board for this buffer",
+        vim.api.nvim_create_autocmd("BufEnter", {
+            desc = "Configure and format the QMK board for keymap.c files",
             group = group,
             pattern = "*keymap.c",
             callback = function(args)
+                local buf = args.buf
+                local file = vim.api.nvim_buf_get_name(buf)
+                
                 -- Prefer the specific Halcyon path over the shared Elora
                 -- suffix.
                 for i = #boards, 1, -1 do
                     local board = boards[i]
                     if
                         vim.fn.match(
-                            args.file,
+                            file,
                             vim.fn.glob2regpat(board.pattern)
                         ) >= 0
                     then
@@ -121,10 +124,15 @@ return {
                         vim.api.nvim_clear_autocmds {
                             group = "QMK",
                             event = "BufWritePre",
+                            buffer = buf,
                         }
-                        if args.event == "BufWritePre" then
-                            qmk.format(args.buf)
-                        end
+                        vim.api.nvim_create_autocmd("BufWritePre", {
+                            group = group,
+                            buffer = buf,
+                            callback = function()
+                                qmk.format(buf)
+                            end,
+                        })
                         return
                     end
                 end
