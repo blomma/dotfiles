@@ -23,7 +23,7 @@ return {
                     -- "go",
                 },
                 ignore_filetypes = { -- disable format on save for specified filetypes
-                    "swift",
+                    -- "swift",  -- Let none-ls handle Swift formatting with swiftformat
                 },
             },
             disabled = { -- disable formatting capabilities for the listed language servers
@@ -37,25 +37,7 @@ return {
         -- customize language server configuration passed to `vim.lsp.config`
         -- client specific configuration can also go in `lsp/` in your configuration root (see `:h lsp-config`)
         config = {
-            rust_analyzer = {
-                settings = {
-                    ["rust-analyzer"] = {
-                        files = {
-                            exclude = {
-                                ".direnv",
-                                ".git",
-                                "target",
-                            },
-                        },
-                        check = {
-                            command = "clippy",
-                            extraArgs = {
-                                "--no-deps",
-                            },
-                        },
-                    },
-                },
-            },
+            -- rust_analyzer config removed - handled by rustaceanvim in lua/plugins/rust.lua
         },
         -- customize how language servers are attached
         handlers = {

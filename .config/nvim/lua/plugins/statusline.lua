@@ -17,16 +17,39 @@ local MODE_ICONS = {
     inactive = "ModeInactive",
 }
 
-local function redraw_status() vim.schedule(vim.cmd.redrawstatus) end
+-- Flexible component priority constants (higher = shed first when narrow)
+local FLEX_GIT = 15
+local FLEX_POSITION = 20
+local FLEX_LSP = 10
+local FLEX_CWD = 5
+
+--- Cache for hlgroup attributes to reduce repeated calls
+local hl_cache = {}
 
 ---@param group string
 ---@param attribute "fg"|"bg"
 ---@param fallback string
 ---@return string
 local function hl_color(group, attribute, fallback)
-    local color = require("astroui").get_hlgroup(group)[attribute]
-    if type(color) == "number" then return ("#%06x"):format(color) end
-    return (color and color ~= "NONE") and color or fallback
+    local cache_key = group .. "|" .. attribute
+
+    -- Try cache first
+    local cached = hl_cache[cache_key]
+    if cached ~= nil then return cached end
+
+    -- Fetch from astroui with nil-safe fallback
+    local hl = require("astroui").get_hlgroup(group)
+    local color = hl and hl[attribute]
+
+    if type(color) == "number" then
+        color = ("#%06x"):format(color)
+    elseif color == "NONE" or color == nil then
+        color = fallback or "#000000"
+    end
+
+    -- Cache the result
+    hl_cache[cache_key] = color
+    return color
 end
 
 ---@class PillSpec
@@ -170,11 +193,7 @@ return {
                     provider = provider.mode_text { padding = { right = 1 } },
                     hl = { fg = "bg", bold = true },
                 },
-                update = {
-                    "ModeChanged",
-                    pattern = "*:*",
-                    callback = redraw_status,
-                },
+                update = { "ModeChanged", pattern = "*:*" },
             }
 
             local file = pill {
@@ -221,7 +240,6 @@ return {
                             "GitSignsChanged",
                             "MiniDiffUpdated",
                         },
-                        callback = redraw_status,
                     },
                     accent = "mauve",
                     icon = get_icon "GitBranch",
@@ -237,7 +255,7 @@ return {
             }
 
             local git = {
-                flexible = 15,
+                flexible = FLEX_GIT,
                 git_pill {
                     git_branch,
                     {
@@ -271,18 +289,13 @@ return {
                         hl = { fg = "git_removed" },
                     },
                 },
-                git_pill { git_branch },
             }
 
             -- cmdheight is 0, so the statusline is the only place these show up
             local macro = pill {
                 side = "right",
                 condition = condition.is_macro_recording,
-                update = {
-                    "RecordingEnter",
-                    "RecordingLeave",
-                    callback = redraw_status,
-                },
+                update = { "RecordingEnter", "RecordingLeave" },
                 accent = "red",
                 icon = get_icon "MacroRecording",
                 body = {
@@ -382,7 +395,7 @@ return {
             end
 
             local position = {
-                flexible = 20,
+                flexible = FLEX_POSITION,
                 position_pill {
                     {
                         provider = provider.ruler { padding = { left = 1 } },
@@ -420,8 +433,8 @@ return {
                 diagnostics,
                 -- as the window narrows, shed in this order: cwd, LSP clients,
                 -- git diff counts, scroll percentage and bar
-                { flexible = 10, lsp, {} },
-                { flexible = 5, cwd, {} },
+                { flexible = FLEX_LSP, lsp, {} },
+                { flexible = FLEX_CWD, cwd, {} },
                 position,
             }
         end,

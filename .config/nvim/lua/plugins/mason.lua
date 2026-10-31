@@ -10,6 +10,7 @@ return {
             -- Make sure to use the names found in `:Mason`
             ensure_installed = {
                 "tree-sitter-cli",
+                "swiftformat",  -- For Swift formatting via none-ls
             },
         },
     },
