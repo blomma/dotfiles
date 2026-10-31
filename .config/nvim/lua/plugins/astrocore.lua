@@ -3,30 +3,54 @@
 -- NOTE: We highly recommend setting up the Lua Language Server (`:LspInstall lua_ls`)
 --       as this provides autocomplete and documentation while editing
 
--- Swedish keyboard aliases: ö replaces [, ä replaces ]. Keep the original
--- mappings and resolve them recursively to retain counts and buffer-local actions.
+-- Swedish keyboard mapping support
+-- On Swedish keyboards: ö replaces [, ä replaces ]
+-- This creates alias mappings for all bracket-based navigation commands
+-- to work naturally with Swedish keyboard layouts while preserving all
+-- original functionality (counts, buffer-local actions, etc.)
+
 local motion_modes = { "n", "x", "o" }
+
+-- Each entry: { "[command", "]command", "previous desc", "next desc" }
+-- Optional: modes = { "n", "x", "o" } to specify which modes get the mapping
 local bracket_pairs = {
+    -- Buffer navigation
     { "[b", "]b", "Previous buffer", "Next buffer" },
     { "[B", "]B", "First buffer", "Last buffer" },
+
+    -- Tab navigation
     { "[t", "]t", "Previous tab", "Next tab" },
+
+    -- Quickfix navigation
     { "[q", "]q", "Previous quickfix entry", "Next quickfix entry" },
     { "[Q", "]Q", "First quickfix entry", "Last quickfix entry" },
     { "[<C-Q>", "]<C-Q>", "Previous quickfix file", "Next quickfix file" },
+
+    -- Location list navigation
     { "[l", "]l", "Previous location entry", "Next location entry" },
     { "[L", "]L", "First location entry", "Last location entry" },
     { "[<C-L>", "]<C-L>", "Previous location file", "Next location file" },
+
+    -- Tag navigation
     { "[<C-T>", "]<C-T>", "Previous preview tag", "Next preview tag" },
+
+    -- Diagnostic navigation
     { "[d", "]d", "Previous diagnostic", "Next diagnostic" },
     { "[D", "]D", "First diagnostic", "Last diagnostic" },
     { "[e", "]e", "Previous error", "Next error" },
     { "[w", "]w", "Previous warning", "Next warning" },
+
+    -- Symbol navigation
     { "[y", "]y", "Previous symbol", "Next symbol" },
     { "[Y", "]Y", "Previous higher-level symbol", "Next higher-level symbol" },
     { "[r", "]r", "Previous reference", "Next reference" },
     { "[T", "]T", "Previous TODO comment", "Next TODO comment" },
+
+    -- Git hunk navigation
     { "[g", "]g", "Previous Git hunk", "Next Git hunk" },
     { "[G", "]G", "First Git hunk", "Last Git hunk" },
+
+    -- Motion-based navigation (for normal, visual, operator-pending modes)
     {
         "[k",
         "]k",
@@ -85,6 +109,8 @@ local bracket_pairs = {
         "Next section or plugin item",
         modes = motion_modes,
     },
+
+    -- Tree-sitter node navigation (visual mode only)
     {
         "[n",
         "]n",
@@ -99,26 +125,43 @@ local bracket_pairs = {
         "Next sibling node",
         modes = { "x" },
     },
+
+    -- Special cases
     { "[<Space>", "]<Space>", "Add empty line above", "Add empty line below" },
 }
+
+-- Build bracket_mappings table: mode -> { alias_key -> { target, remap, desc } }
+-- Transforms [command to öcommand and ]command to äcommand for Swedish layout
 local bracket_mappings = {}
 for _, pair in ipairs(bracket_pairs) do
-    for _, mode in ipairs(pair.modes or { "n" }) do
+    local target_modes = pair.modes or { "n" }
+    local prev_cmd, next_cmd = pair[1], pair[2]
+    local prev_desc, next_desc = pair[3], pair[4]
+
+    for _, mode in ipairs(target_modes) do
+        -- Initialize mode table with base Swedish bracket mappings
         if not bracket_mappings[mode] then
             bracket_mappings[mode] = {
                 ["ö"] = { desc = "Previous" },
                 ["ä"] = { desc = "Next" },
             }
         end
-        for direction = 1, 2 do
-            local target = pair[direction]
-            local alias = target:gsub("%[", "ö"):gsub("%]", "ä")
-            bracket_mappings[mode][alias] = {
-                target,
-                remap = true,
-                desc = pair[direction + 2],
-            }
-        end
+
+        -- Create Swedish keyboard aliases: replace [ with ö, ] with ä
+        local prev_alias = prev_cmd:gsub("%[", "ö"):gsub("%]", "ä")
+        local next_alias = next_cmd:gsub("%[", "ö"):gsub("%]", "ä")
+
+        -- Map the Swedish keys to the original bracket commands
+        bracket_mappings[mode][prev_alias] = {
+            prev_cmd,
+            remap = true,
+            desc = prev_desc,
+        }
+        bracket_mappings[mode][next_alias] = {
+            next_cmd,
+            remap = true,
+            desc = next_desc,
+        }
     end
 end
 
