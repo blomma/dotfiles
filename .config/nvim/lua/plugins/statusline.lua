@@ -21,7 +21,6 @@ local MODE_ICONS = {
 local FLEX_GIT = 15
 local FLEX_POSITION = 20
 local FLEX_LSP = 10
-local FLEX_CWD = 5
 
 --- Cache for hlgroup attributes to reduce repeated calls
 local hl_cache = {}
@@ -132,6 +131,7 @@ return {
                 GitAdd = "",
                 GitChange = "",
                 GitDelete = "",
+                FileEncoding = "󰀫",
             },
             status = {
                 separators = {
@@ -374,38 +374,14 @@ return {
 
             local encoding = pill {
                 side = "right",
+                -- 'fileencoding' is "" for new, unnamed and scratch buffers;
+                -- drop the whole pill instead of drawing an empty one
+                condition = function() return vim.bo.fileencoding ~= "" end,
                 accent = "peach",
-                icon = get_icon "File",
+                icon = get_icon "FileEncoding",
                 body = {
                     provider = function()
-                        local enc = vim.bo.fileencoding or vim.o.encoding or "utf-8"
-                        return " " .. enc .. " "
-                    end,
-                    hl = { fg = "peach", bold = true },
-                },
-            }
-
-            local filetype = pill {
-                side = "right",
-                accent = "mauve",
-                icon = get_icon "FileType",
-                body = {
-                    provider = function()
-                        local ft = vim.bo.filetype
-                        return ft ~= "" and (" " .. ft .. " ") or ""
-                    end,
-                    hl = { fg = "mauve", bold = true },
-                },
-            }
-
-            local cwd = pill {
-                side = "right",
-                accent = "peach",
-                icon = get_icon "FolderOpen",
-                body = {
-                    provider = function()
-                        local name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
-                        return " " .. name:gsub("%%", "%%%%") .. " "
+                        return " " .. vim.bo.fileencoding .. " "
                     end,
                     hl = { fg = "peach", bold = true },
                 },
@@ -458,12 +434,10 @@ return {
                 lsp_progress,
                 status.component.fill(),
                 diagnostics,
-                -- as the window narrows, shed in this order: cwd, LSP clients,
+                -- as the window narrows, shed in this order: LSP clients,
                 -- git diff counts, scroll percentage and bar
                 { flexible = FLEX_LSP, lsp, {} },
                 encoding,
-                filetype,
-                { flexible = FLEX_CWD, cwd, {} },
                 position,
             }
         end,
