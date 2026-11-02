@@ -2,101 +2,27 @@ return {
     "folke/snacks.nvim",
     opts = function(_, opts)
         local get_icon = require("astroui").get_icon
-        local default_dashboard_header = "falcon" -- astro | falcon | enterprise | firehouse
-        local dashboard_header_order =
-            { "astro", "falcon", "enterprise", "firehouse" }
-
-        local function pixel(text, hl) return { { text, hl = hl } } end
-        local function canvas(text, width)
-            local padding = math.max(width - vim.fn.strdisplaywidth(text), 0)
-            return text .. (" "):rep(padding)
-        end
-        local function center(text, width)
-            local padding = math.max(width - vim.fn.strdisplaywidth(text), 0)
-            local left = math.floor(padding / 2)
-            return (" "):rep(left) .. text .. (" "):rep(padding - left)
-        end
-        local function firehouse_floor(text)
-            return "║" .. center(text, 38) .. "║"
-        end
-        local firehouse_border = ("═"):rep(38)
-
-        -- stylua: ignore
-        local dashboard_headers = {
-            astro = {
-                pixel("✦          ·          ✧", "SnacksDashboardFooter"),
-                pixel("▄████▄", "SnacksDashboardHeader"),
-                pixel("▄▄████████▄▄", "SnacksDashboardHeader"),
-                pixel("▄████████████████▄", "SnacksDashboardIcon"),
-                pixel("████  ████████  ████", "SnacksDashboardIcon"),
-                pixel("▀██████████████████▀", "SnacksDashboardKey"),
-                pixel("▀▀███▀▀▀▀███▀▀", "SnacksDashboardKey"),
-                pixel("▀  ▀▀  ▀", "SnacksDashboardFooter"),
-                pixel("░▒▓▓▒░", "SnacksDashboardFooter"),
-                pixel("A S T R O  //  N V I M", "SnacksDashboardTitle"),
-            },
-            falcon = {
-                -- Adapted from the top-view artwork signed "LS" at:
-                -- https://the.sunnyspot.org/asciiart/gallery/starwars.html
-                pixel(canvas("✦          ▄     ▄", 32), "SnacksDashboardFooter"),
-                pixel(canvas("          ╱█│   │█╲", 32), "SnacksDashboardHeader"),
-                pixel(canvas("         ╱ █│   │█ ╲", 32), "SnacksDashboardHeader"),
-                pixel(canvas("        ╱  █│▄▄▄│█  ╲    ▄", 32), "SnacksDashboardIcon"),
-                pixel(canvas("       ╱    │   │    ╲  ╱█╲", 32), "SnacksDashboardIcon"),
-                pixel(canvas("      ╱ ╭───│   │───╮ ╲╱   │", 32), "SnacksDashboardIcon"),
-                pixel(canvas("     ╱╭─╯ ▄▄│   │▄▄ ╰─╮    │", 32), "SnacksDashboardIcon"),
-                pixel(canvas("    ╱ ╱    ╲│   │╱    ╲  ╱─╯", 32), "SnacksDashboardKey"),
-                pixel(canvas("   │       ╰───╯      │╱", 32), "SnacksDashboardKey"),
-                pixel(canvas("   ╰───╮____╱  ◉  ╲____╭───╯", 32), "SnacksDashboardKey"),
-                pixel(canvas("    ▓▓▓▓▓▓▓│     │▓▓▓▓▓▓▓", 32), "SnacksDashboardFooter"),
-                pixel(canvas("    ╭───~~~~╲     ╱~~~~───╮", 32), "SnacksDashboardFooter"),
-                pixel(canvas("     ╲      ╱╲───╱╲      ╱", 32), "SnacksDashboardFooter"),
-                pixel(canvas("      ╰──╯         ╰──╯", 32), "SnacksDashboardFooter"),
-                pixel("MILLENNIUM FALCON  //  YT-1300", "SnacksDashboardTitle"),
-            },
-            enterprise = {
-                -- Redrawn from the Constitution-class front view at:
-                -- https://sunnyspot.org/asciiart/gallery/startrek.html
-                pixel("·      ╭──╮                       ╭──╮      ✦", "SnacksDashboardFooter"),
-                pixel("│  │        __───__        │  │", "SnacksDashboardHeader"),
-                pixel("__╰──╯_____───_______───_____╰──╯__", "SnacksDashboardHeader"),
-                pixel("╲_________________________________╱", "SnacksDashboardIcon"),
-                pixel("╲╲_   ╲_______╱   _╱╱", "SnacksDashboardIcon"),
-                pixel("╲╲_   ╲___╱   _╱╱", "SnacksDashboardIcon"),
-                pixel("╲╲__─│ │─__╱╱", "SnacksDashboardKey"),
-                pixel("╲╱ ╭───╮ ╲╱", "SnacksDashboardKey"),
-                pixel("│ ◉ │", "SnacksDashboardFooter"),
-                pixel("╰───╯", "SnacksDashboardFooter"),
-                pixel("U.S.S. ENTERPRISE  //  NCC-1701", "SnacksDashboardTitle"),
-            },
-            firehouse = {
-                pixel("╔" .. firehouse_border .. "╗", "DiagnosticError"),
-                pixel(firehouse_floor "░▒░  G H O S T B U S T E R S  ░▒░", "SnacksDashboardIcon"),
-                pixel("╠" .. firehouse_border .. "╣", "DiagnosticError"),
-                pixel(firehouse_floor "╭────╮    ╭────╮    ╭────╮", "SnacksDashboardKey"),
-                pixel(firehouse_floor "│ ▐▐ │    │ ▐▐ │    │ ▐▐ │", "SnacksDashboardKey"),
-                pixel(firehouse_floor "╰────╯    ╰────╯    ╰────╯", "SnacksDashboardKey"),
-                pixel("╠" .. firehouse_border .. "╣", "DiagnosticError"),
-                pixel(firehouse_floor "╭────╮  ╔══════════════╗  ╭────╮", "SnacksDashboardIcon"),
-                pixel(firehouse_floor "│ ▐▐ │  ║   ⊘ GHOST    ║  │ ▐▐ │", "SnacksDashboardIcon"),
-                pixel(firehouse_floor "╰────╯  ║ ┌──────────┐ ║  ╰────╯", "SnacksDashboardKey"),
-                pixel(firehouse_floor "║ │ ECTO-1   │ ║", "SnacksDashboardFooter"),
-                pixel(firehouse_floor "║ ╰──────────╯ ║", "SnacksDashboardKey"),
-                pixel("╚" .. firehouse_border .. "╝", "DiagnosticError"),
-                pixel("HOOK & LADDER 8  //  NYC", "SnacksDashboardTitle"),
-            },
-        }
+        local art = require "dashboard_art"
+        local gallery = require "dashboard_art.gallery"
+        -- any name from `gallery.order`, or "random" for a new piece per session
+        local default_dashboard_header = "random"
 
         local function get_dashboard_header_name()
             local name = vim.g.snacks_dashboard_header
-                or default_dashboard_header
-            return dashboard_headers[name] and name or default_dashboard_header
+            if not gallery.pieces[name] then
+                name = gallery.pieces[default_dashboard_header]
+                        and default_dashboard_header
+                    or gallery.order[art.rng()(1, #gallery.order)]
+                -- remember the pick so redraws and cycling start from it
+                vim.g.snacks_dashboard_header = name
+            end
+            return name
         end
 
         local function dashboard_header()
             local section = { align = "center", padding = { 1, 1 } }
             for _, line in
-                ipairs(dashboard_headers[get_dashboard_header_name()])
+                ipairs(art.render(gallery.pieces[get_dashboard_header_name()]))
             do
                 section[#section + 1] = { text = line }
             end
@@ -104,10 +30,12 @@ return {
         end
 
         local function cycle_dashboard_header(dashboard)
-            local current = get_dashboard_header_name()
-            local index = vim.fn.index(dashboard_header_order, current) + 1
+            local index = vim.fn.index(
+                gallery.order,
+                get_dashboard_header_name()
+            ) + 1
             vim.g.snacks_dashboard_header =
-                dashboard_header_order[index % #dashboard_header_order + 1]
+                gallery.order[index % #gallery.order + 1]
             dashboard:update()
         end
 
