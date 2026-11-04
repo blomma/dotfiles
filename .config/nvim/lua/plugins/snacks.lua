@@ -19,14 +19,60 @@ return {
             return name
         end
 
-        local function dashboard_header()
-            local section = { align = "center", padding = { 1, 1 } }
+        -- The art and cwd across the top, over the two columns below. Snacks
+        -- only knows columns (panes) filled from the top, so this lives in
+        -- pane 1 and a spacer of the same height pushes pane 2 down below it.
+        ---@param dashboard snacks.dashboard.Class
+        local function dashboard_banner(dashboard)
+            local opts = dashboard.opts
+            local window_width = dashboard:size().width
+            -- the same test snacks uses to decide if a second pane fits
+            local has_columns = window_width >= opts.width * 2 + opts.pane_gap
+
+            -- Snacks centres a line on pane 1 and starts one as wide as the
+            -- window at column 0, so pad to that to centre on the window.
+            local function span_window(line)
+                if not has_columns then return line end
+                local width = 0
+                for _, text in ipairs(line) do
+                    width = width + vim.api.nvim_strwidth(text[1])
+                end
+                local left = math.floor((window_width - width) / 2)
+                local padded = { { (" "):rep(left) } }
+                vim.list_extend(padded, line)
+                padded[#padded + 1] = { (" "):rep(window_width - width - left) }
+                return padded
+            end
+
+            local header = { align = "center", padding = { 1, 1 } }
             for _, line in
                 ipairs(art.render(gallery.pieces[get_dashboard_header_name()]))
             do
-                section[#section + 1] = { text = line }
+                header[#header + 1] = { text = span_window(line) }
             end
-            return section
+
+            local cwd = vim.fn.fnamemodify(vim.fn.getcwd(), ":~")
+            if vim.fn.strdisplaywidth(cwd) > 40 then
+                cwd = vim.fn.pathshorten(cwd)
+            end
+
+            local banner = {
+                header,
+                {
+                    text = span_window {
+                        { "󰉋  ", hl = "SnacksDashboardIcon" },
+                        { cwd, hl = "SnacksDashboardDir" },
+                    },
+                    align = "center",
+                    padding = { 1, 0 },
+                },
+            }
+            if has_columns then
+                -- art plus its padding (2), cwd (1) and its padding (1); the
+                -- spacer's own line counts as one of those
+                banner[#banner + 1] = { pane = 2, padding = #header + 3 }
+            end
+            return banner
         end
 
         local function cycle_dashboard_header(dashboard)
@@ -108,21 +154,7 @@ return {
                     },
                 },
                 sections = {
-                    dashboard_header,
-                    function()
-                        local cwd = vim.fn.fnamemodify(vim.fn.getcwd(), ":~")
-                        if vim.fn.strdisplaywidth(cwd) > 40 then
-                            cwd = vim.fn.pathshorten(cwd)
-                        end
-                        return {
-                            text = {
-                                { "󰉋  ", hl = "SnacksDashboardIcon" },
-                                { cwd, hl = "SnacksDashboardDir" },
-                            },
-                            align = "center",
-                            padding = { 1, 0 },
-                        }
-                    end,
+                    dashboard_banner,
                     {
                         icon = " ",
                         title = "Quick Actions",
