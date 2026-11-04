@@ -3,9 +3,12 @@ return {
     opts = function(_, opts)
         local get_icon = require("astroui").get_icon
         local art = require "dashboard_art"
+        local bofh = require "dashboard_art.bofh"
         local gallery = require "dashboard_art.gallery"
         -- any name from `gallery.order`, or "random" for a new piece per session
         local default_dashboard_header = "random"
+        -- picked once so redraws and header cycling keep the same quote
+        local dashboard_quote = bofh[art.rng()(1, #bofh)]
 
         local function get_dashboard_header_name()
             local name = vim.g.snacks_dashboard_header
@@ -19,9 +22,27 @@ return {
             return name
         end
 
-        -- The art and cwd across the top, over the two columns below. Snacks
-        -- only knows columns (panes) filled from the top, so this lives in
-        -- pane 1 and a spacer of the same height pushes pane 2 down below it.
+        --- Break `text` at the space that leaves two lines closest in length.
+        ---@param text string
+        ---@return string[]
+        local function split_balanced(text)
+            local split, shortest
+            for space in text:gmatch "() " do
+                local longest = math.max(space - 1, #text - space)
+                if not split or longest < shortest then
+                    split, shortest = space, longest
+                end
+            end
+            if not split then return { text } end
+            return {
+                vim.trim(text:sub(1, split - 1)),
+                vim.trim(text:sub(split + 1)),
+            }
+        end
+
+        -- The art, cwd and quote across the top, over the two columns below.
+        -- Snacks only knows columns (panes) filled from the top, so this lives
+        -- in pane 1 and a spacer of the same height pushes pane 2 below it.
         ---@param dashboard snacks.dashboard.Class
         local function dashboard_banner(dashboard)
             local opts = dashboard.opts
@@ -64,13 +85,28 @@ return {
                         { cwd, hl = "SnacksDashboardDir" },
                     },
                     align = "center",
-                    padding = { 1, 0 },
                 },
             }
+
+            local quote = { dashboard_quote }
+            if vim.api.nvim_strwidth(dashboard_quote) > window_width then
+                quote = split_balanced(dashboard_quote)
+            end
+            for _, line in ipairs(quote) do
+                banner[#banner + 1] = {
+                    text = span_window {
+                        { line, hl = "SnacksDashboardFooter" },
+                    },
+                    align = "center",
+                }
+            end
+            banner[#banner].padding = { 1, 0 }
+
             if has_columns then
-                -- art plus its padding (2), cwd (1) and its padding (1); the
-                -- spacer's own line counts as one of those
-                banner[#banner + 1] = { pane = 2, padding = #header + 3 }
+                -- art plus its padding (2), cwd (1), quote and its padding (1);
+                -- the spacer's own line counts as one of those
+                banner[#banner + 1] =
+                    { pane = 2, padding = #header + #quote + 3 }
             end
             return banner
         end
