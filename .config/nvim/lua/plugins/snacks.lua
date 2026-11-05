@@ -262,6 +262,13 @@ return {
                     },
                 },
             },
+            scratch = {
+                filekey = {
+                    cwd = true,
+                    branch = false,
+                    count = true,
+                },
+            },
         })
     end,
 }
