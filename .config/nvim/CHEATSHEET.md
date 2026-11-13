@@ -395,21 +395,30 @@ Keys fall back to their usual behavior when no completion/snippet action applies
 | `öc` / `äc`                 | Rebase editor, N          | Open or scroll previous / next item             |
 | `q`                         | Commit/rebase editor, N   | Close the editor                                |
 
-## Rust and C++ plugin windows (N)
+## Rust, C++ and .NET plugin windows (N)
 
-| Keys                | Context                                       | Action                                                 |
-| ------------------- | --------------------------------------------- | ------------------------------------------------------ |
-| `q` / `Esc`         | Rust hover or code-action window              | Close                                                  |
-| `Enter`             | Rust hover window                             | Run the action under the cursor, when present          |
-| `Enter`             | Rust code-action window                       | Confirm the selected action                            |
-| `q` / `Esc`         | crates.nvim popup                             | Hide the popup                                         |
-| `Enter`             | Crate information / versions / features popup | Open URL / insert version / toggle feature             |
-| `s`                 | Crate versions popup                          | Insert version using the opposite smart-insert setting |
-| `yy`                | Crate popup                                   | Copy the value on the current line                     |
-| `gd` or `K`         | Crate popup                                   | Go to the item on the current line                     |
-| `Ctrl+i` / `Ctrl+o` | Crate popup                                   | Forward / back in popup history                        |
-| `q`                 | clangd AST or symbol-info window              | Close                                                  |
-| `q` / `Esc`         | CMake output window                           | Toggle the output window closed                        |
+| Keys                      | Context                                       | Action                                                  |
+| ------------------------- | --------------------------------------------- | ------------------------------------------------------- |
+| `q` / `Esc`               | Rust hover or code-action window              | Close                                                   |
+| `Enter`                   | Rust hover window                             | Run the action under the cursor, when present           |
+| `Enter`                   | Rust code-action window                       | Confirm the selected action                             |
+| `q` / `Esc`               | crates.nvim popup                             | Hide the popup                                          |
+| `Enter`                   | Crate information / versions / features popup | Open URL / insert version / toggle feature              |
+| `s`                       | Crate versions popup                          | Insert version using the opposite smart-insert setting  |
+| `yy`                      | Crate popup                                   | Copy the value on the current line                      |
+| `gd` or `K`               | Crate popup                                   | Go to the item on the current line                      |
+| `Ctrl+i` / `Ctrl+o`       | Crate popup                                   | Forward / back in popup history                         |
+| `q`                       | clangd AST or symbol-info window              | Close                                                   |
+| `q` / `Esc`               | CMake output window                           | Toggle the output window closed                         |
+| `o` / `E` / `W`           | .NET test runner                              | Toggle node / expand / collapse all its children        |
+| `]f` / `[f`               | .NET test runner                              | Next / previous failing test                            |
+| `Space → r` / `Space → R` | .NET test runner                              | Run test under cursor / run all tests                   |
+| `Space → d`               | .NET test runner                              | Debug test under cursor                                 |
+| `Space → p`               | .NET test runner                              | Peek the failed test's output and stack trace           |
+| `Space → g` / `Space → e` | .NET test runner                              | Go to the test's source / show build errors             |
+| `Ctrl+r` / `Ctrl+c`       | .NET test runner                              | Refresh discovery / cancel the running operation        |
+| `q`                       | .NET test runner                              | Close                                                   |
+| `T`                       | C# buffer while debugging                     | Open the variable viewer for the value under the cursor |
 
 ## Symbols outline (Aerial, N)
 
