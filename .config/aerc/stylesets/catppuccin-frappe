@@ -1,0 +1,170 @@
+# vim: ft=dosini
+#
+# Catppuccin Frappé for aerc
+#
+# Palette (https://catppuccin.com/palette):
+#   rosewater #f2d5cf   flamingo #eebebe   pink   #f4b8e4   mauve    #ca9ee6
+#   red       #e78284   maroon   #ea999c   peach  #ef9f76   yellow   #e5c890
+#   green     #a6d189   teal     #81c8be   sky    #99d1db   sapphire #85c1dc
+#   blue      #8caaee   lavender #babbf1
+#   text      #c6d0f5   subtext1 #b5bfe2   subtext0 #a5adce
+#   overlay2  #949cbb   overlay1 #838ba7   overlay0 #737994
+#   surface2  #626880   surface1 #51576d   surface0 #414559
+#   base      #303446   mantle   #292c3c   crust    #232634
+#
+# See aerc-stylesets(7). Statements are applied in order, so the wildcards
+# come first and the specific objects override them.
+#
+# Base (#303446) and text (#c6d0f5) are deliberately left to the terminal:
+# aerc draws the message body with the terminal's default colours, so the
+# terminal must run Catppuccin Frappé too. Painting base explicitly would
+# also make the UI opaque under a translucent terminal background while the
+# body stays translucent.
+
+# Start from a clean slate instead of aerc's built-in defaults.
+*.default=true
+*.normal=true
+
+# Selected rows keep their own foreground (so flagged/unread colours survive
+# selection) and get a surface0 highlight.
+*.selected.bg=#414559
+*.selected.bold=true
+
+# Messages
+*error.fg=#e78284
+*error.bold=true
+*warning.fg=#e5c890
+*warning.bold=true
+*success.fg=#a6d189
+*success.bold=true
+
+title.fg=#ca9ee6
+title.bold=true
+header.fg=#8caaee
+header.bold=true
+
+# Header section of the message viewer
+realname.fg=#f2d5cf
+email.fg=#babbf1
+subject.fg=#c6d0f5
+subject.bold=true
+date.fg=#a5adce
+
+# Tabs
+tab.fg=#838ba7
+tab.bg=#292c3c
+tab.selected.fg=#babbf1
+tab.selected.bg=default
+tab.selected.bold=true
+
+spinner.fg=#ca9ee6
+
+border.fg=#51576d
+
+# Status line
+statusline_*.bg=#292c3c
+statusline_default.fg=#a5adce
+statusline_error.fg=#e78284
+statusline_error.bold=true
+statusline_warning.fg=#e5c890
+statusline_warning.bold=true
+statusline_success.fg=#a6d189
+statusline_success.bold=true
+
+# Message list (layered: later objects override earlier ones)
+msglist_default.fg=#c6d0f5
+msglist_unread.fg=#c6d0f5
+msglist_unread.bold=true
+msglist_read.fg=#a5adce
+msglist_flagged.fg=#e5c890
+msglist_flagged.bold=true
+msglist_deleted.fg=#737994
+msglist_deleted.dim=true
+msglist_result.fg=#8caaee
+msglist_result.bold=true
+msglist_thread_folded.fg=#81c8be
+msglist_thread_folded.bold=true
+msglist_thread_context.fg=#737994
+msglist_thread_context.italic=true
+msglist_thread_orphan.fg=#ea999c
+msglist_marked.fg=#babbf1
+msglist_marked.bg=#51576d
+msglist_marked.bold=true
+msglist_marked.selected.bg=#626880
+msglist_gutter.bg=#292c3c
+msglist_pill.bg=#626880
+
+# Directory list
+dirlist_default.fg=#a5adce
+dirlist_unread.fg=#c6d0f5
+dirlist_unread.bold=true
+dirlist_recent.fg=#babbf1
+dirlist_recent.bold=true
+dirlist_*.selected.fg=#ca9ee6
+dirlist_*.selected.bold=true
+
+# Part switcher in the message viewer
+part_switcher.bg=#292c3c
+part_filename.fg=#c6d0f5
+part_filename.bg=#292c3c
+part_mimetype.fg=#838ba7
+part_mimetype.bg=#292c3c
+part_*.selected.bg=#414559
+part_filename.selected.fg=#ca9ee6
+part_mimetype.selected.fg=#babbf1
+
+# Completion popup
+completion_*.bg=#414559
+completion_default.fg=#c6d0f5
+completion_description.fg=#838ba7
+completion_description.italic=true
+completion_gutter.bg=#414559
+completion_pill.bg=#737994
+completion_*.selected.bg=#51576d
+completion_default.selected.fg=#babbf1
+
+# Selectors (yes/no prompts, account wizard, ...)
+selector_default.fg=#c6d0f5
+selector_focused.fg=#232634
+selector_focused.bg=#ca9ee6
+selector_focused.bold=true
+selector_chooser.fg=#ca9ee6
+selector_chooser.bold=true
+
+# Key hint popup
+keyhint_default.fg=#c6d0f5
+keyhint_default.bg=#292c3c
+keyhint_key.fg=#ca9ee6
+keyhint_key.bg=#292c3c
+keyhint_key.bold=true
+keyhint_desc.fg=#a5adce
+keyhint_desc.bg=#292c3c
+
+# Built-in colorize filter
+[viewer]
+*.default=true
+*.normal=true
+
+url.fg=#8caaee
+url.underline=true
+header.fg=#8caaee
+header.bold=true
+signature.fg=#838ba7
+signature.italic=true
+
+diff_meta.fg=#babbf1
+diff_meta.bold=true
+diff_chunk.fg=#85c1dc
+diff_chunk_func.fg=#ca9ee6
+diff_chunk_func.bold=true
+diff_add.fg=#a6d189
+diff_del.fg=#e78284
+diff_whitespace.bg=#e78284
+
+quote_1.fg=#81c8be
+quote_2.fg=#8caaee
+quote_3.fg=#ca9ee6
+quote_4.fg=#f4b8e4
+quote_x.fg=#737994
+
+code.fg=#ef9f76
