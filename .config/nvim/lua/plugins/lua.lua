@@ -11,24 +11,33 @@ return {
     {
         "AstroNvim/astrolsp",
         optional = true,
-        opts = {
+        ---@param opts AstroLSPOpts
+        opts = function(_, opts)
             -- StyLua is provided by none-ls; avoid additional Lua formatters.
-            formatting = { disabled = { "lua_ls" } },
-            handlers = { stylua = false },
-            config = {
-                lua_ls = {
-                    settings = {
-                        Lua = {
-                            format = { enable = false },
-                            hint = {
-                                enable = true,
-                                arrayIndex = "Disable",
+            -- Appended, since a plain list would replace other files' entries.
+            opts.formatting = opts.formatting or {}
+            opts.formatting.disabled = require("astrocore").list_insert_unique(
+                opts.formatting.disabled,
+                { "lua_ls" }
+            )
+
+            return require("astrocore").extend_tbl(opts, {
+                handlers = { stylua = false },
+                config = {
+                    lua_ls = {
+                        settings = {
+                            Lua = {
+                                format = { enable = false },
+                                hint = {
+                                    enable = true,
+                                    arrayIndex = "Disable",
+                                },
                             },
                         },
                     },
                 },
-            },
-        },
+            })
+        end,
     },
     {
         "AstroNvim/astrocore",
