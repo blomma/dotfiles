@@ -9,9 +9,32 @@ dry_run=false
 profile_name=
 fail() { printf '%s\n' "dotfile-migrate: $*" >&2; exit 1; }
 usage='usage: dotfile-migrate [--dry-run] [--target DIR] PROFILE'
+show_help() {
+    printf '%s\n\n' "$usage"
+    cat <<'EOF'
+Convert absolute legacy links for the dotfiles in PROFILE to relative links to
+the same shared sources, then install the profile with dotfile-stow.
+
+Options:
+  -n, --dry-run     show the links that would be converted without changing them
+  -t, --target DIR  directory the dotfiles are linked into (default: $HOME)
+  -h, --help        show this help
+
+Examples:
+  # Preview which links in the profile "ingress" would be converted
+  dotfile-migrate --dry-run ingress
+
+  # Convert the links and install the profile
+  dotfile-migrate ingress
+
+  # Migrate links in a directory other than $HOME
+  dotfile-migrate --target /tmp/home ingress
+EOF
+}
 
 while [ "$#" -gt 0 ]; do
     case "$1" in
+        -h|--help) show_help; exit 0 ;;
         -n|--dry-run) dry_run=true ;;
         -t|--target) [ "$#" -ge 2 ] || fail "--target requires a directory"; target=$2; shift ;;
         -*) fail "unknown option: $1" ;;

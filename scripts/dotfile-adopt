@@ -9,9 +9,40 @@ dry_run=false
 arguments=()
 fail() { printf '%s\n' "dotfile-adopt: $*" >&2; exit 1; }
 usage='usage: dotfile-adopt [--dry-run] [--target DIR] PATH PROFILE'
+show_help() {
+    printf '%s\n\n' "$usage"
+    cat <<'EOF'
+Move a local dotfile into the shared sources, add it to a profile and link it
+back to its original location. PATH must be inside the target or this
+repository. PROFILE is created if it does not exist.
+
+Options:
+  -n, --dry-run     show what would change without changing anything
+  -t, --target DIR  directory the dotfiles are linked into (default: $HOME)
+  -h, --help        show this help
+  --                treat the remaining arguments as PATH and PROFILE
+
+Examples:
+  # Preview adopting a directory into the profile "ingress"
+  dotfile-adopt --dry-run ~/.config/lazygit ingress
+
+  # Adopt it: move it into the repository, list it in the profile, link it back
+  dotfile-adopt ~/.config/lazygit ingress
+
+  # Adopt a single file, using a path relative to the current directory
+  cd ~ && dotfile-adopt .inputrc ingress
+
+  # Add a source that is already in the repository to the profile and link it
+  dotfile-adopt ~/.dotfiles/.config/kitty ingress
+
+  # Adopt from a directory other than $HOME
+  dotfile-adopt --target /tmp/home /tmp/home/.inputrc ingress
+EOF
+}
 
 while [ "$#" -gt 0 ]; do
     case "$1" in
+        -h|--help) show_help; exit 0 ;;
         -n|--dry-run) dry_run=true ;;
         -t|--target) [ "$#" -ge 2 ] || fail "--target requires a directory"; target=$2; shift ;;
         --) shift; arguments+=("$@"); break ;;
@@ -28,6 +59,16 @@ target=$(CDPATH= cd -- "$target" && pwd -P) || fail "target must be an existing 
 case "$target/" in "$repo/"*) fail "target must be outside this repository" ;; esac
 case "$input" in /*) ;; *) input=$PWD/$input ;; esac
 input=$(normalize_path "$input")
+# The target and repository are physical paths; match an input that reaches
+# either one through a symlinked parent, such as /tmp on macOS.
+case "$input" in
+    "$repo"/*|"$target"/*) ;;
+    *)
+        if parent=$(CDPATH= cd -- "$(dirname -- "$input")" 2>/dev/null && pwd -P); then
+            input=${parent%/}/$(basename -- "$input")
+        fi
+        ;;
+esac
 case "$input" in
     "$repo"/*) path=${input#"$repo/"} ;;
     "$target"/*) path=${input#"$target/"} ;;

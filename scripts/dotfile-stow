@@ -9,9 +9,37 @@ delete=false
 profile_name=
 fail() { printf '%s\n' "dotfile-stow: $*" >&2; exit 1; }
 usage='usage: dotfile-stow [--dry-run] [--delete] [--target DIR] PROFILE'
+show_help() {
+    printf '%s\n\n' "$usage"
+    cat <<'EOF'
+Install or remove links for the shared dotfiles selected by PROFILE. Existing
+links into this repository that the profile does not list are reported.
+
+Options:
+  -n, --dry-run     check for conflicts without changing anything
+  -D, --delete      remove the profile's links instead of installing them
+  -t, --target DIR  directory the dotfiles are linked into (default: $HOME)
+  -h, --help        show this help
+
+Examples:
+  # Check that the profile "ingress" can be installed
+  dotfile-stow --dry-run ingress
+
+  # Install the profile into $HOME
+  dotfile-stow ingress
+
+  # Install the profile into another directory
+  dotfile-stow --target /tmp/home ingress
+
+  # Check, then remove the profile's links; the shared sources are kept
+  dotfile-stow --dry-run --delete ingress
+  dotfile-stow --delete ingress
+EOF
+}
 
 while [ "$#" -gt 0 ]; do
     case "$1" in
+        -h|--help) show_help; exit 0 ;;
         -n|--dry-run) dry_run=true ;;
         -D|--delete) delete=true ;;
         -t|--target) [ "$#" -ge 2 ] || fail "--target requires a directory"; target=$2; shift ;;

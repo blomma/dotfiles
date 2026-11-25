@@ -70,9 +70,16 @@ entry_parent() {
 stow_entry() {
     local stow_path=$1 stow_destination=$2 source_parent package stow_dir pattern
     shift 2
-    source_parent=$(dirname -- "$repo/$stow_path")
-    package=$(basename -- "$source_parent")
-    stow_dir=$(dirname -- "$source_parent")
+    # Stow skips a target that is also its stow directory, as $HOME would be for
+    # ~/.dotfiles, so top-level entries use the repository as the stow directory.
+    case "$stow_path" in
+        */*)
+            source_parent=$(dirname -- "$repo/$stow_path")
+            package=$(basename -- "$source_parent")
+            stow_dir=$(dirname -- "$source_parent")
+            ;;
+        *) package=. stow_dir=$repo ;;
+    esac
     pattern=$(basename -- "$stow_path" | sed 's/[][\\.^$*+?(){}|]/\\&/g')
     stow --dir "$stow_dir" --target "$stow_destination" --ignore="\A(?!(?:$pattern)(?:/|\z)).*" "$@" "$package"
 }
