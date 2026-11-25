@@ -1,5 +1,3 @@
-.lbdbrc
-.notmuch-config
 .config/aerc
 .config/bat
 .config/btop
@@ -9,10 +7,9 @@
 .config/gitui
 .config/mc
 .config/msmtp
-.config/neomutt
 .config/nvim
-.config/offlineimap
 .config/resticprofile
 .config/starship
 .config/tmux
 .config/urlscan
+.config/hermes

@@ -1,0 +1,55 @@
+state_dir = "~/.local/state/hermes"
+
+[[accounts]]
+name = "fastmail"
+local_root = "~/.mail/blomma"
+missing_files = "trash"
+
+[[accounts.mailboxes]]
+remote = "role:inbox"
+local = "Inbox"
+
+[[accounts.mailboxes]]
+remote = "role:sent"
+local = "Sent"
+
+[[accounts.mailboxes]]
+remote = "role:archive"
+local = "Archive"
+
+[[accounts.mailboxes]]
+remote = "role:drafts"
+local = "Drafts"
+
+[[accounts.mailboxes]]
+remote = "Gmail"
+local = "Gmail"
+#
+# [[accounts.mailboxes]]
+# remote = "LSpam"
+# local = "Folders/LSpam"
+#
+# [[accounts.mailboxes]]
+# remote = "role:scheduled"
+# local = "Folders/Scheduled"
+#
+# [[accounts.mailboxes]]
+# remote = "role:snoozed"
+# local = "Folders/Snoozed"
+
+[[accounts.mailboxes]]
+remote = "role:junk"
+local = "Spam"
+
+[[accounts.mailboxes]]
+remote = "Support"
+local = "Support"
+
+[[accounts.mailboxes]]
+remote = "role:trash"
+local = "Trash"
+
+[accounts.jmap]
+session_url = "https://api.fastmail.com/jmap/session"
+auth = "bearer"
+
