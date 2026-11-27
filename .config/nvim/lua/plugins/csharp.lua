@@ -1,7 +1,7 @@
 -- C# / .NET
 -- ---------
 -- easy-dotnet.nvim drives the .NET workflow. It starts Microsoft's Roslyn
--- language server (with Roslynator analyzers) as the `easy_dotnet` LSP client,
+-- language server as the `easy_dotnet` LSP client,
 -- runs tests, builds and runs projects, manages NuGet packages and user
 -- secrets, and registers an nvim-dap adapter. Roslyn, the debuggers (native
 -- osx-arm64 netcoredbg) and the test host ship inside the EasyDotnet dotnet
@@ -290,6 +290,13 @@ return {
         },
         opts = {
             picker = "snacks",
+            lsp = {
+                -- The bundled Roslynator reports rules no project build
+                -- runs. Without it the editor shows what the build enforces:
+                -- compiler, IDE and SDK (CA) diagnostics plus the project's
+                -- own analyzer packages.
+                roslynator_enabled = false,
+            },
             -- Modern C# (10+) default for new files.
             auto_bootstrap_namespace = { type = "file_scoped" },
             test_runner = {
